@@ -37,17 +37,17 @@ class ContactsController extends Controller
      */
     public function store( ContactRequest $request)
     {
-        $to  = 'alimuls@gmail.com' . ', '; // note the comma
-        $to .= 'info@gargaarfreighters.com';
-        $subject = 'Contact from Gargaar Freighters website';
+        $to  = 'admin@gmail.com' . ', '; // note the comma
+        $to .= 'info@school.com';
+        $subject = 'Contact from School Event website';
 
         $message = '
             <html>
             <head>
-              <title>Message from Gargaar Freighters Ltd. Website</title>
+              <title>Message from School Event Website</title>
             </head>
             <body>
-              <p>You received a message from' .$request->get('name').' Via Gargaar Freighters Ltd. Website</p>
+              <p>You received a message from' .$request->get('name').' Via School Event Website</p>
               <table>
                 <tr>
                   <th><strong>Email:</strong></th><th>'.$request->get('email').'</th>
@@ -68,8 +68,8 @@ class ContactsController extends Controller
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
         // Additional headers
-        $headers .= 'To: Alimul Razi <alimuls@gmail.com>, Gargaar <alimuls@ymail.com>' . "\r\n";
-        $headers .= 'From: Gargaar Freighters Website <'.$request->get('email').'>' . "\r\n";
+        $headers .= 'To: Alimul Razi <alimuls@gmail.com>, School Event <alimuls@ymail.com>' . "\r\n";
+        $headers .= 'From: School Event Freighters Website <'.$request->get('email').'>' . "\r\n";
 
         // Mail it
         if(mail($to, $subject, $message, $headers)){

@@ -1,4 +1,4 @@
-You received a message from Gargaar Freighters Ltd.
+You received a message from School Event.
 
 <p>
     Name: {{ $name }}

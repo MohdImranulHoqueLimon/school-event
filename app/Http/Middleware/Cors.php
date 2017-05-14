@@ -16,7 +16,7 @@ class Cors
     public function handle($request, Closure $next)
     {
         $domains = [
-            'http://gargaar.dev',
+            'http://school-event.com',
         ];
 
         if (isset($request->server()['HTTP_ORIGIN'])) {
