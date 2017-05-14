@@ -1,0 +1,241 @@
+#footer {
+	background-color: #1f232b;	
+
+	.footer_top {
+		background-color: #344a71;
+		padding: 20px 0;
+
+		.mailchimp {
+
+			h4 {
+				display: inline-block;
+				font-family: @Montserrat;
+				margin: 0;
+				color: #fff;
+				font-size: 25px;
+				vertical-align: middle;
+				text-transform: uppercase;
+				font-weight: normal;
+
+				&:before {
+					content: "\f003";
+					border: 3px solid @hover;
+					padding: 10px;
+					color: @hover;
+					margin-right: 20px;
+					font-size: 18px;
+					font-family: 'FontAwesome';
+					.border-radius(100%);
+				}
+			}
+
+			.mailchimp-form {
+				display: inline-block;
+				vertical-align: middle;
+				margin-left: 45px;
+
+				.input-text {
+					border: 2px solid #fff;
+					background-color: transparent;
+					color: #fff;
+					padding: 5px 10px;
+					display: inline-block;
+					vertical-align: middle;
+					line-height: 40px;
+					width: 290px;
+					.placeholder(#fff);
+				}
+
+				.awe-btn {
+					vertical-align: middle;
+					min-width: 135px;
+					text-align: center;
+					padding: 7px 10px;
+					height: 40px;
+					color: #fff;
+					background-color: @hover;
+					font-size: 14px;
+					text-transform: uppercase;
+					margin-left: 10px;
+				}
+			}
+		}
+
+		.social {
+			
+			.social-content {
+				font-size: 0;
+				
+				a {
+					font-size: 14px;
+					display: inline-block;
+					color: #fff;
+					border: 2px solid #fff;
+					line-height: 32px;
+					width: 32px;
+					height: 32px;
+					margin-top: 5px;
+					text-align: center;
+					margin-right: 20px;		
+					font-size: 16px;	
+					.border-radius(50%);
+					.transition(all 0.3s ease);
+
+					&:hover {
+						border-color: @hover;
+					}
+				}
+			}
+		}
+	}
+	
+	.footer_center {
+		padding-bottom: 40px;
+
+		.widget-logo {
+			overflow: hidden;
+
+			.img {
+				max-width: 145px;
+				display: inline-block;
+				vertical-align: middle;
+				margin-right: 40px;
+
+				img {
+					max-width: 100%;
+				}
+			}
+
+			.text {
+				display: inline-block;
+				vertical-align: middle;
+				margin-top: 10px;
+
+				p {
+					color: #acacac;
+					margin-bottom: 20px;
+
+					i {
+						margin-right: 10px;
+						font-size: 16px;
+						color: #fff;
+					}
+
+					a {
+						color: #acacac;
+
+						&:hover {
+							color: @hover;
+							text-decoration: underline;
+						}
+					}
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+
+		.widget {
+			margin-top: 40px;
+			
+			.widget-title {
+				color: #fff;
+				text-transform: uppercase;
+				font-size: 16px;
+				margin-top: 0;
+				margin-bottom: 20px;
+			}
+
+			> ul {
+				margin-top: -5px;	
+			}
+
+			ul {
+				list-style: none;
+				padding-left: 0;
+				margin-bottom: 0;
+
+				li {
+					
+					a {
+						color: #acacac;
+						padding: 5px 0;
+						display: inline-block;
+						.transition(all 0.2s ease);
+
+						&:hover {
+							color: #fff;
+						}
+					}
+
+					.sub-menu {
+						margin-left: 15px;
+					}
+				}
+			}
+		}
+
+		.widget_tripadvisor {
+
+			.tripadvisor {
+
+				p {
+					color: #acacac;
+					font-size: 13.75px;
+					margin-bottom: 20px;
+				}
+
+				img {
+					max-width: 100%;
+					margin-bottom: 20px;
+				}
+
+				.tripadvisor-circle {
+					font-size: 0;
+					clear: bold;
+					display:block;
+
+					i {
+						font-size: 15px;
+						border: 2px solid #8bc23f;
+						padding: 1px;
+						background-color: #8bc23f;
+						background-clip: content-box;
+						display: inline-block;
+						width: 14px;
+						height: 14px;
+						margin-right: 5px;
+						position: relative;
+						.border-radius(50%);
+
+						&.part:before {
+							content:'';
+							position: absolute;
+							background-color: #1f232b;
+							display: block;
+							height: 8px;
+							width: 4px;
+							right: 1px;
+							top: 1px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.footer_bottom {
+		background-color: #2a2f3c;
+		padding: 10px 0;
+		text-align: center;
+		color: #acacac;
+		font-size: 12.22px;
+
+		p {
+			margin-bottom: 0;
+		}
+	}
+}
+

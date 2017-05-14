@@ -1,0 +1,6 @@
+@include('admin.layouts.pagehead')
+@include('admin.layouts.header')
+@include('admin.shared.sidebar')
+@yield('content')
+@include('admin.layouts.footer')
+@include('admin.layouts.endpage')

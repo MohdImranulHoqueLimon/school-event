@@ -1,0 +1,21 @@
+@extends('layouts.home')
+@section('bodyclass')
+@endsection
+@section('wrapperclass')
+@endsection
+@section('banner')
+    @include('public.partial.bannercontainer-spacetop')
+@endsection
+@section('content')
+    @include('public.partial.check-availability')
+    @include('public.partial.accomd-modations')
+    @include('public.partial.about')
+    @include('public.partial.our-best')
+    @include('public.partial.guest-book-awe-parallax')
+    @include('public.partial.event-news')
+    @include('public.partial.gallery-bg-white')
+@endsection
+@section('js')
+@endsection
+@section('css')
+@endsection
