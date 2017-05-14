@@ -42,11 +42,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::post('findHaveEmail', ['as' => 'users.findHaveEmail', 'uses' => 'Admin\UsersController@findHaveEmail']);
     });
     Route::resource('permissions', 'Admin\PermissionsController');
-
-    Route::resource('cities', 'Admin\CitiesController');
-    Route::group(['prefix' => 'cities'], function () {
-        Route::post('cityIDByState', ['as' => 'cities.cityIDByState', 'uses' => 'Admin\CitiesController@cityIDByState']);
-    });
     Route::resource('states', 'Admin\StatesController');
     Route::group(['prefix' => 'states'], function () {
         Route::post('stateIDByCountry', ['as' => 'states.stateIDByCountry', 'uses' => 'Admin\StatesController@stateIDByCountry']);
