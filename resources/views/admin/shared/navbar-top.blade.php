@@ -4,7 +4,8 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="{{url('/')}}">
-                School Event
+                <h3 class="admin-header-name">School Event</h3>
+            </a>
             <div class="menu-toggler sidebar-toggler">
                 <span></span>
             </div>

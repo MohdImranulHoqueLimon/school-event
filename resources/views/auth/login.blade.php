@@ -48,8 +48,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <body class=" login">
 <!-- BEGIN LOGO -->
 <div class="logo">
-    <a href="{{url('/')}}">
-        School Event
+    <a href="{{url('/')}}" style="text-decoration: none;">
+        <h2 class="admin-header-name" style="font-weight: bold; color: white;">School Event</h2>
     </a>
 </div>
 <!-- END LOGO -->
