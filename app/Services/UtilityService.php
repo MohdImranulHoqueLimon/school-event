@@ -62,10 +62,7 @@ class UtilityService
 
 
     public static $AdminRoleID = 1;
-    public static $DriverRoleID = 2;
-    public static $VendorRoleID = 3;
-    public static $ClientsRoleID = 4;
-    public static $EmployeeRoleID = 5;
+    public static $UserRoleID = 2;
 
     /**
      * @return array
@@ -102,22 +99,6 @@ class UtilityService
     /**
      * @return int
      */
-    public static function getEmployeeRoleID()
-    {
-        return self::$EmployeeRoleID;
-    }
-
-    /**
-     * @param int $EmployeeRoleID
-     */
-    public static function setEmployeeRoleID( $EmployeeRoleID )
-    {
-        self::$EmployeeRoleID = $EmployeeRoleID;
-    }
-
-    /**
-     * @return int
-     */
     public static function getAdminRoleID()
     {
         return self::$AdminRoleID;
@@ -134,32 +115,16 @@ class UtilityService
     /**
      * @return int
      */
-    public static function getDriverRoleID()
+    public static function getUserRoleID()
     {
-        return self::$DriverRoleID;
+        return self::$UserRoleID;
     }
 
     /**
-     * @param int $DriverRoleID
+     * @param int $UserRoleID
      */
-    public static function setDriverRoleID( $DriverRoleID )
+    public static function setUserRoleID( $UserRoleID )
     {
-        self::$DriverRoleID = $DriverRoleID;
-    }
-
-    /**
-     * @return int
-     */
-    public static function getClientsRoleID()
-    {
-        return self::$ClientsRoleID;
-    }
-
-    /**
-     * @param int $ClientsRoleID
-     */
-    public static function setClientsRoleID( $ClientsRoleID )
-    {
-        self::$ClientsRoleID = $ClientsRoleID;
+        self::$UserRoleID = $UserRoleID;
     }
 }

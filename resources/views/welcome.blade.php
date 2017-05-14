@@ -9,32 +9,6 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-        <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
-
-        <script>
-
-            // Enable pusher logging - don't include this in production
-            Pusher.logToConsole = true;
-
-            var pusher = new Pusher('4864d34c49bebace5aad', {
-                cluster: 'ap1',
-                encrypted: true
-            });
-
-            var channel = pusher.subscribe('my-channel');
-            channel.bind('my-event', function(data) {
-                alert(data.message);
-            });
-
-
-
-            function pusherHit(){
-                $.ajax({url: 'pushertest', success: function(result){
-
-                }})
-            }
-        </script>
 
         <!-- Styles -->
         <style>
@@ -101,8 +75,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    M-Education
-                    <button onclick="pusherHit()">Pusher</button>
+                    School-Event
                 </div>
             </div>
         </div>
