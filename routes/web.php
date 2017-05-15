@@ -14,12 +14,11 @@ Route::group(['middleware' => 'map.validate'], function () {
 Route::group(['middleware' => 'auth'], function (){
    Route::get('logout',['as' => 'logout', 'uses' => 'Auth\LoginController@logout']) ;
 });
-Route::get('test', ['as' => 'refills.refillChart', 'uses' => 'Admin\Refill\RefillController@refillChart']);
 
 /**
  * Backend routes
  */
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function () {
 
     Route::get('/', ['as' => 'dashboard', 'uses' => 'Admin\DashboardController@index']);
 
@@ -80,6 +79,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 });
 
+Route::group(['middleware' => 'auth_user_type'], function (){
+
+});
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);

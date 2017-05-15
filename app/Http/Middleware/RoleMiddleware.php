@@ -17,20 +17,18 @@ class RoleMiddleware
      *
      * @return mixed
      */
-    public function handle($request, Closure $next, $role, $permission = null)
+    public function handle($request, Closure $next, $role = 'Admin', $permission = null)
     {
         if (Auth::guest()) {
             return redirect('/');
         }
 
-        if (! $request->user()->hasRole($role)) {
-            //abort(403, 'Insufficient permissions');
-            return redirect('admin/404');
+        if ($request->user()->hasRole('Admin')) {
+            return $next($request);
         }
 
-        if ($permission && ! $request->user()->can($permission)) {
-            //abort(403, 'Insufficient permissions');
-            return redirect('admin/404');
+        if ($request->user()->hasRole('User')) {
+            return redirect('/user');
         }
 
         return $next($request);

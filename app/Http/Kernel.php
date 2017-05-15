@@ -47,7 +47,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth' => \App\Http\Middleware\AuthenticateUser::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
@@ -57,5 +57,6 @@ class Kernel extends HttpKernel
         'jwt.auth' => \App\Http\Middleware\GetUserFromToken::class,
         'jwt.refresh' => \Tymon\JWTAuth\Middleware\RefreshToken::class,
         'map.validate' => \App\Http\Middleware\ValidateForMap::class,
+        'auth_user_type' => \App\Http\Middleware\CheckUserType::class,
     ];
 }
