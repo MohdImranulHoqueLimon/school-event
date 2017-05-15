@@ -1,18 +1,19 @@
 <?php
 
+
 Auth::routes();
 
 //for map screen validation
 Route::group(['middleware' => 'map.validate'], function () {
-    Route::get('token',function (){
+    Route::get('token', function () {
         return response()->json([
             'token' => session('token')
         ]);
     });
 });
 
-Route::group(['middleware' => 'auth'], function (){
-   Route::get('logout',['as' => 'logout', 'uses' => 'Auth\LoginController@logout']) ;
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 });
 
 /**
@@ -41,11 +42,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function (
         Route::post('findHaveEmail', ['as' => 'users.findHaveEmail', 'uses' => 'Admin\UsersController@findHaveEmail']);
     });
     Route::resource('permissions', 'Admin\PermissionsController');
-    Route::resource('states', 'Admin\StatesController');
-    Route::group(['prefix' => 'states'], function () {
-        Route::post('stateIDByCountry', ['as' => 'states.stateIDByCountry', 'uses' => 'Admin\StatesController@stateIDByCountry']);
-    });
-    Route::resource('countries', 'Admin\CountriesController');
     Route::resource('status', 'Admin\StatusController');
 
     Route::get('autocomplete', 'Admin\AutoCompleteController@autocomplete');
@@ -79,9 +75,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function (
 
 });
 
-Route::group(['middleware' => 'auth_user_type'], function (){
-
-});
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);

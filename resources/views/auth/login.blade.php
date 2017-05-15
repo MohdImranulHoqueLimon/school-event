@@ -1,31 +1,12 @@
 <!DOCTYPE html>
-<!--
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
-Version: 4.7.1
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Dribbble: www.dribbble.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
 <html lang="en">
-<!--<![endif]-->
-<!-- BEGIN HEAD -->
-
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Login | {{config('app.name')}}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="Preview page of Metronic Admin Theme #1 for " name="description" />
-    <meta content="" name="author" />
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="Preview page of Metronic Admin Theme #1 for " name="description"/>
+    <meta content="" name="author"/>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 {!! Html::style('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all') !!}
 {!! Html::style('assets/admin/global/plugins/font-awesome/css/font-awesome.min.css') !!}
@@ -42,7 +23,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END PAGE LEVEL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
     <!-- END THEME LAYOUT STYLES -->
-    <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
 <!-- END HEAD -->
 
 <body class=" login">
@@ -63,7 +45,8 @@ License: You must have a valid license purchased only from themeforest(the above
             <label for="email" class="col-md-12 control-label">E-Mail</label>
 
             <div class="col-md-12">
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required
+                       autofocus>
 
                 @if ($errors->has('email'))
                     <span class="help-block">
@@ -107,12 +90,6 @@ License: You must have a valid license purchased only from themeforest(the above
                 Forgot Password?
             </a>
         </div>
-
-        <!--<div class="create-account">
-            <p>
-                <a href="javascript:;" id="register-btn" class="uppercase">Create an account</a>
-            </p>
-        </div>-->
     </form>
     <!-- END LOGIN FORM -->
     <!-- BEGIN FORGOT PASSWORD FORM -->
@@ -120,7 +97,8 @@ License: You must have a valid license purchased only from themeforest(the above
         <h3 class="font-green">Forget Password ?</h3>
         <p> Enter your e-mail address below to reset your password. </p>
         <div class="form-group">
-            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email"
+                   name="email"/></div>
         <div class="form-actions">
             <button type="button" id="back-btn" class="btn green btn-outline">Back</button>
             <button type="submit" class="btn btn-success uppercase pull-right">Submit</button>
@@ -132,7 +110,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <h3 class="font-green">Sign Up</h3>
         <p class="hint"> Enter your personal details below: </p>
         <div class="form-group">
-            <input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="fullname" />
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="fullname"/>
             @if ($errors->has('email'))
                 <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
             @endif
@@ -145,7 +123,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </span>
                 <input class="form-control" placeholder="Email Address" type="text">
             </div>
-            <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email" />
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
             @if ($errors->has('email'))
                 <span class="help-block">
                     <strong>{{ $errors->first('email') }}</strong>
@@ -154,10 +132,10 @@ License: You must have a valid license purchased only from themeforest(the above
         </div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Address</label>
-            <input class="form-control placeholder-no-fix" type="text" placeholder="Address" name="address" /> </div>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Address" name="address"/></div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">City/Town</label>
-            <input class="form-control placeholder-no-fix" type="text" placeholder="City/Town" name="city" /> </div>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="City/Town" name="city"/></div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Country</label>
             <select name="country" class="form-control">
@@ -401,21 +379,24 @@ License: You must have a valid license purchased only from themeforest(the above
         <p class="hint"> Enter your account details below: </p>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Username</label>
-            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" /> </div>
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username"
+                   name="username"/></div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Password</label>
-            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password" /> </div>
+            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password"
+                   placeholder="Password" name="password"/></div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
-            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword" /> </div>
+            <input class="form-control placeholder-no-fix" type="password" autocomplete="off"
+                   placeholder="Re-type Your Password" name="rpassword"/></div>
         <div class="form-group margin-top-20 margin-bottom-20">
             <label class="mt-checkbox mt-checkbox-outline">
-                <input type="checkbox" name="tnc" /> I agree to the
+                <input type="checkbox" name="tnc"/> I agree to the
                 <a href="javascript:;">Terms of Service </a> &
                 <a href="javascript:;">Privacy Policy </a>
                 <span></span>
             </label>
-            <div id="register_tnc_error"> </div>
+            <div id="register_tnc_error"></div>
         </div>
         <div class="form-actions">
             <button type="button" id="register-back-btn" class="btn green btn-outline">Back</button>
@@ -427,7 +408,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="copyright">
     {{date('Y')}} © {{config('app.name')}} |
     Powered By <a class="right" href="http://www.vivatelecoms.com/" target="_blank">
-        Vivacom Ltd
+        School Event
     </a>
 </div>
 <!-- BEGIN CORE PLUGINS -->

@@ -13,11 +13,6 @@
             <form name="login" role="form" method="POST"  class="login-form" action="{{ url('/login') }}" method="post" >
                 <h3 class="form-title font-green">Sign In</h3>
                 {{ csrf_field() }}
-                <!--<div class="alert alert-danger display-hide">
-                    <button class="close" data-close="alert"></button>
-                    <span> Enter any username and password. </span>
-                </div>
-                -->
                 <div class="form-group">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                     <input value="{{ old('email') }}" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="email" /> </div>
