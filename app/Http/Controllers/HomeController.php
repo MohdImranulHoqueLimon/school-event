@@ -75,13 +75,11 @@ class HomeController extends Controller
 
     public function blogpost()
     {
-        //return view('blogpost');
         return view('public.news-details');
     }
 
     public function location()
     {
-        //return view('location');
         return view('public.location');
     }
 
@@ -90,29 +88,9 @@ class HomeController extends Controller
         return view('achivement');
     }
 
-    public function airfright()
-    {
-        return view('air-fright');
-    }
-
     public function storage()
     {
         return view('storage');
-    }
-
-    public function team()
-    {
-        return view('team');
-    }
-
-    public function transport()
-    {
-        return view('transport');
-    }
-
-    public function warehouse()
-    {
-        return view('warehouse');
     }
 
     public function faq()
@@ -122,7 +100,6 @@ class HomeController extends Controller
 
     public function contact()
     {
-        //return view('contact');
         return view('public.contact-us');
     }
 
@@ -148,25 +125,6 @@ class HomeController extends Controller
 
     public function login(){
         return Redirect::to('/admin');
-    }
-
-    public function pusherTest(){
-
-        require('Pusher.php');
-
-        $options = array(
-            'cluster' => 'ap1',
-            'encrypted' => true
-        );
-        $pusher = new Pusher(
-            '4864d34c49bebace5aad',
-            '7fdb899cf09c70cf1e0c',
-            '332822',
-            $options
-        );
-
-        $data['message'] = 'hello world';
-        $pusher->trigger('my-channel', 'my-event', $data);
     }
 
 }
