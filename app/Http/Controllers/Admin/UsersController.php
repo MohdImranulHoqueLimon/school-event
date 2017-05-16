@@ -33,7 +33,7 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         $filters = $request->all();
-        
+
         $users = $this->userService->getAllUser($filters);
         $roles = $this->userService->getAllRoles();
         return View('admin.users.index', compact('users','roles','request'));
@@ -58,7 +58,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
 
         $user = $this->userService->createUser($request->all());

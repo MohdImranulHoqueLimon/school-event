@@ -41,7 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         Route::post('findHaveEmail', ['as' => 'users.findHaveEmail', 'uses' => 'Admin\UsersController@findHaveEmail']);
     });
 
-    Route::resource('student', 'Admin\UsersController');
+    Route::resource('student', 'Admin\StudentController');
 
     Route::resource('permissions', 'Admin\PermissionsController');
     Route::resource('status', 'Admin\StatusController');

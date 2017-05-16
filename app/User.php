@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Admin\Vendor\Driver;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
@@ -16,8 +17,10 @@ class User extends Authenticatable
      * @var array
      */
     /*protected $fillable = [
-        'full_name', 'phone', 'email', 'city', 'username', 'password', 'address', ''
+        'name', 'email', 'password', 'status'
     ];*/
+
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -27,4 +30,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function driver()
+    {
+        return $this->hasOne(Driver::class,'user_id');
+    }
 }
