@@ -7,22 +7,14 @@
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="Preview page of Metronic Admin Theme #1 for " name="description"/>
     <meta content="" name="author"/>
-    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
 {!! Html::style('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all') !!}
 {!! Html::style('assets/admin/global/plugins/font-awesome/css/font-awesome.min.css') !!}
 {!! Html::style('assets/admin/global/plugins/simple-line-icons/simple-line-icons.min.css') !!}
 {!! Html::style('assets/admin/global/plugins/bootstrap/css/bootstrap.min.css') !!}
 {!! Html::style('assets/admin/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') !!}
-<!-- END GLOBAL MANDATORY STYLES -->
-    <!-- BEGIN THEME GLOBAL STYLES -->
 {!! Html::style('assets/admin/global/css/components.min.css') !!}
-
-<!-- END THEME GLOBAL STYLES -->
-    <!-- BEGIN PAGE LEVEL STYLES -->
 {!! Html::style('assets/admin/pages/css/login.css') !!}
-<!-- END PAGE LEVEL STYLES -->
-    <!-- BEGIN THEME LAYOUT STYLES -->
-    <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <!-- END HEAD -->
@@ -41,16 +33,16 @@
     <form class="login-form form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
         <h3 class="form-title font-green">Sign In</h3>
         {{ csrf_field() }}
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-            <label for="email" class="col-md-12 control-label">E-Mail</label>
+        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+            <label for="phone" class="col-md-12 control-label">E-Mail</label>
 
             <div class="col-md-12">
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required
+                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required
                        autofocus>
 
-                @if ($errors->has('email'))
+                @if ($errors->has('phone'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
+                        <strong>{{ $errors->first('phone') }}</strong>
                     </span>
                 @endif
             </div>
@@ -106,7 +98,7 @@
     </form>
     <!-- END FORGOT PASSWORD FORM -->
     <!-- BEGIN REGISTRATION FORM -->
-    <form class="register-form" action="index.html" method="post">
+    {{--<form class="register-form" action="index.html" method="post">
         <h3 class="font-green">Sign Up</h3>
         <p class="hint"> Enter your personal details below: </p>
         <div class="form-group">
@@ -402,7 +394,7 @@
             <button type="button" id="register-back-btn" class="btn green btn-outline">Back</button>
             <button type="submit" id="register-submit-btn" class="btn btn-success uppercase pull-right">Submit</button>
         </div>
-    </form>
+    </form>--}}
     <!-- END REGISTRATION FORM -->
 </div>
 <div class="copyright">

@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Models\Admin\Vendor\Driver;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;

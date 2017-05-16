@@ -18,9 +18,6 @@ class UsersTableSeeder extends Seeder
             'username' => 'limon',
             'phone' => '+8801723689536',
             'email' => 'admin@school.com',
-            'address' => 'Dhaka, Bangladesh',
-            'city' => 'Dhaka, Bangladesh',
-            'status' => Constants::$user_active_status,
             'password' => bcrypt(123456)
         ));
 
@@ -29,9 +26,6 @@ class UsersTableSeeder extends Seeder
             'username' => 'shafiq',
             'phone' => '+88017232321323',
             'email' => 'admin1@school.com',
-            'address' => 'Dhaka, Bangladesh',
-            'city' => 'Dhaka, Bangladesh',
-            'status' => Constants::$user_default_status,
             'password' => bcrypt(123456)
         ));
 
@@ -40,9 +34,6 @@ class UsersTableSeeder extends Seeder
             'username' => 'shakib',
             'phone' => '+88017200321323',
             'email' => 'user@school.com',
-            'address' => 'Dhaka, Bangladesh',
-            'city' => 'Dhaka, Bangladesh',
-            'status' => Constants::$user_default_status,
             'password' => bcrypt(123456)
         ));
     }
