@@ -16,9 +16,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 });
 
-/**
- * Backend routes
- */
+
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::get('/', ['as' => 'dashboard', 'uses' => 'Admin\DashboardController@index']);
@@ -33,6 +31,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::post('roles/{id}/permissions', ['as' => 'roles.permissions.store', 'uses' => 'Admin\RolesController@storePermission']);
 
     Route::resource('users', 'Admin\UsersController');
+
     Route::group(['prefix' => 'users'], function () {
         Route::get('{id}/roles', ['as' => 'users.roles', 'uses' => 'Admin\UsersController@roles']);
         Route::post('{id}/roles', ['as' => 'users.roles.store', 'uses' => 'Admin\UsersController@saveRoles']);

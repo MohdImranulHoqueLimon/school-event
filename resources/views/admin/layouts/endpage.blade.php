@@ -22,6 +22,11 @@
 {!! Html::script('assets/admin/layouts/global/scripts/quick-sidebar.min.js') !!}
 {!! Html::script('assets/admin/layouts/global/scripts/quick-nav.min.js') !!}
 <!-- END THEME LAYOUT SCRIPTS -->
+
+{{--<script src="{{asset('assets/admin/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/admin/global/plugins/fancybox/source/jquery.fancybox.pack.js')}}" type="text/javascript"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--}}
+
 {!! Html::script('js/printPreview.js') !!}
 <script type="text/javascript">
 

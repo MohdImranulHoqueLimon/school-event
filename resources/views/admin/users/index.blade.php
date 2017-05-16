@@ -1,34 +1,18 @@
 @extends('admin.layouts.app')
 @section('title')
-    Vendors
+    Admin
 @endsection
 @section('page_styles')
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <link href="{{asset('assets/admin/global/plugins/datatables/datatables.min.css')}}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{asset('assets/admin/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}"
-          rel="stylesheet" type="text/css"/>
-    <link href="{{asset('assets/admin/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}"
-          rel="stylesheet" type="text/css"/>
-    <link href="{{asset('assets/admin/global/plugins/fancybox/source/jquery.fancybox.css')}}" rel="stylesheet"
-          type="text/css"/>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 @endsection
 
 @section('content')
     <div class="page-content-wrapper">
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content">
-            <!-- BEGIN PAGE HEADER-->
-            <!-- BEGIN PAGE BAR -->
             <div class="page-bar">
                 {!! Breadcrumbs::renderIfExists('users.index') !!}
             </div>
-            <!-- END PAGE BAR -->
-            <!-- BEGIN PAGE TITLE-->
             <h1 class="page-title"></h1>
-            <!-- END PAGE TITLE-->
-            <!-- END PAGE HEADER-->
 
             <div class="row">
                 @include('shared.flash')
@@ -59,15 +43,8 @@
                                         <div class="row">
                                             <div class="col-lg-1 col-md-6 col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="name" class="control-label">User ID
-                                                    </label>
-                                                    <input
-                                                            id="id"
-                                                            type="text"
-                                                            class="form-control"
-                                                            name="id"
-                                                            value="{{ $request->get('id') }}"
-                                                    >
+                                                    <label for="name" class="control-label">User ID</label>
+                                                    <input id="id" type="text" class="form-control" name="id" value="{{ $request->get('id') }}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -77,11 +54,7 @@
                                                     <select class="form-control" name="role_id">
                                                         <option value="">Select</option>
                                                         @foreach($roles as $role)
-                                                            <option
-                                                                    value="{{$role->id}}"
-                                                                    {{$request->get('role_id')==$role->id?
-                                                                    'selected':''}}
-                                                            >
+                                                            <option value="{{$role->id}}"{{$request->get('role_id')==$role->id? 'selected':''}}>
                                                                 {{$role->name}}
                                                             </option>
                                                         @endforeach
@@ -90,15 +63,9 @@
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="name" class="control-label">Name
-                                                    </label>
-                                                    <input
-                                                            id="name"
-                                                            type="text"
-                                                            class="form-control"
-                                                            name="name"
-                                                            value="{{ $request->get('name') }}"
-                                                    >
+                                                    <label for="name" class="control-label">Name</label>
+                                                    <input id="name" type="text" class="form-control" name="name"
+                                                            value="{{ $request->get('name') }}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -128,7 +95,7 @@
                                     <th width="15%"> Roles</th>
                                     <th width="10%"> Status</th>
                                     <th width="15%"> Created At</th>
-                                    <th width="15%"> Actions</th>
+                                    <th width="15%" class="text-center"> Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -137,7 +104,7 @@
                                         <td>{{$user->id}}</td>
                                         <td>
                                             <a href="{{ route('users.show',$user->id) }}">
-                                                {{$user->name}}
+                                                {{$user->full_name}}
                                             </a>
                                         </td>
                                         <td>{{$user->email}}</td>
@@ -150,21 +117,21 @@
                                         </td>
                                         <td>{{$user->status}}</td>
                                         <td> {{$user->created_at->format('d M, Y')}}</td>
-                                        <td>
-                                            <form method="POST" class="form-inline pull-right"
-                                                  action="{{route('users.destroy', $user->id)}}"
+                                        <td class="text-center">
+                                            <form method="POST" class="form-inline" action="{{route('users.destroy', $user->id)}}"
                                                   onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}
-                                                <a href="{{ route('users.show', $user->id) }}"
-                                                   class="btn btn-icon-only grey-cascade">
-                                                    <i class="fa fa-eye"></i></a>
-                                                <a href="{{ route('users.edit', $user->id) }}"
-                                                   class="btn btn-icon-only btn-primary"><i class="fa fa-edit"></i></a>
-                                                <button type="submit" class="btn btn-icon-only btn-danger"><i
-                                                            class="fa fa-times"></i></button>
+                                                <a href="{{ route('users.show', $user->id) }}" class="btn btn-icon-only grey-cascade">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-icon-only btn-primary">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <button type="submit" class="btn btn-icon-only btn-danger">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
                                             </form>
-
                                         </td>
                                     </tr>
                                 @endforeach
@@ -174,23 +141,12 @@
                             {!! CHTML::customPaginate($users,'') !!}
                         </div>
                     </div>
-                    <!-- END EXAMPLE TABLE PORTLET-->
                 </div>
             </div>
-
         </div>
-        <!-- END CONTENT BODY -->
     </div>
-    <!-- END CONTENT -->
 @endsection
 @section('scripts')
-    <script src="{{asset('assets/admin/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js')}}"
-            type="text/javascript"></script>
-    <script src="{{asset('assets/admin/global/plugins/fancybox/source/jquery.fancybox.pack.js')}}"
-            type="text/javascript"></script>
-    <!-- END PAGE LEVEL PLUGINS -->
-
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
 
         $(function()
