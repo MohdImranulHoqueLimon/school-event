@@ -8,13 +8,13 @@
     <meta content="Preview page of Metronic Admin Theme #1 for " name="description"/>
     <meta content="" name="author"/>
 
-{!! Html::style('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all') !!}
-{!! Html::style('assets/admin/global/plugins/font-awesome/css/font-awesome.min.css') !!}
-{!! Html::style('assets/admin/global/plugins/simple-line-icons/simple-line-icons.min.css') !!}
-{!! Html::style('assets/admin/global/plugins/bootstrap/css/bootstrap.min.css') !!}
-{!! Html::style('assets/admin/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') !!}
-{!! Html::style('assets/admin/global/css/components.min.css') !!}
-{!! Html::style('assets/admin/pages/css/login.css') !!}
+    {!! Html::style('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all') !!}
+    {!! Html::style('assets/admin/global/plugins/font-awesome/css/font-awesome.min.css') !!}
+    {!! Html::style('assets/admin/global/plugins/simple-line-icons/simple-line-icons.min.css') !!}
+    {!! Html::style('assets/admin/global/plugins/bootstrap/css/bootstrap.min.css') !!}
+    {!! Html::style('assets/admin/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') !!}
+    {!! Html::style('assets/admin/global/css/components.min.css') !!}
+    {!! Html::style('assets/admin/pages/css/login.css') !!}
     <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <!-- END HEAD -->
@@ -33,16 +33,16 @@
     <form class="login-form form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
         <h3 class="form-title font-green">Sign In</h3>
         {{ csrf_field() }}
-        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-            <label for="phone" class="col-md-12 control-label">E-Mail</label>
+        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            <label for="email" class="col-md-12 control-label">E-Mail</label>
 
             <div class="col-md-12">
-                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required
+                <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" required
                        autofocus>
 
-                @if ($errors->has('phone'))
+                @if ($errors->has('email'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('phone') }}</strong>
+                        <strong>{{ $errors->first('email') }}</strong>
                     </span>
                 @endif
             </div>
