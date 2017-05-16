@@ -49,7 +49,8 @@
                     @endif
                 </a>
             </li>
-            <li class="nav-item @if(Route::is('users.*') || Route::is('roles.*') || Route::is('permissions.*')) start active open @endif ">
+            <li class="nav-item @if(Route::is('users.*') || Route::is('roles.*') || Route::is('permissions.*')
+            || Route::is('student.*')) start active open @endif ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-users"></i>
                     <span class="title">Users</span>
@@ -64,8 +65,17 @@
                     <li class="nav-item  @if (Route::is('users.*'))start active open @endif">
                         <a href="{{route('users.index')}}" class="nav-link ">
                             <i class="icon-users"></i>
-                            <span class="title">Users</span>
+                            <span class="title">Admin</span>
                             @if (Route::is('users.*'))
+                                <span class="selected"></span>
+                            @endif
+                        </a>
+                    </li>
+                    <li class="nav-item  @if (Route::is('student.*'))start active open @endif">
+                        <a href="{{route('student.index')}}" class="nav-link ">
+                            <i class="icon-users"></i>
+                            <span class="title">Student</span>
+                            @if (Route::is('student.*'))
                                 <span class="selected"></span>
                             @endif
                         </a>
@@ -73,20 +83,11 @@
                 </ul>
             </li>
 
-            <li class="nav-item
-                        @if(
-                            Route::is('news.*') ||
-                            Route::is('testimonials.*')
-                        )
-                            start active open
-                        @endif
-                            ">
+            <li class="nav-item @if(Route::is('news.*') || Route::is('testimonials.*')) start active open @endif">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-dropbox"></i>
                     <span class="title">Sites</span>
-                    <span class="arrow @if(Route::is('news.*') || Route::is('testimonials.*')) open @endif ">
-
-                    </span>
+                    <span class="arrow @if(Route::is('news.*') || Route::is('testimonials.*')) open @endif"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item @if (Route::is('news.*'))start active open @endif ">
@@ -110,8 +111,5 @@
                 </ul>
             </li>
         </ul>
-        <!-- END SIDEBAR MENU -->
-        <!-- END SIDEBAR MENU -->
     </div>
-    <!-- END SIDEBAR -->
 </div>

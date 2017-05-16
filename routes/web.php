@@ -41,9 +41,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         Route::post('{id}/permissions', ['as' => 'users.permissions.store', 'uses' => 'Admin\UsersController@savePermissions']);
         Route::post('findHaveEmail', ['as' => 'users.findHaveEmail', 'uses' => 'Admin\UsersController@findHaveEmail']);
     });
+
+    Route::resource('student', 'Admin\UsersController');
+
     Route::resource('permissions', 'Admin\PermissionsController');
     Route::resource('status', 'Admin\StatusController');
-
     Route::get('autocomplete', 'Admin\AutoCompleteController@autocomplete');
 
 
@@ -68,9 +70,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         );
     });
 
-    Route::get('/blank', function () {
-        return view('admin.blank');
-    });
+    Route::get('/blank', function () {return view('admin.blank');});
     Route::get('/404', ['as' => 'dashboard.404', 'uses' => 'Admin\DashboardController@page404']);
 
 });
@@ -90,8 +90,6 @@ Route::get('/profile', function () {
 });
 
 Route::get('gps-track', ['as' => 'gps.track', 'uses' => 'GpsLocationTrack@index']);
-
-/*End Front End*/
 Route::get('/newsdetails/{id}', 'HomeController@newsdetails');
 
 
