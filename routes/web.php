@@ -19,7 +19,7 @@ Route::group(['middleware' => 'auth'], function () {
 /**
  * Backend routes
  */
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::get('/', ['as' => 'dashboard', 'uses' => 'Admin\DashboardController@index']);
 

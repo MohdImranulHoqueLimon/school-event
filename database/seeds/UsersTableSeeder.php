@@ -14,28 +14,34 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create(array(
-            'name' => 'Imranul Hoque Limon',
+            'full_name' => 'Imranul Hoque Limon',
             'username' => 'limon',
             'phone' => '+8801723689536',
             'email' => 'admin@school.com',
+            'address' => 'Dhaka, Bangladesh',
+            'city' => 'Dhaka, Bangladesh',
             'status' => Constants::$user_active_status,
             'password' => bcrypt(123456)
         ));
 
         User::create(array(
-            'name' => 'Shafiqul Islam',
+            'full_name' => 'Shafiqul Islam',
             'username' => 'shafiq',
             'phone' => '+88017232321323',
             'email' => 'admin1@school.com',
+            'address' => 'Dhaka, Bangladesh',
+            'city' => 'Dhaka, Bangladesh',
             'status' => Constants::$user_default_status,
             'password' => bcrypt(123456)
         ));
 
         User::create(array(
-            'name' => 'Shakib Al Hasan',
+            'full_name' => 'Shakib Al Hasan',
             'username' => 'shakib',
             'phone' => '+88017200321323',
             'email' => 'user@school.com',
+            'address' => 'Dhaka, Bangladesh',
+            'city' => 'Dhaka, Bangladesh',
             'status' => Constants::$user_default_status,
             'password' => bcrypt(123456)
         ));
