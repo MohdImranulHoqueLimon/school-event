@@ -104,7 +104,7 @@
                                         <td>{{$user->id}}</td>
                                         <td>
                                             <a href="{{ route('users.show',$user->id) }}">
-                                                {{$user->full_name}}
+                                                {{$user->name}}
                                             </a>
                                         </td>
                                         <td>{{$user->email}}</td>
