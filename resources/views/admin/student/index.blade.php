@@ -7,7 +7,6 @@
 
 @section('content')
     <div class="page-content-wrapper">
-        <!-- BEGIN CONTENT BODY -->
         <div class="page-content">
             <div class="page-bar">
                 {!! Breadcrumbs::renderIfExists('student.index') !!}
@@ -17,17 +16,17 @@
             <div class="row">
                 @include('shared.flash')
                 <div class="col-md-12">
-                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
                     <div class="portlet light bordered">
                         <div class="portlet-title">
                             <div class="caption font-dark">
                                 <i class="icon-users font-dark"></i>
-                                <span class="caption-subject bold uppercase"> Users </span>
+                                <span class="caption-subject bold uppercase"> Students </span>
                             </div>
                             <div class="actions">
                                 <div class="btn-group pull-right">
-                                    <a href="{{ route('users.create') }}" class="btn sbold green">Add
-                                        New <i class="fa fa-plus"></i></a>
+                                    <a href="{{ route('student.create') }}" class="btn sbold green">Add
+                                        New <i class="fa fa-plus"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -35,11 +34,11 @@
                             <div class="portlet green-sharp box">
                                 <div class="portlet-title">
                                     <div class="caption">
-                                        <i class="fa fa-search"></i>Search Users
+                                        <i class="fa fa-search"></i>Search Student
                                     </div>
                                 </div>
                                 <div class="portlet-body">
-                                    <form class="horizontal-form" role="form" method="GET" action="/admin/users">
+                                    <form class="horizontal-form" role="form" method="GET" action="/admin/student">
                                         <div class="row">
                                             <div class="col-lg-1 col-md-6 col-sm-6">
                                                 <div class="form-group">
@@ -87,7 +86,7 @@
                                     <tr class="odd gradeX">
                                         <td>{{$student->id}}</td>
                                         <td>
-                                            <a href="{{ route('users.show',$student->id) }}">
+                                            <a href="{{ route('student.show',$student->id) }}">
                                                 {{$student->full_name}}
                                             </a>
                                         </td>
@@ -95,14 +94,14 @@
                                         <td>{{$student->status}}</td>
                                         <td> {{$student->created_at->format('d M, Y')}}</td>
                                         <td class="text-center">
-                                            <form method="POST" class="form-inline" action="{{route('users.destroy', $student->id)}}"
+                                            <form method="POST" class="form-inline" action="{{route('student.destroy', $student->id)}}"
                                                   onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}
-                                                <a href="{{ route('users.show', $student->id) }}" class="btn btn-icon-only grey-cascade">
+                                                <a href="{{ route('student.show', $student->id) }}" class="btn btn-icon-only grey-cascade">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
-                                                <a href="{{ route('users.edit', $student->id) }}" class="btn btn-icon-only btn-primary">
+                                                <a href="{{ route('student.edit', $student->id) }}" class="btn btn-icon-only btn-primary">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                                 <button type="submit" class="btn btn-icon-only btn-danger">
@@ -129,14 +128,14 @@
         $(function()
         {
             $( "#name" ).autocomplete({
-                source: "autocomplete?field=name&table=users",
+                source: "autocomplete?field=name&table=student",
                 minLength: 3,
                 select: function(event, ui) {
                     $('#description').val(ui.item.value);
                 }
             });
             $( "#email" ).autocomplete({
-                source: "autocomplete?field=email&table=users",
+                source: "autocomplete?field=email&table=student",
                 minLength: 3,
                 select: function(event, ui) {
                     $('#description').val(ui.item.value);
