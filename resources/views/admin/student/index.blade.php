@@ -10,7 +10,7 @@
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content">
             <div class="page-bar">
-                {!! Breadcrumbs::renderIfExists('users.index') !!}
+                {!! Breadcrumbs::renderIfExists('student.index') !!}
             </div>
             <h1 class="page-title"></h1>
 
@@ -49,29 +49,14 @@
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="asset_type_id" class="control-label">Roles
-                                                    </label>
-                                                    <select class="form-control" name="role_id">
-                                                        <option value="">Select</option>
-                                                        @foreach($roles as $role)
-                                                            <option value="{{$role->id}}"{{$request->get('role_id')==$role->id? 'selected':''}}>
-                                                                {{$role->name}}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
+                                                    <label for="full_name" class="control-label">Name</label>
+                                                    <input id="full_name" type="text" class="form-control" name="full_name"
+                                                            value="{{ $request->get('full_name') }}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-6">
                                                 <div class="form-group">
-                                                    <label for="name" class="control-label">Name</label>
-                                                    <input id="name" type="text" class="form-control" name="name"
-                                                            value="{{ $request->get('name') }}">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="email" class="control-label">Email/Username
-                                                    </label>
+                                                    <label for="email" class="control-label">Email/Username</label>
                                                     <input id="email" type="text" class="form-control" name="email" value="{{ $request->get('email') }}">
                                                 </div>
                                             </div>
@@ -90,42 +75,34 @@
                                 <thead>
                                 <tr>
                                     <th width="5%"> Id</th>
-                                    <th width="20%"> Name</th>
+                                    <th width="20%"> Full Name</th>
                                     <th width="20%"> Email</th>
-                                    <th width="15%"> Roles</th>
                                     <th width="10%"> Status</th>
                                     <th width="15%"> Created At</th>
                                     <th width="15%" class="text-center"> Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($users as $user)
+                                @foreach($students as $student)
                                     <tr class="odd gradeX">
-                                        <td>{{$user->id}}</td>
+                                        <td>{{$student->id}}</td>
                                         <td>
-                                            <a href="{{ route('users.show',$user->id) }}">
-                                                {{$user->name}}
+                                            <a href="{{ route('users.show',$student->id) }}">
+                                                {{$student->full_name}}
                                             </a>
                                         </td>
-                                        <td>{{$user->email}}</td>
-                                        <td>
-                                            @forelse($user->roles as $role)
-                                                {!! $role->name !!} {!! (!$loop->last) ? ', ':'' !!}
-                                            @empty
-                                                NA
-                                            @endforelse
-                                        </td>
-                                        <td>{{$user->status}}</td>
-                                        <td> {{$user->created_at->format('d M, Y')}}</td>
+                                        <td>{{$student->email}}</td>
+                                        <td>{{$student->status}}</td>
+                                        <td> {{$student->created_at->format('d M, Y')}}</td>
                                         <td class="text-center">
-                                            <form method="POST" class="form-inline" action="{{route('users.destroy', $user->id)}}"
+                                            <form method="POST" class="form-inline" action="{{route('users.destroy', $student->id)}}"
                                                   onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}
-                                                <a href="{{ route('users.show', $user->id) }}" class="btn btn-icon-only grey-cascade">
+                                                <a href="{{ route('users.show', $student->id) }}" class="btn btn-icon-only grey-cascade">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
-                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-icon-only btn-primary">
+                                                <a href="{{ route('users.edit', $student->id) }}" class="btn btn-icon-only btn-primary">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                                 <button type="submit" class="btn btn-icon-only btn-danger">
@@ -138,7 +115,7 @@
 
                                 </tbody>
                             </table>
-                            {!! CHTML::customPaginate($users,'') !!}
+                            {!! CHTML::customPaginate($students,'') !!}
                         </div>
                     </div>
                 </div>

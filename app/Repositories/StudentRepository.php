@@ -36,6 +36,6 @@ class StudentRepository extends  Repository
     }
 
     public function getAllStudent(){
-        return $this->model->get();
+        return $this->model->paginate($this->recordPerPage);
     }
 }

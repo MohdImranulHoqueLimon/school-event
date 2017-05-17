@@ -19,7 +19,7 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <i class="icon-users font-dark"></i>
-                            <span class="caption-subject bold uppercase">User Details</span>
+                            <span class="caption-subject bold uppercase">Admin Details</span>
                         </div>
                         <div class="actions">
 
@@ -33,7 +33,6 @@
                                 <p>
                                     <a href="mailto:{{$user->email}}"> {{$user->email}} </a>
                                 </p>
-
                             </div>
                         </div>
 
@@ -84,10 +83,9 @@
                                     @forelse($user->permissions as $permission)
                                         <tr>
                                             <td>{{$permission->name}}</td>
-                                            <td><input type="checkbox"
-                                                       checked
-                                                       disabled
-                                                       value="{{$permission->id}}"/></td>
+                                            <td>
+                                                <input type="checkbox" checked disabled value="{{$permission->id}}"/>
+                                            </td>
                                         </tr>
                                     @empty
                                         <tr>
@@ -104,9 +102,7 @@
                 </div>
             </div>
         </div>
-        <!-- END CONTENT BODY -->
     </div>
-    <!-- END CONTENT -->
 
     @include('admin.users.partials.roles-modal')
     @include('admin.users.partials.permissions-modal')

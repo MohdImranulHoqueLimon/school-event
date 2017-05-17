@@ -21,6 +21,7 @@ class StudentController extends Controller
 
     public function index(Request $request)
     {
-        return $student = $this->studentService->getAllStudent();
+        $students = $this->studentService->getAllStudent();
+        return view('admin.student.index', compact('students', 'request'));
     }
 }
