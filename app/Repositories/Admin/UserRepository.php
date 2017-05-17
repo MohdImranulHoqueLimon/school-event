@@ -7,9 +7,9 @@ use App\User;
 
 class UserRepository extends Repository
 {
-    /*public static $allowedFields = [
-        'name', 'email', 'status'
-    ];*/
+    public static $allowedFields = [
+        'name', 'username', 'phone', 'email', 'status', 'password'
+    ];
 
     /**
      * Specify Model class name

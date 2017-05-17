@@ -1,31 +1,19 @@
 @extends('admin.layouts.app')
 @section('title')
-    Show User
+    Show Admin
 @endsection
 
 @section('page_styles')
 
 @endsection
 
-
 @section('content')
-    <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
-        <!-- BEGIN CONTENT BODY -->
         <div class="page-content">
-            <!-- BEGIN PAGE HEADER-->
-            <!-- BEGIN THEME PANEL -->
-
-            <!-- END THEME PANEL -->
-            <!-- BEGIN PAGE BAR -->
             <div class="page-bar">
                 {!! Breadcrumbs::renderIfExists(Route::getCurrentRoute()->getName()) !!}
             </div>
-            <!-- END PAGE BAR -->
-            <!-- BEGIN PAGE TITLE-->
             <h1 class="page-title"></h1>
-            <!-- END PAGE TITLE-->
-            <!-- END PAGE HEADER-->
             <div class="row">
                 <div class="portlet light bordered">
                     <div class="portlet-title">
@@ -42,13 +30,11 @@
                         <div class="row">
                             <div class="col-md-8 profile-info">
                                 <h3 class="font-green sbold uppercase">{{$user->name}}</h3>
-
                                 <p>
                                     <a href="mailto:{{$user->email}}"> {{$user->email}} </a>
                                 </p>
 
                             </div>
-
                         </div>
 
                         <div class="row">
@@ -69,10 +55,7 @@
                                     @forelse($user->roles as $role)
                                         <tr>
                                             <td>{{$role->name}}</td>
-                                            <td><input type="checkbox"
-                                                       checked
-                                                       disabled
-                                                       value="{{$role->id}}"/></td>
+                                            <td><input type="checkbox" checked disabled value="{{$role->id}}"/></td>
                                         </tr>
                                     @empty
                                         <tr>

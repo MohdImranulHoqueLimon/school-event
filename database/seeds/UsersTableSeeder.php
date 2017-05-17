@@ -14,7 +14,8 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create(array(
-            'full_name' => 'Imranul Hoque Limon',
+            'name' => 'Imranul Hoque Limon',
+            'role' => 1,
             'username' => 'limon',
             'phone' => '+8801723689536',
             'email' => 'admin@school.com',
@@ -23,7 +24,8 @@ class UsersTableSeeder extends Seeder
         ));
 
         User::create(array(
-            'full_name' => 'Shafiqul Islam',
+            'name' => 'Shafiqul Islam',
+            'role' => 1,
             'username' => 'shafiq',
             'phone' => '+88017232321323',
             'email' => 'admin1@school.com',
@@ -31,7 +33,8 @@ class UsersTableSeeder extends Seeder
         ));
 
         User::create(array(
-            'full_name' => 'Shakib Al Hasan',
+            'name' => 'Shakib Al Hasan',
+            'role' => 1,
             'username' => 'shakib',
             'phone' => '+88017200321323',
             'email' => 'user@school.com',
