@@ -18,7 +18,7 @@ class CreateStudentUsersTable extends Migration
             $table->string('full_name');
             $table->string('username');
             $table->string('phone')->unique();
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->string('address');
             $table->string('city');
             $table->string('password');
