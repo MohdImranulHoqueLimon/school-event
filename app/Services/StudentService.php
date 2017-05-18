@@ -29,6 +29,11 @@ class StudentService extends BaseService
         return $this->studentRepository->getAllStudent();
     }
 
+    function findStudent($id)
+    {
+        return $this->model->find($id);
+    }
+
     /**
      * Filter data based on user input
      *

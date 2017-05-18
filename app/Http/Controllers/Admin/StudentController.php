@@ -46,15 +46,13 @@ class StudentController extends Controller
 
     public function show($id)
     {
-        $user = $this->userService->findUser($id);
+        $student = $this->studentService->findStudent($id);
 
-        if (!$user) {
-            flash('User not found!', 'error');
-
-            return redirect()->route('users.index');
+        if (!$student) {
+            flash('Student not found!', 'error');
+            return redirect()->route('student.index');
         }
-
-        return view('admin.users.show')->with('user', $user);
+        return view('admin.student.show')->with('student', $student);
     }
 
     public function edit($id)
