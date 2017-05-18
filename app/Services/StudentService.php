@@ -34,6 +34,10 @@ class StudentService extends BaseService
         return $this->model->find($id);
     }
 
+    function deleteStudent($id) {
+        return $this->destroy($id);
+    }
+
     /**
      * Filter data based on user input
      *

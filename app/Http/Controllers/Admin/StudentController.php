@@ -64,24 +64,23 @@ class StudentController extends Controller
             return redirect()->route('student.index');
         }
 
-        return view('admin.student.edit', [
-            'student' => $student,
-            'request' => $student
-        ]);
+        return view('admin.student.edit', ['student' => $student]);
     }
 
-    public function update(UserRequest $request, $id)
+    public function update(Request $request)
     {
 
-
-        return redirect()->route('users.index');
     }
 
     public function destroy($id)
     {
-
-
-        return redirect()->route('users.index');
+        $result = $this->studentService->deleteStudent($id);
+        if($result) {
+            flash('Student removed successfully', 'success');
+        } else {
+            flash('Failed to removed student', 'error');
+        }
+        return redirect()->back();
     }
 
 }
