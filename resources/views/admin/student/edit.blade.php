@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-    Edit Vendor
+    Edit Student
 @endsection
 
 @section('page_styles')
@@ -21,7 +21,7 @@
                         <div class="portlet-title">
                             <div class="caption font-dark">
                                 <i class="icon-users font-dark"></i>
-                                <span class="caption-subject bold uppercase"> Edit User </span>
+                                <span class="caption-subject bold uppercase"> Edit Student </span>
                             </div>
                             <div class="actions">
 
@@ -29,11 +29,17 @@
                         </div>
 
                         <div class="portlet-body form">
-                            <form class="horizontal-form" role="form" method="POST" action="{{ route('users.update', $user->id) }}">
+                            <form class="horizontal-form" role="form" method="POST" action="{{ route('student.update', $student->id) }}">
                                 {{ csrf_field() }}
                                 {{method_field('PUT')}}
 
-                                @include('admin.users.form')
+                                @include('admin.student.form')
+
+                                <div class="form-actions right">
+                                    <a href="{{route('student.index')}}" class="btn default">Cancel</a>
+                                    <button type="submit" class="btn blue">
+                                        <i class="fa fa-check"></i> Update</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -44,6 +50,7 @@
 @endsection
 
 @section('page_scripts')
+
 @endsection
 
 

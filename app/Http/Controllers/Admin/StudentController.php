@@ -57,17 +57,17 @@ class StudentController extends Controller
 
     public function edit($id)
     {
-        $user = $this->userService->findUser($id);
+        $student = $this->studentService->findStudent($id);
 
-        if (!$user) {
-            flash('User not found!', 'error');
-            return redirect()->route('users.index');
+        if (!$student) {
+            flash('Student not found!', 'error');
+            return redirect()->route('student.index');
         }
 
-        $roles = $this->userService->getAllRoles();
-        $userRoles = $user->roles()->pluck('id')->toArray();
-
-        return view('admin.users.edit', compact('user', 'roles', 'userRoles'));
+        return view('admin.student.edit', [
+            'student' => $student,
+            'request' => $student
+        ]);
     }
 
     public function update(UserRequest $request, $id)

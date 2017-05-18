@@ -28,6 +28,11 @@
                             <form class="horizontal-form" role="form" method="POST" action="{{ route('users.store') }}">
                                 {{ csrf_field() }}
                                 @include('admin.student.form')
+                                <div class="form-actions right">
+                                    <a href="{{route('student.index')}}" class="btn default">Cancel</a>
+                                    <button type="submit" class="btn blue">
+                                        <i class="fa fa-check"></i> Save</button>
+                                </div>
                             </form>
                         </div>
                     </div>

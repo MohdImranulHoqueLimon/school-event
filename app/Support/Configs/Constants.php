@@ -8,4 +8,5 @@ class Constants
     public static $user_active_status = 1;
 
     public static $user_status = [0, 1];
+    public static $student_status = [0, 1];
 }
