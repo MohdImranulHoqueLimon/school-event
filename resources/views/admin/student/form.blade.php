@@ -6,7 +6,7 @@
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <input id="full_name" type="text" class="form-control" name="full_name"
-                       @if(isset($student)) value="{{$student->email}}" @endif required autofocus>
+                       @if(isset($student)) value="{{$student->full_name}}" @endif required autofocus>
                 @if ($errors->has('full_name'))
                     <span class="help-block">{{ $errors->first('full_name') }}</span>
                 @endif
@@ -15,7 +15,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="username" class="control-label">Username
-                    @if (!isset($user)) <span class="required" aria-required="true"> * </span> @endif
+                    <span class="required" aria-required="true"> * </span>
                 </label>
                 <input id="username" type="text" class="form-control" name="username"
                        @if(isset($student)) value="{{$student->username}}" @endif required autofocus>
@@ -62,7 +62,7 @@
                 <label for="address" class="control-label">Address
                     <span class="required" aria-required="true"> * </span>
                 </label>
-                <input id="address" type="text" class="form-control" name="phone"
+                <input id="address" type="text" class="form-control" name="address"
                        @if(isset($student)) value="{{$student->address}}" @endif required autofocus>
                 @if ($errors->has('address'))
                     <span class="help-block">{{ $errors->first('address') }}</span>
@@ -85,22 +85,21 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        {{--<div class="col-md-6">
             <div class="form-group">
                 <label for="password" class="control-label">Password
-                    @if (!isset($user)) <span class="required" aria-required="true"> * </span> @endif
+                    <span class="required" aria-required="true"> * </span>
                 </label>
-                <input id="password" type="password" class="form-control" name="password"
-                       @if(isset($student)) value="{{$student->password}}" @endif
-                       {{isset($user) ? '':'required'}} autofocus>
+                <input id="password" type="password" class="form-control" name="password" value=""
+                       {{isset($student) ? '':'required'}} autofocus>
                 <span class="help-block">
-                    {{isset($user) ? 'Left it blank if you do not want to change!!!':'by default: 123456;'}}
+                    {{isset($student) ? 'Left it blank if you do not want to change!!!':'by default: 123456;'}}
                 </span>
                 @if ($errors->has('email'))
                     <span class="help-block">{{ $errors->first('email') }}</span>
                 @endif
             </div>
-        </div>
+        </div>--}}
 
         <div class="col-md-6">
             <div class="form-group">

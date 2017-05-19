@@ -4,9 +4,7 @@
 @endsection
 
 @section('page_styles')
-
 @endsection
-
 
 @section('content')
     <div class="page-content-wrapper">

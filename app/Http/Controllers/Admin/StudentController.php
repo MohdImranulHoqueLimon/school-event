@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
-use App\Http\Requests\UserRequest;
 use App\Services\StudentService;
-use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    public static $rules = [
+        'full_name' => 'required', 'phone' => 'required', 'email' => 'required', 'address' => 'required',
+        'city' => 'required', 'status' => 'required',
+    ];
 
     private $studentService;
 
@@ -48,7 +49,7 @@ class StudentController extends Controller
     {
         $student = $this->studentService->findStudent($id);
 
-        if (!$student) {
+        if (!$student && $id > 0) {
             flash('Student not found!', 'error');
             return redirect()->route('student.index');
         }
@@ -67,9 +68,20 @@ class StudentController extends Controller
         return view('admin.student.edit', ['student' => $student]);
     }
 
-    public function update(Request $request)
+    public function update($id, Request $request)
     {
+        $this->validate($request, self::$rules);
+        $student = $this->studentService->find($id);
+        $result = $student->update($request->except(['_token', '_method']));
 
+        if($result) {
+            flash('Successfully updated Student');
+        } else {
+            flash('Failed to edit student', 'error');
+            return redirect()->back();
+        }
+
+        return redirect('admin/student/index');
     }
 
     public function destroy($id)

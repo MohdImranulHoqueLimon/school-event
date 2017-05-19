@@ -43,20 +43,22 @@
                                             <div class="col-lg-1 col-md-6 col-sm-6">
                                                 <div class="form-group">
                                                     <label for="name" class="control-label">User ID</label>
-                                                    <input id="id" type="text" class="form-control" name="id" value="{{ $request->get('id') }}">
+                                                    <input id="id" type="text" class="form-control" name="id"
+                                                           @if(isset($request)) value="{{ $request->get('id') }}" @endif>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-6">
                                                 <div class="form-group">
                                                     <label for="full_name" class="control-label">Name</label>
                                                     <input id="full_name" type="text" class="form-control" name="full_name"
-                                                            value="{{ $request->get('full_name') }}">
+                                                           @if(isset($request)) value="{{ $request->get('full_name') }}" @endif>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-6">
                                                 <div class="form-group">
                                                     <label for="email" class="control-label">Email/Username</label>
-                                                    <input id="email" type="text" class="form-control" name="email" value="{{ $request->get('email') }}">
+                                                    <input id="email" type="text" class="form-control" name="email"
+                                                           @if(isset($request)) value="{{ $request->get('email') }}" @endif>
                                                 </div>
                                             </div>
                                             <div class="col-lg-2 col-md-12 col-sm-12 pull-right">
@@ -91,7 +93,9 @@
                                             </a>
                                         </td>
                                         <td>{{$student->email}}</td>
-                                        <td>{{$student->status}}</td>
+                                        <td>
+                                            @if($student->status == 0) Inactive @else Active @endif
+                                        </td>
                                         <td> {{$student->created_at->format('d M, Y')}}</td>
                                         <td class="text-center">
                                             <form method="POST" class="form-inline" action="{{route('student.destroy', $student->id)}}"
