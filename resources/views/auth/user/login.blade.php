@@ -27,14 +27,14 @@
 </div>
 
 <div class="content">
-    <form class="login-form form-horizontal" role="form" method="POST" action="{{ url('/sign-in') }}">
+    <form class="login-form form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
         <h3 class="form-title font-green">Sign In</h3>
         {{ csrf_field() }}
         <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-            <label for="phone" class="col-md-12 control-label">E-Mail</label>
+            <label for="phone" class="col-md-12 control-label">Phone</label>
 
             <div class="col-md-12">
-                <input id="phone" type="text" class="form-control" name="phone" value="+8801723689536" required
+                <input id="phone" type="text" class="form-control" name="phone" required placeholder="User Phone"
                        autofocus>
 
                 @if ($errors->has('phone'))
@@ -47,7 +47,7 @@
             <label for="password" class="col-md-12 control-label">Password</label>
 
             <div class="col-md-12">
-                <input id="password" type="password" class="form-control" name="password" value="123456" required>
+                <input id="password" type="password" class="form-control" name="password" required placeholder="User Password">
 
                 @if ($errors->has('password'))
                     <span class="help-block">

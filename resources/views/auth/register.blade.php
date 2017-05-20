@@ -36,7 +36,7 @@
         <p class="hint"> Enter your personal details below: </p>
 
         <div class="form-group">
-            <input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="name" value="sdfsdf"/>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="name"/>
             @if ($errors->has('name'))
                 <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
             @endif
@@ -47,7 +47,7 @@
                 <span class="input-group-addon">
                     <i class="fa fa-phone"></i>
                 </span>
-                <input class="form-control" placeholder="Phone Number" type="text" name="phone" value="2312323">
+                <input class="form-control" placeholder="Phone Number" type="text" name="phone">
             </div>
             @if ($errors->has('phone'))
                 <span class="help-block"><strong>{{ $errors->first('phone') }}</strong></span>
@@ -59,7 +59,7 @@
                 <span class="input-group-addon">
                     <i class="fa fa-envelope"></i>
                 </span>
-                <input class="form-control" placeholder="Email Address" type="text" name="email" value="sdf@dfd.com">
+                <input class="form-control" placeholder="Email Address" type="text" name="email">
             </div>
             @if ($errors->has('email'))
                 <span class="help-block">
@@ -70,7 +70,7 @@
 
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Address</label>
-            <input class="form-control placeholder-no-fix" type="text" placeholder="Address" name="address" value="2312323"/>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Address" name="address"/>
             @if ($errors->has('address'))
                 <span class="help-block">
                     <strong>{{ $errors->first('address') }}</strong>
@@ -80,7 +80,7 @@
 
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">City/Town</label>
-            <input class="form-control placeholder-no-fix" type="text" placeholder="City/Town" name="city" value="2312323"/>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="City/Town" name="city"/>
             @if ($errors->has('address'))
                 <span class="help-block">
                     <strong>{{ $errors->first('address') }}</strong>
@@ -103,7 +103,7 @@
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Password</label>
             <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password"
-                   placeholder="Password" name="password" value="12345678"/>
+                   placeholder="Password" name="password"/>
             @if ($errors->has('password'))
                 <span class="help-block"><strong>{{ $errors->first('password') }}</strong></span>
             @endif
@@ -112,7 +112,7 @@
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
             <input class="form-control placeholder-no-fix" type="password" autocomplete="off"
-                   placeholder="Re-type Your Password" name="rpassword" value="12345678"/>
+                   placeholder="Re-type Your Password" name="rpassword"/>
             @if ($errors->has('rpassword'))
                 <span class="help-block"><strong>{{ $errors->first('rpassword') }}</strong></span>
             @endif

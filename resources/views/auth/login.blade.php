@@ -30,16 +30,16 @@
     <form class="login-form form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
         <h3 class="form-title font-green">Sign In</h3>
         {{ csrf_field() }}
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-            <label for="email" class="col-md-12 control-label">E-Mail</label>
+        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+            <label for="phone" class="col-md-12 control-label">Phone</label>
 
             <div class="col-md-12">
-                <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" required
+                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required
                        autofocus>
 
-                @if ($errors->has('email'))
+                @if ($errors->has('phone'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
+                        <strong>{{ $errors->first('phone') }}</strong>
                     </span>
                 @endif
             </div>
@@ -86,8 +86,8 @@
         <h3 class="font-green">Forget Password ?</h3>
         <p> Enter your e-mail address below to reset your password. </p>
         <div class="form-group">
-            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email"
-                   name="email"/></div>
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="phone"
+                   name="phone"/></div>
         <div class="form-actions">
             <button type="button" id="back-btn" class="btn green btn-outline">Back</button>
             <button type="submit" class="btn btn-success uppercase pull-right">Submit</button>
