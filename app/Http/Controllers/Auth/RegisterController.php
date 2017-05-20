@@ -39,36 +39,29 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
     /**
-     * Handle a registration request for the application.
-     *
+     * Handle a registration request for the application
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function register(Request $request)
     {
-        $validate = $this->validate($request, $this->rules);
+        $this->validate($request, $this->rules);
 
         $data = $request->except(['_token', 'rpassword', 'tnc']);
         $data['password'] = bcrypt($data['password']);
         $data['status'] = 0;
 
-        $user = Student::create($data);
-        $result = $user->save();
+        $student = Student::create($data);
 
-        if ($user) {
+        if ($student) {
             flash('Successfully registered, Please confirm your payment');
-            redirect()->route('/home');
+            return $this->registered($request, $student) ?: redirect($this->redirectPath());
         } else {
             redirect()->back();
         }
