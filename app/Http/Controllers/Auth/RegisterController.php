@@ -22,6 +22,14 @@ class RegisterController extends Controller
     |
     */
 
+    private $rules = [
+        'full_name' => 'required',
+        'phone' => 'required',
+        'email' => 'required',
+        'address' => 'required',
+        'city' => 'required'
+    ];
+
     use RegistersUsers;
 
     /**
@@ -42,29 +50,14 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'username' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
-    }
-
-    /**
      * Handle a registration request for the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function register(Request $request)
     {
-        //$this->validator($request->all())->validate();
+        $validate = $this->validate($request, $this->rules);
 
         $data = $request->except(['_token', 'rpassword', 'tnc']);
         $data['password'] = bcrypt($data['password']);
@@ -73,27 +66,11 @@ class RegisterController extends Controller
         $user = Student::create($data);
         $result = $user->save();
 
-        if($user) {
+        if ($user) {
             flash('Successfully registered, Please confirm your payment');
-            redirect()->route('home');
+            redirect()->route('/home');
         } else {
-            redirect()->route('register');
+            redirect()->back();
         }
-    }
-
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
     }
 }

@@ -26,6 +26,9 @@
 </div>
 
 <div class="content">
+
+    @include('errors')
+
     <form class="register-form" action="{{ url('/register') }}" method="post" style="display: block;">
         {{ csrf_field()  }}
 
