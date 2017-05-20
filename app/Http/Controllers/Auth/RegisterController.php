@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Student;
 use App\User;
 use Illuminate\Http\Request;
 use Validator;
@@ -63,14 +64,21 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-        $this->validator($request->all())->validate();
+        //$this->validator($request->all())->validate();
 
-        event(new Registered($user = $this->create($request->all())));
+        $data = $request->except(['_token', 'rpassword', 'tnc']);
+        $data['password'] = bcrypt($data['password']);
+        $data['status'] = 0;
 
-        $this->guard()->login($user);
+        $user = Student::create($data);
+        $result = $user->save();
 
-        return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());
+        if($user) {
+            flash('Successfully registered, Please confirm your payment');
+            redirect()->route('home');
+        } else {
+            redirect()->route('register');
+        }
     }
 
 

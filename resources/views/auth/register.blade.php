@@ -32,7 +32,7 @@
         <h3 class="font-green">Sign Up</h3>
         <p class="hint"> Enter your personal details below: </p>
         <div class="form-group">
-            <input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="fullname" value="sdfsdf"/>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="full_name" value="sdfsdf"/>
             @if ($errors->has('email'))
                 <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
             @endif

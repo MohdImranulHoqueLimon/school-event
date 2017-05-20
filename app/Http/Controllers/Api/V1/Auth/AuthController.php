@@ -53,12 +53,7 @@ class AuthController extends Controller
         $user = $this->userService->getUserByEmail($credentials['email']);
         //$user['_token']=$token;
 
-        /*if($user->hasRole('Driver')){
-            // all good so return the token
-            return $this->apiResponse->success($token);
-        }*/
         return $this->apiResponse->success($token);
-        //return $this->apiResponse->error("You are not a Driver.");
     }
 
     public function refreshToken()
