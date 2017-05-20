@@ -85,10 +85,9 @@ Route::get('contact', ['as' => 'contact', 'uses' => 'ContactsController@create']
 Route::post('contact', ['as' => 'contact.store', 'uses' => 'ContactsController@store']);
 
 Route::get('/profile', function () {
-    return view('profile');
+    return view('admin.profile');
 });
 
-Route::get('gps-track', ['as' => 'gps.track', 'uses' => 'GpsLocationTrack@index']);
 Route::get('/newsdetails/{id}', 'HomeController@newsdetails');
 
 

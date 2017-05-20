@@ -58,21 +58,6 @@ class HomeController extends Controller
         return view('public.service', compact('testimonial'));
     }
 
-    public function servicesdetails()
-    {
-        return view('public.services-details');
-    }
-
-    public function blog()
-    {
-        return view('blog');
-    }
-
-    public function fleet()
-    {
-        return view('public.fleet');
-    }
-
     public function blogpost()
     {
         return view('public.news-details');
@@ -86,16 +71,6 @@ class HomeController extends Controller
     public function achivement()
     {
         return view('achivement');
-    }
-
-    public function storage()
-    {
-        return view('storage');
-    }
-
-    public function faq()
-    {
-        return view('faq');
     }
 
     public function contact()
