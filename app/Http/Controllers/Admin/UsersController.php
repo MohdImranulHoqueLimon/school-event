@@ -60,6 +60,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validation($request);
 
         $user = $this->userService->createUser($request->all());
 
@@ -70,6 +71,16 @@ class UsersController extends Controller
         }
 
         return redirect()->route('users.index');
+    }
+
+    private function validation($request) {
+        $rules = [
+            'name' => 'required',
+            'phone' => 'required|unique:students',
+            'email' => 'required|email|unique:students',
+            'address' => 'required'
+        ];
+        $this->validate($request, $rules);
     }
 
     /**

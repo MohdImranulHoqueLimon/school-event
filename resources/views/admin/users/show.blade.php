@@ -19,7 +19,7 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <i class="icon-users font-dark"></i>
-                            <span class="caption-subject bold uppercase">Admin Details</span>
+                            <span class="caption-subject bold uppercase">User Details</span>
                         </div>
                         <div class="actions">
 
@@ -33,6 +33,31 @@
                                 <p>
                                     <a href="mailto:{{$user->email}}"> {{$user->email}} </a>
                                 </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <table class="table table-bordered table-striped">
+                                    <tr>
+                                        <th>Full Name</th> <td>{{$user->name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email</th> <td>{{$user->email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Phone</th> <td>{{$user->phone}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Address</th> <td>{{$user->address}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>City</th> <td>{{ $user->city}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Status</th> <td>@if($user->status == 1) Active @else Inactive @endif</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
 

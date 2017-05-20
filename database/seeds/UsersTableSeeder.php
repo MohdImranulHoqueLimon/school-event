@@ -16,9 +16,10 @@ class UsersTableSeeder extends Seeder
         User::create(array(
             'name' => 'Imranul Hoque Limon',
             'role' => 1,
-            'username' => 'limon',
             'phone' => '+8801723689536',
             'email' => 'admin@school.com',
+            'address' => 'Bagerhat',
+            'city' => 'Dhaka',
             'status' => 1,
             'password' => bcrypt(123456)
         ));
@@ -26,8 +27,9 @@ class UsersTableSeeder extends Seeder
         User::create(array(
             'name' => 'Shafiqul Islam',
             'role' => 1,
-            'username' => 'shafiq',
             'phone' => '+88017232321323',
+            'address' => 'Bagerhat',
+            'city' => 'Dhaka',
             'email' => 'admin1@school.com',
             'password' => bcrypt(123456)
         ));
@@ -35,9 +37,10 @@ class UsersTableSeeder extends Seeder
         User::create(array(
             'name' => 'Shakib Al Hasan',
             'role' => 1,
-            'username' => 'shakib',
             'phone' => '+88017200321323',
             'email' => 'user@school.com',
+            'address' => 'Bagerhat',
+            'city' => 'Dhaka',
             'password' => bcrypt(123456)
         ));
     }

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label for="name" class="control-label">Name
+                <label for="name" class="control-label">Full Name
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name', isset($user) ? $user->name: null) }}"
@@ -14,25 +14,6 @@
                 @endif
             </div>
         </div>
-        @if (!isset($user))
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="username" class="control-label">Username
-                    @if (!isset($user)) <span class="required" aria-required="true"> * </span> @endif
-                </label>
-                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}"
-                       {{isset($user) ? '':'required'}} autofocus>
-                <span class="help-block">
-                    {{isset($user) ? 'Left it blank if you do not want to change!!!':'by default: 123456;'}}
-                </span>
-                @if ($errors->has('username'))
-                    <span class="help-block">
-                        {{ $errors->first('username') }}
-                    </span>
-                @endif
-            </div>
-        </div>
-        @endif
     </div>
 
     <div class="row">
@@ -65,6 +46,35 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="address" class="control-label">Address
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <input id="address" type="text" class="form-control" name="address"
+                       @if(isset($user)) value="{{$user->address}}" @endif required autofocus>
+                @if ($errors->has('address'))
+                    <span class="help-block">{{ $errors->first('address') }}</span>
+                @endif
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="city" class="control-label">City
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <input id="city" type="text" class="form-control" name="city"
+                       @if(isset($user)) value="{{$user->city}}" @endif
+                       required autofocus>
+                @if ($errors->has('city'))
+                    <span class="help-block">{{ $errors->first('city') }}</span>
+                @endif
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">

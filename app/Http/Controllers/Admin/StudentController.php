@@ -8,13 +8,12 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public static $rules = [
+    private $rules = [
         'full_name' => 'required',
-        'phone' => 'required',
-        'email' => 'required',
+        'phone' => 'required|unique:students',
+        'email' => 'required|email|unique:students',
         'address' => 'required',
-        'city' => 'required',
-        'status' => 'required',
+        'city' => 'required'
     ];
 
     private $studentService;

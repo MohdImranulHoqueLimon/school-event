@@ -111,6 +111,10 @@ class UserService
      */
     public function updateUser(array $data, $id)
     {
+        if(!empty($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        }
+
         try {
             $user = $this->repository->find($id);
             $this->repository->update($data, $id);
