@@ -23,11 +23,11 @@ class RegisterController extends Controller
     */
 
     private $rules = [
-        'full_name' => 'required',
-        'phone' => 'required|unique:students',
-        'email' => 'required|email|unique:students',
+        'name' => 'required',
+        'phone' => 'required|unique:users',
+        'email' => 'required|email|unique:users',
         'address' => 'required',
-        'city' => 'required'
+        'password' => 'required'
     ];
 
     use RegistersUsers;
@@ -57,7 +57,7 @@ class RegisterController extends Controller
         $data['password'] = bcrypt($data['password']);
         $data['status'] = 0;
 
-        $student = Student::create($data);
+        $student = User::create($data);
 
         if ($student) {
             flash('Successfully registered, Please confirm your payment');

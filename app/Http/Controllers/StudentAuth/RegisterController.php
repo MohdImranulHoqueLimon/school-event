@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\StudentAuth;
+namespace App\Http\Controllers\Auth;
 
 use App\Models\Student;
 use App\User;

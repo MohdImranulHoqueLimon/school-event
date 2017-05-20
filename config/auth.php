@@ -18,11 +18,6 @@ return [
         'passwords' => 'users',
     ],
 
-    'students' => [
-        'guard' => 'students',
-        'passwords' => 'students',
-    ],
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -44,11 +39,6 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
-        ],
-
-        'students' => [
-            'driver' => 'session',
-            'provider' => 'students',
         ],
 
         'api' => [
@@ -80,10 +70,10 @@ return [
             'model' => App\User::class,
         ],
 
-         'students' => [
-             'driver' => 'database',
-             'table' => \App\Models\Student::class,
-         ],
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
     ],
 
     /*
@@ -104,11 +94,6 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
-        'students' => [
-            'provider' => 'students',
             'table' => 'password_resets',
             'expire' => 60,
         ],

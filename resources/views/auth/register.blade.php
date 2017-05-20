@@ -36,9 +36,9 @@
         <p class="hint"> Enter your personal details below: </p>
 
         <div class="form-group">
-            <input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="full_name" value="sdfsdf"/>
-            @if ($errors->has('full_name'))
-                <span class="help-block"><strong>{{ $errors->first('full_name') }}</strong></span>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="name" value="sdfsdf"/>
+            @if ($errors->has('name'))
+                <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
             @endif
         </div>
 
@@ -89,7 +89,7 @@
         </div>
 
         <p class="hint"> Enter your account details below: </p>
-        <div class="form-group">
+        {{--<div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Username</label>
             <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username"
                    name="username" value="2312323"/>
@@ -98,7 +98,7 @@
                     <strong>{{ $errors->first('username') }}</strong>
                 </span>
             @endif
-        </div>
+        </div>--}}
 
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Password</label>
