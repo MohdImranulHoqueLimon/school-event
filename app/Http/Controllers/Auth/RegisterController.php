@@ -24,8 +24,8 @@ class RegisterController extends Controller
 
     private $rules = [
         'full_name' => 'required',
-        'phone' => 'required',
-        'email' => 'required',
+        'phone' => 'required|unique:students',
+        'email' => 'required|email|unique:students',
         'address' => 'required',
         'city' => 'required'
     ];
