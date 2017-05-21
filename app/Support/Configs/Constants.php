@@ -7,6 +7,10 @@ class Constants
     public static $user_default_status = 0;
     public static $user_active_status = 1;
 
-    public static $user_status = [0, 1];
-    public static $student_status = [0, 1];
+    public static $user_status = [0, 1, 2];
+    public static $user_status_name = [
+        0 => 'Pending',
+        1 => 'Active',
+        2 => 'Suspend'];
+    public static $student_status = [0, 1, 2];
 }

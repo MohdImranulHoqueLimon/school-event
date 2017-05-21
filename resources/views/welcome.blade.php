@@ -72,6 +72,10 @@
                 <a href="{{ url('/sign-in') }}">Sign-In</a>
                 <a href="{{ url('/register') }}">Register</a>
             </div>
+        @else
+            <div class="top-right links">
+                <a href="{{ url('/logout') }}">Logout</a>
+            </div>
         @endif
     @endif
 

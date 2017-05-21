@@ -103,9 +103,7 @@
                                     <tr class="odd gradeX">
                                         <td>{{$user->id}}</td>
                                         <td>
-                                            <a href="{{ route('users.show',$user->id) }}">
-                                                {{$user->name}}
-                                            </a>
+                                            <a href="{{ route('users.show',$user->id) }}">{{$user->name}}</a>
                                         </td>
                                         <td>{{$user->email}}</td>
                                         <td>
@@ -115,7 +113,12 @@
                                                 NA
                                             @endforelse
                                         </td>
-                                        <td>{{$user->status}}</td>
+                                        <td>
+                                            @if($user->status == 1) Active
+                                            @elseif($user->status == 0) Pending
+                                            @elseif($user->status == 2) Suspended
+                                            @endif
+                                        </td>
                                         <td> {{$user->created_at->format('d M, Y')}}</td>
                                         <td class="text-center">
                                             <form method="POST" class="form-inline" action="{{route('users.destroy', $user->id)}}"
