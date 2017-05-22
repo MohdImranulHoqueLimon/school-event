@@ -63,7 +63,7 @@
                                 </table>
                             </div>
                             <div class="col-md-6">
-                                <img alt="" class="img-circle" src="http://localhost:3002/assets/admin/layouts/layout/img/avatar3_small.jpg">
+                                <img alt="" class="img-circle" src="{{ url('/images/avatar/thumbnail_images/' . $user->user_image)}}">
                             </div>
                         </div>
 
