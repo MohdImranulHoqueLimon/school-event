@@ -3,3 +3,5 @@
 .env
 .idea
 adminer.php
+/public/images/avatar/normal_images/*
+/public/images/avatar/thumbnail_images/*

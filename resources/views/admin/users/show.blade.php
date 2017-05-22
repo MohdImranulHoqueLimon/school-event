@@ -49,6 +49,9 @@
                                         <th>Phone</th> <td>{{$user->phone}}</td>
                                     </tr>
                                     <tr>
+                                        <th>Emergency Phone</th> <td>{{$user->emergency_phone}}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Address</th> <td>{{$user->address}}</td>
                                     </tr>
                                     <tr>
@@ -58,6 +61,9 @@
                                         <th>Status</th> <td>@if($user->status == 1) Active @else Inactive @endif</td>
                                     </tr>
                                 </table>
+                            </div>
+                            <div class="col-md-6">
+                                <img alt="" class="img-circle" src="http://localhost:3002/assets/admin/layouts/layout/img/avatar3_small.jpg">
                             </div>
                         </div>
 

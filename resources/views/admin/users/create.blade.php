@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="portlet-body form">
-                            <form class="horizontal-form" role="form" method="POST" action="{{ route('users.store') }}">
+                            {!! Form::open(['url' => route('users.store'), 'method' => 'post', 'class' => 'horizontal-form', 'files'=> true]) !!}
                                 {{ csrf_field() }}
                                 @include('admin.users.form')
                             </form>

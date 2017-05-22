@@ -28,19 +28,10 @@
     {!! Html::style('assets/admin/layouts/layout/css/layout.min.css') !!}
     {!! Html::style('assets/admin/layouts/layout/css/themes/darkblue.min.css') !!}
     {!! Html::style('assets/admin/layouts/layout/css/custom.css') !!}
+
+    {!! Html::style('assets/admin/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') !!}
     <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
-
-
-    {{--<link href="{{asset('assets/admin/global/plugins/datatables/datatables.min.css')}}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{asset('assets/admin/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}"
-          rel="stylesheet" type="text/css"/>--}}
-    {{--<link href="{{asset('assets/admin/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}"
-          rel="stylesheet" type="text/css"/>--}}
-    {{--<link href="{{asset('assets/admin/global/plugins/fancybox/source/jquery.fancybox.css')}}" rel="stylesheet"
-          type="text/css"/>--}}
-    {{--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">--}}
 
     <style>
         .ui-autocomplete-loading {

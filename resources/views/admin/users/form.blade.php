@@ -1,12 +1,29 @@
 <div class="form-body">
     <div class="row">
+        <div class="form-group ">
+            <div class="col-md-12">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
+                    <div>
+                        <span class="btn red btn-outline btn-file">
+                            <span class="fileinput-new"> Select image </span>
+                            <span class="fileinput-exists"> Change </span>
+                            <input type="file" name="user_image">
+                        </span>
+                        <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <label for="name" class="control-label">Full Name
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name', isset($user) ? $user->name: null) }}"
-                        required autofocus>
+                       required autofocus>
                 @if ($errors->has('name'))
                     <span class="help-block">
                         {{ $errors->first('name') }}
@@ -14,9 +31,7 @@
                 @endif
             </div>
         </div>
-    </div>
 
-    <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <label for="email" class="control-label">Phone
@@ -27,6 +42,24 @@
                 @if ($errors->has('phone'))
                     <span class="help-block">
                         {{ $errors->first('phone') }}
+                    </span>
+                @endif
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="email" class="control-label">Emergency Phone
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <input id="emergency_phone" type="text" class="form-control" name="emergency_phone"
+                       value="{{ old('emergency_phone', isset($user) ? $user->emergency_phone:null) }}"
+                       required autofocus>
+                @if ($errors->has('emergency_phone'))
+                    <span class="help-block">
+                        {{ $errors->first('emergency_phone') }}
                     </span>
                 @endif
             </div>

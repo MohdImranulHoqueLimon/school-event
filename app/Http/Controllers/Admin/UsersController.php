@@ -3,16 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use App\Http\Requests\UserRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    /**
-     * @var \App\Services\UserService
-     */
+
     private $userService;
 
     /**
@@ -53,18 +50,20 @@ class UsersController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param \App\Http\Requests\UserRequest $request
-     *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validation($request);
-
-        $user = $this->userService->createUser($request->all());
+        $user = $this->userService->createUser($request->except('user_image'));
+        $photo = $request->file('user_image');
 
         if ($user) {
+            $imageName = $this->userService->savePhoto($photo);
+            $user->user_image = $imageName;
+            $user->save();
+
             flash('User created successfully');
         } else {
             flash('Failed to create User', 'error');

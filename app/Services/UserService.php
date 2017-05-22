@@ -9,6 +9,8 @@ use App\Support\Configs\Constants;
 use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Log;
+use File;
+use Image;
 
 class UserService
 {
@@ -72,9 +74,9 @@ class UserService
     public function createUser(array $data)
     {
         try {
-            if(isset($data['password']) && !empty($data['password'])){
+            if (isset($data['password']) && !empty($data['password'])) {
                 $data['password'] = bcrypt($data['password']);
-            }else{
+            } else {
                 $data['password'] = bcrypt('123456');
             }
             $data['status'] = ($data['status']) ? $data['status'] : Constants::$user_default_status;
@@ -111,7 +113,7 @@ class UserService
      */
     public function updateUser(array $data, $id)
     {
-        if(!empty($data['password'])) {
+        if (!empty($data['password'])) {
             $data['password'] = bcrypt($data['password']);
         }
 
@@ -135,7 +137,7 @@ class UserService
      * Manage role assignment to user
      *
      * @param \App\User $user
-     * @param array     $data
+     * @param array $data
      *
      * @return int
      */
@@ -258,7 +260,7 @@ class UserService
      * @param $id
      * @return mixed
      */
-    public function emailIsHaveNotThisUser( $email, $id)
+    public function emailIsHaveNotThisUser($email, $id)
     {
         return $this->repository->findUserByEmailNotThis($email, $id);
     }
@@ -267,7 +269,7 @@ class UserService
      * @param $email
      * @return UserRepository
      */
-    public function getUserByEmail( $email)
+    public function getUserByEmail($email)
     {
         return $this->repository->getUserByEmail($email);
     }
@@ -278,8 +280,44 @@ class UserService
      * @param $roleID
      * @return mixed
      */
-    public function showUserListByRole( $title, $id, $roleID)
+    public function showUserListByRole($title, $id, $roleID)
     {
         return $this->repository->customLists($title, $id, $roleID)->toArray();
+    }
+
+    public function savePhoto($photo)
+    {
+        if (isset($photo)) {
+            $photoname = time() . '.' . $photo->getClientOriginalExtension();
+            $destinationPath = public_path('images/avatar/thumbnail_images');
+            $thumb_img = Image::make($photo->getRealPath())->resize(362, 231);
+            $thumb_img->save($destinationPath . '/' . $photoname, 80);
+            $destinationPath = public_path('images/avatar/normal_images');
+            $normal_img = Image::make($photo->getRealPath())->resize(848, 335);
+            $normal_img->save($destinationPath . '/' . $photoname, 80);
+            return $photoname;
+        }
+
+        return null;
+    }
+
+    /**
+     * @param $photo_name
+     * @return bool
+     */
+    public function removePhoto($photo_name)
+    {
+        if (!$photo_name) {
+            return false;
+        }
+
+        $destinationPath = public_path('uploads/news/thumbnail_images');
+
+        $deleteOldImage = $destinationPath . '/' . $photo_name;
+        if (File::isFile($deleteOldImage)) {
+            File::delete($deleteOldImage);
+        }
+
+        return true;
     }
 }
