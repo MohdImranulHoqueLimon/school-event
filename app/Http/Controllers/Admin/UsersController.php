@@ -134,9 +134,16 @@ class UsersController extends Controller
      */
     public function update(UserRequest $request, $id)
     {
-        $is_updated = $this->userService->updateUser($request->except('_token', '_method'), $id);
+        $is_updated = $this->userService->updateUser($request->except('_token', '_method', 'user_image'), $id);
+        $photo = $request->file('user_image');
 
         if ($is_updated) {
+
+            $user = $this->userService->findUser($id);
+            $this->userService->removePhoto($user->user_image);
+            $imageName = $this->userService->savePhoto($photo);
+            $user->user_image = $imageName;
+            $user->save();
             flash('User updated successfully.');
         } else {
             flash('Failed to update user!', 'error');

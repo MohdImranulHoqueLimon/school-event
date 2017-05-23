@@ -311,7 +311,14 @@ class UserService
             return false;
         }
 
-        $destinationPath = public_path('uploads/news/thumbnail_images');
+        $destinationPath = public_path('images/avatar/thumbnail_images');
+
+        $deleteOldImage = $destinationPath . '/' . $photo_name;
+        if (File::isFile($deleteOldImage)) {
+            File::delete($deleteOldImage);
+        }
+
+        $destinationPath = public_path('images/avatar/normal_images');
 
         $deleteOldImage = $destinationPath . '/' . $photo_name;
         if (File::isFile($deleteOldImage)) {
