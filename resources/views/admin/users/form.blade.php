@@ -55,8 +55,7 @@
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <input id="emergency_phone" type="text" class="form-control" name="emergency_phone"
-                       value="{{ old('emergency_phone', isset($user) ? $user->emergency_phone:null) }}"
-                       required autofocus>
+                       value="{{ old('emergency_phone', isset($user) ? $user->emergency_phone:null) }}" autofocus>
                 @if ($errors->has('emergency_phone'))
                     <span class="help-block">
                         {{ $errors->first('emergency_phone') }}
@@ -133,8 +132,8 @@
 
                 <select name="status" id="status" class="form-control">
                     @foreach(\App\Support\Configs\Constants::$user_status as $status)
-                        <option value="{{$status}}"
-                                @if (isset($user) && ($user->status === $status)) selected @endif>{{$status}}
+                        <option value="{{$status}}" @if (isset($user) && ($user->status === $status)) selected @endif>
+                            {!! \App\Support\Configs\Constants::$user_status_name[$status] !!}
                         </option>
                     @endforeach
                 </select>

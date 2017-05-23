@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\Student;
+use App\Services\UserService;
 use App\User;
 use Illuminate\Http\Request;
 use Validator;
@@ -38,10 +39,12 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
+    protected $userService;
 
-    public function __construct()
+    public function __construct(UserService $userService)
     {
         $this->middleware('guest');
+        $this->userService = $userService;
     }
 
     /**
@@ -57,13 +60,21 @@ class RegisterController extends Controller
         $data['password'] = bcrypt($data['password']);
         $data['status'] = 0;
 
-        $student = User::create($data);
+        $user = User::create($data);
 
-        if ($student) {
+        $this->assignUserRole($user->id);
+
+        if ($user) {
             flash('Successfully registered, Please confirm your payment');
-            return $this->registered($request, $student) ?: redirect($this->redirectPath());
+            return $this->registered($request, $user) ?: redirect($this->redirectPath());
         } else {
             redirect()->back();
+        }
+    }
+
+    private function assignUserRole($uid) {
+        if(!empty($uid)) {
+            $is_assigned = $this->userService->assignRolesToUser(['roles' => [2]], $uid);
         }
     }
 }
