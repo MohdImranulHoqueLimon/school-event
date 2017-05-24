@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Models\Admin\Vendor\Driver;
+use App\Models\RegistrationPayment;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
@@ -31,8 +31,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function driver()
-    {
-        return $this->hasOne(Driver::class,'user_id');
+    protected $with = ['registration_payment'];
+
+    public function registration_payment(){
+        return $this->hasOne(RegistrationPayment::class, 'user_id');
     }
 }

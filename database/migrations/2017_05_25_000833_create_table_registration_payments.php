@@ -16,9 +16,11 @@ class CreateTableRegistrationPayments extends Migration
         Schema::create('registration_payment', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('amount');
-            $table->integer('user_id');
-            $table->integer('registered_by');
+            $table->unsignedInteger('user_id')->unique();
+            $table->unsignedInteger('registered_by');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('registered_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
