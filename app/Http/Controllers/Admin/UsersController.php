@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
+use App\Services\RegistrationAmountService;
+use App\Services\RegistrationPaymentService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -11,13 +13,16 @@ class UsersController extends Controller
 {
 
     private $userService;
+    private $registrationPaymentService;
 
     /**
      * @param \App\Services\UserService $userService
+     * @param RegistrationPaymentService $registrationPaymentService
      */
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, RegistrationPaymentService $registrationPaymentService)
     {
         $this->userService = $userService;
+        $this->registrationPaymentService = $registrationPaymentService;
     }
 
     /**
@@ -134,7 +139,7 @@ class UsersController extends Controller
      */
     public function update(UserRequest $request, $id)
     {
-        $is_updated = $this->userService->updateUser($request->except('_token', '_method', 'user_image'), $id);
+        $is_updated = $this->userService->updateUser($request->except('_token', '_method', 'user_image', 'registration_amount'), $id);
         $photo = $request->file('user_image');
 
         if ($is_updated) {
@@ -144,6 +149,9 @@ class UsersController extends Controller
             $imageName = $this->userService->savePhoto($photo);
             $user->user_image = $imageName;
             $user->save();
+
+            $this->registrationPaymentService->updateAmountByUser($user->id, $request->get('registration_amount'));
+
             flash('User updated successfully.');
         } else {
             flash('Failed to update user!', 'error');
