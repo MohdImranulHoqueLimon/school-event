@@ -17,7 +17,7 @@ class CreateTableRegistrationPayments extends Migration
             $table->increments('id');
             $table->integer('amount');
             $table->unsignedInteger('user_id')->unique();
-            $table->unsignedInteger('registered_by');
+            $table->unsignedInteger('registered_by')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('registered_by')->references('id')->on('users')->onDelete('cascade');
