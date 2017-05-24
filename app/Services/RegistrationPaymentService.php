@@ -3,8 +3,6 @@
 namespace App\Services;
 
 use App\Models\RegistrationPayment;
-use App\Services\BaseService;
-use App\Models\RegistrationAmount;
 use Illuminate\Support\Facades\Auth;
 
 class RegistrationPaymentService extends BaseService
@@ -29,7 +27,7 @@ class RegistrationPaymentService extends BaseService
                     $this->model->create([
                         'amount' => $amount,
                         'user_id' => $userId,
-                        'registered_by' => 1
+                        'registered_by' => Auth::user()->id
                     ]);
                 }
             }catch (\Exception $exception) {

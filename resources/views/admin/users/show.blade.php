@@ -60,6 +60,14 @@
                                     <tr>
                                         <th>Status</th> <td>@if($user->status == 1) Active @else Inactive @endif</td>
                                     </tr>
+                                    <tr>
+                                        <th>Registration Amount Paid</th>
+                                        <td>
+                                            @if(!empty($user->registration_payment->amount))
+                                                {!! $user->registration_payment->amount !!}
+                                            @else N/A
+                                            @endif</td>
+                                    </tr>
                                 </table>
                             </div>
                             <div class="col-md-6">

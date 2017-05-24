@@ -22,7 +22,7 @@
                 <label for="registration_amount" class="control-label">Registration Payment Amount</label>
                 <input id="registration_amount" type="text" class="form-control" name="registration_amount"
                        value="{{ old('registration_amount', !empty($user->registration_payment->amount) ? $user->registration_payment->amount: null) }}"
-                       required autofocus>
+                       autofocus>
                 @if ($errors->has('registration_amount'))
                     <span class="help-block">
                         {{ $errors->first('registration_amount') }}

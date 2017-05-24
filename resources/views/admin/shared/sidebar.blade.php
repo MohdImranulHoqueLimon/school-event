@@ -65,13 +65,13 @@
                     <li class="nav-item  @if (Route::is('users.*'))start active open @endif">
                         <a href="{{route('users.index')}}" class="nav-link ">
                             <i class="icon-users"></i>
-                            <span class="title">Admin</span>
+                            <span class="title">User</span>
                             @if (Route::is('users.*'))
                                 <span class="selected"></span>
                             @endif
                         </a>
                     </li>
-                    <li class="nav-item  @if (Route::is('student.*'))start active open @endif">
+                    {{--<li class="nav-item  @if (Route::is('student.*'))start active open @endif">
                         <a href="{{route('student.index')}}" class="nav-link ">
                             <i class="icon-users"></i>
                             <span class="title">Student</span>
@@ -79,7 +79,7 @@
                                 <span class="selected"></span>
                             @endif
                         </a>
-                    </li>
+                    </li>--}}
                 </ul>
             </li>
 

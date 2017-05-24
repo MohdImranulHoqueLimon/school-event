@@ -61,13 +61,18 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $this->validation($request);
-        $user = $this->userService->createUser($request->except('user_image'));
+        $user = $this->userService->createUser($request->except('user_image', 'registration_amount'));
         $photo = $request->file('user_image');
 
         if ($user) {
+
             $imageName = $this->userService->savePhoto($photo);
             $user->user_image = $imageName;
             $user->save();
+
+            $this->assignUserRole($user->id);
+
+            $this->registrationPaymentService->updateAmountByUser($user->id, $request->get('registration_amount'));
 
             flash('User created successfully');
         } else {
@@ -75,6 +80,12 @@ class UsersController extends Controller
         }
 
         return redirect()->route('users.index');
+    }
+
+    private function assignUserRole($uid) {
+        if(!empty($uid)) {
+            $is_assigned = $this->userService->assignRolesToUser(['roles' => [2]], $uid);
+        }
     }
 
     private function validation($request) {
