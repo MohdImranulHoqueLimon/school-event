@@ -4,7 +4,11 @@
             <div class="form-group ">
                 <div class="fileinput fileinput-new" data-provides="fileinput">
                     <div class="fileinput-preview thumbnail" data-trigger="fileinput"
-                         style="width: 200px; height: 150px;"></div>
+                         style="width: 200px; height: 150px;">
+                        @if(isset($user->user_image) && $user->user_image != null)
+                            <img alt="" class="" src="{{ url('/images/avatar/thumbnail_images/' . $user->user_image)}}">
+                        @endif
+                    </div>
                     <div>
                         <span class="btn red btn-outline btn-file">
                             <span class="fileinput-new"> Select image </span>
