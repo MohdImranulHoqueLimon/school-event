@@ -56,7 +56,7 @@
         </div>
 
         <div class="form-group">
-            <select name="batch" class="form-control">
+            <select name="batch" class="form-control" required>
                 <option value="">--Select Passing Year--</option>
                 @for($i = 1947; $i <= date('Y'); $i++)
                     <option value="{{ $i }}">{!! $i !!}</option>
@@ -83,16 +83,16 @@
 
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Country</label>
-            <select name="country" class="form-control">
+            <select name="country" id="country" class="form-control" required="required">
                 <option value="">Country</option>
-                <option value="AF">Afghanistan</option>
-                <option value="AL">Albania</option>
-                <option value="DZ">Algeria</option>
-                <option value="AS">American Samoa</option>
-                <option value="AD">Andorra</option>
-                <option value="AO">Angola</option>
-                <option value="AI">Anguilla</option>
-                <option value="AR">Argentina</option>
+                <option value="Afghanistan">Afghanistan</option>
+                <option value="Albania">Albania</option>
+                <option value="Algeria">Algeria</option>
+                <option value="American Samoa">American Samoa</option>
+                <option value="Andorra">Andorra</option>
+                <option value="Angola">Angola</option>
+                <option value="Anguilla">Anguilla</option>
+                <option value="Argentina">Argentina</option>
                 <option value="AM">Armenia</option>
                 <option value="AW">Aruba</option>
                 <option value="AU">Australia</option>
@@ -317,8 +317,8 @@
                 <option value="WF">Wallis and Futuna Islands</option>
                 <option value="EH">Western Sahara</option>
                 <option value="YE">Yemen</option>
-                <option value="ZM">Zambia</option>
-                <option value="ZW">Zimbabwe</option>
+                <option value="Zambia">Zambia</option>
+                <option value="Zimbabwe">Zimbabwe</option>
             </select>
         </div>
 
@@ -442,6 +442,16 @@
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
 <!-- END THEME LAYOUT SCRIPTS -->
+
+<script type="text/javascript">
+
+    $('#country option').each(function(index){
+        var option = $(this).html();
+        $(this).remove();
+        $('#country').prepend('<option value="' + option + '">' + option + '</option>');
+    });
+
+</script>
 </body>
 
 </html>
