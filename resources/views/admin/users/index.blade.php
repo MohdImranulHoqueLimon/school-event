@@ -47,7 +47,7 @@
                                                     <input id="id" type="text" class="form-control" name="id" value="{{ $request->get('id') }}">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                            <div class="col-lg-2 col-md-2 col-sm-4">
                                                 <div class="form-group">
                                                     <label for="asset_type_id" class="control-label">Roles
                                                     </label>
@@ -61,7 +61,24 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
+
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="asset_type_id" class="control-label">Batch
+                                                    </label>
+                                                    <select name="batch" class="form-control">
+                                                        <option value=""> --- Select --- </option>
+                                                        @for($i = 1947; $i <= date('Y'); $i++)
+                                                            <option value="{{ $i }}"
+                                                                    {{$request->get('batch')==$i? 'selected':''}}>
+                                                                {!! $i !!}
+                                                            </option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-2 col-md-4 col-sm-4">
                                                 <div class="form-group">
                                                     <label for="name" class="control-label">Name</label>
                                                     <input id="name" type="text" class="form-control" name="name"

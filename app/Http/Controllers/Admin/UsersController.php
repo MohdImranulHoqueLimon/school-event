@@ -8,6 +8,8 @@ use App\Services\RegistrationAmountService;
 use App\Services\RegistrationPaymentService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Helper\Table;
 
 class UsersController extends Controller
 {
@@ -35,7 +37,6 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         $filters = $request->all();
-
         $users = $this->userService->getAllUser($filters);
         $roles = $this->userService->getAllRoles();
         return View('admin.users.index', compact('users','roles','request'));
