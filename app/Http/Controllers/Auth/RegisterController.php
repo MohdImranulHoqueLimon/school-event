@@ -56,11 +56,16 @@ class RegisterController extends Controller
     {
         $this->validate($request, $this->rules);
 
-        $data = $request->except(['_token', 'rpassword', 'tnc']);
+        $data = $request->except(['_token', 'rpassword', 'tnc', 'user_image']);
         $data['password'] = bcrypt($data['password']);
         $data['status'] = 0;
 
         $user = User::create($data);
+
+        $photo = $request->file('user_image');
+        $imageName = $this->userService->savePhoto($photo);
+        $user->user_image = $imageName;
+        $user->save();
 
         $this->assignUserRole($user->id);
 

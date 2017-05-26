@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('role');
+            $table->integer('batch');
+            $table->string('country');
             $table->string('phone')->unique();
             $table->string('emergency_phone');
             $table->string('email')->unique();

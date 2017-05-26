@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
         User::create(array(
             'name' => 'Imranul Hoque Limon',
             'role' => 1,
+            'batch' => 2007,
             'phone' => '+8801723689536',
             'email' => 'admin@school.com',
             'address' => 'Bagerhat',
@@ -27,6 +28,7 @@ class UsersTableSeeder extends Seeder
         User::create(array(
             'name' => 'Shafiqul Islam',
             'role' => 1,
+            'batch' => 2007,
             'phone' => '+88017232321323',
             'address' => 'Bagerhat',
             'city' => 'Dhaka',
@@ -37,6 +39,7 @@ class UsersTableSeeder extends Seeder
         User::create(array(
             'name' => 'Shakib Al Hasan',
             'role' => 1,
+            'batch' => 2000,
             'phone' => '+88017200321323',
             'email' => 'user@school.com',
             'address' => 'Bagerhat',

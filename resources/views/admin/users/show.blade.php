@@ -71,7 +71,9 @@
                                 </table>
                             </div>
                             <div class="col-md-6">
-                                <img alt="" class="img-circle" src="{{ url('/images/avatar/thumbnail_images/' . $user->user_image)}}">
+                                @if(isset($user->user_image) && $user->user_image != null)
+                                <img alt="" class="" src="{{ url('/images/avatar/thumbnail_images/' . $user->user_image)}}">
+                                @endif
                             </div>
                         </div>
 
