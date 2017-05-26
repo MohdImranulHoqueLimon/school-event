@@ -43,6 +43,9 @@
                                         <th>Full Name</th> <td>{{$user->name}}</td>
                                     </tr>
                                     <tr>
+                                        <th>Batch</th> <td>{{$user->batch}}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Email</th> <td>{{$user->email}}</td>
                                     </tr>
                                     <tr>
@@ -50,6 +53,9 @@
                                     </tr>
                                     <tr>
                                         <th>Emergency Phone</th> <td>{{$user->emergency_phone}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Country</th> <td>{{$user->country}}</td>
                                     </tr>
                                     <tr>
                                         <th>Address</th> <td>{{$user->address}}</td>

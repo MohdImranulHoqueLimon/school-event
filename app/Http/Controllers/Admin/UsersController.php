@@ -151,16 +151,24 @@ class UsersController extends Controller
      */
     public function update(UserRequest $request, $id)
     {
-        $is_updated = $this->userService->updateUser($request->except('_token', '_method', 'user_image', 'registration_amount'), $id);
+        $password = $request->get('password');
+
+        if (!empty(trim($password)) && trim($password) != '') {
+            $is_updated = $this->userService->updateUser($request->except('_token', '_method', 'user_image', 'registration_amount'), $id);
+        } else {
+            $is_updated = $this->userService->updateUser($request->except('_token', '_method', 'user_image', 'registration_amount', 'password'), $id);
+        }
         $photo = $request->file('user_image');
 
         if ($is_updated) {
 
             $user = $this->userService->findUser($id);
-            $this->userService->removePhoto($user->user_image);
-            $imageName = $this->userService->savePhoto($photo);
-            $user->user_image = $imageName;
-            $user->save();
+            if($photo != '' || $photo != null) {
+                $this->userService->removePhoto($user->user_image);
+                $imageName = $this->userService->savePhoto($photo);
+                $user->user_image = $imageName;
+                $user->save();
+            }
 
             $this->registrationPaymentService->updateAmountByUser($user->id, $request->get('registration_amount'));
 

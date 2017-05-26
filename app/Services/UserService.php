@@ -287,7 +287,7 @@ class UserService
 
     public function savePhoto($photo)
     {
-        if (isset($photo)) {
+        if (isset($photo) && !empty(trim($photo))) {
             $photoname = time() . '.' . $photo->getClientOriginalExtension();
             $destinationPath = public_path('images/avatar/thumbnail_images');
             $thumb_img = Image::make($photo->getRealPath())->resize(362, 231);

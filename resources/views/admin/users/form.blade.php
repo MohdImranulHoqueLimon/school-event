@@ -118,6 +118,45 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
+                <label for="batch" class="control-label">Batch
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <select name="batch" class="form-control">
+                    <option value=""> --- Select --- </option>
+                    @for($i = 1947; $i <= date('Y'); $i++)
+                        <option value="{{ $i }}"
+                            @if(isset($user) && isset($user->batch) && $user->batch == $i) selected @endif>
+                            {!! $i !!}
+                        </option>
+                    @endfor
+                </select>
+                @if ($errors->has('batch'))
+                    <span class="help-block">
+                        {{ $errors->first('batch') }}
+                    </span>
+                @endif
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="country" class="control-label">Country
+                    <span class="required" aria-required="true"> * </span>
+                </label>
+                <input id="country" type="text" class="form-control" name="country"
+                       value="{{ old('country', isset($user) ? $user->country:null) }}"
+                       required autofocus>
+                @if ($errors->has('country'))
+                    <span class="help-block">
+                        {{ $errors->first('country') }}
+                    </span>
+                @endif
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
                 <label for="address" class="control-label">Address
                     <span class="required" aria-required="true"> * </span>
                 </label>
