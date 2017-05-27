@@ -127,7 +127,8 @@
                                             @if(!empty($user->registration_payment->amount))
                                                 {!! $user->registration_payment->amount !!}
                                             @else N/A
-                                            @endif</td>
+                                            @endif
+                                        </td>
                                         <td>{{$user->email}}</td>
                                         <td>
                                             @forelse($user->roles as $role)
