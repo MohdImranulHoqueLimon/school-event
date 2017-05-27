@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type']], 
     Route::post('roles/{id}/permissions', ['as' => 'roles.permissions.store', 'uses' => 'Admin\RolesController@storePermission']);
 
     Route::resource('users', 'Admin\UsersController');
+    Route::resource('registration_payments', 'Admin\RegistrationPaymentController');
 
     Route::group(['prefix' => 'users'], function () {
         Route::get('{id}/roles', ['as' => 'users.roles', 'uses' => 'Admin\UsersController@roles']);

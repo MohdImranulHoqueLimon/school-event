@@ -81,6 +81,36 @@
                         </a>
                     </li>--}}
                 </ul>
+                <ul class="sub-menu">
+                    {{--<li class="nav-item  @if (Route::is('student.*'))start active open @endif">
+                        <a href="{{route('student.index')}}" class="nav-link ">
+                            <i class="icon-users"></i>
+                            <span class="title">Student</span>
+                            @if (Route::is('student.*'))
+                                <span class="selected"></span>
+                            @endif
+                        </a>
+                    </li>--}}
+                </ul>
+            </li>
+
+            <li class="nav-item @if(Route::is('registration_payments.*')) start active open @endif">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fa fa-dollar"></i>
+                    <span class="title">Payments</span>
+                    <span class="arrow @if(Route::is('registration_payments.*')) open @endif"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  @if (Route::is('registration_payments.*'))start active open @endif">
+                        <a href="{{route('registration_payments.index')}}" class="nav-link ">
+                            <i class="fa fa-dollar"></i>
+                            <span class="title">Registration Payments</span>
+                            @if (Route::is('registration_payments.*'))
+                                <span class="selected"></span>
+                            @endif
+                        </a>
+                    </li>
+                </ul>
             </li>
 
             <li class="nav-item @if(Route::is('news.*') || Route::is('testimonials.*')) start active open @endif">
