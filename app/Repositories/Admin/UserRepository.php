@@ -8,7 +8,8 @@ use App\User;
 class UserRepository extends Repository
 {
     public static $allowedFields = [
-        'name', 'username', 'phone', 'emergency_phone', 'email', 'status', 'user_image', 'password'
+        'name', 'username', 'phone', 'address', 'permanent_address', 'profession', 'country',
+        'batch', 'emergency_phone', 'email', 'status', 'user_image', 'password', 'city', 'permanent_city'
     ];
 
     /**

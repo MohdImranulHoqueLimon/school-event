@@ -56,6 +56,15 @@
         </div>
 
         <div class="form-group">
+            <input class="form-control" placeholder="Profession" type="text" name="profession">
+            @if ($errors->has('profession'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('profession') }}</strong>
+                </span>
+            @endif
+        </div>
+
+        <div class="form-group">
             <select name="batch" class="form-control" required>
                 <option value="">--Select Passing Year--</option>
                 @for($i = 1947; $i <= date('Y'); $i++)
@@ -324,7 +333,7 @@
 
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Address</label>
-            <input class="form-control placeholder-no-fix" type="text" placeholder="Address" name="address"/>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Present Address" name="address"/>
             @if ($errors->has('address'))
                 <span class="help-block">
                     <strong>{{ $errors->first('address') }}</strong>
@@ -333,26 +342,36 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">City/Town</label>
-            <input class="form-control placeholder-no-fix" type="text" placeholder="City/Town" name="city"/>
-            @if ($errors->has('address'))
+            <label class="control-label visible-ie8 visible-ie9">Address</label>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Permanent Address" name="permanent_address"/>
+            @if ($errors->has('permanent_address'))
                 <span class="help-block">
-                    <strong>{{ $errors->first('address') }}</strong>
+                    <strong>{{ $errors->first('permanent_address') }}</strong>
+                </span>
+            @endif
+        </div>
+
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Present City/Town</label>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Present City/Town" name="city"/>
+            @if ($errors->has('city'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('city') }}</strong>
+                </span>
+            @endif
+        </div>
+
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Permanent City/Town</label>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Permanent City/Town" name="permanent_city"/>
+            @if ($errors->has('permanent_city'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('permanent_city') }}</strong>
                 </span>
             @endif
         </div>
 
         <p class="hint"> Enter your account details below: </p>
-        {{--<div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Username</label>
-            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username"
-                   name="username" value="2312323"/>
-            @if ($errors->has('username'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('username') }}</strong>
-                </span>
-            @endif
-        </div>--}}
 
         <div class="form-group ">
             <div class="fileinput fileinput-new" data-provides="fileinput">

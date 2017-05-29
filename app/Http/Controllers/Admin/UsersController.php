@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
+use App\Services\CountryService;
 use App\Services\RegistrationAmountService;
 use App\Services\RegistrationPaymentService;
 use App\Services\UserService;
@@ -15,15 +16,19 @@ class UsersController extends Controller
 {
 
     private $userService;
+    private $countriesService;
     private $registrationPaymentService;
 
     /**
      * @param \App\Services\UserService $userService
      * @param RegistrationPaymentService $registrationPaymentService
+     * @param CountryService $countryService
      */
-    public function __construct(UserService $userService, RegistrationPaymentService $registrationPaymentService)
+    public function __construct(UserService $userService, RegistrationPaymentService $registrationPaymentService,
+    CountryService $countryService)
     {
         $this->userService = $userService;
+        $this->countriesService = $countryService;
         $this->registrationPaymentService = $registrationPaymentService;
     }
 
@@ -49,9 +54,10 @@ class UsersController extends Controller
      */
     public function create()
     {
+        $countries = $this->countriesService->getAllCountries();
         $roles = $this->userService->getAllRoles();
 
-        return view('admin.users.create', compact('roles'));
+        return view('admin.users.create', compact('roles', 'countries'));
     }
 
     /**
@@ -62,7 +68,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $this->validation($request);
-        $user = $this->userService->createUser($request->except('user_image', 'registration_amount'));
+        $user = $this->userService->createUser($request->except('user_image', 'registration_amount', 'roles'));
         $photo = $request->file('user_image');
 
         if ($user) {
@@ -128,6 +134,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
+        $countries = $this->countriesService->getAllCountries();
         $user = $this->userService->findUser($id);
 
         if (!$user) {
@@ -138,7 +145,7 @@ class UsersController extends Controller
         $roles = $this->userService->getAllRoles();
         $userRoles = $user->roles()->pluck('id')->toArray();
 
-        return view('admin.users.edit', compact('user', 'roles', 'userRoles'));
+        return view('admin.users.edit', compact('user', 'roles', 'userRoles', 'countries'));
     }
 
     /**
