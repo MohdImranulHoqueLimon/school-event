@@ -9,9 +9,9 @@
     <div class="page-content-wrapper">
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content">
-            <div class="page-bar">
+            {{--<div class="page-bar">
                 {!! Breadcrumbs::renderIfExists('users.index') !!}
-            </div>
+            </div>--}}
             <h1 class="page-title"></h1>
 
             <div class="row">
@@ -22,12 +22,12 @@
                         <div class="portlet-title">
                             <div class="caption font-dark">
                                 <i class="icon-users font-dark"></i>
-                                <span class="caption-subject bold uppercase"> Users </span>
+                                <span class="caption-subject bold uppercase"> Payments </span>
                             </div>
                             <div class="actions">
                                 <div class="btn-group pull-right">
-                                    <a href="{{ route('users.create') }}" class="btn sbold green">Add
-                                        New <i class="fa fa-plus"></i></a>
+                                    {{--<a href="{{ route('users.create') }}" class="btn sbold green">Add
+                                        New <i class="fa fa-plus"></i></a>--}}
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                             <div class="portlet green-sharp box">
                                 <div class="portlet-title">
                                     <div class="caption">
-                                        <i class="fa fa-search"></i>Search Users
+                                        <i class="fa fa-search"></i>Search Payments
                                     </div>
                                 </div>
                                 <div class="portlet-body">

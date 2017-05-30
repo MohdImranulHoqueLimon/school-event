@@ -11,4 +11,7 @@ class RegistrationPayment extends Model
 
     protected $guarded = ['id'];
 
+    public function user_info() {
+        return $this->belongsTo(User::class, 'id');
+    }
 }
