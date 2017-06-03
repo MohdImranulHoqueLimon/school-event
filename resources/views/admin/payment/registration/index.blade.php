@@ -7,17 +7,11 @@
 
 @section('content')
     <div class="page-content-wrapper">
-        <!-- BEGIN CONTENT BODY -->
         <div class="page-content">
-            {{--<div class="page-bar">
-                {!! Breadcrumbs::renderIfExists('users.index') !!}
-            </div>--}}
             <h1 class="page-title"></h1>
-
             <div class="row">
                 @include('shared.flash')
                 <div class="col-md-12">
-                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
                     <div class="portlet light bordered">
                         <div class="portlet-title">
                             <div class="caption font-dark">
@@ -39,23 +33,24 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body">
-                                    <form class="horizontal-form" role="form" method="GET" action="/admin/users">
+                                    <form class="horizontal-form" role="form" method="GET" action="/admin/registration_payments">
                                         <div class="row">
-                                            <div class="col-lg-1 col-md-6 col-sm-6">
+                                            {{--<div class="col-lg-1 col-md-6 col-sm-6">
                                                 <div class="form-group">
                                                     <label for="name" class="control-label">User ID</label>
                                                     <input id="id" type="text" class="form-control" name="id" value="{{ $request->get('id') }}">
                                                 </div>
-                                            </div>
+                                            </div>--}}
                                             <div class="col-lg-2 col-md-2 col-sm-4">
                                                 <div class="form-group">
-                                                    <label for="asset_type_id" class="control-label">Roles
+                                                    <label for="asset_type_id" class="control-label">Register By
                                                     </label>
-                                                    <select class="form-control" name="role_id">
+                                                    <select class="form-control" name="registered_by">
                                                         <option value="">Select</option>
-                                                        @foreach($roles as $role)
-                                                            <option value="{{$role->id}}"{{$request->get('role_id')==$role->id? 'selected':''}}>
-                                                                {{$role->name}}
+                                                        @foreach($registers as $register)
+                                                            <option value="{{$register->registered_by}}"
+                                                                    {{$request->get('registered_by')==$register->registered_by? 'selected':''}}>
+                                                                {{$register->register_admin->name}}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -78,7 +73,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-2 col-md-4 col-sm-4">
+                                            {{--<div class="col-lg-2 col-md-4 col-sm-4">
                                                 <div class="form-group">
                                                     <label for="name" class="control-label">Name</label>
                                                     <input id="name" type="text" class="form-control" name="name"
@@ -91,7 +86,7 @@
                                                     </label>
                                                     <input id="email" type="text" class="form-control" name="email" value="{{ $request->get('email') }}">
                                                 </div>
-                                            </div>
+                                            </div>--}}
                                             <div class="col-lg-2 col-md-12 col-sm-12 pull-right">
                                                 <label for="condition" class="control-label">&nbsp;</label><br/>
                                                 <button type="submit" class="btn blue btn-block">
@@ -106,46 +101,38 @@
                                    id="sample_1" width="100%">
                                 <thead>
                                 <tr>
-                                    <th width="5%"> Id</th>
                                     <th width="20%"> Name</th>
-                                    <th width="10%"> Payment</th>
+                                    <th width="10%"> Amount</th>
                                     <th width="16%"> Email</th>
-                                    <th width="12%"> Roles</th>
-                                    <th width="8%"> Status</th>
-                                    <th width="12%"> Created At</th>
+                                    <th width="16%"> Register By</th>
+                                    {{--<th width="12%"> Roles</th>--}}
+                                    <th width="12%"> Payment Date</th>
                                     <th width="15%" class="text-center"> Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($users as $user)
+                                @foreach($register_payments as $register_payment)
                                     <tr class="odd gradeX">
-                                        <td>{{$user->id}}</td>
-                                        <td>
-                                            <a href="{{ route('users.show',$user->id) }}">{{$user->name}}</a>
-                                        </td>
-                                        <td>
-                                            @if(!empty($user->registration_payment->amount))
-                                                {!! $user->registration_payment->amount !!}
-                                            @else N/A
-                                            @endif
-                                        </td>
-                                        <td>{{$user->email}}</td>
-                                        <td>
-                                            @forelse($user->roles as $role)
+                                        <td><a href="{{ route('users.show',$register_payment->user->id) }}">{{$register_payment->user->name}}</a></td>
+                                        <td>{{ $register_payment->amount }}</td>
+                                        <td>{{$register_payment->user->email}}</td>
+                                        <td>{{$register_payment->register_admin->name}}</td>
+                                        {{--<td>
+                                            @forelse($register_payments->roles as $role)
                                                 {!! $role->name !!} {!! (!$loop->last) ? ', ':'' !!}
                                             @empty
                                                 NA
                                             @endforelse
-                                        </td>
-                                        <td>
+                                        </td>--}}
+                                        {{--<td>
                                             @if($user->status == 1) Active
                                             @elseif($user->status == 0) Pending
                                             @elseif($user->status == 2) Suspended
                                             @endif
-                                        </td>
-                                        <td> {{$user->created_at->format('d M, Y')}}</td>
+                                        </td>--}}
+                                        <td> {{ $register_payment->created_at->format('d M, Y') }}</td>
                                         <td class="text-center">
-                                            <form method="POST" class="form-inline" action="{{route('users.destroy', $user->id)}}"
+                                            {{--<form method="POST" class="form-inline" action="{{route('users.destroy', $user->id)}}"
                                                   onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}
@@ -158,14 +145,17 @@
                                                 <button type="submit" class="btn btn-icon-only btn-danger">
                                                     <i class="fa fa-times"></i>
                                                 </button>
-                                            </form>
+                                            </form>--}}
                                         </td>
                                     </tr>
                                 @endforeach
-
+                                <tr>
+                                    <td><b>Total Amount</b></td>
+                                    <td colspan="5"><b>{!! $sumResult !!}</b></td>
+                                </tr>
                                 </tbody>
                             </table>
-                            {!! CHTML::customPaginate($users,'') !!}
+                            {!! CHTML::customPaginate($register_payments,'') !!}
                         </div>
                     </div>
                 </div>

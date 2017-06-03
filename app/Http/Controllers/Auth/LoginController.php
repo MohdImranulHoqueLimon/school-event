@@ -52,7 +52,7 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     {
         $input = $request->only($this->username(), 'password');
-        $input['status'] = Constants::$user_active_status;
+        //$input['status'] = Constants::$user_active_status;
         return $input;
     }
 

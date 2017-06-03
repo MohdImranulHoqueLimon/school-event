@@ -55,10 +55,6 @@ class UserRepository extends Repository
             $query->where('name', 'like', "%{$filters['name']}%");
         }
 
-        if (isset($filters['email']) && $filters['email']) {
-            $query->where('email', 'like', "%{$filters['email']}%");
-        }
-
         if (isset($filters['role_id']) && $filters['role_id']) {
             $query->whereHas('roles', function ($q) use ($filters) {
                 $q->where('role_id', $filters['role_id']);

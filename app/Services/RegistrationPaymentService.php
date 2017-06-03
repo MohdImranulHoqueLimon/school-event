@@ -37,24 +37,50 @@ class RegistrationPaymentService extends BaseService
         }
     }
 
-    public function getAllPayments($request) {
+    public function getAllPaymentsSum() {
+        return $this->model->get()->sum('amount');
+    }
 
-        /*$payments = DB::select(
-            "SELECT 
-                rp.amount, 
-                rp.user_id, 
-                rp.registered_by,
-                u.name,
-                u.phone
-            FROM registration_payment rp
-            LEFT JOIN users u 
-            ON u.id = rp.user_id
-            "
-        );
+    public function getAllRegisters() {
+        return $this->model->select('registered_by')->with(['register_admin'])->groupBy('registered_by')->get();
+    }
 
-        return $this->filterData([], $this->model->get());*/
+    public function getAllPayments(array $filters) {
+        $with = ['user', 'register_admin'];
+        return $this->getAllPaymentsWith($with, $filters)->paginate(UtilityService::$displayRecordPerPage);
+    }
 
-        return $this->findWithRelations(1, 'user_info');
+    public function getAllPaymentsWith(array $with, $filters)
+    {
+        $query = $this->getQuery();
+
+        if (isset($filters['registered_by']) && $filters['registered_by']) {
+            $query->where('registered_by', '=', $filters['registered_by']);
+        }
+
+        if (isset($filters['batch']) && $filters['batch']) {
+            $query->whereHas('user', function ($q) use ($filters) {
+                $q->where('batch', $filters['batch']);
+            });
+        }
+
+        if (isset($filters['name']) && $filters['name']) {
+            $query->where('name', 'like', "%{$filters['name']}%");
+        }
+
+        if (isset($filters['email']) && $filters['email']) {
+            $query->where('email', 'like', "%{$filters['email']}%");
+        }
+
+        if (isset($filters['role_id']) && $filters['role_id']) {
+            $query->whereHas('roles', function ($q) use ($filters) {
+                $q->where('role_id', $filters['role_id']);
+            });
+        } else {
+            $query->with($with);
+        }
+
+        return $query;
     }
 
     /**
@@ -73,6 +99,6 @@ class RegistrationPaymentService extends BaseService
             $query->where('email', 'LIKE', "%{$filter['email']}%");
         }
 
-        $query->with(['users']);
+        $this->query->with(['user']);
     }
 }

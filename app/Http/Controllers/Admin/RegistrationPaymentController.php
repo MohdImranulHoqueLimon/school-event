@@ -29,12 +29,10 @@ class RegistrationPaymentController extends Controller
 
     public function index(Request $request)
     {
-        
-        //return $this->registrationPaymentService->getAllPayments();
-
-        return $register_paymentts = $this->registrationPaymentService->getFilterWithPaginatedData($request->get('filter', ['user_type' => 2]));
-        $roles = $this->userService->getAllRoles();
-        return View('admin.payment.registration.index', compact('register_paymentts','roles','request'));
+        $register_payments  = $this->registrationPaymentService->getAllPayments($request->all());
+        $registers = $this->registrationPaymentService->getAllRegisters();
+        $sumResult = $this->registrationPaymentService->getAllPaymentsSum();
+        return View('admin.payment.registration.index', compact('register_payments','registers', 'sumResult', 'request'));
     }
 
 }
