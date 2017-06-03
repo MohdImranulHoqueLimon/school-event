@@ -75,6 +75,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type']], 
 
 });
 
+Route::group(['prefix' => 'user', 'middleware' => ['auth', 'auth_user_type']], function () {
+
+});
+
+Route::get('/profile', 'User\ProfileController@index')->middleware('auth');
+
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
@@ -87,10 +93,6 @@ Route::get('/about', 'HomeController@about');
 
 Route::get('contact', ['as' => 'contact', 'uses' => 'ContactsController@create']);
 Route::post('contact', ['as' => 'contact.store', 'uses' => 'ContactsController@store']);
-
-Route::get('/profile', function () {
-    return view('admin.profile');
-});
 
 Route::get('/newsdetails/{id}', 'HomeController@newsdetails');
 

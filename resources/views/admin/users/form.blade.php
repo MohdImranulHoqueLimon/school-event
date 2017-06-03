@@ -127,7 +127,7 @@
                 </label>
                 <select name="batch" class="form-control">
                     <option value=""> --- Select --- </option>
-                    @for($i = 1947; $i <= date('Y'); $i++)
+                    @for($i = date('Y'); $i >= 1947; $i--)
                         <option value="{{ $i }}"
                                 @if(isset($user) && isset($user->batch) && $user->batch == $i) selected @endif>
                             {!! $i !!}

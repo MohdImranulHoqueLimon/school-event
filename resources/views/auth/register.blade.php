@@ -67,7 +67,7 @@
         <div class="form-group">
             <select name="batch" class="form-control" required>
                 <option value="">--Select Passing Year--</option>
-                @for($i = 1947; $i <= date('Y'); $i++)
+                @for($i = date('Y'); $i >= 1947; $i--)
                     <option value="{{ $i }}">{!! $i !!}</option>
                 @endfor
             </select>

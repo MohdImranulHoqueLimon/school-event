@@ -10,16 +10,21 @@ namespace App\Http\Controllers\User;
  */
 
 use App\Http\Controllers\Controller;
+use App\Services\CountryService;
 use \App\Services\StudentService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+    private $userService;
+    private $countryService;
 
-    public function __construct(StudentService $studentService)
+    public function __construct(UserService $userService, CountryService $countryService)
     {
-
+        $this->userService = $userService;
+        $this->countryService = $countryService;
     }
 
     /**
@@ -29,6 +34,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('user.profile');
+        $user = Auth::user();
+        $countries = $this->countryService->getAllCountries();
+        return view('user.profile', compact('user', 'countries'));
     }
 }
