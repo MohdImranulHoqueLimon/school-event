@@ -203,17 +203,15 @@
                                         <!-- END PERSONAL INFO TAB -->
                                         <!-- CHANGE AVATAR TAB -->
                                         <div class="tab-pane" id="tab_1_2">
-                                            <p> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                                                terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
-                                                skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                                eiusmod. </p>
                                             <form action="#" role="form">
                                                 <div class="form-group">
                                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                                         <div class="fileinput-new thumbnail"
                                                              style="width: 200px; height: 150px;">
-                                                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image"
-                                                                 alt=""/></div>
+                                                            @if(isset($user->user_image) && $user->user_image != null)
+                                                                <img alt="" class="" src="{{ url('/images/avatar/thumbnail_images/' . $user->user_image)}}">
+                                                            @endif
+                                                        </div>
                                                         <div class="fileinput-preview fileinput-exists thumbnail"
                                                              style="max-width: 200px; max-height: 150px;"></div>
                                                         <div>
