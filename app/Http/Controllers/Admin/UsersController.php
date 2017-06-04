@@ -98,8 +98,8 @@ class UsersController extends Controller
     private function validation($request) {
         $rules = [
             'name' => 'required',
-            'phone' => 'required|unique:students',
-            'email' => 'required|email|unique:students',
+            'phone' => 'required|unique:users',
+            'email' => 'required|email|unique:users',
             'address' => 'required'
         ];
         $this->validate($request, $rules);

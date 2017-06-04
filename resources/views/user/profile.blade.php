@@ -10,7 +10,7 @@
     {{--<link href="{{URL::to('/')}}/assets/admin/pages/css/profile.min.css" rel="stylesheet" type="text/css"/>--}}
 
     <style type="text/css">
-        .profile-menu-hint{
+        .profile-menu-hint {
             padding: 10px 0px !important;
         }
     </style>
@@ -94,10 +94,6 @@
                                 <a href="http://www.keenthemes.com">www.keenthemes.com</a>
                             </div>
                             <div class="margin-top-20 profile-desc-link">
-                                <i class="fa fa-twitter"></i>
-                                <a href="http://www.twitter.com/keenthemes/">@keenthemes</a>
-                            </div>
-                            <div class="margin-top-20 profile-desc-link">
                                 <i class="fa fa-facebook"></i>
                                 <a href="http://www.facebook.com/keenthemes/">keenthemes</a>
                             </div>
@@ -129,18 +125,23 @@
                                     </ul>
                                 </div>
                                 <div class="portlet-body">
+                                    <form class="horizontal-form" role="form" method="POST"
+                                          action="{{ route('profile.update', $user->id) }}" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                        {{method_field('PUT')}}
                                     <div class="tab-content">
                                         <!-- PERSONAL INFO TAB -->
-                                        <div class="tab-pane active" id="tab_1_1">
-                                            <form role="form" action="#">
+                                            <div class="tab-pane active" id="tab_1_1">
+                                                {{--<form role="form" action="#">--}}
                                                 <div class="form-group">
                                                     <label class="control-label">Full Name</label>
-                                                    <input type="text" name="name" value="{!! $user->name !!}" placeholder="John" class="form-control"/>
+                                                    <input type="text" name="name" value="{!! $user->name !!}"
+                                                           placeholder="John" class="form-control"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Batch</label>
                                                     <select name="batch" class="form-control">
-                                                        <option value=""> --- Select --- </option>
+                                                        <option value=""> --- Select ---</option>
                                                         @for($i = date('Y'); $i >= 1947; $i--)
                                                             <option value="{{ $i }}"
                                                                     @if(isset($user) && isset($user->batch) && $user->batch == $i) selected @endif>
@@ -151,11 +152,14 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Profession</label>
-                                                    <input type="text" name="profession" value="{!! $user->profession !!}" placeholder="Teacher" class="form-control"/>
+                                                    <input type="text" name="profession"
+                                                           value="{!! $user->profession !!}" placeholder="Teacher"
+                                                           class="form-control"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Country</label>
-                                                    <select id="country" type="text" class="form-control" name="country" required>
+                                                    <select id="country" type="text" class="form-control" name="country"
+                                                            required>
                                                         <option value="">--Select Country</option>
                                                         @foreach($countries as $country)
                                                             <option value="{{ $country['country_name'] }}"
@@ -167,22 +171,27 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Mobile Number</label>
-                                                    <input type="text" name="phone" value="{!! $user->phone !!}" placeholder="Your phone number"
+                                                    <input type="text" name="phone" value="{!! $user->phone !!}"
+                                                           placeholder="Your phone number"
                                                            class="form-control"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Email</label>
-                                                    <input type="text" name="email" value="{!! $user->email !!}" placeholder="E-Mail Address"
+                                                    <input type="text" name="email" value="{!! $user->email !!}"
+                                                           placeholder="E-Mail Address"
                                                            class="form-control"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Address</label>
-                                                    <input type="text" name="address" value="{!! $user->address !!}" placeholder="Current Address"
+                                                    <input type="text" name="address" value="{!! $user->address !!}"
+                                                           placeholder="Current Address"
                                                            class="form-control"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Permanent Address</label>
-                                                    <input type="text" name="permanent_address" value="{!! $user->permanent_address !!}" placeholder="Present Address"
+                                                    <input type="text" name="permanent_address"
+                                                           value="{!! $user->permanent_address !!}"
+                                                           placeholder="Present Address"
                                                            class="form-control"/>
                                                 </div>
                                                 {{--<div class="form-group">
@@ -195,21 +204,22 @@
                                                     <input type="text" placeholder="http://www.mywebsite.com" class="form-control"/>
                                                 </div>--}}
                                                 <div class="margiv-top-10">
-                                                    <a href="javascript:;" class="btn green"> Save Changes </a>
+                                                    <input type="submit" class="btn green" value="Save Changes">
                                                     <a href="javascript:;" class="btn default"> Cancel </a>
                                                 </div>
-                                            </form>
-                                        </div>
-                                        <!-- END PERSONAL INFO TAB -->
-                                        <!-- CHANGE AVATAR TAB -->
-                                        <div class="tab-pane" id="tab_1_2">
-                                            <form action="#" role="form">
+                                                {{--</form>--}}
+                                            </div>
+                                            <!-- END PERSONAL INFO TAB -->
+                                            <!-- CHANGE AVATAR TAB -->
+                                            <div class="tab-pane" id="tab_1_2">
+                                                {{--<form action="#" role="form">--}}
                                                 <div class="form-group">
                                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                                         <div class="fileinput-new thumbnail"
                                                              style="width: 200px; height: 150px;">
                                                             @if(isset($user->user_image) && $user->user_image != null)
-                                                                <img alt="" class="" src="{{ url('/images/avatar/thumbnail_images/' . $user->user_image)}}">
+                                                                <img alt="" class=""
+                                                                     src="{{ url('/images/avatar/thumbnail_images/' . $user->user_image)}}">
                                                             @endif
                                                         </div>
                                                         <div class="fileinput-preview fileinput-exists thumbnail"
@@ -233,28 +243,29 @@
                                                     <a href="javascript:;" class="btn green"> Submit </a>
                                                     <a href="javascript:;" class="btn default"> Cancel </a>
                                                 </div>
-                                            </form>
-                                        </div>
-                                        <!-- END CHANGE AVATAR TAB -->
-                                        <!-- CHANGE PASSWORD TAB -->
-                                        <div class="tab-pane" id="tab_1_3">
-                                            <form action="#">
+                                                {{--</form>--}}
+                                            </div>
+                                            <!-- END CHANGE AVATAR TAB -->
+                                            <!-- CHANGE PASSWORD TAB -->
+                                            <div class="tab-pane" id="tab_1_3">
+                                                {{--<form action="#">--}}
                                                 <div class="form-group">
                                                     <label class="control-label">Current Password</label>
-                                                    <input type="password" class="form-control"/></div>
+                                                    <input type="password" name="old_password" class="form-control"/></div>
                                                 <div class="form-group">
                                                     <label class="control-label">New Password</label>
-                                                    <input type="password" class="form-control"/></div>
+                                                    <input type="password" name="password" class="form-control"/></div>
                                                 <div class="form-group">
                                                     <label class="control-label">Re-type New Password</label>
-                                                    <input type="password" class="form-control"/></div>
+                                                    <input type="password" name="retype_password" class="form-control"/></div>
                                                 <div class="margin-top-10">
                                                     <a href="javascript:;" class="btn green"> Change Password </a>
                                                     <a href="javascript:;" class="btn default"> Cancel </a>
                                                 </div>
-                                            </form>
-                                        </div>
-                                        <!-- END CHANGE PASSWORD TAB -->
+                                                {{--</form>--}}
+                                            </div>
+                                            <!-- END CHANGE PASSWORD TAB -->
+                                        </form>
                                     </div>
                                 </div>
                             </div>
