@@ -135,7 +135,7 @@
                                             <form role="form" action="#">
                                                 <div class="form-group">
                                                     <label class="control-label">Full Name</label>
-                                                    <input type="text" value="{!! $user->name !!}" placeholder="John" class="form-control"/>
+                                                    <input type="text" name="name" value="{!! $user->name !!}" placeholder="John" class="form-control"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Batch</label>
@@ -151,7 +151,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Profession</label>
-                                                    <input type="text" value="{!! $user->profession !!}" placeholder="Teacher" class="form-control"/>
+                                                    <input type="text" name="profession" value="{!! $user->profession !!}" placeholder="Teacher" class="form-control"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Country</label>
@@ -167,33 +167,33 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Mobile Number</label>
-                                                    <input type="text" value="{!! $user->phone !!}" placeholder="Your phone number"
+                                                    <input type="text" name="phone" value="{!! $user->phone !!}" placeholder="Your phone number"
                                                            class="form-control"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Email</label>
-                                                    <input type="text" value="{!! $user->email !!}" placeholder="E-Mail Address"
+                                                    <input type="text" name="email" value="{!! $user->email !!}" placeholder="E-Mail Address"
                                                            class="form-control"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Address</label>
-                                                    <input type="text" value="{!! $user->address !!}" placeholder="Current Address"
+                                                    <input type="text" name="address" value="{!! $user->address !!}" placeholder="Current Address"
                                                            class="form-control"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Permanent Address</label>
-                                                    <input type="text" value="{!! $user->permanent_address !!}" placeholder="Present Address"
+                                                    <input type="text" name="permanent_address" value="{!! $user->permanent_address !!}" placeholder="Present Address"
                                                            class="form-control"/>
                                                 </div>
-                                                <div class="form-group">
+                                                {{--<div class="form-group">
                                                     <label class="control-label">About</label>
-                                                    <textarea class="form-control" rows="3"
+                                                    <textarea class="form-control" name="about" rows="3"
                                                               placeholder="We are KeenThemes!!!"></textarea>
-                                                </div>
-                                                <div class="form-group">
+                                                </div>--}}
+                                                {{--<div class="form-group">
                                                     <label class="control-label">Website Url</label>
                                                     <input type="text" placeholder="http://www.mywebsite.com" class="form-control"/>
-                                                </div>
+                                                </div>--}}
                                                 <div class="margiv-top-10">
                                                     <a href="javascript:;" class="btn green"> Save Changes </a>
                                                     <a href="javascript:;" class="btn default"> Cancel </a>
@@ -213,12 +213,13 @@
                                                             @endif
                                                         </div>
                                                         <div class="fileinput-preview fileinput-exists thumbnail"
-                                                             style="max-width: 200px; max-height: 150px;"></div>
+                                                             style="max-width: 200px; max-height: 150px;">
+                                                        </div>
                                                         <div>
                                                             <span class="btn default btn-file">
                                                                 <span class="fileinput-new"> Select image </span>
                                                                 <span class="fileinput-exists"> Change </span>
-                                                                <input type="file" name="..."> </span>
+                                                                <input type="file" name="user_image"> </span>
                                                             <a href="javascript:;" class="btn default fileinput-exists"
                                                                data-dismiss="fileinput"> Remove </a>
                                                         </div>
