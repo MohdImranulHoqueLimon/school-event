@@ -52,6 +52,7 @@ class ProfileController extends Controller
         $password = $request->get('password');
 
         if (!empty(trim($password)) && trim($password) != '') {
+
             $is_updated = $this->userService->updateUser($request->except('_token', '_method', 'user_image'), $id);
         } else {
             $is_updated = $this->userService->updateUser($request->except('_token', '_method', 'user_image', 'password'), $id);

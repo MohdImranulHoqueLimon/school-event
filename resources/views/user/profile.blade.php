@@ -126,21 +126,27 @@
                                 </div>
                                 <div class="portlet-body">
                                     <form class="horizontal-form" role="form" method="POST"
-                                          action="{{ route('profile.update', $user->id) }}" enctype="multipart/form-data">
+                                          action="{{ route('profile.update', $user->id) }}"
+                                          enctype="multipart/form-data">
+
                                         {{ csrf_field() }}
                                         {{method_field('PUT')}}
-                                    <div class="tab-content">
-                                        <!-- PERSONAL INFO TAB -->
+
+                                        <div class="tab-content">
+                                            <!-- PERSONAL INFO TAB -->
                                             <div class="tab-pane active" id="tab_1_1">
-                                                {{--<form role="form" action="#">--}}
                                                 <div class="form-group">
                                                     <label class="control-label">Full Name</label>
                                                     <input type="text" name="name" value="{!! $user->name !!}"
-                                                           placeholder="John" class="form-control"/>
+                                                           placeholder="John" class="form-control" required/>
+                                                    @if ($errors->has('name'))
+                                                        <span class="help-block">{{ $errors->first('name') }}</span>
+                                                    @endif
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label class="control-label">Batch</label>
-                                                    <select name="batch" class="form-control">
+                                                    <select name="batch" class="form-control" required>
                                                         <option value=""> --- Select ---</option>
                                                         @for($i = date('Y'); $i >= 1947; $i--)
                                                             <option value="{{ $i }}"
@@ -149,13 +155,20 @@
                                                             </option>
                                                         @endfor
                                                     </select>
+                                                    @if ($errors->has('batch'))
+                                                        <span class="help-block">{{ $errors->first('batch') }}</span>
+                                                    @endif
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label class="control-label">Profession</label>
-                                                    <input type="text" name="profession"
-                                                           value="{!! $user->profession !!}" placeholder="Teacher"
-                                                           class="form-control"/>
+                                                    <input type="text" name="profession" required class="form-control"
+                                                           value="{!! $user->profession !!}" placeholder="Teacher"/>
+                                                    @if ($errors->has('profession'))
+                                                        <span class="help-block">{{ $errors->first('profession') }}</span>
+                                                    @endif
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label class="control-label">Country</label>
                                                     <select id="country" type="text" class="form-control" name="country"
@@ -168,46 +181,53 @@
                                                             </option>
                                                         @endforeach
                                                     </select>
+                                                    @if ($errors->has('country'))
+                                                        <span class="help-block">{{ $errors->first('country') }}</span>
+                                                    @endif
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label class="control-label">Mobile Number</label>
                                                     <input type="text" name="phone" value="{!! $user->phone !!}"
-                                                           placeholder="Your phone number"
-                                                           class="form-control"/>
+                                                           placeholder="Your phone number" class="form-control"
+                                                           required/>
+                                                    @if ($errors->has('phone'))
+                                                        <span class="help-block">{{ $errors->first('phone') }}</span>
+                                                    @endif
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label class="control-label">Email</label>
                                                     <input type="text" name="email" value="{!! $user->email !!}"
-                                                           placeholder="E-Mail Address"
-                                                           class="form-control"/>
+                                                           required
+                                                           placeholder="E-Mail Address" class="form-control"/>
+                                                    @if ($errors->has('email'))
+                                                        <span class="help-block">{{ $errors->first('email') }}</span>
+                                                    @endif
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label class="control-label">Address</label>
                                                     <input type="text" name="address" value="{!! $user->address !!}"
-                                                           placeholder="Current Address"
-                                                           class="form-control"/>
+                                                           placeholder="Current Address" class="form-control"/>
+                                                    @if ($errors->has('address'))
+                                                        <span class="help-block">{{ $errors->first('address') }}</span>
+                                                    @endif
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label class="control-label">Permanent Address</label>
                                                     <input type="text" name="permanent_address"
                                                            value="{!! $user->permanent_address !!}"
-                                                           placeholder="Present Address"
-                                                           class="form-control"/>
+                                                           placeholder="Present Address" class="form-control" required/>
+                                                    @if ($errors->has('permanent_address'))
+                                                        <span class="help-block">{{ $errors->first('permanent_address') }}</span>
+                                                    @endif
                                                 </div>
-                                                {{--<div class="form-group">
-                                                    <label class="control-label">About</label>
-                                                    <textarea class="form-control" name="about" rows="3"
-                                                              placeholder="We are KeenThemes!!!"></textarea>
-                                                </div>--}}
-                                                {{--<div class="form-group">
-                                                    <label class="control-label">Website Url</label>
-                                                    <input type="text" placeholder="http://www.mywebsite.com" class="form-control"/>
-                                                </div>--}}
                                                 <div class="margiv-top-10">
                                                     <input type="submit" class="btn green" value="Save Changes">
                                                     <a href="javascript:;" class="btn default"> Cancel </a>
                                                 </div>
-                                                {{--</form>--}}
                                             </div>
                                             <!-- END PERSONAL INFO TAB -->
                                             <!-- CHANGE AVATAR TAB -->
@@ -229,7 +249,8 @@
                                                             <span class="btn default btn-file">
                                                                 <span class="fileinput-new"> Select image </span>
                                                                 <span class="fileinput-exists"> Change </span>
-                                                                <input type="file" name="user_image"> </span>
+                                                                <input type="file" name="user_image" accept="image/*"> </span>
+
                                                             <a href="javascript:;" class="btn default fileinput-exists"
                                                                data-dismiss="fileinput"> Remove </a>
                                                         </div>
@@ -240,10 +261,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="margin-top-10">
-                                                    <a href="javascript:;" class="btn green"> Submit </a>
+                                                    <input type="submit" class="btn green" value="Submit"/>
                                                     <a href="javascript:;" class="btn default"> Cancel </a>
                                                 </div>
-                                                {{--</form>--}}
                                             </div>
                                             <!-- END CHANGE AVATAR TAB -->
                                             <!-- CHANGE PASSWORD TAB -->
@@ -251,30 +271,32 @@
                                                 {{--<form action="#">--}}
                                                 <div class="form-group">
                                                     <label class="control-label">Current Password</label>
-                                                    <input type="password" name="old_password" class="form-control"/></div>
+                                                    <input type="password" name="old_password" class="form-control"/>
+                                                </div>
                                                 <div class="form-group">
                                                     <label class="control-label">New Password</label>
                                                     <input type="password" name="password" class="form-control"/></div>
                                                 <div class="form-group">
                                                     <label class="control-label">Re-type New Password</label>
-                                                    <input type="password" name="retype_password" class="form-control"/></div>
+                                                    <input type="password" name="retype_password" class="form-control"/>
+                                                </div>
                                                 <div class="margin-top-10">
-                                                    <a href="javascript:;" class="btn green"> Change Password </a>
+                                                    <input type="submit" class="btn green" value="Change Password"/>
                                                     <a href="javascript:;" class="btn default"> Cancel </a>
                                                 </div>
-                                                {{--</form>--}}
                                             </div>
                                             <!-- END CHANGE PASSWORD TAB -->
-                                        </form>
-                                    </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- END PROFILE CONTENT -->
             </div>
+            <!-- END PROFILE CONTENT -->
         </div>
+    </div>
     </div>
 @endsection
 
