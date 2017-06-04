@@ -10,13 +10,12 @@ namespace App\Http\Controllers\User;
  */
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
 use App\Services\CountryService;
 use App\Services\RegistrationPaymentService;
-use \App\Services\StudentService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
@@ -49,20 +48,29 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         $this->validation($request, $id);
+
         $password = $request->get('password');
+        $oldPassword = $request->get('old_password');
+        $retypePassword = $request->get('retype_password');
+
+        $user = $this->userService->findUser($id);
 
         if (!empty(trim($password)) && trim($password) != '') {
 
-            $is_updated = $this->userService->updateUser($request->except('_token', '_method', 'user_image'), $id);
+            if (!Hash::check($oldPassword, $user->password)) {
+                flash('Your Old Password Is Incorrect');
+                $is_updated = false;
+            } else {
+                $is_updated = $this->userService->updateUser($request->except('_token', '_method', 'user_image'), $id);
+            }
+
         } else {
             $is_updated = $this->userService->updateUser($request->except('_token', '_method', 'user_image', 'password'), $id);
         }
         $photo = $request->file('user_image');
 
         if ($is_updated) {
-
-            $user = $this->userService->findUser($id);
-            if($photo != '' || $photo != null) {
+            if ($photo != '' || $photo != null) {
                 $this->userService->removePhoto($user->user_image);
                 $imageName = $this->userService->savePhoto($photo);
                 $user->user_image = $imageName;
@@ -76,7 +84,8 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
-    private function validation($request, $user_id) {
+    private function validation($request, $user_id)
+    {
         $rules = [
             'name' => 'required',
             'batch' => 'required',
@@ -84,7 +93,10 @@ class ProfileController extends Controller
             'country' => 'required',
             'phone' => ['required', 'max:15', Rule::unique('users')->ignore($user_id)],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user_id)],
-            'address' => 'required'
+            'address' => 'required',
+            'old_password' => 'min:6',
+            'password' => 'min:6',
+            'retype_password' => 'same:password'
         ];
         $this->validate($request, $rules);
     }

@@ -71,12 +71,12 @@
 
                         <div class="profile-usermenu">
                             <ul class="nav">
-                                <li><a href="page_user_profile_1.html" class="profile-menu-hint">
+                                <li><a href="/" class="profile-menu-hint">
                                         <i class="icon-home"></i> Home
                                     </a>
                                 </li>
                                 <li class="active">
-                                    <a href="page_user_profile_1_account.html" class="profile-menu-hint">
+                                    <a href="/" class="profile-menu-hint">
                                         <i class="icon-settings"></i> Account Settings
                                     </a>
                                 </li>
@@ -106,6 +106,7 @@
                 <div class="profile-content">
                     <div class="row">
                         <div class="col-md-12">
+                            @include('flash')
                             <div class="portlet light ">
                                 <div class="portlet-title tabbable-line">
                                     <div class="caption caption-md">
@@ -272,13 +273,23 @@
                                                 <div class="form-group">
                                                     <label class="control-label">Current Password</label>
                                                     <input type="password" name="old_password" class="form-control"/>
+                                                    @if ($errors->has('old_password'))
+                                                        <span class="help-block">{{ $errors->first('old_password') }}</span>
+                                                    @endif
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">New Password</label>
-                                                    <input type="password" name="password" class="form-control"/></div>
+                                                    <input type="password" name="password" class="form-control"/>
+                                                    @if ($errors->has('password'))
+                                                        <span class="help-block">{{ $errors->first('password') }}</span>
+                                                    @endif
+                                                </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Re-type New Password</label>
                                                     <input type="password" name="retype_password" class="form-control"/>
+                                                    @if ($errors->has('retype_password'))
+                                                        <span class="help-block">{{ $errors->first('retype_password') }}</span>
+                                                    @endif
                                                 </div>
                                                 <div class="margin-top-10">
                                                     <input type="submit" class="btn green" value="Change Password"/>
