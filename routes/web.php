@@ -76,7 +76,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type']], 
 });
 
 
-Route::group(['prefix' => 'user', 'middleware' => ['auth', 'auth_user_type']], function () {
+Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
 
     Route::resource('profile', 'User\ProfileController');
 });
