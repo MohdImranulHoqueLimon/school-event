@@ -42,7 +42,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $countries = $this->countryService->getAllCountries();
-        return view('user.profile', compact('user', 'countries'));
+        return view('user.profile.index', compact('user', 'countries'));
     }
 
     public function update(Request $request, $id)

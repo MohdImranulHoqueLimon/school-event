@@ -1,0 +1,6 @@
+@include('layouts_user.pagehead')
+@include('layouts_user.header')
+@include('user.shared.sidebar')
+@yield('content')
+@include('layouts_user.footer')
+@include('layouts_user.endpage')

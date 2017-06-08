@@ -75,10 +75,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type']], 
 
 });
 
+
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'auth_user_type']], function () {
 
+    Route::resource('profile', 'User\ProfileController');
 });
-Route::resource('profile', 'User\ProfileController');
+
+/*Route::resource('profile', 'User\ProfileController');*/
 //Route::get('/profile', 'User\ProfileController@index')->middleware('auth');
 //Route::post('/profile_update', 'User\ProfileController@update')->middleware('auth');
 

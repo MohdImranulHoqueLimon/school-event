@@ -1,12 +1,9 @@
-@extends('layouts.master')
-
+@extends('layouts_user.app')
 @section('title')
-    Map Dashboard
+    Dashboard
 @endsection
-
-@section('css')
-    <link href="{{URL::to('/')}}/assets/admin/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css"
-          rel="stylesheet" type="text/css"/>
+@section('head')
+    <link href="{{URL::to('/')}}/assets/admin/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
     {{--<link href="{{URL::to('/')}}/assets/admin/pages/css/profile.min.css" rel="stylesheet" type="text/css"/>--}}
 
     <style type="text/css">
@@ -15,8 +12,13 @@
         }
     </style>
 @endsection
+@section('page_styles')
 
+@endsection
 @section('content')
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+    <!-- BEGIN CONTENT BODY -->
     <div class="page-content">
         <!-- BEGIN PAGE BAR -->
         <div class="page-bar">
@@ -56,7 +58,7 @@
         <!-- END PAGE BAR -->
 
         <div class="row">
-            <div class="col-md-offset-2 col-md-8">
+            <div class="col-md-8">
                 <h1 class="page-title" style="padding: 0px 20px 0px;">Profile | Account Information</h1>
                 <div class="profile-sidebar">
                     <div class="portlet light profile-sidebar-portlet" style="margin-bottom: 1px !important;">
@@ -233,68 +235,68 @@
                                             <!-- END PERSONAL INFO TAB -->
                                             <!-- CHANGE AVATAR TAB -->
                                             <div class="tab-pane" id="tab_1_2">
-                                                {{--<form action="#" role="form">--}}
-                                                <div class="form-group">
-                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                        <div class="fileinput-new thumbnail"
-                                                             style="width: 200px; height: 150px;">
-                                                            @if(isset($user->user_image) && $user->user_image != null)
-                                                                <img alt="" class=""
-                                                                     src="{{ url('/images/avatar/thumbnail_images/' . $user->user_image)}}">
-                                                            @endif
-                                                        </div>
-                                                        <div class="fileinput-preview fileinput-exists thumbnail"
-                                                             style="max-width: 200px; max-height: 150px;">
-                                                        </div>
-                                                        <div>
+                                                <form action="#" role="form">
+                                                    <div class="form-group">
+                                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                            <div class="fileinput-new thumbnail"
+                                                                 style="width: 200px; height: 150px;">
+                                                                @if(isset($user->user_image) && $user->user_image != null)
+                                                                    <img alt="" class=""
+                                                                         src="{{ url('/images/avatar/thumbnail_images/' . $user->user_image)}}">
+                                                                @endif
+                                                            </div>
+                                                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                                                 style="max-width: 200px; max-height: 150px;">
+                                                            </div>
+                                                            <div>
                                                             <span class="btn default btn-file">
                                                                 <span class="fileinput-new"> Select image </span>
                                                                 <span class="fileinput-exists"> Change </span>
                                                                 <input type="file" name="user_image" accept="image/*"> </span>
 
-                                                            <a href="javascript:;" class="btn default fileinput-exists"
-                                                               data-dismiss="fileinput"> Remove </a>
+                                                                <a href="javascript:;" class="btn default fileinput-exists"
+                                                                   data-dismiss="fileinput"> Remove </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix margin-top-10">
+                                                            <span class="label label-danger">NOTE! </span>&nbsp;
+                                                            <span>Attached image with a good resulation</span>
                                                         </div>
                                                     </div>
-                                                    <div class="clearfix margin-top-10">
-                                                        <span class="label label-danger">NOTE! </span>&nbsp;
-                                                        <span>Attached image with a good resulation</span>
+                                                    <div class="margin-top-10">
+                                                        <input type="submit" class="btn green" value="Submit"/>
+                                                        <a href="javascript:;" class="btn default"> Cancel </a>
                                                     </div>
-                                                </div>
-                                                <div class="margin-top-10">
-                                                    <input type="submit" class="btn green" value="Submit"/>
-                                                    <a href="javascript:;" class="btn default"> Cancel </a>
-                                                </div>
                                             </div>
                                             <!-- END CHANGE AVATAR TAB -->
                                             <!-- CHANGE PASSWORD TAB -->
                                             <div class="tab-pane" id="tab_1_3">
-                                                {{--<form action="#">--}}
-                                                <div class="form-group">
-                                                    <label class="control-label">Current Password</label>
-                                                    <input type="password" name="old_password" class="form-control"/>
-                                                    @if ($errors->has('old_password'))
-                                                        <span class="help-block">{{ $errors->first('old_password') }}</span>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label">New Password</label>
-                                                    <input type="password" name="password" class="form-control"/>
-                                                    @if ($errors->has('password'))
-                                                        <span class="help-block">{{ $errors->first('password') }}</span>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label">Re-type New Password</label>
-                                                    <input type="password" name="retype_password" class="form-control"/>
-                                                    @if ($errors->has('retype_password'))
-                                                        <span class="help-block">{{ $errors->first('retype_password') }}</span>
-                                                    @endif
-                                                </div>
-                                                <div class="margin-top-10">
-                                                    <input type="submit" class="btn green" value="Change Password"/>
-                                                    <a href="javascript:;" class="btn default"> Cancel </a>
-                                                </div>
+                                                <form action="#">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Current Password</label>
+                                                        <input type="password" name="old_password" class="form-control"/>
+                                                        @if ($errors->has('old_password'))
+                                                            <span class="help-block">{{ $errors->first('old_password') }}</span>
+                                                        @endif
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">New Password</label>
+                                                        <input type="password" name="password" class="form-control"/>
+                                                        @if ($errors->has('password'))
+                                                            <span class="help-block">{{ $errors->first('password') }}</span>
+                                                        @endif
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Re-type New Password</label>
+                                                        <input type="password" name="retype_password" class="form-control"/>
+                                                        @if ($errors->has('retype_password'))
+                                                            <span class="help-block">{{ $errors->first('retype_password') }}</span>
+                                                        @endif
+                                                    </div>
+                                                    <div class="margin-top-10">
+                                                        <input type="submit" class="btn green" value="Change Password"/>
+                                                        <a href="javascript:;" class="btn default"> Cancel </a>
+                                                    </div>
                                             </div>
                                             <!-- END CHANGE PASSWORD TAB -->
                                         </div>
@@ -308,10 +310,11 @@
             <!-- END PROFILE CONTENT -->
         </div>
     </div>
-    </div>
+    <!-- END CONTENT BODY -->
+</div>
+<!-- END CONTENT -->
 @endsection
-
-@section('page_scripts')
+@section('scripts')
     <script src="{{URL::to('/')}}/assets/admin/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"
             type="text/javascript"></script>
     <script src="{{URL::to('/')}}/assets/admin/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
