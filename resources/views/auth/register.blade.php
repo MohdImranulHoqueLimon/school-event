@@ -143,8 +143,6 @@
             @endif
         </div>
 
-        <p class="hint"> Enter your account details below: </p>
-
         <div class="form-group ">
             <div class="fileinput fileinput-new" data-provides="fileinput">
                 <div class="fileinput-preview thumbnail" data-trigger="fileinput"
