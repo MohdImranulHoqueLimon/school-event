@@ -63,7 +63,7 @@ class StudentsListController extends Controller
             return redirect()->route('users.index');
         }
 
-        return view('admin.users.show')->with('user', $user);
+        return view('user.students.show')->with('user', $user);
     }
 
     public function findHaveEmail(Request $request)

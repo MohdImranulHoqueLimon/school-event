@@ -130,14 +130,9 @@
                                         </td>
                                         <td> {{$user->created_at->format('d M, Y')}}</td>
                                         <td class="text-center">
-                                            <form method="POST" class="form-inline" action="{{route('users.destroy', $user->id)}}"
-                                                  onsubmit="return confirm('Are you sure?')">
-                                                {{method_field('DELETE')}}
-                                                {{csrf_field()}}
-                                                <a href="{{ route('users.show', $user->id) }}" class="btn btn-icon-only grey-cascade">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
-                                            </form>
+                                            <a href="{{ route('students.show', $user->id) }}" class="btn btn-icon-only grey-cascade">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
