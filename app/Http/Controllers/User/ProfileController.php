@@ -42,7 +42,13 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $countries = $this->countryService->getAllCountries();
-        return view('user.profile.index', compact('user', 'countries'));
+        return view('user.profile.show', compact('user', 'countries'));
+    }
+
+    public function edit($id) {
+        $user = Auth::user();
+        $countries = $this->countryService->getAllCountries();
+        return view('user.profile.edit', compact('user', 'countries'));
     }
 
     public function update(Request $request, $id)
@@ -101,10 +107,10 @@ class ProfileController extends Controller
         $this->validate($request, $rules);
     }
 
-    public function view()
+    /*public function view()
     {
         $user = Auth::user();
         $countries = $this->countryService->getAllCountries();
         return view('user.profile.view', compact('user', 'countries'));
-    }
+    }*/
 }
