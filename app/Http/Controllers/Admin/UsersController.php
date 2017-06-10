@@ -9,8 +9,6 @@ use App\Services\RegistrationAmountService;
 use App\Services\RegistrationPaymentService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Symfony\Component\Console\Helper\Table;
 
 class UsersController extends Controller
 {

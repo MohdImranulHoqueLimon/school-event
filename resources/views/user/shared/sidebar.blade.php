@@ -21,26 +21,22 @@
             </li>
             <!-- END SIDEBAR TOGGLER BUTTON -->
             <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-            <li class="nav-item @if (Route::is('profile.*'))start open @endif">
-                <a href="{{url('/user/view')}}" class="nav-link ">
-                    <i class="icon-home"></i>
-                    <span class="title">Profile</span>
-                    @if (Route::is('view.*'))
-                        <span class="selected  active"></span>
-                    @endif
-                </a>
-                <a href="{{url('/user/profile')}}" class="nav-link ">
-                    <i class="icon-home"></i>
-                    <span class="title">Edit Profile</span>
-                    @if (Route::is('profile.*'))
-                        <span class="selected active"></span>
-                    @endif
-                </a>
+            <li class="nav-item @if (Route::is('profile.*'))start active open @endif">
                 <a href="{{url('/user/profile')}}" class="nav-link ">
                     <i class="icon-home"></i>
                     <span class="title">Profile</span>
                     @if (Route::is('profile.*'))
-                        <span class="selected  active"></span>
+                        <span class="selected"></span>
+                    @endif
+                </a>
+            </li>
+
+            <li class="nav-item @if (Route::is('students.*'))start active open @endif">
+                <a href="{{url('/user/students')}}" class="nav-link ">
+                    <i class="fa fa-graduation-cap"></i>
+                    <span class="title">Student List</span>
+                    @if (Route::is('students.*'))
+                        <span class="selected"></span>
                     @endif
                 </a>
             </li>
