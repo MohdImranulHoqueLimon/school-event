@@ -21,7 +21,7 @@ class CheckUserType
         }
 
         if (! $request->user()->hasRole('Admin') && $request->user()->hasRole('User')) {
-            return redirect('/user/view');
+            return redirect('/user/profile');
         }
 
         return $next($request);
