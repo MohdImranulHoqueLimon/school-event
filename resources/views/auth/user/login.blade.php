@@ -69,13 +69,12 @@
             <button type="submit" class="btn green uppercase">
                 Login
             </button>
-            <label class="rememberme check mt-checkbox mt-checkbox-outline">
-                <input type="checkbox" name="remember"> Remember
-                <span></span>
-            </label>
-            <a class="forget-password" href="{{ url('/password/reset') }}">
-                Forgot Password?
+            <a class="create-account-user" href="{{ url('/register') }}">
+               Create Account
             </a>
+           <!--  <a class="forget-password" href="{{ url('/password/reset') }}">
+                Forgot Password?
+            </a> -->
         </div>
     </form>
 

@@ -20,80 +20,11 @@
     <div class="page-content-wrapper">
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content">
-            <!-- BEGIN PAGE BAR -->
-            <div class="page-bar">
-                <div class="page-toolbar">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn green btn-sm btn-outline dropdown-toggle" data-toggle="dropdown">
-                            Actions
-                            <i class="fa fa-angle-down"></i>
-                        </button>
-                        <ul class="dropdown-menu pull-right" role="menu">
-                            <li>
-                                <a href="#"><i class="icon-bell"></i> Action</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon-shield"></i> Another action</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon-user"></i> Something else here</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#"><i class="icon-bag"></i> Separated link</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- END PAGE BAR -->
-
+            
             <div class="row">
                 <div class="col-md-8">
-                    <h1 class="page-title" style="padding: 0px 20px 0px;">Profile | Account Information</h1>
+                    <h1 class="page-title user-page-title">Edit Profile</h1>
                     <div class="profile-sidebar">
-                        <div class="portlet light profile-sidebar-portlet" style="margin-bottom: 1px !important;">
-                            <div class="profile-userpic">
-                                <img src="{{ url('/images/avatar/thumbnail_images/' . $user->user_image)}}"
-                                     class="img-responsive" alt="" style="width: 30%; height: 250px">
-                            </div>
-                            <div class="profile-usertitle">
-                                <div class="profile-usertitle-name"> {!! $user->name !!}</div>
-                                <div class="profile-usertitle-job"> {!! $user->profession !!}</div>
-                            </div>
-
-                            <div class="profile-usermenu">
-                                <ul class="nav">
-                                    <li><a href="/" class="profile-menu-hint">
-                                            <i class="icon-home"></i> Home
-                                        </a>
-                                    </li>
-                                    <li class="active">
-                                        <a href="/" class="profile-menu-hint">
-                                            <i class="icon-settings"></i> Account Settings
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- END PORTLET MAIN -->
-                        <!-- PORTLET MAIN -->
-                        <div class="portlet light ">
-                            <div>
-                                <h4 class="profile-desc-title">About Me</h4>
-                                <span class="profile-desc-text"> Here will be the about me section limon </span>
-                                <div class="margin-top-20 profile-desc-link">
-                                    <i class="fa fa-globe"></i>
-                                    <a href="http://www.keenthemes.com">www.keenthemes.com</a>
-                                </div>
-                                <div class="margin-top-20 profile-desc-link">
-                                    <i class="fa fa-facebook"></i>
-                                    <a href="http://www.facebook.com/keenthemes/">keenthemes</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END PORTLET MAIN -->
-                    </div>
                     <!-- END BEGIN PROFILE SIDEBAR -->
                     <!-- BEGIN PROFILE CONTENT -->
                     <div class="profile-content">
@@ -102,10 +33,7 @@
                                 @include('flash')
                                 <div class="portlet light ">
                                     <div class="portlet-title tabbable-line">
-                                        <div class="caption caption-md">
-                                            <i class="icon-globe theme-font hide"></i>
-                                            <span class="caption-subject font-blue-madison bold uppercase">Profile Account</span>
-                                        </div>
+                                        
                                         <ul class="nav nav-tabs">
                                             <li class="active">
                                                 <a href="#tab_1_1" data-toggle="tab">Personal Info</a>

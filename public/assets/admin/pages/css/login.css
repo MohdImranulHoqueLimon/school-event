@@ -222,6 +222,18 @@
     padding-top: 7px;
     text-align: left;
 }
+ .create-account-user {
+    text-decoration: underline;
+    float: right;
+    margin-top: 15px;
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+}
+.create-account-user:hover {
+    color: green;
+    
+}
 
 @media (max-width: 440px) {
     .login .logo {

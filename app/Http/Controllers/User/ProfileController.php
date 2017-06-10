@@ -100,4 +100,11 @@ class ProfileController extends Controller
         ];
         $this->validate($request, $rules);
     }
+
+    public function view()
+    {
+        $user = Auth::user();
+        $countries = $this->countryService->getAllCountries();
+        return view('user.profile.view', compact('user', 'countries'));
+    }
 }

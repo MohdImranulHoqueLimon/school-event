@@ -193,7 +193,9 @@
             @endif
         </div>
         <div class="form-actions">
-            <button type="button" id="register-back-btn" class="btn green btn-outline">Back</button>
+             <a class="create-account-user" style="float: left;" href="{{ url('/sign-in') }}">
+               Login
+            </a>
             <button type="submit" id="register-submit-btn" class="btn btn-success uppercase pull-right">Submit</button>
         </div>
     </form>
