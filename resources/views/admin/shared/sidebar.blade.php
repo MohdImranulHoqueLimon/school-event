@@ -71,6 +71,27 @@
                             @endif
                         </a>
                     </li>
+
+                    <li class="nav-item  @if (Route::is('roles.*'))start active open @endif">
+                        <a href="{{route('roles.index')}}" class="nav-link ">
+                            <i class="icon-users"></i>
+                            <span class="title">Roles</span>
+                            @if (Route::is('roles.*'))
+                                <span class="selected"></span>
+                            @endif
+                        </a>
+                    </li>
+
+                    <li class="nav-item  @if (Route::is('permissions.*'))start active open @endif">
+                        <a href="{{route('permissions.index')}}" class="nav-link ">
+                            <i class="icon-users"></i>
+                            <span class="title">Permissions</span>
+                            @if (Route::is('permissions.*'))
+                                <span class="selected"></span>
+                            @endif
+                        </a>
+                    </li>
+
                     {{--<li class="nav-item  @if (Route::is('student.*'))start active open @endif">
                         <a href="{{route('student.index')}}" class="nav-link ">
                             <i class="icon-users"></i>
