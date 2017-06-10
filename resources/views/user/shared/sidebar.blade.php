@@ -33,7 +33,7 @@
 
             <li class="nav-item @if (Route::is('students.*'))start active open @endif">
                 <a href="{{url('/user/students')}}" class="nav-link ">
-                    <i class="icon-home"></i>
+                    <i class="fa fa-graduation-cap"></i>
                     <span class="title">Student List</span>
                     @if (Route::is('students.*'))
                         <span class="selected"></span>
