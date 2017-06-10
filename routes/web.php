@@ -79,7 +79,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type']], 
 Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
 
     Route::resource('profile', 'User\ProfileController');
-    //Route::resource('view', 'User\ProfileController@view');
+    Route::resource('students', 'User\StudentsListController');
 });
 
 /*Route::resource('profile', 'User\ProfileController');*/

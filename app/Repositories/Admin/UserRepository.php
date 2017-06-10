@@ -51,6 +51,10 @@ class UserRepository extends Repository
             $query->where('batch', '=', $filters['batch']);
         }
 
+        if (isset($filters['email']) && $filters['email']) {
+            $query->where('email', 'like', "%{$filters['email']}%");
+        }
+
         if (isset($filters['name']) && $filters['name']) {
             $query->where('name', 'like', "%{$filters['name']}%");
         }
