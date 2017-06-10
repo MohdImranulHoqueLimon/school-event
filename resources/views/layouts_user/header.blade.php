@@ -26,7 +26,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
-                                        <a href="profile">
+                                        <a href="view">
                                             <i class="icon-user"></i> My Profile
                                         </a>
                                     </li>
