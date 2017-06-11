@@ -27,13 +27,13 @@ class NewstickerController extends Controller
     {
         $filters = $request->all();
         $newsstickers = $this->newstickerService->getAllNewssticker($filters);
-        return View('admin.newsticker.index', compact('newsstickers'));
+        return View('admin.newssticker.index', compact('newsstickers'));
     }
 
     public function show($id)
     {
         $newslist = $this->newstickerService->showNewsByID($id);
-        return view('admin.newsticker.show', [
+        return view('admin.newssticker.show', [
             'newslist' => $newslist
         ]);
     }
