@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Imranul Hoque Limon',
             'role' => 1,
             'batch' => 2007,
-            'phone' => '+8801723689536',
+            'phone' => '123456',
             'email' => 'admin@school.com',
             'address' => 'Bagerhat',
             'city' => 'Dhaka',

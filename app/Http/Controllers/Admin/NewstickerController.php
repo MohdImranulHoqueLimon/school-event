@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Services\NewstickerService;
+use App\Services\NewsstickerService;
 use Illuminate\Http\Request;
 
 class NewstickerController extends Controller
@@ -11,7 +11,7 @@ class NewstickerController extends Controller
 
     private $newstickerService;
 
-    public function __construct(NewstickerService $newstickerService)
+    public function __construct(NewsstickerService $newstickerService)
     {
         $this->newstickerService = $newstickerService;
     }
@@ -26,7 +26,7 @@ class NewstickerController extends Controller
     public function index(Request $request)
     {
         $filters = $request->all();
-        $newsticker = $this->newstickerService->getAllNewsticker($filters);
+        $newsticker = $this->newstickerService->getAllNewssticker($filters);
         return View('admin.newsticker.index', compact('newsticker'));
     }
 
