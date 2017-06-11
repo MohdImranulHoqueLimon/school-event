@@ -62,17 +62,13 @@
                                                    class="btn btn-icon-only btn-primary"><i class="fa fa-edit"></i></a>
                                                 <button type="submit" class="btn btn-icon-only btn-danger"><i class="fa fa-times"></i></button>
                                             </form>
-
                                         </td>
-                                        
                                     </tr>
                                 @endforeach
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <!-- END EXAMPLE TABLE PORTLET-->
                 </div>
             </div>
 
@@ -88,12 +84,10 @@
             type="text/javascript"></script>
     <script src="{{URL::to('/')}}/assets/admin/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"
             type="text/javascript"></script>
-    <!-- END PAGE LEVEL PLUGINS -->
 @endsection
 
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
 @section('page_scripts2')
     <script src="{{URL::to('/')}}/assets/admin/pages/scripts/table-datatables-managed.min.js"
             type="text/javascript"></script>
 @endsection
-<!-- END PAGE LEVEL SCRIPTS -->
