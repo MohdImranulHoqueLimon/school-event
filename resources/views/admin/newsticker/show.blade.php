@@ -33,19 +33,40 @@
                         </div>
                         <div class="portlet-body">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="note note-info">
-                                        <p> {{$newslist->title}} </p>
-                                        <p> Created at: {{$newslist->created}} </p>
-                                    </div>
-                                </div>
+                                <div class="col-md-12">
 
+                                    <table class="table table-bordered">
+
+                                        <tbody>
+                                    <tr>
+                                        <td>
+                                            Title
+                                        </td>
+                                        <td>
+                                            Description
+                                        </td>
+                                        <td>
+                                           Date 
+                                        </td>
+                                    </tr>
+                                            <tr>
+                                                <td>
+                                                 {{$newslist->title}}    
+                                             </td>
+                                             <td>
+                                                {{$newslist->description}}
+                                            </td>
+                                            <td>
+                                                {{$newslist->created}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
 
-
-                           
-                           
                         </div>
+
+                    </div>
                     </div>
                     <!-- END EXAMPLE TABLE PORTLET-->
                 </div>

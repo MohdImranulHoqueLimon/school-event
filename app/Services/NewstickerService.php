@@ -32,4 +32,11 @@ class NewstickerService extends BaseService
     {
         return $this->model->find($id);
     }
+
+     public function store( array $input )
+    {
+        $input['created_by'] = auth()->user()->id;
+
+        return $this->model->create($input);
+    }
 }

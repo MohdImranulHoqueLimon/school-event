@@ -35,12 +35,12 @@
                         <div class="portlet-title">
                             <div class="caption font-dark">
                                 <i class="icon-settings font-dark"></i>
-                                <span class="caption-subject bold uppercase"> Roles </span>
+                                <span class="caption-subject bold uppercase"> Newsticker </span>
                             </div>
                             <div class="actions">
                                 <div class="btn-group pull-right">
-                                    <a href="{{route('roles.create')}}" class="btn sbold green">Add
-                                        New <i class="fa fa-plus"></i></a>
+                                    <a href="{{route('newsticker.create')}}" class="btn sbold green">Add
+                                        Newsticker <i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +51,8 @@
                                 <thead>
                                 <tr>
                                     <th width="5%"> Id</th>
-                                    <th width="60%"> Role</th>
+                                    <th width="20%"> Title</th>
+                                    <th width="40%"> Description</th>
                                     <th width="15%"> Created At</th>
                                     <th width="15%"> Actions</th>
                                 </tr>
@@ -63,7 +64,8 @@
                                         <td>
                                             <a href="{{route('newsticker.show', $role->id)}}">{{$role->title}}</a>
                                         </td>
-                                        <td class="center">{{$role->created}}</td>
+                                         <td class="center">{{$role->created}}</td>
+                                        <td class="center">{{$role->description}}</td>
                                         <td>
                                             <form style="float:right;" method="POST" class="form-inline" action="{{route('newsticker.destroy', $role->id)}}" onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}

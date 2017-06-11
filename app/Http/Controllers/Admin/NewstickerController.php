@@ -30,6 +30,11 @@ class NewstickerController extends Controller
         return View('admin.newsticker.index', compact('newsticker'));
     }
 
+    public function create()
+    {
+        return view('admin.newsticker.create');
+    }
+
     public function show($id)
     {
         $newslist = $this->newstickerService->showNewsByID($id);
@@ -38,5 +43,20 @@ class NewstickerController extends Controller
         ]);
     }
 
-    
+    public function store( NewstickerService $request)
+    {
+        $input = $request->except('_token', '_wysihtml5_mode');
+        print_r($input);
+        die();
+
+        $testimonial = $this->newstickerService->store($input);
+
+        if ($testimonial) {
+            flash('Testimonial created successfully!');
+            return redirect()->route('newsticker.index');
+        }
+
+        flash('Failed to create Testimonial!', 'error');
+        return redirect()->back()->withInput($request->all());
+    }
 }
