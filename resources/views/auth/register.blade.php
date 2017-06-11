@@ -133,16 +133,7 @@
             @endif
         </div>
 
-        <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Permanent City/Town</label>
-            <input class="form-control placeholder-no-fix" type="text" placeholder="Permanent City/Town" name="permanent_city"/>
-            @if ($errors->has('permanent_city'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('permanent_city') }}</strong>
-                </span>
-            @endif
-        </div>
-
+       
         <div class="form-group ">
             <div class="fileinput fileinput-new" data-provides="fileinput">
                 <div class="fileinput-preview thumbnail" data-trigger="fileinput"
