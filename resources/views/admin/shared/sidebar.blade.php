@@ -134,7 +134,7 @@
                 </ul>
             </li>
 
-            <li class="nav-item @if(Route::is('news.*') || Route::is('testimonials.*')) start active open @endif">
+            <li class="nav-item @if(Route::is('news.*') || Route::is('testimonials.*') || Route::is('newssticker.*')) start active open @endif">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-dropbox"></i>
                     <span class="title">Sites</span>

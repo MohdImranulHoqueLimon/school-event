@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\NewsstickerService;
 use Illuminate\Http\Request;
 
-class NewstickerController extends Controller
+class NewsstickerController extends Controller
 {
 
     private $newstickerService;
@@ -43,17 +43,14 @@ class NewstickerController extends Controller
         ]);
     }
 
-    public function store( NewstickerService $request)
+    public function store(Request $request)
     {
         $input = $request->except('_token', '_wysihtml5_mode');
-        print_r($input);
-        die();
-
         $testimonial = $this->newstickerService->store($input);
 
         if ($testimonial) {
             flash('Testimonial created successfully!');
-            return redirect()->route('newsstickers.index');
+            return redirect()->route('newssticker.index');
         }
 
         flash('Failed to create Testimonial!', 'error');

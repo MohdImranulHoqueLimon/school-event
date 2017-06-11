@@ -59,7 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type']], 
             ]
         );
     });
-    Route::resource('newssticker', 'Admin\NewstickerController');
+    Route::resource('newssticker', 'Admin\NewsstickerController');
 
     Route::resource('testimonials', 'Admin\Site\TestimonialsController');
     Route::group(['prefix' => 'testimonials'], function () {
