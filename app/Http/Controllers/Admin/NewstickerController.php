@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\NewstickerService;
@@ -11,11 +11,6 @@ class NewstickerController extends Controller
 
     private $newstickerService;
 
-    /**
-     * @param \App\Services\UserService $userService
-     * @param RegistrationPaymentService $registrationPaymentService
-     * @param CountryService $countryService
-     */
     public function __construct(NewstickerService $newstickerService)
     {
         $this->newstickerService = $newstickerService;
@@ -31,168 +26,16 @@ class NewstickerController extends Controller
     public function index(Request $request)
     {
         $filters = $request->all();
-        $users = $this->newstickerService->getAllNewsticker($filters);
-        return View('admin.users.index', compact('users','roles','request'));
+        $newsticker = $this->newstickerService->getAllNewsticker($filters);
+        return View('admin.newsticker.index', compact('newsticker'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $countries = $this->countriesService->getAllNewsticker();
-       
-        return view('admin.users.create', compact('roles', 'countries'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $this->validation($request);
-        $user = $this->userService->createUser($request->except('user_image', 'registration_amount', 'roles'));
-        $photo = $request->file('user_image');
-
-        if ($user) {
-
-            $imageName = $this->userService->savePhoto($photo);
-            $user->user_image = $imageName;
-            $user->save();
-
-            $this->assignUserRole($user->id);
-
-            $this->registrationPaymentService->updateAmountByUser($user->id, $request->get('registration_amount'));
-
-            flash('User created successfully');
-        } else {
-            flash('Failed to create User', 'error');
-        }
-
-        return redirect()->route('users.index');
-    }
-
-    private function assignUserRole($uid) {
-        if(!empty($uid)) {
-            $is_assigned = $this->userService->assignRolesToUser(['roles' => [2]], $uid);
-        }
-    }
-
-    private function validation($request) {
-        $rules = [
-            'name' => 'required',
-            'phone' => 'required|unique:users',
-            'email' => 'required|email|unique:users',
-            'address' => 'required'
-        ];
-        $this->validate($request, $rules);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function show($id)
     {
-        $user = $this->userService->findUser($id);
-
-        if (!$user) {
-            flash('User not found!', 'error');
-
-            return redirect()->route('users.index');
-        }
-
-        return view('admin.users.show')->with('user', $user);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $countries = $this->countriesService->getAllCountries();
-        $user = $this->userService->findUser($id);
-
-        if (!$user) {
-            flash('User not found!', 'error');
-            return redirect()->route('users.index');
-        }
-
-        $roles = $this->userService->getAllRoles();
-        $userRoles = $user->roles()->pluck('id')->toArray();
-
-        return view('admin.users.edit', compact('user', 'roles', 'userRoles', 'countries'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \App\Http\Requests\UserRequest $request
-     * @param  int                           $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UserRequest $request, $id)
-    {
-        $password = $request->get('password');
-
-        if (!empty(trim($password)) && trim($password) != '') {
-            $is_updated = $this->userService->updateUser($request->except('_token', '_method', 'user_image', 'registration_amount'), $id);
-        } else {
-            $is_updated = $this->userService->updateUser($request->except('_token', '_method', 'user_image', 'registration_amount', 'password'), $id);
-        }
-        $photo = $request->file('user_image');
-
-        if ($is_updated) {
-
-            $user = $this->userService->findUser($id);
-            if($photo != '' || $photo != null) {
-                $this->userService->removePhoto($user->user_image);
-                $imageName = $this->userService->savePhoto($photo);
-                $user->user_image = $imageName;
-                $user->save();
-            }
-
-            $this->registrationPaymentService->updateAmountByUser($user->id, $request->get('registration_amount'));
-
-            flash('User updated successfully.');
-        } else {
-            flash('Failed to update user!', 'error');
-        }
-
-        return redirect()->route('users.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $user = $this->userService->findUser($id);
-
-        if (!$user) {
-            flash('User not found!', 'error');
-        }
-
-        $user->delete();
-        flash('User deleted successfully');
-
-        return redirect()->route('users.index');
+        $newslist = $this->newstickerService->showNewsByID($id);
+        return view('admin.newsticker.show', [
+            'newslist' => $newslist
+        ]);
     }
 
     

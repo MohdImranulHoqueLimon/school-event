@@ -27,4 +27,9 @@ class NewstickerService extends BaseService
     {
         // TODO: Implement filterData() method.
     }
+
+    public function showNewsByID($id)
+    {
+        return $this->model->find($id);
+    }
 }

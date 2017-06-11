@@ -159,6 +159,15 @@
                             @endif
                         </a>
                     </li>
+                    <li class="nav-item @if (Route::is('newsticker.*'))start active open @endif ">
+                        <a href="{{route('newsticker.index')}}" class="nav-link ">
+                            <i class="glyphicon glyphicon-tasks"></i>
+                            <span class="title">Newsticker</span>
+                            @if (Route::is('newsticker.*'))
+                                <span class="selected"></span>
+                            @endif
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>
