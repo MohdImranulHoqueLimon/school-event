@@ -26,8 +26,8 @@ class NewstickerController extends Controller
     public function index(Request $request)
     {
         $filters = $request->all();
-        $newsticker = $this->newstickerService->getAllNewssticker($filters);
-        return View('admin.newsticker.index', compact('newsticker'));
+        $newsstickers = $this->newstickerService->getAllNewssticker($filters);
+        return View('admin.newsticker.index', compact('newsstickers'));
     }
 
     public function show($id)

@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-    Roles
+    Newsticker
 @endsection
 @section('page_styles')
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -8,25 +8,14 @@
           type="text/css"/>
     <link href="{{URL::to('/')}}/assets/admin/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css"
           rel="stylesheet" type="text/css"/>
-    <!-- END PAGE LEVEL PLUGINS -->
 @endsection
 
 @section('content')
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
-        <!-- BEGIN CONTENT BODY -->
         <div class="page-content">
-            <!-- BEGIN PAGE HEADER-->
-            <!-- BEGIN PAGE BAR -->
-            <div class="page-bar">
-                {!! Breadcrumbs::renderIfExists(Route::getCurrentRoute()->getName()) !!}
-            </div>
-            <!-- END PAGE BAR -->
-            <!-- BEGIN PAGE TITLE-->
+            <div class="page-bar"></div>
             <h1 class="page-title"></h1>
-            <!-- END PAGE TITLE-->
-            <!-- END PAGE HEADER-->
-
             <div class="row">
                 @include('shared.flash')
                 <div class="col-md-12">
@@ -35,7 +24,7 @@
                         <div class="portlet-title">
                             <div class="caption font-dark">
                                 <i class="icon-settings font-dark"></i>
-                                <span class="caption-subject bold uppercase"> Roles </span>
+                                <span class="caption-subject bold uppercase"> Newsticker </span>
                             </div>
                             <div class="actions">
                                 <div class="btn-group pull-right">
@@ -50,28 +39,26 @@
                                    id="sample_1" width="100%">
                                 <thead>
                                 <tr>
-                                    <th width="5%"> Id</th>
-                                    <th width="60%"> Role</th>
-                                    <th width="15%"> Created At</th>
+                                    <th width="30%"> Title</th>
+                                    <th width="38%"> Description</th>
+                                    <th width="15%"> Created</th>
                                     <th width="15%"> Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($newsticker as $role)
+                                @foreach($newsstickers as $newssticker)
                                     <tr class="odd gradeX">
-                                        <td>{{$role->id}}</td>
+                                        <td>{{$newssticker->title}}</td>
+                                        <td>{{$newssticker->description}}</td>
+                                        <td class="center">{{$newssticker->created_at}}</td>
                                         <td>
-                                            <a href="{{route('newsticker.show', $role->id)}}">{{$role->title}}</a>
-                                        </td>
-                                        <td class="center">{{$role->created}}</td>
-                                        <td>
-                                            <form style="float:right;" method="POST" class="form-inline" action="{{route('newsticker.destroy', $role->id)}}" onsubmit="return confirm('Are you sure?')">
+                                            <form style="float:right;" method="POST" class="form-inline" action="{{route('newsticker.destroy', $newssticker->id)}}" onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}
-                                                <a href="{{ route('newsticker.show', $role->id) }}"
+                                                <a href="{{ route('newsticker.show', $newssticker->id) }}"
                                                    class="btn btn-icon-only grey-cascade">
                                                     <i class="fa fa-eye"></i></a>
-                                                <a href="{{ route('newsticker.edit', $role->id) }}"
+                                                <a href="{{ route('newsticker.edit', $newssticker->id) }}"
                                                    class="btn btn-icon-only btn-primary"><i class="fa fa-edit"></i></a>
                                                 <button type="submit" class="btn btn-icon-only btn-danger"><i class="fa fa-times"></i></button>
                                             </form>
