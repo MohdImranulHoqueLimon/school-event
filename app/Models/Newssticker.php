@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Newsticker extends Model
+class Newssticker extends Model
 {
-    protected $table = 'newsticker';
+    protected $table = 'newssticker';
 
     protected $guarded = ['id'];
 

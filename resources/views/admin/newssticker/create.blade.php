@@ -16,7 +16,7 @@
                         <!-- BEGIN PAGE HEADER-->
                         <!-- BEGIN PAGE BAR -->
                         <div class="page-bar">
-                            {!! Breadcrumbs::renderIfExists('newsticker.create') !!}
+                            {!! Breadcrumbs::renderIfExists('newssticker.create') !!}
                         </div>
                         <!-- END PAGE BAR -->
 
@@ -37,7 +37,7 @@
                                                 </div>
                                                 <div class="portlet-body form">
                                                     <!-- BEGIN FORM-->
-                                                  {!! Form::open(['url' => route('newsticker.store'), 'method' => 'post', 'class' => 'form-horizontal panel','files'=>true]) !!}
+                                                  {!! Form::open(['url' => route('newssticker.store'), 'method' => 'post', 'class' => 'form-horizontal panel','files'=>true]) !!}
 
                                                        @if (count($errors) > 0)
                                                             <div class="alert alert-danger">
@@ -98,7 +98,7 @@
                                                         <div class="form-actions right">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <a href="{{route('newsticker.index')}}" class="btn default" >
+                                                                    <a href="{{route('newssticker.index')}}" class="btn default" >
                                                                         Cancel
                                                                     </a>
                                                                     <button type="submit" class="btn blue"><i class="fa fa-check"></i> Save</button>

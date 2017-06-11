@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Services\NewstickerService;
+use App\Services\NewsstickerService;
 use Illuminate\Http\Request;
 
 class NewstickerController extends Controller
@@ -11,7 +11,7 @@ class NewstickerController extends Controller
 
     private $newstickerService;
 
-    public function __construct(NewstickerService $newstickerService)
+    public function __construct(NewsstickerService $newstickerService)
     {
         $this->newstickerService = $newstickerService;
     }
@@ -26,19 +26,19 @@ class NewstickerController extends Controller
     public function index(Request $request)
     {
         $filters = $request->all();
-        $newsticker = $this->newstickerService->getAllNewsticker($filters);
-        return View('admin.newsticker.index', compact('newsticker'));
+        $newsstickers = $this->newstickerService->getAllNewssticker($filters);
+        return View('admin.newssticker.index', compact('newsstickers'));
     }
 
     public function create()
     {
-        return view('admin.newsticker.create');
+        return view('admin.newssticker.create');
     }
 
     public function show($id)
     {
         $newslist = $this->newstickerService->showNewsByID($id);
-        return view('admin.newsticker.show', [
+        return view('admin.newssticker.show', [
             'newslist' => $newslist
         ]);
     }
@@ -53,7 +53,7 @@ class NewstickerController extends Controller
 
         if ($testimonial) {
             flash('Testimonial created successfully!');
-            return redirect()->route('newsticker.index');
+            return redirect()->route('newsstickers.index');
         }
 
         flash('Failed to create Testimonial!', 'error');

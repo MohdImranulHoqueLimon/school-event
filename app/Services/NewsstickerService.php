@@ -2,17 +2,17 @@
 
 namespace App\Services;
 
-use App\Models\Newsticker;
+use App\Models\Newssticker;
 
-class NewstickerService extends BaseService
+class NewsstickerService extends BaseService
 {
 
-    public function __construct(Newsticker $newsticker)
+    public function __construct(Newssticker $newssticker)
     {
-        $this->model = $newsticker;
+        $this->model = $newssticker;
     }
 
-    function getAllNewsticker()
+    function getAllNewssticker()
     {
         return $this->model->get();
     }
