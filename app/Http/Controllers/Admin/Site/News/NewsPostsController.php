@@ -169,4 +169,5 @@ class NewsPostsController extends Controller
             )
         );
     }
+
 }
