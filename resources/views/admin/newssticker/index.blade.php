@@ -50,7 +50,7 @@
                                     <tr class="odd gradeX">
                                         <td>{{$newssticker->title}}</td>
                                         <td>{{$newssticker->description}}</td>
-                                        <td class="center">{{$newssticker->created_at}}</td>
+                                        <td class="center">{{ date('d M, Y', strtotime($newssticker->created_at)) }}</td>
                                         <td>
                                             <form style="float:right;" method="POST" class="form-inline" action="{{route('newsticker.destroy', $newssticker->id)}}" onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}
