@@ -80,4 +80,16 @@ class NewsstickerController extends Controller
         flash('Failed to Update Newssticker!', 'error');
         return redirect()->back()->withInput($request->all());
     }
+
+    public function destroy($id)
+    {
+        $newslist = $this->newstickerService->deleteNews($id);
+        if ($newslist) {
+            flash('Newssticker Delete successfully!');
+            return redirect()->route('newssticker.index');
+        }
+
+        flash('Newssticker Delete unsuccessfully!', 'error');
+        return redirect()->route('newssticker.index');
+    }
 }

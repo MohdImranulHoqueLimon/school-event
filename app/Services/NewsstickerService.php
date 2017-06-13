@@ -51,4 +51,10 @@ class NewsstickerService extends BaseService
         //return $this->model->update($input, $id);
         return $this->model->where('id', $id)->update($input);
     }
+
+    public function deleteNews( $id )
+    {
+        return $this->model->where('id', $id)->delete();
+    }
+
 }
