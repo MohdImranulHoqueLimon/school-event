@@ -7,9 +7,7 @@
                         <a href="user/profile" style="text-decoration: none !important;">
                             <h3 class="admin-header-name">School Event</h3>
                         </a>
-                        <div class="menu-toggler sidebar-toggler">
-                            <span></span>
-                        </div>
+                        
                     </div>
                     <!-- END LOGO -->
                     <!-- BEGIN RESPONSIVE MENU TOGGLER -->

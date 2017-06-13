@@ -14,6 +14,7 @@
                     <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
                         <span></span>
                     </a>
+
                     <!-- END RESPONSIVE MENU TOGGLER -->
                     <!-- BEGIN TOP NAVIGATION MENU -->
                     <div class="top-menu">
@@ -55,9 +56,22 @@
                 </div>
                 <!-- END HEADER INNER -->
             </div>
+
             <!-- END HEADER -->
             <!-- BEGIN HEADER & CONTENT DIVIDER -->
             <div class="clearfix"> </div>
             <!-- END HEADER & CONTENT DIVIDER -->
             <!-- BEGIN CONTAINER -->
+           
             <div class="page-container">
+               <?php if(count($newsstickerService) > 0) { ?>
+               <div class="newssticker-panel">
+                <?php 
+                $newssticker = '';
+                foreach ($newsstickerService as  $value) {
+                    $newssticker .= $value['description']. '&nbsp;&nbsp;';
+                }
+                ?>
+                <marquee scrollamount="5"><?php echo $newssticker?></marquee>   
+              </div>
+            <?php } ?>

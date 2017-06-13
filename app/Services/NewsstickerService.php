@@ -17,6 +17,11 @@ class NewsstickerService extends BaseService
         return $this->model->get();
     }
 
+    function getAllActiveNewssticker()
+    {
+        return $this->model->where('is_active', '=', 1)->get();
+    }
+
     /**
      * Filter data based on user input
      *
@@ -38,5 +43,12 @@ class NewsstickerService extends BaseService
         $input['created_by'] = auth()->user()->id;
 
         return $this->model->create($input);
+    }
+
+     public function updateNewssticker( array $input, $id )
+    {
+        $input['created_by'] = auth()->user()->id;
+        //return $this->model->update($input, $id);
+        return $this->model->where('id', $id)->update($input);
     }
 }

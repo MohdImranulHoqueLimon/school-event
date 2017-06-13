@@ -29,7 +29,7 @@
                             <div class="actions">
                                 <div class="btn-group pull-right">
                                     <a href="{{route('newssticker.create')}}" class="btn sbold green">Add
-                                        New <i class="fa fa-plus"></i></a>
+                                        Newssticker <i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                                     <th width="30%"> Title</th>
                                     <th width="38%"> Description</th>
                                     <th width="15%"> Created</th>
-                                    <th width="15%"> Actions</th>
+                                    <th width="15%" style="text-align: center;"> Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -51,7 +51,7 @@
                                         <td>{{$newssticker->title}}</td>
                                         <td>{{$newssticker->description}}</td>
                                         <td class="center">{{ date('d M, Y', strtotime($newssticker->created_at)) }}</td>
-                                        <td>
+                                        <td style="text-align: center;">
                                             <form style="float:right;" method="POST" class="form-inline" action="{{route('newssticker.destroy', $newssticker->id)}}" onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}

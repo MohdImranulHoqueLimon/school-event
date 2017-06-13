@@ -4,3 +4,11 @@
 	border-bottom: 1px solid #ccc;
 	padding-left: 20px;
   }
+  .newssticker-panel {
+  	width: 100%;
+  	background-color: #ccc;
+  	color: red;
+  	height: 30px;
+  	vertical-align: middle;
+  	line-height: 30px;
+  }

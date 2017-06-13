@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\Services\CountryService;
 use App\Services\RegistrationPaymentService;
 use App\Services\UserService;
+use App\Services\NewsstickerService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -23,14 +24,16 @@ class ProfileController extends Controller
     private $userService;
     private $countryService;
     private $registrationPaymentService;
+    private $newsstickerService;
 
-    public function __construct(UserService $userService, CountryService $countryService, RegistrationPaymentService $registrationPaymentService)
+    public function __construct(UserService $userService, CountryService $countryService, RegistrationPaymentService $registrationPaymentService, NewsstickerService $newsstickerService)
     {
         $this->middleware('auth');
 
         $this->userService = $userService;
         $this->countryService = $countryService;
         $this->registrationPaymentService = $registrationPaymentService;
+        $this->newsstickerService = $newsstickerService;
     }
 
     /**
@@ -42,7 +45,8 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $countries = $this->countryService->getAllCountries();
-        return view('user.profile.show', compact('user', 'countries'));
+        $newsstickerService = $this->newsstickerService->getAllActiveNewssticker();
+        return view('user.profile.show', compact('user', 'countries','newsstickerService'));
     }
 
     public function edit($id) {

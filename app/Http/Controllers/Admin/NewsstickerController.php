@@ -46,14 +46,38 @@ class NewsstickerController extends Controller
     public function store(Request $request)
     {
         $input = $request->except('_token', '_wysihtml5_mode');
-        $testimonial = $this->newstickerService->store($input);
+        $newslist = $this->newstickerService->store($input);
 
-        if ($testimonial) {
+        if ($newslist) {
             flash('Testimonial created successfully!');
             return redirect()->route('newssticker.index');
         }
 
         flash('Failed to create Testimonial!', 'error');
+        return redirect()->back()->withInput($request->all());
+    }
+
+    public function edit($id)
+    {
+        $newslist = $this->newstickerService->showNewsByID($id);
+        return view('admin.newssticker.edit', [
+            'newslist' => $newslist
+        ]);
+    }
+
+    public function update( Request $request, $id)
+    {
+         $input = $request->except('_token', '_method', '_wysihtml5_mode');
+        // print_r($input);
+
+        $newslist = $this->newstickerService->updateNewssticker($input, $id);
+
+        if ($newslist) {
+            flash('Newssticker Update successfully!');
+            return redirect()->route('newssticker.index');
+        }
+
+        flash('Failed to Update Newssticker!', 'error');
         return redirect()->back()->withInput($request->all());
     }
 }
