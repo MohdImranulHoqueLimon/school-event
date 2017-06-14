@@ -9,6 +9,8 @@ use App\Services\RegistrationAmountService;
 use App\Services\RegistrationPaymentService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {

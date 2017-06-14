@@ -62,16 +62,16 @@
             <div class="clearfix"> </div>
             <!-- END HEADER & CONTENT DIVIDER -->
             <!-- BEGIN CONTAINER -->
-           
+
             <div class="page-container">
                <?php if(count($newsstickerService) > 0) { ?>
                <div class="newssticker-panel">
-                <?php 
+                <?php
                 $newssticker = '';
                 foreach ($newsstickerService as  $value) {
                     $newssticker .= $value['description']. '&nbsp;&nbsp;';
                 }
                 ?>
-                <marquee scrollamount="5"><?php echo $newssticker?></marquee>   
+                <marquee scrollamount="5"><?php echo $newssticker?></marquee>
               </div>
             <?php } ?>

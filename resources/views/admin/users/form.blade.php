@@ -186,7 +186,7 @@
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-6">
             <div class="form-group">
                 <label for="city" class="control-label">Present City
                     <span class="required" aria-required="true"> * </span>
@@ -200,7 +200,7 @@
             </div>
         </div>
 
-        <div class="col-md-3">
+        {{--<div class="col-md-3">
             <div class="form-group">
                 <label for="permanent_city" class="control-label">Permanent City
                     <span class="required" aria-required="true"> * </span>
@@ -212,7 +212,7 @@
                     <span class="help-block">{{ $errors->first('permanent_city') }}</span>
                 @endif
             </div>
-        </div>
+        </div>--}}
     </div>
 
     <div class="row">

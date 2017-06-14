@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:Admin', 'auth_user_type']], function () {
 
     Route::get('/', ['as' => 'dashboard', 'uses' => 'Admin\DashboardController@index']);
 
@@ -77,6 +77,35 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type']], 
 
 });
 
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:Support-Admin', 'auth_user_type']], function () {
+
+    Route::get('/', ['as' => 'dashboard', 'uses' => 'Admin\DashboardController@index']);
+    Route::resource('users', 'Admin\UsersController');
+
+    Route::resource('news', 'Admin\Site\News\NewsPostsController');
+    Route::group(['prefix' => 'news'], function () {
+        Route::post(
+            'displayNewsBySearchText',
+            [
+                'as' => 'news.displayNewsBySearchText',
+                'uses' => 'Admin\Site\News\NewsPostsController@displayNewsBySearchText'
+            ]
+        );
+    });
+    Route::resource('newssticker', 'Admin\NewsstickerController');
+
+    Route::resource('testimonials', 'Admin\Site\TestimonialsController');
+    Route::group(['prefix' => 'testimonials'], function () {
+        Route::post(
+            'displayTestimonialsBySearchText',
+            [
+                'as' => 'testimonials.displayTestimonialsBySearchText',
+                'uses' => 'Admin\Site\TestimonialsController@displayTestimonialsBySearchText'
+            ]
+        );
+    });
+
+});
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
 

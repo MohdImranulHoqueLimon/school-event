@@ -25,10 +25,12 @@
                                 <span class="caption-subject bold uppercase"> Users </span>
                             </div>
                             <div class="actions">
+                                @role('Admin')
                                 <div class="btn-group pull-right">
                                     <a href="{{ route('users.create') }}" class="btn sbold green">Add
                                         New <i class="fa fa-plus"></i></a>
                                 </div>
+                                @endrole
                             </div>
                         </div>
                         <div class="portlet-body">
@@ -142,15 +144,18 @@
                                                   onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}
+
                                                 <a href="{{ route('users.show', $user->id) }}" class="btn btn-icon-only grey-cascade">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
+                                                @role('Admin')
                                                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-icon-only btn-primary">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                                 <button type="submit" class="btn btn-icon-only btn-danger">
                                                     <i class="fa fa-times"></i>
                                                 </button>
+                                                @endrole
                                             </form>
                                         </td>
                                     </tr>
