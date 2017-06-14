@@ -4,7 +4,7 @@
                 <div class="page-header-inner ">
                     <!-- BEGIN LOGO -->
                     <div class="page-logo">
-                        <a href="user/profile" style="text-decoration: none !important;">
+                        <a href="{!! url('user/profile') !!}" style="text-decoration: none !important;">
                             <h3 class="admin-header-name">School Event</h3>
                         </a>
                         

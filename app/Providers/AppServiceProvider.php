@@ -2,12 +2,20 @@
 
 namespace App\Providers;
 
+use App\Models\Newssticker;
+use App\Services\NewsstickerService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+
+    public function __construct(\Illuminate\Contracts\Foundation\Application $app)
+    {
+        parent::__construct($app);
+    }
+
     /**
      * Bootstrap any application services.
      *
@@ -24,11 +32,14 @@ class AppServiceProvider extends ServiceProvider
 
             $current_route_name = \Request::route()->getName();
             $current_url = \Request::path();
+
             //$permissions = $this->getAllPermissionName();
 
+            $newsstickerText = $this->getAllNewstickersText();
             $view->with([
                 'current_route_name' => $current_route_name,
                 'current_url' => $current_url,
+                'newsstickerText' => trim($newsstickerText)
                 //'permissions' => $permissions
             ]);
 
@@ -43,6 +54,18 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    private function getAllNewstickersText() {
+
+        $newsstickerService = new NewsstickerService(New Newssticker());
+        $newsstickers = $newsstickerService->getAllActiveNewssticker();
+        $newsstickerText = '';
+
+        foreach ($newsstickers as $value) {
+            $newsstickerText .= $value['description'] . '&nbsp;&nbsp;';
+        }
+        return $newsstickerText;
     }
 
     private function getAllPermissionName() {

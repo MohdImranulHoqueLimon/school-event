@@ -24,16 +24,15 @@ class ProfileController extends Controller
     private $userService;
     private $countryService;
     private $registrationPaymentService;
-    private $newsstickerService;
 
-    public function __construct(UserService $userService, CountryService $countryService, RegistrationPaymentService $registrationPaymentService, NewsstickerService $newsstickerService)
+    public function __construct(
+        UserService $userService, CountryService $countryService, RegistrationPaymentService $registrationPaymentService)
     {
         $this->middleware('auth');
 
         $this->userService = $userService;
         $this->countryService = $countryService;
         $this->registrationPaymentService = $registrationPaymentService;
-        $this->newsstickerService = $newsstickerService;
     }
 
     /**
@@ -45,8 +44,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $countries = $this->countryService->getAllCountries();
-        $newsstickerService = $this->newsstickerService->getAllActiveNewssticker();
-        return view('user.profile.show', compact('user', 'countries','newsstickerService'));
+        return view('user.profile.show', compact('user', 'countries'));
     }
 
     public function edit($id) {

@@ -111,12 +111,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
 
     Route::resource('profile', 'User\ProfileController');
     Route::resource('students', 'User\StudentsListController');
+
 });
-
-/*Route::resource('profile', 'User\ProfileController');*/
-//Route::get('/profile', 'User\ProfileController@index')->middleware('auth');
-//Route::post('/profile_update', 'User\ProfileController@update')->middleware('auth');
-
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
