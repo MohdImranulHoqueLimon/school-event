@@ -131,6 +131,17 @@
                             @endif
                         </a>
                     </li>
+
+                    <li class="nav-item @if (Route::is('events.*'))start active open @endif ">
+                        <a href="{{route('events.index')}}" class="nav-link ">
+                            <i class="glyphicon glyphicon-tasks"></i>
+                            <span class="title">Add Events</span>
+                            @if (Route::is('events.*'))
+                                <span class="selected"></span>
+                            @endif
+                        </a>
+                    </li>
+
                 </ul>
             </li>
 

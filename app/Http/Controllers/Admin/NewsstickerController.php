@@ -49,11 +49,11 @@ class NewsstickerController extends Controller
         $newslist = $this->newstickerService->store($input);
 
         if ($newslist) {
-            flash('Testimonial created successfully!');
+            flash('Newssticker created successfully!');
             return redirect()->route('newssticker.index');
         }
 
-        flash('Failed to create Testimonial!', 'error');
+        flash('Failed to create Newssticker!', 'error');
         return redirect()->back()->withInput($request->all());
     }
 

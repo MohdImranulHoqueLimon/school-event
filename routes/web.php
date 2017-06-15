@@ -74,6 +74,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type']], 
 
     Route::get('/blank', function () {return view('admin.blank');});
     Route::get('/404', ['as' => 'dashboard.404', 'uses' => 'Admin\DashboardController@page404']);
+    Route::resource('events', 'Admin\EventsController');
 
 });
 
@@ -102,6 +103,7 @@ Route::get('contact', ['as' => 'contact', 'uses' => 'ContactsController@create']
 Route::post('contact', ['as' => 'contact.store', 'uses' => 'ContactsController@store']);
 
 Route::get('/newsdetails/{id}', 'HomeController@newsdetails');
+
 
 
 
