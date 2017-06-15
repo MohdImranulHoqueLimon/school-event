@@ -31,9 +31,9 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-        $permissions = $this->repository->allPermissions();
+        $userPermissions = $this->repository->allPermissions();
 
-        return view('admin.permissions.index')->withPermissions($permissions);
+        return view('admin.permissions.index', compact('userPermissions'));
     }
 
     /**

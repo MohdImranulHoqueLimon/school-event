@@ -25,6 +25,22 @@
         <!-- BEGIN PAGE TITLE-->
         <h1 class="page-title"> Welcome
             <small>to our Dashbord </small>
+
+            <?php
+
+                /*if(\Illuminate\Support\Facades\Auth::user()->hasRole('Admin')) {
+                    echo 'admin role';
+                } else {
+                    echo 'not admin';
+                }*/
+
+            /*var_dump(\Route::current()); // null
+            // what if there is magic?
+            var_dump(app()->router->getCurrentRoute());*/
+
+
+            ?>
+
         </h1>
         @include('shared.flash')
         <!-- END PAGE TITLE-->

@@ -49,6 +49,8 @@
                     @endif
                 </a>
             </li>
+
+            @role('Admin')
             <li class="nav-item @if(Route::is('users.*') || Route::is('roles.*') || Route::is('permissions.*')
             || Route::is('student.*')) start active open @endif ">
                 <a href="javascript:;" class="nav-link nav-toggle">
@@ -62,6 +64,7 @@
                     @endif
                 </a>
                 <ul class="sub-menu">
+
                     <li class="nav-item  @if (Route::is('users.*'))start active open @endif">
                         <a href="{{route('users.index')}}" class="nav-link ">
                             <i class="icon-users"></i>
@@ -91,18 +94,6 @@
                             @endif
                         </a>
                     </li>
-
-                    {{--<li class="nav-item  @if (Route::is('student.*'))start active open @endif">
-                        <a href="{{route('student.index')}}" class="nav-link ">
-                            <i class="icon-users"></i>
-                            <span class="title">Student</span>
-                            @if (Route::is('student.*'))
-                                <span class="selected"></span>
-                            @endif
-                        </a>
-                    </li>--}}
-                </ul>
-                <ul class="sub-menu">
                     {{--<li class="nav-item  @if (Route::is('student.*'))start active open @endif">
                         <a href="{{route('student.index')}}" class="nav-link ">
                             <i class="icon-users"></i>
@@ -114,6 +105,36 @@
                     </li>--}}
                 </ul>
             </li>
+            @endrole
+
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole('Admin') == false)
+            @role('Support-Admin')
+            <li class="nav-item @if(Route::is('users.*')) start active open @endif ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-users"></i>
+                    <span class="title">Users</span>
+                    @if(Route::is('users.*'))
+                        <span class="selected"></span>
+                        <span class="arrow open"></span>
+                    @else
+                        <span class="arrow @if(Route::is('users.*') || Route::is('roles.*') || Route::is('permissions.*')) open @endif "></span>
+                    @endif
+                </a>
+                <ul class="sub-menu">
+
+                    <li class="nav-item  @if (Route::is('users.*'))start active open @endif">
+                        <a href="{{route('users.index')}}" class="nav-link ">
+                            <i class="icon-users"></i>
+                            <span class="title">User</span>
+                            @if (Route::is('users.*'))
+                                <span class="selected"></span>
+                            @endif
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endrole
+            @endif
 
             <li class="nav-item @if(Route::is('registration_payments.*')) start active open @endif">
                 <a href="javascript:;" class="nav-link nav-toggle">

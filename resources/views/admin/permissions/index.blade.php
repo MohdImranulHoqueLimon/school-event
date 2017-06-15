@@ -56,7 +56,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($permissions as $role)
+                                @foreach($userPermissions as $role)
                                     <tr class="odd gradeX">
                                         <td>{{$role->id}}</td>
                                         <td>
