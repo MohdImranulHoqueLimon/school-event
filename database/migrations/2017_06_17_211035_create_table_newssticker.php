@@ -15,12 +15,13 @@ class CreateTableNewssticker extends Migration
     {
         Schema::create('newssticker', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('title ');
+            $table->text('title');
             $table->text('description');
-            $table->boolean('is_active')->default(1);
-            $table->boolean('is_active_global')->default(0);
+            $table->boolean('is_active')->default(true);
+            $table->boolean('is_active_global')->default(false);
             $table->integer('created_by')->unsigned()->default(0);
             $table->timestamps();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
