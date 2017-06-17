@@ -18,10 +18,15 @@ class RoleUserTableSeeder extends Seeder
         $user3 = User::whereEmail('user@school.com')->first();
 
         $adminRole = Role::whereName('Admin')->first();
+        $supportAdminRole = Role::whereName('Support-Admin')->first();
         $userRole = Role::whereName('User')->first();
 
         $user->assignRole($adminRole);
+        $user->assignRole($userRole);
+        $user->assignRole($supportAdminRole);
+
         $user2->assignRole($adminRole);
+
         $user3->assignRole($userRole);
     }
 }
