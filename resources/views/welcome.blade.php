@@ -74,7 +74,7 @@
             </div>
         @else
             <div class="top-right links">
-                <a href="{{ url('/profile') }}">Profile</a>
+                <a href="{{ url('user/profile') }}">Profile</a>
                 <a href="{{ url('/logout') }}">Logout</a>
             </div>
         @endif

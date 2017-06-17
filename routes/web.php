@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:Admin', 'auth_user_type']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'role:Admin']], function () {
 
     Route::get('/', ['as' => 'dashboard', 'uses' => 'Admin\DashboardController@index']);
 
@@ -78,7 +78,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:Admin', 'auth_
 
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:Support-Admin', 'auth_user_type']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'role:Support-Admin']], function () {
 
     Route::get('/', ['as' => 'dashboard', 'uses' => 'Admin\DashboardController@index']);
     Route::resource('users', 'Admin\UsersController');
@@ -109,10 +109,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:Support-Admin'
 });
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
-
     Route::resource('profile', 'User\ProfileController');
     Route::resource('students', 'User\StudentsListController');
-
 });
 
 Route::get('/', 'HomeController@index');

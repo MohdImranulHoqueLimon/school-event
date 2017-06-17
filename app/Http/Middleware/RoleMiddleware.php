@@ -18,30 +18,28 @@ class RoleMiddleware
      *
      * @return mixed
      */
-    //public function handle($request, Closure $next, $role = 'Admin', $permission = null)
     public function handle($request, Closure $next, $role, $permission = null)
     {
         if (Auth::guest()) {
             return redirect('/');
         }
 
-        /*if ($request->user()->hasRole('Admin')) {
+        if ($request->user()->hasRole('Admin') || $request->user()->hasRole('Support-Admin')) {
             return $next($request);
         }
 
         if ($request->user()->hasRole('User')) {
-            return redirect('/user');
+            return redirect('/user/profile');
+        }
+
+        if (!$request->user()->hasRole($role)) {
+            return redirect('admin/404');
+        }
+
+        /*if ($permission && !$request->user()->can($permission)) {
+            //abort(403, 'Insufficient permissions');
+            return redirect('admin/404');
         }*/
-
-        if (! $request->user()->hasRole($role)) {
-            //abort(403, 'Insufficient permissions');
-            return redirect('admin/404');
-        }
-
-        if ($permission && !$request->user()->can($permission)) {
-            //abort(403, 'Insufficient permissions');
-            return redirect('admin/404');
-        }
 
         /*if(isset($request) && $request->url() != '') {
             $currentUrl = $request->url();

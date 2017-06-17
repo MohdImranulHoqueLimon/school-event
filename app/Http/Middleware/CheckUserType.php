@@ -20,7 +20,7 @@ class CheckUserType
             return redirect('/');
         }
 
-        if (! $request->user()->hasRole(['Admin', 'Support-Admin']) && $request->user()->hasRole('User')) {
+        if (!$request->user()->hasRole('Admin') && !$request->user()->hasRole('Support-Admin') && $request->user()->hasRole('User')) {
             return redirect('/user/profile');
         }
 
