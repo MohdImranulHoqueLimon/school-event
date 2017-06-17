@@ -15,8 +15,11 @@ class CreateTableNewssticker extends Migration
     {
         Schema::create('newssticker', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('title');
+            $table->text('title ');
             $table->text('description');
+            $table->boolean('is_active')->default(1);
+            $table->boolean('is_active_global')->default(0);
+            $table->integer('created_by')->unsigned()->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateTableNewssticker extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('newssticker');
+        Schema::drop('newssticker');
     }
 }
