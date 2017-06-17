@@ -19,5 +19,9 @@ class RolesTableSeeder extends Seeder
         Role::create([
             'name' => 'User'
         ]);
+
+        Role::create([
+            'name' => 'Support-Admin'
+        ]);
     }
 }
