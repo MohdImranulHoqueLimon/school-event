@@ -107,10 +107,9 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <label class=" control-label">Guest Events Amount
-                                        <span class="required" aria-required="true"> * </span>
                                     </label>
                                     <br>
-                                    <input type="text" name="guest_amount" required autofocus id="guest_amount" value=""> 
+                                    <input type="text" name="guest_amount"  autofocus id="guest_amount" value=""> 
                                 </div>
                             </div>
 

@@ -45,7 +45,7 @@
                                     <th width="5%">Guest</th>
                                     <th width="7%">G. Amount</th>
                                     <th width="10%"> Created</th>
-                                    <th width="15%" style="text-align: center;"> Actions</th>
+                                    <th width="10%" style="text-align: center;"> Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -61,9 +61,6 @@
                                             <form style="float:right;" method="POST" class="form-inline" action="{{route('events.destroy', $events->id)}}" onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}
-                                                <a href="{{ route('events.show', $events->id) }}"
-                                                   class="btn btn-icon-only grey-cascade">
-                                                    <i class="fa fa-eye"></i></a>
                                                 <a href="{{ route('events.edit', $events->id) }}"
                                                    class="btn btn-icon-only btn-primary"><i class="fa fa-edit"></i></a>
                                                 <button type="submit" class="btn btn-icon-only btn-danger"><i class="fa fa-times"></i></button>

@@ -44,4 +44,11 @@ class EventsService extends BaseService
         return $this->model->where('id', $id)->delete();
     }
 
+     public function store( array $input )
+    {
+        $input['created_by'] = auth()->user()->id;
+
+        return $this->model->create($input);
+    }
+
 }
