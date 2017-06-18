@@ -111,6 +111,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'r
 Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
     Route::resource('profile', 'User\ProfileController');
     Route::resource('students', 'User\StudentsListController');
+    Route::resource('payments', 'User\PaymentsController');
 });
 
 Route::get('/', 'HomeController@index');
@@ -126,6 +127,8 @@ Route::get('contact', ['as' => 'contact', 'uses' => 'ContactsController@create']
 Route::post('contact', ['as' => 'contact.store', 'uses' => 'ContactsController@store']);
 
 Route::get('/newsdetails/{id}', 'HomeController@newsdetails');
+
+ Route::resource('payments', 'User\PaymentsController');
 
 
 
