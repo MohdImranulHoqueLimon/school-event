@@ -11,10 +11,12 @@ class PaymentController extends Controller
 {
 
     private $paymentService;
+    private $eventService;
 
-    public function __construct(PaymentsService $paymentsService)
+    public function __construct(PaymentsService $paymentsService, EventsService $eventsService)
     {
         $this->paymentService = $paymentsService;
+        $this->eventService = $eventsService;
     }
 
     /**
@@ -28,7 +30,9 @@ class PaymentController extends Controller
     {
         $filters = $request->all();
         $payments = $this->paymentService->getAllPayments($filters);
-        return View('admin.payment.index', compact('payments'));
+        $events = $this->eventService->getAllActiveEvents();
+
+        return View('admin.payment.index', compact('payments', 'request', 'events'));
     }
 
     public function create()

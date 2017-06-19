@@ -35,17 +35,65 @@
                         </div>
                         <div class="portlet-body">
 
+                            <div class="portlet green-sharp box">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="fa fa-search"></i>Search Users
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <form class="horizontal-form" role="form" method="GET" action="/admin/payments">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="event_id" class="control-label">Events</label>
+                                                    <select name="event_id" class="form-control">
+                                                        <option value=""> --- Select --- </option>
+                                                        @foreach($events as $event)
+                                                            <option value="{{ $event->id }}"
+                                                                    @if(isset($request) && $request->event_id == $event->id) selected @endif>
+                                                                {!! $event->title !!}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-2 col-md-4 col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="name" class="control-label">Name</label>
+                                                    <input id="name" type="text" class="form-control" name="name"
+                                                           value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="email" class="control-label">Email/Username</label>
+                                                    <input id="email" type="text" class="form-control" name="email" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-12 col-sm-12 pull-right">
+                                                <label for="condition" class="control-label">&nbsp;</label><br/>
+                                                <button type="submit" class="btn blue btn-block">
+                                                    <i class="fa fa-search"></i> Search
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
                             <table class="table table-striped table-bordered table-hover table-checkable order-column"
                                    id="sample_1" width="100%">
                                 <thead>
                                 <tr>
-                                    <th width="20%"> User</th>
+                                    <th width="18%"> User</th>
                                     <th width="20"> Event</th>
-                                    <th width="10%"> Quantity</th>
-                                    <th width="10%">T. Amount</th>
-                                    <th width="10%">G. Amount</th>
+                                    <th width="8%"> Quantity</th>
+                                    <th width="9%">T. Amount</th>
+                                    <th width="9%">G. Amount</th>
                                     <th width="10%"> Created</th>
-                                    <th width="10%"> Approved By</th>
+                                    <th width="16%"> Approved By</th>
                                     <th width="10%">Status</th>
                                     <th width="10%" style="text-align: center;"> Actions</th>
                                 </tr>
@@ -53,7 +101,6 @@
                                 <tbody>
                                 @foreach($payments as $payment)
                                     <tr class="odd gradeX">
-
                                         <td>{{$payment->user->name}}</td>
                                         <td>{{$payment->event->title}}</td>
                                         <td>{{$payment->quantity}}</td>
@@ -73,11 +120,9 @@
                                                 N/A
                                             @endif
                                         </td>
-
                                         <td>@if($payment->status === 1) Approved @else Pending @endif</td>
-
                                         <td style="text-align: center;">
-                                            <form style="float:right;" method="POST" class="form-inline" action="{{route('admin.payment', $payment->id)}}" onsubmit="return confirm('Are you sure?')">
+                                            <form method="POST" class="form-inline" action="{{route('admin.payment', $payment->id)}}" onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}
                                                 <button type="submit" class="btn btn-icon-only btn-danger"><i class="fa fa-times"></i></button>

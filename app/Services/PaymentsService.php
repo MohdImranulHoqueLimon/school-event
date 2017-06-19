@@ -15,35 +15,15 @@ class PaymentsService extends BaseService
     function getAllPayments(array $filters)
     {
         $with = ['user', 'register_admin'];
-        return $this->getAllPaymentsWith($with, $filters)->paginate(UtilityService::$displayRecordPerPage);
+        return $this->getAllPaymentsWith($filters)->paginate(UtilityService::$displayRecordPerPage);
     }
 
     public function getAllPaymentsWith($filters)
     {
         $query = $this->getQuery();
 
-        if (isset($filters['registered_by']) && $filters['registered_by']) {
-            $query->where('registered_by', '=', $filters['registered_by']);
-        }
-
-        if (isset($filters['batch']) && $filters['batch']) {
-            $query->whereHas('user', function ($q) use ($filters) {
-                $q->where('batch', $filters['batch']);
-            });
-        }
-
-        if (isset($filters['name']) && $filters['name']) {
-            $query->where('name', 'like', "%{$filters['name']}%");
-        }
-
-        if (isset($filters['email']) && $filters['email']) {
-            $query->where('email', 'like', "%{$filters['email']}%");
-        }
-
-        if (isset($filters['role_id']) && $filters['role_id']) {
-            $query->whereHas('roles', function ($q) use ($filters) {
-                $q->where('role_id', $filters['role_id']);
-            });
+        if (isset($filters['event_id']) && $filters['event_id']) {
+            $query->where('event_id', '=', "{$filters['event_id']}");
         }
 
         return $query;
