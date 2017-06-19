@@ -49,6 +49,10 @@ class PaymentsService extends BaseService
         return $query;
     }
 
+    public function deletePayment($id) {
+        return $this->model->where('id', $id)->delete();
+    }
+
     public function filterData(array $filter, $query)
     {
         // TODO: Implement filterData() method.

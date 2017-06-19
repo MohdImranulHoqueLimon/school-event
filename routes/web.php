@@ -77,6 +77,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'r
 
     Route::resource('events', 'Admin\EventsController');
     Route::resource('payments', 'Admin\PaymentController');
+    Route::delete(
+        'delete_payment{id}',
+        [
+            'as' => 'admin.payment',
+            'uses' => 'Admin\PaymentController@destroy'
+        ]
+    );
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'role:Support-Admin']], function () {

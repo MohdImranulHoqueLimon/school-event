@@ -27,8 +27,8 @@ class PaymentController extends Controller
     public function index(Request $request)
     {
         $filters = $request->all();
-        return $events_list = $this->paymentService->getAllPayments($filters);
-        return View('admin.events.index', compact('events_list'));
+        $payments = $this->paymentService->getAllPayments($filters);
+        return View('admin.payment.index', compact('payments'));
     }
 
     public function create()
@@ -36,32 +36,9 @@ class PaymentController extends Controller
         return view('admin.events.create');
     }
 
-    public function store(Request $request)
+    public function update(Request $request, $id)
     {
-        $input = $request->except('_token', '_wysihtml5_mode');
-        $newslist = $this->eventsService->store($input);
-
-        if ($newslist) {
-            flash('Events created successfully!');
-            return redirect()->route('events.index');
-        }
-
-        flash('Failed to create Events!', 'error');
-        return redirect()->back()->withInput($request->all());
-    }
-
-    public function edit($id)
-    {
-        $events = $this->eventsService->showEventsByID($id);
-        return view('admin.events.edit', [
-            'events' => $events
-        ]);
-    }
-
- public function update( Request $request, $id)
-    {
-         $input = $request->except('_token', '_method', '_wysihtml5_mode');
-        // print_r($input);
+        $input = $request->except('_token', '_method', '_wysihtml5_mode');
 
         $newslist = $this->eventsService->updateEvents($input, $id);
 
@@ -76,14 +53,14 @@ class PaymentController extends Controller
 
     public function destroy($id)
     {
-        $newslist = $this->eventsService->deleteEvents($id);
-        if ($newslist) {
-            flash('Events Delete successfully!');
-            return redirect()->route('events.index');
+        $deletePayment = $this->paymentService->deletePayment($id);
+        if ($deletePayment) {
+            flash('Payment Delete successfully!');
+            return redirect()->back();
         }
 
-        flash('Events Delete unsuccessfully!', 'error');
-        return redirect()->route('events.index');
+        flash('Payment Delete unsuccessfully!', 'error');
+        return redirect()->back();
     }
-    
+
 }

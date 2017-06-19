@@ -136,7 +136,7 @@
             @endrole
             @endif
 
-            <li class="nav-item @if(Route::is('registration_payments.*') || Route::is('events.*')) start active open @endif">
+            <li class="nav-item @if(Route::is('registration_payments.*') || Route::is('events.*') || Route::is('payments.*')) start active open @endif">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-dollar"></i>
                     <span class="title">Payment</span>
