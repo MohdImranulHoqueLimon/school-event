@@ -77,7 +77,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'r
 
     Route::resource('events', 'Admin\EventsController');
     Route::resource('payments', 'Admin\PaymentController');
-    Route::post('payments/process_list', ['as' => 'payments/process_list', 'uses' => 'Admin\PaymentController@process_list']);
     Route::delete(
         'delete_payment{id}',
         [
@@ -121,6 +120,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
     Route::resource('profile', 'User\ProfileController');
     Route::resource('students', 'User\StudentsListController');
     Route::resource('payments', 'User\PaymentsController');
+
+    Route::post('payments/process_list', ['as' => 'get_process_list', 'uses' => 'User\PaymentsController@getProcessList']);
 });
 
 Route::get('/', 'HomeController@index');

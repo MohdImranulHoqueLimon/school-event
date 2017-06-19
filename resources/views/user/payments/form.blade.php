@@ -23,7 +23,9 @@ Dashboard
                     </div>
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
-                        <form class="login-form form-horizontal" role="form" method="POST" action="{{ route('payments/process_list') }}">
+                        <form class="login-form form-horizontal" role="form" method="POST" action="{{ route('get_process_list') }}">
+
+                            {{ csrf_field()  }}
 
                             @if (count($errors) > 0)
                             <div class="alert alert-danger">
@@ -39,8 +41,6 @@ Dashboard
 
                             foreach($eventsPayments as $list)
                                 $events_list[] = $list['event_id'];
-
-
                             ?>
 
                             <div class="form-body" style="margin-left: 20%">
@@ -72,11 +72,7 @@ Dashboard
                                         <button type="submit" class="btn blue"><i class="fa fa-check"></i> Continue</button>
                                     </div>
                                 </div>
-
-
-
                             </div>
-
                         </form>
                         <!-- END FORM-->
                     </div>

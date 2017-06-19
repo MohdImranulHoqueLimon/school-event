@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
-
 use App\Http\Controllers\Controller;
 use App\Services\PaymentsService;
 use App\Services\EventsService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule;
 
 class PaymentsController extends Controller
 {
@@ -36,10 +33,9 @@ class PaymentsController extends Controller
         return view('user.payments.form', compact('eventsList','eventsPayments'));
     }
 
-    public function process_list(Request $request)
+    public function getProcessList(Request $request)
     {
-        echo 'asd';
-        die();
+        return 'here will be the code';
     }
 
     
