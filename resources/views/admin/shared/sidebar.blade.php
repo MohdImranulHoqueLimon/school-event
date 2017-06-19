@@ -136,7 +136,7 @@
             @endrole
             @endif
 
-            <li class="nav-item @if(Route::is('registration_payments.*')) start active open @endif">
+            <li class="nav-item @if(Route::is('registration_payments.*') || Route::is('events.*')) start active open @endif">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-dollar"></i>
                     <span class="title">Payments</span>
@@ -156,7 +156,7 @@
                     <li class="nav-item @if (Route::is('events.*'))start active open @endif ">
                         <a href="{{route('events.index')}}" class="nav-link ">
                             <i class="glyphicon glyphicon-tasks"></i>
-                            <span class="title">Add Events</span>
+                            <span class="title">Events</span>
                             @if (Route::is('events.*'))
                                 <span class="selected"></span>
                             @endif
