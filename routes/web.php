@@ -74,8 +74,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'r
 
     Route::get('/blank', function () {return view('admin.blank');});
     Route::get('/404', ['as' => 'dashboard.404', 'uses' => 'Admin\DashboardController@page404']);
-    Route::resource('events', 'Admin\EventsController');
 
+    Route::resource('events', 'Admin\EventsController');
+    Route::resource('payments', 'Admin\PaymentController');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'role:Support-Admin']], function () {

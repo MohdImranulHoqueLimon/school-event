@@ -139,7 +139,7 @@
             <li class="nav-item @if(Route::is('registration_payments.*') || Route::is('events.*')) start active open @endif">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-dollar"></i>
-                    <span class="title">Payments</span>
+                    <span class="title">Payment</span>
                     <span class="arrow @if(Route::is('registration_payments.*')) open @endif"></span>
                 </a>
                 <ul class="sub-menu">
@@ -163,6 +163,15 @@
                         </a>
                     </li>
 
+                    <li class="nav-item @if (Route::is('payments.*'))start active open @endif ">
+                        <a href="{{ url('admin/payments')  }}" class="nav-link ">
+                            <i class="glyphicon glyphicon-tasks"></i>
+                            <span class="title">Payments</span>
+                            @if (Route::is('payments.*'))
+                                <span class="selected"></span>
+                            @endif
+                        </a>
+                    </li>
                 </ul>
             </li>
 

@@ -19,11 +19,11 @@ class CreateTablePayments extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('quantity');
             $table->integer('amount');
-            $table->integer('guest_amount');
-            $table->integer('guest_count');
+            $table->integer('guest_amount')->nullable();
+            $table->integer('guest_count')->nullable();
             $table->boolean('is_payment')->default(false);
             $table->boolean('status')->default(false);
-            $table->integer('approved_by')->unsigned();
+            $table->integer('approved_by')->unsigned()->nullable();
             $table->timestamps();
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

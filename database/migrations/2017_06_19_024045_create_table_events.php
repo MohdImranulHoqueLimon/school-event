@@ -19,7 +19,7 @@ class CreateTableEvents extends Migration
             $table->text('description');
             $table->integer('amount');
             $table->boolean('fixed_amount')->default(true);
-            $table->integer('guest_amount');
+            $table->integer('guest_amount')->nullable();
             $table->boolean('guest_allow')->default(false);
             $table->integer('created_by')->unsigned()->default(0);
             $table->boolean('status')->default(false);
