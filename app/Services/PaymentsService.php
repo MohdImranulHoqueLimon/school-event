@@ -38,5 +38,10 @@ class PaymentsService extends BaseService
         // TODO: Implement filterData() method.
     }
 
+    function getAllPaymentsForUser($user_id)
+    {
+        return $this->model->where('user_id', '=', $user_id)->get();
+    }
+
 
 }

@@ -23,7 +23,7 @@ Dashboard
                     </div>
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
-                        {!! Form::open(['url' => route('payments.process'), 'method' => 'post', 'class' => 'form-horizontal panel','files'=>true]) !!}
+                        <form class="login-form form-horizontal" role="form" method="POST" action="{{ url('payments/process_list') }}">
 
                         @if (count($errors) > 0)
                         <div class="alert alert-danger">

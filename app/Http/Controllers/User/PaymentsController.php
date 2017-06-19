@@ -31,8 +31,15 @@ class PaymentsController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $eventsList = $this->eventsService->getAllEvents();
-        return view('user.payments.show', compact('eventsList'));
+        $eventsList = $this->eventsService->getAllActiveEvents();
+        $eventsPayments = $this->payementsService->getAllPaymentsForUser($user['id']);
+        return view('user.payments.form', compact('eventsList','eventsPayments'));
+    }
+
+    public function process_list(Request $request)
+    {
+        echo 'asd';
+        die();
     }
 
     
