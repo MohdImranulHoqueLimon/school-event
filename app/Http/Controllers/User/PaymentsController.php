@@ -50,11 +50,11 @@ class PaymentsController extends Controller
     public function confirm(Request $request)
     {
         $input = $request->except('_token', '_wysihtml5_mode');
-        $newslist = $this->payementsService->store($input);
+        $result = $this->payementsService->store($input);
 
-        if ($newslist) {
+        if ($result) {
             flash('Payment created successfully!');
-            return redirect()->route('invoices');
+            return redirect()->route('invoice.index');
         }
 
         flash('Failed to create Payment!', 'error');
