@@ -44,7 +44,7 @@
                                 <div class="portlet-body">
                                     <form class="horizontal-form" role="form" method="GET" action="/admin/payments">
                                         <div class="row">
-                                            <div class="col-md-2">
+                                            {{--<div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="event_id" class="control-label">Events</label>
                                                     <select name="event_id" class="form-control">
@@ -57,7 +57,7 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div>--}}
 
                                             <div class="col-lg-2 col-md-4 col-sm-4">
                                                 <div class="form-group">

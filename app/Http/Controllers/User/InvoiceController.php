@@ -19,7 +19,7 @@ class InvoiceController extends Controller
     public function index()
     {
         $userId = Auth::user()->id;
-        return $payments = $this->paymentService->getPaymentsByUser($userId);
+        $payments = $this->paymentService->getPaymentsByUser($userId);
 
         return View('user.invoice.index', compact('payments'));
     }
