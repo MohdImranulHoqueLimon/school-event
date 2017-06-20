@@ -13,4 +13,8 @@ class Constants
         1 => 'Active',
         2 => 'Suspend'];
     public static $student_status = [0, 1, 2];
+
+    public static $PAYMENT_PENDING = 0;
+    public static $PAYMENT_ACTIVE = 1;
+    public static $PAYMENT_CANCEL = 2;
 }

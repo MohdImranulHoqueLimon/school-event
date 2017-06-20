@@ -95,7 +95,7 @@
                                     <th width="10%"> Created</th>
                                     <th width="16%"> Approved By</th>
                                     <th width="10%">Status</th>
-                                    <th width="10%" style="text-align: center;"> Actions</th>
+                                    <th width="13%" style="text-align: center;"> Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -121,7 +121,24 @@
                                             @endif
                                         </td>
                                         <td>@if($payment->status === 1) Approved @else Pending @endif</td>
-                                        <td style="text-align: center;">
+                                        <td>
+                                            @if($payment->status === 1)
+                                            <a href="{{ route('admin.pending_payment', $payment->id) }}" style="float: left"
+                                               class="btn btn-icon-only grey-cascade">
+                                                <i class="fa fa-pause"></i>
+                                            </a>
+                                            @elseif($payment->status === 0)
+                                                <a href="{{ route('admin.approve_payment', $payment->id) }}" style="float: left"
+                                                   class="btn btn-icon-only grey-cascade">
+                                                    <i class="fa fa-check"></i>
+                                                </a>
+                                            @endif
+
+                                            <a href="{{ route('admin.cancel_payment', $payment->id) }}" style="float: left"
+                                               class="btn btn-icon-only grey-cascade">
+                                                <i class="fa fa-ban"></i>
+                                            </a>
+
                                             <form method="POST" class="form-inline" action="{{route('admin.payment', $payment->id)}}" onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}

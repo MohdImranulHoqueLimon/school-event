@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\EventsService;
 use App\Services\PaymentsService;
+use App\Support\Configs\Constants;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -67,4 +68,39 @@ class PaymentController extends Controller
         return redirect()->back();
     }
 
+    public function approvePayment($id) {
+        $result = $this->changePaymentStatus($id, Constants::$PAYMENT_ACTIVE);
+        if($result) {
+            flash('Successfully approved payment');
+        } else {
+            flash('Failed to approved payment');
+        }
+        return redirect()->back();
+    }
+
+    public function pendingPayment($id) {
+        $result = $this->changePaymentStatus($id, Constants::$PAYMENT_PENDING);
+        if($result) {
+            flash('Successfully pending to payment');
+        } else {
+            flash('Failed to pending to payment');
+        }
+        return redirect()->back();
+    }
+
+    public function cancelPayment($id) {
+        $result = $this->changePaymentStatus($id, Constants::$PAYMENT_CANCEL);
+        if($result) {
+            flash('Successfully cancel payment');
+        } else {
+            flash('Failed to cancel payment');
+        }
+        return redirect()->back();
+    }
+
+    private function changePaymentStatus($id, $status) {
+        $payment = $this->paymentService->find($id);
+        $payment->status = $status;
+        return $payment->save();
+    }
 }
