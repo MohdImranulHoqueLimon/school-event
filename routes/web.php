@@ -84,6 +84,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'r
             'uses' => 'Admin\PaymentController@destroy'
         ]
     );
+
+    Route::get('approve_payment{id}', ['as' => 'admin.approve_payment', 'uses' => 'Admin\PaymentController@approvePayment']);
+    Route::get('pending_payment{id}', ['as' => 'admin.pending_payment', 'uses' => 'Admin\PaymentController@pendingPayment']);
+    Route::get('cancel_payment{id}', ['as' => 'admin.cancel_payment', 'uses' => 'Admin\PaymentController@cancelPayment']);
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'role:Support-Admin']], function () {
