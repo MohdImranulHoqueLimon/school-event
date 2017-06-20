@@ -35,7 +35,35 @@ class PaymentsController extends Controller
 
     public function getProcessList(Request $request)
     {
-        return 'here will be the code';
+        $filters = $request->all();
+        $user = Auth::user();
+        $eventsList = $this->eventsService->showEventsByID($filters['event_id']);
+        return view('user.payments.process', compact('eventsList'));
+    }
+
+    public function checkoutPayment(Request $request)
+    {
+        $checkout_data = $request->all();
+        return view('user.payments.checkout', compact('checkout_data'));
+    }
+
+    public function conform(Request $request)
+    {
+        $input = $request->except('_token', '_wysihtml5_mode');
+        $newslist = $this->payementsService->store($input);
+
+        if ($newslist) {
+            flash('Payment created successfully!');
+            return redirect()->route('invoices');
+        }
+
+        flash('Failed to create Payment!', 'error');
+        return redirect()->back()->withInput($request->all());
+    }
+
+    public function invoices()
+    {
+       echo 'ok';
     }
 
     

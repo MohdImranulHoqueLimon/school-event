@@ -16,11 +16,7 @@ Dashboard
         <div class="row">
             <div class="col-md-12">
                 <div class="portlet light bordered">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-newspaper-o"></i>Register Events
-                        </div>
-                    </div>
+
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
                         <form class="login-form form-horizontal" role="form" method="POST" action="{{ route('get_process_list') }}">
@@ -43,43 +39,52 @@ Dashboard
                                 $events_list[] = $list['event_id'];
                             ?>
 
-                            <div class="form-body" style="margin-left: 20%">
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Select Events
-                                        <span class="required" aria-required="true"> * </span></label>
-                                        <div class="col-sm-5">
-                                          <select name="batch" class="form-control">
-                                            <option value=""> --- Select --- </option>
-                                            @foreach($eventsList as $list)
-                                            <?php if (in_array($list['id'],$events_list)){
-                                                continue;
-                                            }
-                                            ?>
-                                            <option value="{{ $list['id'] }}">
+                            <div class="panel panel-primary">
+                              <div class="panel-heading">
+                                <h3 class="panel-title">Register For Event</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-body" style="margin-left: 20%">
+                                    <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Select Events :
+                                            <span class="required" aria-required="true"> * </span></label>
+                                            <div class="col-sm-5">
+                                              <select name="event_id" class="form-control" required="">
+                                                <option value=""> --- Select --- </option>
+                                                @foreach($eventsList as $list)
+                                                <?php if (in_array($list['id'],$events_list)){
+                                                    continue;
+                                                }
+                                                ?>
+                                                <option value="{{ $list['id'] }}">
 
-                                                {!! $list['title'] !!}
+                                                    {!! $list['title'] !!}
 
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('batch'))
-                                        <span class="help-block">
-                                            {{ $errors->first('batch') }}
-                                        </span>
-                                        @endif
-                                    </div>
-                                    <div class="col-sm-4" style="margin-left: 4%">
-                                        <button type="submit" class="btn blue"><i class="fa fa-check"></i> Continue</button>
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            @if ($errors->has('batch'))
+                                            <span class="help-block">
+                                                {{ $errors->first('batch') }}
+                                            </span>
+                                            @endif
+                                        </div>
+                                        <div class="col-sm-4" style="margin-left: 4%">
+                                            <button type="submit" class="btn blue"><i class="fa fa-check"></i> Continue</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                        <!-- END FORM-->
-                    </div>
+                        </div>
+
+
+                    </form>
+                    <!-- END FORM-->
                 </div>
-                <!-- END CONTENT BODY -->
             </div>
-            <!-- END CONTENT -->
-            @endsection
-            @section('scripts')
-            @endsection
+            <!-- END CONTENT BODY -->
+        </div>
+        <!-- END CONTENT -->
+        @endsection
+        @section('scripts')
+        @endsection

@@ -44,4 +44,12 @@ class PaymentsService extends BaseService
     }
 
 
+    public function store( array $input )
+    {
+        $input['user_id'] = auth()->user()->id;
+
+        return $this->model->create($input);
+    }
+
+
 }

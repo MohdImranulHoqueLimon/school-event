@@ -120,8 +120,11 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
     Route::resource('profile', 'User\ProfileController');
     Route::resource('students', 'User\StudentsListController');
     Route::resource('payments', 'User\PaymentsController');
-
+  
     Route::post('payments/process_list', ['as' => 'get_process_list', 'uses' => 'User\PaymentsController@getProcessList']);
+    Route::post('payments/checkout_payment', ['as' => 'final_payment_list', 'uses' => 'User\PaymentsController@checkoutPayment']);
+    Route::post('payments/conform_payment', ['as' => 'conform', 'uses' => 'User\PaymentsController@conform']);
+    //Route::resource('payments/invoices', ['as' => 'invoices', 'uses' => 'User\PaymentsController@invoices']);
 });
 
 Route::get('/', 'HomeController@index');

@@ -16,17 +16,13 @@ Dashboard
         <div class="row">
             <div class="col-md-12">
                 <div class="portlet light bordered">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-newspaper-o"></i>Register Events
-                        </div>
-                    </div>
+                    
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
-                        {!! Form::open(['url' => route('payments.process'), 'method' => 'post', 'class' => 'form-horizontal panel','files'=>true]) !!}
-
-                        @if (count($errors) > 0)
-                        <div class="alert alert-danger">
+                        <form class="login-form form-horizontal" role="form" method="POST" action="{{ route('final_payment_list') }}">
+                           {{ csrf_field()  }}
+                           @if (count($errors) > 0)
+                           <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -34,41 +30,104 @@ Dashboard
                             </ul>
                         </div>
                         @endif
-                        <div class="form-body">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="batch" class="control-label">Select Events
-                                            <span class="required" aria-required="true"> * </span>
-                                        </label>
-                                        <select name="batch" class="form-control">
-                                            <option value=""> --- Select --- </option>
-                                            @foreach($eventsList as $list)
-                                            <option value="{{ $list['id'] }}">
 
-                                            {!! $list['title'] !!}
 
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('batch'))
-                                    <span class="help-block">
-                                        {{ $errors->first('batch') }}
-                                    </span>
-                                    @endif
+                        <div class="panel panel-primary">
+                          <div class="panel-heading">
+                          <h3 class="panel-title">Event Information</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-body">
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="event_name" class="control-label">Events Name : 
+
+                                            </label>
+                                            {!! $eventsList['title'] !!}
+                                             <input type="hidden" name="event_title" value="{!! $eventsList['title'] !!}">
+                                              <input type="hidden" name="event_id" value="{!! $eventsList['id'] !!}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="event_name" class="control-label">Events Details : 
+
+                                            </label>
+                                            {!! $eventsList['description'] !!}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label  class="control-label">Event Amount : 
+
+                                            </label>
+                                            {!! $eventsList['amount'] !!}
+                                            <input type="hidden" name="amount" value="{!! $eventsList['amount'] !!}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <?php if($eventsList['title'] == 0){ ?>
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="batch" class="control-label">Event Amount
+
+                                            </label>
+                                            <input type="number" class="form-control" min="{!! $eventsList['amount'] !!}" placeholder="Enter Events Amount" name="new_amount" value="{!! $eventsList['amount'] !!}" required autofocus>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php } ?>
+
+                                <?php if($eventsList['guest_allow'] == 1){ ?>
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label  class="control-label">Single Guest Amount : 
+
+                                            </label>
+                                            {!! $eventsList['guest_amount'] !!}
+                                             <input type="hidden" name="guest_amount" value="{!! $eventsList['guest_amount'] !!}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="batch" class="control-label">Guest Count
+
+                                            </label>
+                                            <input type="number" class="form-control" min="1" placeholder="Enter Guest Number" name="guest_count" value="" required autofocus>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <?php } ?>
+                            </div>
+                            <div class="form-actions right">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn blue"><i class="fa fa-check"></i> Continue</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
 
-                    </div>
-                    <div class="form-actions right">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button type="submit" class="btn blue"><i class="fa fa-check"></i> Continue</button>
-                            </div>
-                        </div>
-                    </div>
                 </form>
                 <!-- END FORM-->
             </div>
