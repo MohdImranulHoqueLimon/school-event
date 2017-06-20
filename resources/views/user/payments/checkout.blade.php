@@ -19,7 +19,7 @@ Dashboard
 
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
-                        <form class="login-form form-horizontal" role="form" method="POST" action="{{ route('conform') }}">
+                        <form class="login-form form-horizontal" role="form" method="POST" action="{{ route('confirm') }}">
                          {{ csrf_field()  }}
                          @if (count($errors) > 0)
                          <div class="alert alert-danger">

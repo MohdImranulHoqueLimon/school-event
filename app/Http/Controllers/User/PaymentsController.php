@@ -47,7 +47,7 @@ class PaymentsController extends Controller
         return view('user.payments.checkout', compact('checkout_data'));
     }
 
-    public function conform(Request $request)
+    public function confirm(Request $request)
     {
         $input = $request->except('_token', '_wysihtml5_mode');
         $newslist = $this->payementsService->store($input);
