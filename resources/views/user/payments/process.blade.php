@@ -37,7 +37,9 @@ Dashboard
                           <h3 class="panel-title">Event Information</h3>
                         </div>
                         <div class="panel-body">
-                            <div class="form-body">
+                            <div class="form-body process-form">
+
+                            <div class="alert alert-success information-box" role="alert">This is payment information, you can update if you want if this is not fixed event.</div>
 
                                 <div class="form-group">
                                     <div class="col-md-6">
@@ -80,7 +82,7 @@ Dashboard
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="batch" class="control-label">Event Amount
+                                            <label for="batch" class="control-label">Update Event Amount
 
                                             </label>
                                             <input type="number" class="form-control" min="{!! $eventsList['amount'] !!}" placeholder="Enter Events Amount" name="new_amount" value="{!! $eventsList['amount'] !!}" required autofocus>

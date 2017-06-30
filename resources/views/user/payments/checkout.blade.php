@@ -20,9 +20,9 @@ Dashboard
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
                         <form class="login-form form-horizontal" role="form" method="POST" action="{{ route('confirm') }}">
-                         {{ csrf_field()  }}
-                         @if (count($errors) > 0)
-                         <div class="alert alert-danger">
+                           {{ csrf_field()  }}
+                           @if (count($errors) > 0)
+                           <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -36,62 +36,63 @@ Dashboard
                           <div class="panel-heading">
                               <h3 class="panel-title">Event Information</h3>
                           </div>
-                          <div class="panel-body">
+                          <div class="panel-body checkout-form">
 
-
-                            <table class="table table-bordered">
-                               <tr>
-                                   <th>Event Title</th>
-                                   <th>Amount</th>
-                                   <th>Number Of Guest</th>
-                                   <th>Guest Amount</th>
-                                   <th>Total Amount</th>
-                               </tr>
-                               <tr>
-                                   <td>{!! $checkout_data['event_title'] !!}</td>
-                                   <td>
-                                       <?php 
-                                       $update_amount = $checkout_data['new_amount'] ? $checkout_data['new_amount'] : $checkout_data['amount'];
-                                       echo $update_amount;
-                                       ?>
-                                   </td>
-                                   <td>
-                                       <?php 
-                                       $guest_count = $checkout_data['guest_count'] ? $checkout_data['guest_count'] : 0;
-                                       echo $guest_count;
-                                       ?>
-                                   </td>
-                                   <td>
-                                       <?php 
-                                       echo $guest_total_amount = $guest_count * $checkout_data['guest_amount'];
-                                       ?>
-                                   </td>
-                                   <td>
-                                      <?php 
-                                      echo $total_amount = $update_amount + $guest_total_amount;
-                                      ?>
-                                  </td>
-                              </tr>
-                          </table>
-                          <input type="hidden" name="event_id" value="{!! $checkout_data['event_id'] !!}">
-                          <input type="hidden" name="amount" value="{!! $total_amount !!}">
-                          <input type="hidden" name="guest_count" value="{!! $guest_count !!}">
-                          <div class="form-actions right">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn blue"><i class="fa fa-check"></i> Continue</button>
-                                </div>
+                           <div class="alert alert-success information-box" role="alert">This is payment information, you can update if you want if this is not fixed event.</div>
+                           <table class="table table-bordered">
+                             <tr>
+                                 <th>Event Title</th>
+                                 <th>Amount</th>
+                                 <th>Number Of Guest</th>
+                                 <th>Guest Amount</th>
+                                 <th>Total Amount</th>
+                             </tr>
+                             <tr>
+                                 <td>{!! $checkout_data['event_title'] !!}</td>
+                                 <td>
+                                     <?php 
+                                     $update_amount = $checkout_data['new_amount'] ? $checkout_data['new_amount'] : $checkout_data['amount'];
+                                     echo $update_amount;
+                                     ?>
+                                 </td>
+                                 <td>
+                                     <?php 
+                                     $guest_count = isset($checkout_data['guest_count']) ? $checkout_data['guest_count'] : 0;
+                                     echo $guest_count;
+                                     ?>
+                                 </td>
+                                 <td>
+                                     <?php 
+                                     $guest_amount = isset($checkout_data['guest_amount']) ? $checkout_data['guest_amount'] : 0;
+                                     echo $guest_total_amount = $guest_count * $guest_amount;
+                                     ?>
+                                 </td>
+                                 <td>
+                                  <?php 
+                                  echo $total_amount = $update_amount + $guest_total_amount;
+                                  ?>
+                              </td>
+                          </tr>
+                      </table>
+                      <input type="hidden" name="event_id" value="{!! $checkout_data['event_id'] !!}">
+                      <input type="hidden" name="amount" value="{!! $total_amount !!}">
+                      <input type="hidden" name="guest_count" value="{!! $guest_count !!}">
+                      <div class="form-actions right">
+                        <div class="row">
+                            <div class="col-md-12">
+                            <button type="submit" class="btn blue"><i class="fa fa-check"></i> Conform</button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
 
-            </form>
-            <!-- END FORM-->
-        </div>
+        </form>
+        <!-- END FORM-->
     </div>
-    <!-- END CONTENT BODY -->
+</div>
+<!-- END CONTENT BODY -->
 </div>
 <!-- END CONTENT -->
 @endsection
