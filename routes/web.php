@@ -85,6 +85,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'r
         ]
     );
 
+    Route::get('invoice/{id}', ['as' => 'admin.invoice', 'uses' => 'Admin\InvoiceController@showInvoice']);
+
     Route::get('approve_payment{id}', ['as' => 'admin.approve_payment', 'uses' => 'Admin\PaymentController@approvePayment']);
     Route::get('pending_payment{id}', ['as' => 'admin.pending_payment', 'uses' => 'Admin\PaymentController@pendingPayment']);
     Route::get('cancel_payment{id}', ['as' => 'admin.cancel_payment', 'uses' => 'Admin\PaymentController@cancelPayment']);

@@ -87,15 +87,15 @@
                                    id="sample_1" width="100%">
                                 <thead>
                                 <tr>
-                                    <th width="18%"> User</th>
+                                    <th width="14%"> User</th>
                                     <th width="20"> Event</th>
-                                    <th width="8%"> Quantity</th>
-                                    <th width="9%">T. Amount</th>
-                                    <th width="9%">G. Amount</th>
+                                    <th width="7%"> Quantity</th>
+                                    <th width="7%">T. Amount</th>
+                                    <th width="7%">G. Amount</th>
                                     <th width="10%"> Created</th>
-                                    <th width="16%"> Approved By</th>
+                                    <th width="14%"> Approved By</th>
                                     <th width="10%">Status</th>
-                                    <th width="13%" style="text-align: center;"> Actions</th>
+                                    <th width="17%" style="text-align: center;"> Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -122,6 +122,10 @@
                                         </td>
                                         <td>@if($payment->status === 1) Approved @else Pending @endif</td>
                                         <td>
+                                            <a href="{{ route('admin.invoice', $payment->id) }}" style="float: left"
+                                               class="btn btn-icon-only grey-cascade">
+                                                <i class="fa fa-file-pdf-o"></i>
+                                            </a>
                                             @if($payment->status === 1)
                                             <a href="{{ route('admin.pending_payment', $payment->id) }}" style="float: left"
                                                class="btn btn-icon-only grey-cascade">
