@@ -99,11 +99,12 @@
                         <div class="portlet-title">
                             <div class="caption font-dark">
                                 <i class="icon-users font-dark"></i>
-                                <span class="caption-subject bold uppercase"> Invoice </span>schoo
+                                <span class="caption-subject bold uppercase"> Invoice </span>
                             </div>
                             <div class="actions">
                                 <div class="btn-group pull-right">
-                                    <button id="cmd" class="btn sbold green">Download PDF</button>
+                                    {{--<button id="cmd" class="btn sbold green">Download PDF</button>--}}
+                                    <a class="btn sbold green" href="{{ route('admin.invoice_download', $paymentInfo->id)  }}" >Download PDF</a>
                                 </div>
                             </div>
                         </div>

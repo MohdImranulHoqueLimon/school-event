@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\PaymentsService;
+use Elibyy\TCPDF\Facades\TCPDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class InvoiceController extends Controller
 {
@@ -20,5 +22,15 @@ class InvoiceController extends Controller
     {
         $paymentInfo = $this->paymentService->find($id);
         return view('admin.invoice.index', compact('paymentInfo'));
+    }
+
+    public function downloadInvoice($id) {
+
+        $invoiceHtml = $this->paymentService->getInvoiceHtml($id);
+
+        TCPDF::SetTitle('Invoice');
+        TCPDF::AddPage();
+        TCPDF::WriteHTML($invoiceHtml);
+        TCPDF::Output('hello_world.pdf');
     }
 }
