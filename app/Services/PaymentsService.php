@@ -60,12 +60,14 @@ class PaymentsService extends BaseService
         $html = '
         <html> 
             <body>
-                <div class="portlet-body">
-                
-<table>
+                <div class="portlet-body">               
+                                    <table>
                                         <tbody>
                                         <tr>
-                                            <td class="title" colspan="2">Invoice Image</td>
+                                            <td class="title" colspan="2">
+                                                <img name="invoicelogo" src="images/event.png" style="width:90%; width:50px;"><br/>
+                                                <img name="invoicelogo" src="images/invoice.png" style="width:90%; width:50px;">                                                
+                                            </td>
                                             <td>
                                                 Invoice #: ' . $paymentInfo->id . '<br>&nbsp;&nbsp;'
             . $paymentInfo->event->title . '<br/>&nbsp;
