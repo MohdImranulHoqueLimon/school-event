@@ -51,6 +51,16 @@
                 </a>
             </li>
 
+            <li class="nav-item @if (Route::is('invoice.*'))start active open @endif">
+                <a href="{{url('/user/invoice')}}" class="nav-link ">
+                    <i class="fa fa-file-pdf-o"></i>
+                    <span class="title">My Invoices</span>
+                    @if (Route::is('invoice.*'))
+                        <span class="selected"></span>
+                    @endif
+                </a>
+            </li>
+
         </ul>
     </div>
 </div>

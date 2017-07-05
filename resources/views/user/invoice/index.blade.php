@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('layouts_user.app')
 @section('title')
     Payments
 @endsection
@@ -27,10 +27,6 @@
                                 <span class="caption-subject bold uppercase"> Payments </span>
                             </div>
                             <div class="actions">
-                                <div class="btn-group pull-right">
-                                    <a href="{{route('events.create')}}" class="btn sbold green">Add
-                                        Events <i class="fa fa-plus"></i></a>
-                                </div>
                             </div>
                         </div>
                         <div class="portlet-body">
@@ -42,7 +38,7 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body">
-                                    <form class="horizontal-form" role="form" method="GET" action="/admin/payments">
+                                    <form class="horizontal-form" role="form" method="GET" action="/user/payments">
                                         <div class="row">
                                             {{--<div class="col-md-2">
                                                 <div class="form-group">
@@ -90,12 +86,12 @@
                                     <th width="18%"> User</th>
                                     <th width="20"> Event</th>
                                     <th width="8%"> Quantity</th>
-                                    <th width="9%">T. Amount</th>
-                                    <th width="9%">G. Amount</th>
+                                    <th width="7%">T. Amount</th>
+                                    <th width="7%">G. Amount</th>
                                     <th width="10%"> Created</th>
-                                    <th width="16%"> Approved By</th>
-                                    <th width="10%">Status</th>
-                                    <th width="13%" style="text-align: center;"> Actions</th>
+                                    <th width="12%"> Approved By</th>
+                                    <th width="8%">Status</th>
+                                    <th width="17%" style="text-align: center;"> Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -122,7 +118,13 @@
                                         </td>
                                         <td>@if($payment->status === 1) Approved @else Pending @endif</td>
                                         <td>
-                                            @if($payment->status === 1)
+
+                                            <a href="{{ route('user.invoice', $payment->id) }}" style="float: left"
+                                               class="btn btn-icon-only grey-cascade">
+                                                <i class="fa fa-file-pdf-o"></i>
+                                            </a>
+
+                                            {{--@if($payment->status === 1)
                                             <a href="{{ route('admin.pending_payment', $payment->id) }}" style="float: left"
                                                class="btn btn-icon-only grey-cascade">
                                                 <i class="fa fa-pause"></i>
@@ -132,12 +134,12 @@
                                                    class="btn btn-icon-only grey-cascade">
                                                     <i class="fa fa-check"></i>
                                                 </a>
-                                            @endif
+                                            @endif--}}
 
-                                            <a href="{{ route('admin.cancel_payment', $payment->id) }}" style="float: left"
+                                            {{--<a href="{{ route('admin.cancel_payment', $payment->id) }}" style="float: left"
                                                class="btn btn-icon-only grey-cascade">
                                                 <i class="fa fa-ban"></i>
-                                            </a>
+                                            </a>--}}
 
                                             <form method="POST" class="form-inline" action="{{route('admin.payment', $payment->id)}}" onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}

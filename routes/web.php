@@ -134,6 +134,9 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
     Route::post('payments/confirm_payment', ['as' => 'confirm', 'uses' => 'User\PaymentsController@confirm']);
 
     Route::resource('invoice', 'User\InvoiceController');
+
+    Route::get('invoice/{id}', ['as' => 'user.invoice', 'uses' => 'User\InvoiceController@showInvoice']);
+    Route::get('invoice_download/{id}', ['as' => 'user.invoice_download', 'uses' => 'User\InvoiceController@downloadInvoice']);
 });
 
 Route::get('/', 'HomeController@index');
