@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => 'hello@example.com',
+        'address' => 'limon1036@hotmail.com',
         'name' => 'Example',
     ],
 
@@ -97,7 +97,7 @@ return [
     |
     */
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => '029907abbu',
 
     /*
     |--------------------------------------------------------------------------

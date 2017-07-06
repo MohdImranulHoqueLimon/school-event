@@ -91,6 +91,10 @@ class UserService
         return false;
     }
 
+    public function findById($id) {
+        return $this->repository->find($id);
+    }
+
     /**
      * @param $id
      *

@@ -3,21 +3,30 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\EmailService;
 use App\Services\EventsService;
 use App\Services\PaymentsService;
+use App\Services\UserService;
 use App\Support\Configs\Constants;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
 
     private $paymentService;
     private $eventService;
+    private $emailService;
+    private $userService;
 
-    public function __construct(PaymentsService $paymentsService, EventsService $eventsService)
+    public function __construct(
+        PaymentsService $paymentsService, EventsService $eventsService, EmailService $emailService, UserService $userService
+    )
     {
         $this->paymentService = $paymentsService;
         $this->eventService = $eventsService;
+        $this->emailService = $emailService;
+        $this->userService = $userService;
     }
 
     /**
@@ -70,6 +79,10 @@ class PaymentController extends Controller
 
     public function approvePayment($id) {
         $result = $this->changePaymentStatus($id, Constants::$PAYMENT_ACTIVE);
+
+        $userObj = $this->userService->findById(Auth::user()->id);
+        $this->emailService->sendEmail($userObj, 'sendmail');
+
         if($result) {
             flash('Successfully approved payment');
         } else {
