@@ -108,6 +108,13 @@
                                 </div>
                             </div>
                         </div>
+                        <?php
+                        $guestAmount = ($paymentInfo->event->guest_amount && $paymentInfo->event->guest_amount > 0) ? $paymentInfo->event->guest_amount : 0;
+                        $guestCount = ($paymentInfo->guest_count && $paymentInfo->guest_count > 0) ? $paymentInfo->guest_count : 0;
+
+                        $totalGuestAmount = $guestAmount * $guestCount;
+                        $ownTicketAmount = $paymentInfo->amount - $totalGuestAmount;
+                        ?>
                         <div class="portlet-body">
                             <div id="content">
                                 <div class="invoice-box">
@@ -179,23 +186,22 @@
                                         </tr>
 
                                         <tr class="item">
-                                            <td>Website design</td>
-                                            <td>$300.00</td>
+                                            <td>Own Ticket</td>
+                                            <td> {{ $ownTicketAmount }}</td>
                                         </tr>
 
-                                        <tr class="item">
-                                            <td>Hosting (3 months)</td>
-                                            <td>$75.00</td>
-                                        </tr>
-
-                                        <tr class="item last">
-                                            <td>Domain name (1 year)</td>
-                                            <td>$10.00</td>
-                                        </tr>
+                                        @if($guestCount > 0)
+                                            @for($i = 0; $i < $guestCount; $i++)
+                                                <tr class="item">
+                                                    <td>Guest {{ ($i + 1) }} </td>
+                                                    <td> {{ $paymentInfo->event->guest_amount }} </td>
+                                                </tr>
+                                            @endfor
+                                        @endif
 
                                         <tr class="total">
                                             <td></td>
-                                            <td>Total: $385.00</td>
+                                            <td>Total: {{ $paymentInfo->amount }}</td>
                                         </tr>
                                         </tbody>
                                     </table>
