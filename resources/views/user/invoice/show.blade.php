@@ -177,7 +177,7 @@
 
                                         <tr class="details">
                                             <td>Cash</td>
-                                            <td>1000</td>
+                                            <td>{{ $paymentInfo->amount }}</td>
                                         </tr>
 
                                         <tr class="heading">

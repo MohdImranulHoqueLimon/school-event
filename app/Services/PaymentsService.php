@@ -57,8 +57,8 @@ class PaymentsService extends BaseService
     {
         $paymentInfo = $this->model->find($id);
 
-        $guestAmount = ($paymentInfo->event->guest_amount && $paymentInfo->event->guest_amount > 0 ) ? $paymentInfo->event->guest_amount : 0;
-        $guestCount = ($paymentInfo->guest_count && $paymentInfo->guest_count > 0 ) ? $paymentInfo->guest_count : 0;
+        $guestAmount = ($paymentInfo->event->guest_amount && $paymentInfo->event->guest_amount > 0) ? $paymentInfo->event->guest_amount : 0;
+        $guestCount = ($paymentInfo->guest_count && $paymentInfo->guest_count > 0) ? $paymentInfo->guest_count : 0;
 
         //$guestAmount = $paymentInfo->guest_amount;
 
@@ -69,7 +69,7 @@ class PaymentsService extends BaseService
         <html> 
             <body>
                 <div class="portlet-body">               
-                                    <table>
+                                    <table>                                    
                                         <tbody>
                                         <tr>
                                             <td class="title" colspan="2">
@@ -96,22 +96,22 @@ class PaymentsService extends BaseService
                                                 TX 12345
                                             </td>
                                             <td>
-                                                ' . $paymentInfo->user->name . '<br>';
+                                                ' . $paymentInfo->user->name . '<br/>';
 
         if ($paymentInfo->user->profession != "") {
-            $html .= $paymentInfo->user->profession . '</br>';
+            $html .= '&nbsp;&nbsp;' . $paymentInfo->user->profession . '<br/>';
         }
 
-        $html .=    '&nbsp;&nbsp;' . $paymentInfo->user->email . '<br>  '
-                                                . $paymentInfo->user->phone . '  
-                                                <br>  ' . $paymentInfo->user->batch .'
+        $html .= '&nbsp;&nbsp;' . $paymentInfo->user->email . '<br/>&nbsp;&nbsp;'
+            . $paymentInfo->user->phone . '  
+                                                <br>  ' . $paymentInfo->user->batch . '
                                                 <br>
                                             </td>
                                         </tr>
                                         </tbody>
                                     </table>';
-                                    
-                       $html .= '<table style="margin-left: 40px;">
+
+        $html .= '<table style="margin-left: 40px;">
                                         <tbody>
                                         <tr>
                                             <td colspan="2">Payment Method</td>
@@ -119,7 +119,7 @@ class PaymentsService extends BaseService
                                         </tr>
                                         <tr>
                                             <td colspan="2">Cash</td>
-                                            <td>1000</td>
+                                            <td>' . $paymentInfo->amount . '</td>
                                         </tr>
                                         </tbody>
                                     </table>        
@@ -136,16 +136,16 @@ class PaymentsService extends BaseService
                                 <td>' . $ownTicketAmount . '</td>
                             </tr>';
 
-                       if($guestCount > 0) {
-                           for($i = 0; $i < $guestCount; $i++) {
-                               $html .= '<tr class="item">
+        if ($guestCount > 0) {
+            for ($i = 0; $i < $guestCount; $i++) {
+                $html .= '<tr class="item">
                                             <td>Guest ' . ($i + 1) . '</td>
                                             <td>' . $paymentInfo->event->guest_amount . '</td>
                                         </tr>';
-                           }
-                       }
+            }
+        }
 
-                  $html .=  '<tr class="total">
+        $html .= '<tr class="total">
                                 <td>Total</td>
                                 <td>' . $paymentInfo->amount . '</td>
                             </tr>
