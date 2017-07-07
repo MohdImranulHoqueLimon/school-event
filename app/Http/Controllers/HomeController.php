@@ -40,7 +40,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $newsList = $this->newsService->getActiveNewsList();
+        return view('welcome', compact('newsList'));
     }
 
     /**

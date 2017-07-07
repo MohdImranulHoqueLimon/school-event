@@ -56,56 +56,22 @@
         <div class="overlay">
             <div class="container">
                 <div class="row">
-                    {{--<div class="col-md-8 col-md-offset-2 intro-text">--}}
-
-                        {{--<h1>Home Construction<br>& Remodeling</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare
-                            diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at.</p>
-                        <a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a>--}}
-
-                        {{--<div id="thirdCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-                            <div class="carousel-inner" role="listbox">
-                                <div class="item" style="display: block">
-                                    <div class="col-md-8 col-md-offset-2 intro-text">
-                                        <div>
-                                            <img class="img-responsive" src="/images/app/Carasuel-3.jpg" alt="image">
-                                            --}}{{--<h1>Home Construction<br>& Remodeling</h1>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare
-                                                diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at.</p>
-                                            <a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a>--}}{{--
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="col-md-8 col-md-offset-2 intro-text">
-                                        <div>
-                                            <img class="img-responsive" src="/images/app/Carasuel-1.jpg" alt="image">
-                                            --}}{{--<h1>Home Construction<br>& Remodeling</h1>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare
-                                                diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at.</p>
-                                            <a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a>--}}{{--
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>--}}
                     <div id="myCarousel" class="carousel slide text-center intro-text" data-ride="carousel">
-
-                        <!-- Wrapper for slides -->
                         <div class="carousel-inner">
-                            <div class="item active">
-                                <h1>Home Construction<br>& Remodeling</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare
-                                    diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at.</p>
-                                <a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a>
-                            </div>
-                            <div class="item">
-                                <h1>Home Construction<br>& Remodeling</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare
-                                    diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at.</p>
-                                <a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a>
-                            </div>
+
+                            @if($newsList->count())
+                                <?php $cnt = 0; ?>
+                                @foreach($newsList as $news)
+                                    <div class="item {!! $cnt == 0 ? 'active' : '' !!}">
+                                        <h1>{{ $news->news_title }}</h1>
+                                        <p>{{ $news->news_body }}</p>
+                                        <a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a>
+                                    </div>
+                                    <?php $cnt++; ?>
+                                @endforeach
+                            @else
+                                <h1>Currently There is No News</h1>
+                            @endif
                         </div>
 
                         <!-- Left and right controls -->
@@ -118,15 +84,6 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-
-                    <script>
-                        $(document).ready(function () {
-                            $('#myCarousel').carousel({
-                                interval: 1000
-                            });
-                        });
-                    </script>
-                    {{--</div>--}}
                 </div>
             </div>
         </div>
@@ -362,10 +319,14 @@
         <p>&copy; 2017 Design by <a href="#" rel="nofollow">Bagerhat School</a></p>
     </div>
 </div>
-{{--<script type="text/javascript" src="js/jquery.1.11.1.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/main.js"></script>--}}
 
+<script>
+    $(document).ready(function () {
+        $('#myCarousel').carousel({
+            interval: 4000
+        });
+    });
+</script>
 
 </body>
 </html>

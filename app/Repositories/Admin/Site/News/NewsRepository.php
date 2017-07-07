@@ -49,6 +49,10 @@ class NewsRepository extends Repository
         return $query->orderBy ( 'id' , 'DESC' )->paginate(UtilityService::$displayRecordPerPage);
     }
 
+    public function getAllActiveNews() {
+        return $this->getQuery()->where('is_active', 1)->orderBy ( 'id' , 'DESC' )->get();
+    }
+
     /**
      * @param $filter
      * @return mixed

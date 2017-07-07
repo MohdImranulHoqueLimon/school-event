@@ -53,6 +53,10 @@ class NewsService
         return null;
     }
 
+    public function getActiveNewsList() {
+        return $this->newsRepository->getAllActiveNews();
+    }
+
     /**
      * @param $photo_name
      *
