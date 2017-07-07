@@ -15,10 +15,15 @@
     {!! Html::style('assets/admin/global/plugins/bootstrap/css/bootstrap.min.css') !!}
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     {!! Html::style('assets/home-page.css') !!}
-    <link rel="stylesheet" type="text/css" href="css/nivo-lightbox/nivo-lightbox.css">
-    <link rel="stylesheet" type="text/css" href="css/nivo-lightbox/default.css">
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+    {!! Html::style('assets/admin/layouts/layout/css/custom.css') !!}
+
+    {!! Html::script('assets/admin/global/plugins/jquery.min.js') !!}
+    {!! Html::script('assets/admin/global/plugins/bootstrap/js/bootstrap.min.js') !!}
+
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 <!-- Navigation
@@ -51,12 +56,77 @@
         <div class="overlay">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 col-md-offset-2 intro-text">
-                        <h1>Home Construction<br>& Remodeling</h1>
+                    {{--<div class="col-md-8 col-md-offset-2 intro-text">--}}
+
+                        {{--<h1>Home Construction<br>& Remodeling</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare
                             diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at.</p>
-                        <a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a>
+                        <a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a>--}}
+
+                        {{--<div id="thirdCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item" style="display: block">
+                                    <div class="col-md-8 col-md-offset-2 intro-text">
+                                        <div>
+                                            <img class="img-responsive" src="/images/app/Carasuel-3.jpg" alt="image">
+                                            --}}{{--<h1>Home Construction<br>& Remodeling</h1>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare
+                                                diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at.</p>
+                                            <a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a>--}}{{--
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <div class="col-md-8 col-md-offset-2 intro-text">
+                                        <div>
+                                            <img class="img-responsive" src="/images/app/Carasuel-1.jpg" alt="image">
+                                            --}}{{--<h1>Home Construction<br>& Remodeling</h1>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare
+                                                diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at.</p>
+                                            <a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a>--}}{{--
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>--}}
+                    <div id="myCarousel" class="carousel slide text-center intro-text" data-ride="carousel">
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <h1>Home Construction<br>& Remodeling</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare
+                                    diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at.</p>
+                                <a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a>
+                            </div>
+                            <div class="item">
+                                <h1>Home Construction<br>& Remodeling</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare
+                                    diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at.</p>
+                                <a href="#about" class="btn btn-custom btn-lg page-scroll">Learn More</a>
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
+
+                    <script>
+                        $(document).ready(function () {
+                            $('#myCarousel').carousel({
+                                interval: 1000
+                            });
+                        });
+                    </script>
+                    {{--</div>--}}
                 </div>
             </div>
         </div>
@@ -163,96 +233,6 @@
                                 </div>
                                 <img src="img/portfolio/01-small.jpg" class="img-responsive" alt="Project Title">
                             </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="img/portfolio/02-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-                                <div class="hover-text">
-                                    <h4>Adipiscing Elit</h4>
-                                </div>
-                                <img src="img/portfolio/02-small.jpg" class="img-responsive" alt="Project Title">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="img/portfolio/03-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-                                <div class="hover-text">
-                                    <h4>Lorem Ipsum</h4>
-                                </div>
-                                <img src="img/portfolio/03-small.jpg" class="img-responsive" alt="Project Title">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="portfolio-item">
-                        <div class="hover-bg"><a href="img/portfolio/04-large.jpg" title="Project Title"
-                                                 data-lightbox-gallery="gallery1">
-                                <div class="hover-text">
-                                    <h4>Lorem Ipsum</h4>
-                                </div>
-                                <img src="img/portfolio/04-small.jpg" class="img-responsive" alt="Project Title"> </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="portfolio-item">
-                        <div class="hover-bg"><a href="img/portfolio/05-large.jpg" title="Project Title"
-                                                 data-lightbox-gallery="gallery1">
-                                <div class="hover-text">
-                                    <h4>Adipiscing Elit</h4>
-                                </div>
-                                <img src="img/portfolio/05-small.jpg" class="img-responsive" alt="Project Title"> </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="portfolio-item">
-                        <div class="hover-bg"><a href="img/portfolio/06-large.jpg" title="Project Title"
-                                                 data-lightbox-gallery="gallery1">
-                                <div class="hover-text">
-                                    <h4>Dolor Sit</h4>
-                                </div>
-                                <img src="img/portfolio/06-small.jpg" class="img-responsive" alt="Project Title"> </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="portfolio-item">
-                        <div class="hover-bg"><a href="img/portfolio/07-large.jpg" title="Project Title"
-                                                 data-lightbox-gallery="gallery1">
-                                <div class="hover-text">
-                                    <h4>Dolor Sit</h4>
-                                </div>
-                                <img src="img/portfolio/07-small.jpg" class="img-responsive" alt="Project Title"> </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="portfolio-item">
-                        <div class="hover-bg"><a href="img/portfolio/08-large.jpg" title="Project Title"
-                                                 data-lightbox-gallery="gallery1">
-                                <div class="hover-text">
-                                    <h4>Lorem Ipsum</h4>
-                                </div>
-                                <img src="img/portfolio/08-small.jpg" class="img-responsive" alt="Project Title"> </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="portfolio-item">
-                        <div class="hover-bg"><a href="img/portfolio/09-large.jpg" title="Project Title"
-                                                 data-lightbox-gallery="gallery1">
-                                <div class="hover-text">
-                                    <h4>Adipiscing Elit</h4>
-                                </div>
-                                <img src="img/portfolio/09-small.jpg" class="img-responsive" alt="Project Title"> </a>
                         </div>
                     </div>
                 </div>
@@ -375,18 +355,17 @@
         </div>
     </div>
 </div>
+
 <!-- Footer Section -->
 <div id="footer">
     <div class="container text-center">
         <p>&copy; 2017 Design by <a href="#" rel="nofollow">Bagerhat School</a></p>
     </div>
 </div>
-<script type="text/javascript" src="js/jquery.1.11.1.js"></script>
+{{--<script type="text/javascript" src="js/jquery.1.11.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/SmoothScroll.js"></script>
-<script type="text/javascript" src="js/nivo-lightbox.js"></script>
-<script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
-<script type="text/javascript" src="js/contact_me.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/main.js"></script>--}}
+
+
 </body>
 </html>
