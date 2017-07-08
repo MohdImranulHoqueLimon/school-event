@@ -43,8 +43,7 @@ class EmailService extends BaseService
         // TODO: Implement filterData() method.
     }
 
-    public function mailSendProcess($to, $subject , $message )
-   { 
+    public function mailSendProcess($to, $subject , $message ) {
          
          $header = "From:admin@member.exstudentsbghs.com \r\n";
          $header .= "MIME-Version: 1.0\r\n";
@@ -53,9 +52,8 @@ class EmailService extends BaseService
          $retval = mail ($to, $subject, $message,$header);
          
          if( $retval == true ) {
-            echo 0;
-         }else {
-            echo 0;
+            return true;
          }
+         return false;
    }
 }
