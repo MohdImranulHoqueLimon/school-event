@@ -15,10 +15,8 @@
     {!! Html::style('assets/admin/global/plugins/bootstrap/css/bootstrap.min.css') !!}
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     {!! Html::style('assets/home-page.css') !!}
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-
     {!! Html::style('assets/admin/layouts/layout/css/custom.css') !!}
 
     {!! Html::script('assets/admin/global/plugins/jquery.min.js') !!}
@@ -26,17 +24,16 @@
 
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-<!-- Navigation
-    ==========================================-->
+
 <nav id="menu" class="navbar navbar-default navbar-fixed-top" style="padding-bottom: 10px;padding-top: 10px;">
-    <div class="container">
+     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span> <span
                         class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-            <a class="navbar-brand page-scroll" href="#page-top"><img src="images/main_logo.png" style="height: 50px;margin-top: -20px"></a>
-            
+            <a class="navbar-brand page-scroll" href="#page-top"> <a class="navbar-brand page-scroll" href="#page-top"><img src="images/main_logo.png" style="height: 50px;margin-top: -20px"></a>
+ </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -45,12 +42,21 @@
                 <li><a href="#about" class="page-scroll">About</a></li>
                 <li><a href="#testimonials" class="page-scroll">Testimonials</a></li>
                 <li><a href="#contact" class="page-scroll">Contact</a></li>
+                @if (Route::has('login'))
+                    @if(!Auth::check())
+                        <li><a href="{{ url('/sign-in') }}" class="page-scroll">Login</a></li>
+                        <li><a href="{{ url('/register') }}" class="page-scroll">Register</a></li>
+                    @else
+                        <li><a href="{{ url('user/profile') }}" class="page-scroll">Profile</a></li>
+                        <li><a href="{{ url('/logout') }}" class="page-scroll">Logout</a></li>
+                    @endif
+                @endif
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
 </nav>
-<!-- Header -->
+
 <header id="header">
     <div class="intro">
         <div class="overlay">
@@ -145,31 +151,16 @@
             <h2>Next Events</h2>
         </div>
         <div class="row">
+            @foreach($nextEvents as $event)
             <div class="col-md-4">
-                <div class="service-media"><img src="home-page/service-1.jpg" alt=" "></div>
+                <div class="service-media">Pay: <b>{{ $event->amount  }}</b></div>
+                <div class="service-media">Guest pay: <b>{{ $event->guest_amount  }}</b></div>
                 <div class="service-desc">
-                    <h3>New Home Construction</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam
-                        sedasd commodo nibh ante facilisis bibendum dolor feugiat at.</p>
+                    <h3>{{ $event->title  }}</h3>
+                    <p>{{ $event->description }}</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="service-media"><img src="img/services/service-2.jpg" alt=" "></div>
-                <div class="service-desc">
-                    <h3>Home Additions</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam
-                        sedasd commodo nibh ante facilisis bibendum dolor feugiat at. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="service-media"><img src="img/services/service-3.jpg" alt=" "></div>
-                <div class="service-desc">
-                    <h3>Bathroom Remodels</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam
-                        sedasd commodo nibh ante facilisis bibendum dolor feugiat at.</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
@@ -180,20 +171,16 @@
             <h2>Previous Events</h2>
         </div>
         <div class="row">
-            <div class="portfolio-items">
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="img/portfolio/01-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-                                <div class="hover-text">
-                                    <h4>Lorem Ipsum</h4>
-                                </div>
-                                <img src="img/portfolio/01-small.jpg" class="img-responsive" alt="Project Title">
-                            </a>
-                        </div>
+            @foreach($prevEvents as $event)
+                <div class="col-md-4">
+                    <div class="service-media">Pay: <b>{{ $event->amount  }}</b></div>
+                    <div class="service-media">Guest pay: <b>{{ $event->guest_amount  }}</b></div>
+                    <div class="service-desc">
+                        <h3>{{ $event->title  }}</h3>
+                        <p>{{ $event->description }}</p>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>

@@ -16,7 +16,6 @@
             <div class="row">
                 @include('shared.flash')
                 <div class="col-md-12">
-                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
                     <div class="portlet light bordered">
                         <div class="portlet-title">
                             <div class="caption font-dark">
@@ -32,6 +31,22 @@
                             </div>
                         </div>
                         <div class="portlet-body">
+                            @if($user->status == 0)
+                                <div class="alert alert-warning">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    Your account is pending. Please wait until admin activate your account or inform the admin
+                                </div>
+                            @elseif($user->status == 2)
+                                <div class="alert alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    Your account is suspended. Please contact with admin
+                                </div>
+                            @endif
+
                             <table class="table table-bordered">
                                 <tbody>
                                 <tr>

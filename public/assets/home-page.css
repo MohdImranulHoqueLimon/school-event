@@ -120,7 +120,7 @@ hr {
     background-color: #1b6d3f;
 }
 .section-title {
-    margin-bottom: 70px;
+    margin-bottom: 40px;
 }
 .section-title h2 {
     position: relative;
@@ -277,7 +277,7 @@ header .intro-text {
 }
 /* Services Section */
 #services {
-    padding: 100px 0;
+    padding: 70px 0;
 }
 #services .service-media {
     margin: 10px;
