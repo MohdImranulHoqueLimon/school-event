@@ -50,7 +50,7 @@ class EmailService extends BaseService
          $header .= "MIME-Version: 1.0\r\n";
          $header .= "Content-type: text/html\r\n";
          
-         $retval = mail ($to,$subject,$message,$header);
+         $retval = mail ($to, $subject, $message,$header);
          
          if( $retval == true ) {
             echo 0;

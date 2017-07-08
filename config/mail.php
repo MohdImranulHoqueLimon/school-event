@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => 'limon1036@hotmail.com',
+        'address' => 'example@gmail.com',
         'name' => 'Example',
     ],
 
@@ -97,7 +97,7 @@ return [
     |
     */
 
-    'password' => '029907abbu',
+    'password' => '123456',
 
     /*
     |--------------------------------------------------------------------------

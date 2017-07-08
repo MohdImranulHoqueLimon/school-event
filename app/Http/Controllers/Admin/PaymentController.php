@@ -81,7 +81,7 @@ class PaymentController extends Controller
         $result = $this->changePaymentStatus($id, Constants::$PAYMENT_ACTIVE);
 
         $userObj = $this->userService->findById(Auth::user()->id);
-        $this->emailService->sendEmail($userObj, 'sendmail');
+        $this->emailService->mailSendProcess($userObj->email, 'School Event', 'This is from bagerhat school');
 
         if($result) {
             flash('Successfully approved payment');
