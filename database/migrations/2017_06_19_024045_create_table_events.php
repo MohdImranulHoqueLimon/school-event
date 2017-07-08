@@ -24,6 +24,7 @@ class CreateTableEvents extends Migration
             $table->integer('created_by')->unsigned()->default(0);
             $table->boolean('status')->default(false);
             $table->dateTime('event_date');
+            $table->dateTime('last_registration_date');
             $table->timestamps();
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
         });

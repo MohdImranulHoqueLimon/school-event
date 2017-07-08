@@ -28,7 +28,6 @@ class HomeController extends Controller
      */
     public function __construct(TestimonialService $testimonialService, NewsService $newsService, EventsService $eventsService)
     {
-        //$this->middleware('auth');
         $this->testimonialService = $testimonialService;
         $this->newsService = $newsService;
         $this->eventService = $eventsService;
@@ -44,8 +43,9 @@ class HomeController extends Controller
         $newsList = $this->newsService->getActiveNewsList();
         $nextEvents = $this->eventService->getAllUpcomingEvent();
         $prevEvents = $this->eventService->getAllPreviousEvent();
+        $testimonials = $this->testimonialService->showAllTestimonial();
 
-        return view('welcome', compact('newsList', 'nextEvents', 'prevEvents'));
+        return view('welcome', compact('newsList', 'nextEvents', 'prevEvents', 'testimonials'));
     }
 
     /**
