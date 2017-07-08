@@ -70,12 +70,12 @@
 
                                 <div class="form-group">
                                     <div class="col-md-3">
-                                        <label class=" control-label">Date
+                                        <label class=" control-label">Event Date Time
                                             <span class="required" aria-required="true"> * </span>
                                         </label><br>
                                         <input type="text" class="form-control" name="event_date" required autofocus
                                                id="event_date"
-                                               value="{{ date('d M, Y', strtotime($events->event_date)) }}">
+                                               value="{{ date('F d, Y h:i A', strtotime($events->event_date)) }}">
                                     </div>
                                 </div>
 
@@ -86,7 +86,7 @@
                                         </label><br>
                                         <input type="text" class="form-control" name="last_registration_date" required
                                                autofocus id="last_registration_date"
-                                               value="{{ date('d M, Y', strtotime($events->last_registration_date)) }}">
+                                               value="{{ date('F d, Y', strtotime($events->last_registration_date)) }}">
                                     </div>
                                 </div>
 
@@ -222,18 +222,13 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"/>
 
-    {{--{!! Html::script('assets/admin/pages/scripts/components-form-tools.min.js') !!}
-    {!! Html::script('assets/admin/pages/scripts/components-editors.min.js') !!}--}}
-
-    <!-- END PAGE LEVEL SCRIPTS -->
-
     <script type="text/javascript">
 
         $(function () {
 
             $('#event_date').daterangepicker({
                     locale: {
-                        format: 'MMMM D, YYYY HH:MM'
+                        format: 'MMMM D, YYYY h:mm A'
                     },
                     timePicker: true,
                     singleDatePicker: true,

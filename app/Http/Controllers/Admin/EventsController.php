@@ -61,11 +61,12 @@ class EventsController extends Controller
         ]);
     }
 
- public function update( Request $request, $id)
+    public function update(Request $request, $id)
     {
-         $input = $request->except('_token', '_method', '_wysihtml5_mode');
-        // print_r($input);
-
+        $input = $request->except('_token', '_method', '_wysihtml5_mode');
+        $input['event_date'] = date('Y-m-d H:i:s', strtotime($input['event_date']));
+        $input['last_registration_date'] = date('Y-m-d H:i:s', strtotime($input['last_registration_date']));
+        //return $input;
         $newslist = $this->eventsService->updateEvents($input, $id);
 
         if ($newslist) {
@@ -88,5 +89,5 @@ class EventsController extends Controller
         flash('Events Delete unsuccessfully!', 'error');
         return redirect()->route('events.index');
     }
-    
+
 }
