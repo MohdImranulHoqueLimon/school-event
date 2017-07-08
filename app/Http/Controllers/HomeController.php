@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\EventsService;
 use App\Services\Site\NewsService;
 use App\Services\Site\TestimonialService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -20,17 +18,20 @@ class HomeController extends Controller
      */
     private $newsService;
 
+    private $eventService;
+
     /**
      * Create a new controller instance.
      *
      * @param TestimonialService $testimonialService
      * @param NewsService $newsService
      */
-    public function __construct(TestimonialService $testimonialService, NewsService $newsService)
+    public function __construct(TestimonialService $testimonialService, NewsService $newsService, EventsService $eventsService)
     {
         //$this->middleware('auth');
         $this->testimonialService = $testimonialService;
         $this->newsService = $newsService;
+        $this->eventService = $eventsService;
     }
 
     /**
@@ -41,7 +42,10 @@ class HomeController extends Controller
     public function index()
     {
         $newsList = $this->newsService->getActiveNewsList();
-        return view('welcome', compact('newsList'));
+        $nextEvents = $this->eventService->getAllUpcomingEvent();
+        $prevEvents = $this->eventService->getAllPreviousEvent();
+
+        return view('welcome', compact('newsList', 'nextEvents', 'prevEvents'));
     }
 
     /**

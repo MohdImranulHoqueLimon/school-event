@@ -23,6 +23,7 @@ class CreateTableEvents extends Migration
             $table->boolean('guest_allow')->default(false);
             $table->integer('created_by')->unsigned()->default(0);
             $table->boolean('status')->default(false);
+            $table->dateTime('event_date');
             $table->timestamps();
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
         });

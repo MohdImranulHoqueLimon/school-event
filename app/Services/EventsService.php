@@ -22,6 +22,14 @@ class EventsService extends BaseService
         return $this->model->where('status', '=', 1)->get();
     }
 
+    public function getAllUpcomingEvent() {
+        return $this->model->where('event_date', '>=', date('Y-m-d H:i:s'))->get();
+    }
+
+    public function getAllPreviousEvent() {
+        return $this->model->where('event_date', '<', date('Y-m-d H:i:s'))->get();
+    }
+
     public function filterData(array $filter, $query)
     {
         // TODO: Implement filterData() method.

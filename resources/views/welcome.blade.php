@@ -15,10 +15,8 @@
     {!! Html::style('assets/admin/global/plugins/bootstrap/css/bootstrap.min.css') !!}
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     {!! Html::style('assets/home-page.css') !!}
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-
     {!! Html::style('assets/admin/layouts/layout/css/custom.css') !!}
 
     {!! Html::script('assets/admin/global/plugins/jquery.min.js') !!}
@@ -26,8 +24,7 @@
 
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-<!-- Navigation
-    ==========================================-->
+
 <nav id="menu" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -59,7 +56,7 @@
         <!-- /.navbar-collapse -->
     </div>
 </nav>
-<!-- Header -->
+
 <header id="header">
     <div class="intro">
         <div class="overlay">
@@ -154,31 +151,16 @@
             <h2>Next Events</h2>
         </div>
         <div class="row">
+            @foreach($nextEvents as $event)
             <div class="col-md-4">
-                <div class="service-media"><img src="home-page/service-1.jpg" alt=" "></div>
+                <div class="service-media">Pay: <b>{{ $event->amount  }}</b></div>
+                <div class="service-media">Guest pay: <b>{{ $event->guest_amount  }}</b></div>
                 <div class="service-desc">
-                    <h3>New Home Construction</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam
-                        sedasd commodo nibh ante facilisis bibendum dolor feugiat at.</p>
+                    <h3>{{ $event->title  }}</h3>
+                    <p>{{ $event->description }}</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="service-media"><img src="img/services/service-2.jpg" alt=" "></div>
-                <div class="service-desc">
-                    <h3>Home Additions</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam
-                        sedasd commodo nibh ante facilisis bibendum dolor feugiat at. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="service-media"><img src="img/services/service-3.jpg" alt=" "></div>
-                <div class="service-desc">
-                    <h3>Bathroom Remodels</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam
-                        sedasd commodo nibh ante facilisis bibendum dolor feugiat at.</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
@@ -189,20 +171,16 @@
             <h2>Previous Events</h2>
         </div>
         <div class="row">
-            <div class="portfolio-items">
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="img/portfolio/01-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-                                <div class="hover-text">
-                                    <h4>Lorem Ipsum</h4>
-                                </div>
-                                <img src="img/portfolio/01-small.jpg" class="img-responsive" alt="Project Title">
-                            </a>
-                        </div>
+            @foreach($prevEvents as $event)
+                <div class="col-md-4">
+                    <div class="service-media">Pay: <b>{{ $event->amount  }}</b></div>
+                    <div class="service-media">Guest pay: <b>{{ $event->guest_amount  }}</b></div>
+                    <div class="service-desc">
+                        <h3>{{ $event->title  }}</h3>
+                        <p>{{ $event->description }}</p>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
