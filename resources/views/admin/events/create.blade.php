@@ -200,16 +200,17 @@
 
         $(function () {
 
-            $('#last_registration_date').daterangepicker({
+            $('#event_date').daterangepicker({
                     locale: {
-                        format: 'MMMM D, YYYY'
+                        format: 'MMMM D, YYYY h:mm A'
                     },
+                    timePicker: true,
                     singleDatePicker: true,
                     showDropdowns: true
                 }
             );
 
-            $('#event_date').daterangepicker({
+            $('#last_registration_date').daterangepicker({
                     locale: {
                         format: 'MMMM D, YYYY'
                     },
