@@ -38,6 +38,10 @@ class EventsController extends Controller
     public function store(Request $request)
     {
         $input = $request->except('_token', '_wysihtml5_mode');
+
+        $input['event_date'] = date('Y-m-d H:i:s', strtotime($input['event_date']));
+        $input['last_registration_date'] = date('Y-m-d H:i:s', strtotime($input['last_registration_date']));
+
         $newslist = $this->eventsService->store($input);
 
         if ($newslist) {
