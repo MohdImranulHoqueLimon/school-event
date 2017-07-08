@@ -8,6 +8,10 @@
 <head>
     <meta charset="utf-8" />
     <title>{{config('app.name')}}</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/images/android-icon-36x36.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/android-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/android-icon-144x144.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Preview page of Metronic Admin Theme #1 for statistics, charts, recent events and reports" name="description" />

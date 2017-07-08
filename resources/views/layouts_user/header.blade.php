@@ -5,7 +5,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="{{url('/')}}" style="text-decoration: none !important;">
-                <h3 class="admin-header-name">School Event</h3>
+                <h3 class="admin-header-name"><img src="/images/main_logo.png" style="height: 40px;margin-top: -7px"></h3>
             </a>
 
         </div>
@@ -69,6 +69,6 @@
 <div class="page-container">
 @if(!empty($newsstickerText))
     <div class="newssticker-panel">
-        <marquee scrollamount="5">{!! $newsstickerText !!}</marquee>
+        <marquee scrollamount="5"><img src="/images/main_logo.png" style="height: 20px;margin-top: -8px;margin-right: 10px;">{!! $newsstickerText !!}</marquee>
     </div>
 @endif

@@ -7,10 +7,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/android-icon-36x36.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/android-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/android-icon-144x144.png">
 
     {!! Html::style('assets/admin/global/plugins/bootstrap/css/bootstrap.min.css') !!}
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -28,15 +28,15 @@
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 <!-- Navigation
     ==========================================-->
-<nav id="menu" class="navbar navbar-default navbar-fixed-top">
+<nav id="menu" class="navbar navbar-default navbar-fixed-top" style="padding-bottom: 10px;padding-top: 10px;">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span> <span
                         class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-            <a class="navbar-brand page-scroll" href="#page-top">Bagerhat</a>
-            <div class="phone"><span>Call Today</span>320-123-4321</div>
+            <a class="navbar-brand page-scroll" href="#page-top"><img src="images/main_logo.png" style="height: 50px;margin-top: -20px"></a>
+            
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
