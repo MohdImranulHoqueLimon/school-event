@@ -45,6 +45,15 @@
                 <li><a href="#about" class="page-scroll">About</a></li>
                 <li><a href="#testimonials" class="page-scroll">Testimonials</a></li>
                 <li><a href="#contact" class="page-scroll">Contact</a></li>
+                @if (Route::has('login'))
+                    @if(!Auth::check())
+                        <li><a href="{{ url('/sign-in') }}" class="page-scroll">Login</a></li>
+                        <li><a href="{{ url('/register') }}" class="page-scroll">Register</a></li>
+                    @else
+                        <li><a href="{{ url('user/profile') }}" class="page-scroll">Profile</a></li>
+                        <li><a href="{{ url('/logout') }}" class="page-scroll">Logout</a></li>
+                    @endif
+                @endif
             </ul>
         </div>
         <!-- /.navbar-collapse -->
