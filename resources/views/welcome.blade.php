@@ -32,7 +32,7 @@
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span> <span
                         class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-            <a class="navbar-brand page-scroll" href="#page-top"> <a class="navbar-brand page-scroll" href="#page-top"><img src="images/main_logo.png" style="height: 50px;margin-top: -20px"></a>
+            <a class="navbar-brand page-scroll" href="#page-top"> <a class="navbar-brand page-scroll" href="{{ url('') }}"><img src="images/main_logo.png" style="height: 50px;margin-top: -20px"></a>
  </a>
         </div>
 
@@ -215,22 +215,22 @@
                 <div class="section-title"><h2>Contact Info</h2></div>
                 <div class="col-md-4">
                     <div class="contact-item">
-                        <p><span>Address</span>4321 California St,<br>
-                            San Francisco, CA 12345</p>
+                        <p><span>Address</span>Test Address,<br>
+                            Bagerhat, Bagerhat</p>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="contact-item">
                         <p>
-                            <span>Phone</span> +1 123 456 1234 <br/> +1 123 456 1234
+                            <span>Phone</span> +880123456789 <br/> +880123456789
                         </p>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="contact-item">
-                        <p><span>Email</span> info@company.com</p>
+                        <p><span>Email</span> info@member.exstudentsbghs.com</p>
                     </div>
                 </div>
             </div>
@@ -255,7 +255,7 @@
 <!-- Footer Section -->
 <div id="footer">
     <div class="container text-center">
-        <p>&copy; 2017 Design by <a href="#" rel="nofollow">Bagerhat School</a></p>
+        <p>&copy; 2017 Design by <a href="{{ url('') }}" rel="nofollow">Bagerhat School</a></p>
     </div>
 </div>
 
