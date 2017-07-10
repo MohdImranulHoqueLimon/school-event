@@ -7,6 +7,10 @@
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="Preview page of Metronic Admin Theme #1 for " name="description"/>
     <meta content="" name="author"/>
+     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/android-icon-36x36.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/android-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/android-icon-144x144.png">
 
     {!! Html::style('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all') !!}
     {!! Html::style('assets/admin/global/plugins/font-awesome/css/font-awesome.min.css') !!}
@@ -15,18 +19,48 @@
     {!! Html::style('assets/admin/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') !!}
     {!! Html::style('assets/admin/global/css/components.min.css') !!}
     {!! Html::style('assets/admin/pages/css/login.css') !!}
+    {!! Html::style('assets/home-page.css') !!}
     <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <!-- END HEAD -->
 
 <body class=" login">
-<div class="logo">
+<!-- <div class="logo">
     <a href="{{url('/')}}" style="text-decoration: none;">
         <h2 class="admin-header-name" style="font-weight: bold; color: white;">School Event</h2>
     </a>
-</div>
+</div> -->
 
-<div class="content">
+<nav id="menu" class="navbar navbar-default navbar-fixed-top" style="padding-bottom: 10px;padding-top: 10px;">
+     <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span> <span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+            <a class="navbar-brand page-scroll" href="#page-top"> <a class="navbar-brand page-scroll" href="{{ url('') }}"><img src="images/main_logo.png" style="height: 50px;margin-top: -20px"></a>
+ </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                 @if (Route::has('login'))
+                    @if(!Auth::check())
+                        <li><a href="{{ url('/sign-in') }}" class="page-scroll">Login</a></li>
+                        <li><a href="{{ url('/register') }}" class="page-scroll">Register</a></li>
+                    @else
+                        <li><a href="{{ url('user/profile') }}" class="page-scroll">Profile</a></li>
+                        <li><a href="{{ url('/logout') }}" class="page-scroll">Logout</a></li>
+                    @endif
+                @endif
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</nav>
+
+<div class="content" style="margin-top: 100px">
     <form class="login-form form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
         <h3 class="form-title font-green">Sign In</h3>
         {{ csrf_field() }}
