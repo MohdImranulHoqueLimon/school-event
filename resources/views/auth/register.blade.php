@@ -54,7 +54,7 @@
     </div>
 </nav>
 
-<div class="content" style="margin-top: 100px">
+<div class="content" style="margin-top: 100px;width: 530px;">
 
     @include('errors')
 
