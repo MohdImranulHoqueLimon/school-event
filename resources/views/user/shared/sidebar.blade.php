@@ -36,7 +36,7 @@
             <li class="nav-item @if (Route::is('payments.*'))start active open @endif">
                 <a href="{{url('/user/payments')}}" class="nav-link ">
                     <i class="fa fa-graduation-cap"></i>
-                    <span class="title">Payment Us</span>
+                    <span class="title">Register For Event</span>
                     @if (Route::is('payments.*'))
                         <span class="selected"></span>
                     @endif
