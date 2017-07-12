@@ -22,6 +22,14 @@ class PaymentsService extends BaseService
         return $this->getAllPaymentsWith($filters)->paginate(UtilityService::$displayRecordPerPage);
     }
 
+    public function getAllPaymentsForAdmin($adminId) {
+        return $this->model
+            ->where('approved_by', '=', '')
+            ->orWhere('approved_by', '=', NULL)
+            ->orWhere('approved_by', '=', $adminId)
+            ->paginate();
+    }
+
     public function getAllPaymentsWith($filters)
     {
         $query = $this->getQuery();
