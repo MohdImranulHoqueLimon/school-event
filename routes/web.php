@@ -141,6 +141,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/success-page', ['as' => 'success-page', 'uses' => 'ResultController@success']);
 
 Route::get('/sign-in', ['as' => 'student-login', 'uses' => 'User\LoginController@login']);
 Route::post('/sign-in', ['as' => 'student-login', 'uses' => 'User\LoginController@postLogin']);

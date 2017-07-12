@@ -38,7 +38,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/success-page';
     protected $userService;
 
     public function __construct(UserService $userService)
