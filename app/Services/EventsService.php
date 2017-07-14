@@ -12,9 +12,9 @@ class EventsService extends BaseService
         $this->model = $events;
     }
 
-    function getAllEvents()
+    function getAllEvents($filter)
     {
-        return $this->model->get();
+        return $this->model->paginate(10);
     }
 
     function getAllActiveEvents()

@@ -65,6 +65,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            {!! CHTML::customPaginate($newsstickers,'') !!}
                         </div>
                     </div>
                 </div>

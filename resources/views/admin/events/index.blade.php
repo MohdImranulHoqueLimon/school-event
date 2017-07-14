@@ -70,11 +70,11 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            {!! CHTML::customPaginate($events_list,'') !!}
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
         <!-- END CONTENT BODY -->
     </div>

@@ -14,7 +14,7 @@ class NewsstickerService extends BaseService
 
     function getAllNewssticker()
     {
-        return $this->model->get();
+        return $this->model->paginate(10);
     }
 
     function getAllActiveNewssticker()
@@ -48,7 +48,6 @@ class NewsstickerService extends BaseService
      public function updateNewssticker( array $input, $id )
     {
         $input['created_by'] = auth()->user()->id;
-        //return $this->model->update($input, $id);
         return $this->model->where('id', $id)->update($input);
     }
 
