@@ -38,9 +38,9 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body">
-                                    <form class="horizontal-form" role="form" method="GET" action="/user/payments">
+                                    <form class="horizontal-form" role="form" method="GET" action="/user/invoice">
                                         <div class="row">
-                                            {{--<div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="event_id" class="control-label">Events</label>
                                                     <select name="event_id" class="form-control">
@@ -53,19 +53,19 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                            </div>--}}
+                                            </div>
 
                                             <div class="col-lg-2 col-md-4 col-sm-4">
                                                 <div class="form-group">
-                                                    <label for="name" class="control-label">Name</label>
-                                                    <input id="name" type="text" class="form-control" name="name"
-                                                           value="">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="email" class="control-label">Email/Username</label>
-                                                    <input id="email" type="text" class="form-control" name="email" value="">
+                                                    <label for="name" class="control-label">Status</label>
+                                                    <select name="status" class="form-control">
+                                                        <option value=""> --- Select --- </option>
+                                                        @for($i = 0; $i < 3; $i++)
+                                                            <option value="{{$i}}" @if(isset($request) && $request->status == $i) selected @endif>
+                                                                {{\App\Support\Configs\Constants::$payment_status_names[$i]}}
+                                                            </option>
+                                                        @endfor
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-2 col-md-12 col-sm-12 pull-right">
@@ -134,23 +134,6 @@
                                                class="btn btn-icon-only grey-cascade">
                                                 <i class="fa fa-file-pdf-o"></i>
                                             </a>
-
-                                            {{--@if($payment->status === 1)
-                                            <a href="{{ route('admin.pending_payment', $payment->id) }}" style="float: left"
-                                               class="btn btn-icon-only grey-cascade">
-                                                <i class="fa fa-pause"></i>
-                                            </a>
-                                            @elseif($payment->status === 0)
-                                                <a href="{{ route('admin.approve_payment', $payment->id) }}" style="float: left"
-                                                   class="btn btn-icon-only grey-cascade">
-                                                    <i class="fa fa-check"></i>
-                                                </a>
-                                            @endif--}}
-
-                                            {{--<a href="{{ route('admin.cancel_payment', $payment->id) }}" style="float: left"
-                                               class="btn btn-icon-only grey-cascade">
-                                                <i class="fa fa-ban"></i>
-                                            </a>--}}
 
                                             <form method="POST" class="form-inline" action="{{route('admin.payment', $payment->id)}}" onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}

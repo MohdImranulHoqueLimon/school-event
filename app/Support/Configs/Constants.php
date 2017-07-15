@@ -17,4 +17,8 @@ class Constants
     public static $PAYMENT_PENDING = 0;
     public static $PAYMENT_ACTIVE = 1;
     public static $PAYMENT_CANCEL = 2;
+    public static $payment_status_names = [
+        0 => 'Pending',
+        1 => 'Approved',
+        2 => 'Suspend'];
 }

@@ -12,8 +12,31 @@ class PaymentsService extends BaseService
         $this->model = $payments;
     }
 
-    public function getPaymentsByUser($user_id)
+    public function getPaymentsByUser($user_id, $filters)
     {
+        if(!empty($filters) && !empty($filters['event_id']) && $filters['status'] != '') {
+            return $this->model
+                ->where('user_id', $user_id)
+                ->where('event_id', $filters['event_id'])
+                ->where('status', $filters['status'])
+                ->paginate(UtilityService::$displayRecordPerPage);
+        }
+
+        if(!empty($filters) && empty($filters['event_id']) && $filters['status'] != '') {
+            return $this->model
+                ->where('user_id', $user_id)
+                ->where('status', $filters['status'])
+                ->paginate(UtilityService::$displayRecordPerPage);
+        }
+
+        if(!empty($filters) && !empty($filters['event_id'])) {
+            return $this->model
+                ->where('user_id', $user_id)
+                ->where('event_id', $filters['event_id'])
+                ->paginate(UtilityService::$displayRecordPerPage);
+        }
+
+
         return $this->model->where('user_id', $user_id)->paginate(UtilityService::$displayRecordPerPage);
     }
 
