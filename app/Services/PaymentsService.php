@@ -153,8 +153,7 @@ class PaymentsService extends BaseService
                                             <td>
                                                 Invoice #: ' . $paymentInfo->id . '<br>&nbsp;&nbsp;'
             . $paymentInfo->event->title . '<br/>&nbsp;
-                                               Created: ' . date('d F, Y', strtotime($paymentInfo->created_at)) . '<br>
-                                               Due: February 1, 2015
+                                               Created: ' . date('d F, Y', strtotime($paymentInfo->created_at)) . '<br>                                               
                                             </td>
                                         </tr>
                                         </tbody>
@@ -164,10 +163,7 @@ class PaymentsService extends BaseService
                                         <tbody>
                                         <tr>
                                             <td colspan="2">
-                                                Bagerhat Jilla School<br>
-                                                335 Puraton Road<br>
-                                                Sunny-villa<br>
-                                                TX 12345
+                                                
                                             </td>
                                             <td>
                                                 ' . $paymentInfo->user->name . '<br/>';

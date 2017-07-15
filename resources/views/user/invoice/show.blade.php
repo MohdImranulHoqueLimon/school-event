@@ -133,8 +133,6 @@
                                                             Invoice #: {{$paymentInfo->id}}<br>
                                                             {{$paymentInfo->event->title}}<br/>
                                                             Created: {{ date('d F, Y', strtotime($paymentInfo->created_at)) }}
-                                                            <br>
-                                                            Due: February 1, 2015
                                                         </td>
                                                     </tr>
                                                     </tbody>
@@ -148,10 +146,10 @@
                                                     <tbody>
                                                     <tr>
                                                         <td>
-                                                            Bagerhat Jilla School<br>
+                                                            {{--Bagerhat Jilla School<br>
                                                             335 Puraton Road<br>
                                                             Sunny-villa<br>
-                                                            TX 12345
+                                                            TX 12345--}}
                                                         </td>
                                                         <td>
                                                             {{$paymentInfo->user->name}}<br>
