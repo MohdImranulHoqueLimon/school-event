@@ -78,6 +78,7 @@
                                     <th width="7%"> Quantity</th>
                                     <th width="7%">T. Amount</th>
                                     <th width="7%">G. Amount</th>
+                                    <th width="7%">T. Guest</th>
                                     <th width="10%"> Created</th>
                                     <th width="14%"> Approved By</th>
                                     <th width="10%">Status</th>
@@ -98,6 +99,7 @@
                                                 {{$payment->guest_amount}}
                                             @endif
                                         </td>
+                                        <td>{{ $payment->quantity - 1  }}</td>
                                         <td class="center">{{ date('d M, Y', strtotime($payment->created_at)) }}</td>
                                         <td>
                                             @if($payment->approved_admin && $payment->approved_admin->name)
