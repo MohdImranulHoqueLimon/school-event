@@ -126,7 +126,7 @@
                                                     <tbody>
                                                     <tr>
                                                         <td class="title">
-                                                            <img name="invoicelogo" src="{{ url('/images/event.png')}}" style="width:60%; max-width:120px;">
+                                                            <img name="invoicelogo" src="{{ url('/images/main_logo.png')}}" style="width:60%; max-width:120px;">
                                                             <img name="invoicelogo" src="{{ url('/images/invoice.png')}}" style="width:50%; max-width:45px;">
                                                         </td>
                                                         <td>
