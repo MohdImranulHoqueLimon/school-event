@@ -40,7 +40,7 @@ class PaymentController extends Controller
     {
         $filters = $request->all();
         //$payments = $this->paymentService->getAllPayments($filters);
-        $payments = $this->paymentService->getAllPaymentsForAdmin(Auth::user()->id);
+        $payments = $this->paymentService->getAllPaymentsForAdmin(Auth::user()->id, $filters);
         $events = $this->eventService->getAllActiveEvents();
 
         return View('admin.payment.index', compact('payments', 'request', 'events'));

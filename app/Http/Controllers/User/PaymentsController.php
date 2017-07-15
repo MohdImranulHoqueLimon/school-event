@@ -25,7 +25,7 @@ class PaymentsController extends Controller
      *
      * @return \Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
         $eventsList = $this->eventsService->getAllActiveEvents();

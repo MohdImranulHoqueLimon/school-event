@@ -22,12 +22,28 @@ class PaymentsService extends BaseService
         return $this->getAllPaymentsWith($filters)->paginate(UtilityService::$displayRecordPerPage);
     }
 
-    public function getAllPaymentsForAdmin($adminId) {
+    public function getAllPaymentsForAdmin($adminId, $filters) {
+        if(isset($filters['event_id']) && !empty($filters['event_id'])) {
+            return $this->model
+                ->where('approved_by', '=', '')
+                ->orWhere('approved_by', '=', NULL)
+                ->orWhere('approved_by', '=', $adminId)
+                ->where('event_id', '=', $filters['event_id'])
+                ->paginate(UtilityService::$displayRecordPerPage);
+        }
         return $this->model
             ->where('approved_by', '=', '')
             ->orWhere('approved_by', '=', NULL)
             ->orWhere('approved_by', '=', $adminId)
-            ->paginate();
+            ->paginate(UtilityService::$displayRecordPerPage);
+
+        /*$query = $this->getQuery();
+
+        if (isset($filters['event_id']) && $filters['event_id']) {
+            $query->where('event_id', '=', $filters['event_id']);
+        }
+
+        return $query;*/
     }
 
     public function getAllPaymentsWith($filters)

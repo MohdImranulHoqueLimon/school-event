@@ -44,7 +44,7 @@
                                 <div class="portlet-body">
                                     <form class="horizontal-form" role="form" method="GET" action="/admin/payments">
                                         <div class="row">
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="event_id" class="control-label">Events</label>
                                                     <select name="event_id" class="form-control">
@@ -56,20 +56,6 @@
                                                             </option>
                                                         @endforeach
                                                     </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-2 col-md-4 col-sm-4">
-                                                <div class="form-group">
-                                                    <label for="name" class="control-label">Name</label>
-                                                    <input id="name" type="text" class="form-control" name="name"
-                                                           value="">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="email" class="control-label">Email/Username</label>
-                                                    <input id="email" type="text" class="form-control" name="email" value="">
                                                 </div>
                                             </div>
                                             <div class="col-lg-2 col-md-12 col-sm-12 pull-right">
@@ -153,6 +139,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            {{--{!! CHTML::customPaginate($payments,'') !!}--}}
                         </div>
                     </div>
                 </div>

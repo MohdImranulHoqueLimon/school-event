@@ -5,7 +5,7 @@ namespace App\Services;
 class UtilityService
 {
     public static $numberOfMonthYear = '-5 month';
-    public static $displayRecordPerPage = 20;
+    public static $displayRecordPerPage = 10;
     public static $working_days = [
         '' => 'Select a Working Day',
         'monday' => 'Monday',
