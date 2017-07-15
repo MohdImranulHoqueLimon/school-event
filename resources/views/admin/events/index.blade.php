@@ -56,7 +56,7 @@
                                         <td>{{$events->amount}}</td>
                                         <td>{{$events->guest_allow == 1 ? 'Yes' : 'No'}}</td>
                                         <td>{{$events->guest_amount}}</td>
-                                        <td class="center">{{ date('d M, Y', strtotime($events->created_by)) }}</td>
+                                        <td class="center">{{ date('d M, Y', strtotime($events->created_at)) }}</td>
                                         <td style="text-align: center;">
                                             <form style="float:right;" method="POST" class="form-inline" action="{{route('events.destroy', $events->id)}}" onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}
