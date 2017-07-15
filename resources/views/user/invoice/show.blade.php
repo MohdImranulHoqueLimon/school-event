@@ -127,8 +127,7 @@
                                                     <tr>
                                                         <td class="title">
                                                             <img name="invoicelogo" src="{{ url('/images/main_logo.png')}}" style="width:60%; max-width:120px;">
-                                                            <img name="invoicelogo" src="{{ url('/images/invoice.png')}}" style="width:50%; max-width:45px;">
-                                                        </td>
+                                                       </td>
                                                         <td>
                                                             Invoice #: {{$paymentInfo->id}}<br>
                                                             {{$paymentInfo->event->title}}<br/>
@@ -146,10 +145,10 @@
                                                     <tbody>
                                                     <tr>
                                                         <td>
-                                                            {{--Bagerhat Jilla School<br>
+                                                            Bagerhat Jilla School<br>
                                                             335 Puraton Road<br>
                                                             Sunny-villa<br>
-                                                            TX 12345--}}
+                                                            TX 12345
                                                         </td>
                                                         <td>
                                                             {{$paymentInfo->user->name}}<br>
