@@ -111,7 +111,7 @@ Dashboard
                                             <label for="batch" class="control-label">Guest Count
 
                                             </label>
-                                            <input type="number" class="form-control" min="1" placeholder="Enter Guest Number" name="guest_count" value="" required autofocus>
+                                            <input type="number" class="form-control" min="1" placeholder="Enter Guest Number" name="guest_count" value="">
 
                                         </div>
                                     </div>
