@@ -139,7 +139,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            {{--{!! CHTML::customPaginate($payments,'') !!}--}}
+                            {!! CHTML::customPaginate($payments,'') !!}
                         </div>
                     </div>
                 </div>

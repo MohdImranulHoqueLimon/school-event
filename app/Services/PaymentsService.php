@@ -36,14 +36,6 @@ class PaymentsService extends BaseService
             ->orWhere('approved_by', '=', NULL)
             ->orWhere('approved_by', '=', $adminId)
             ->paginate(UtilityService::$displayRecordPerPage);
-
-        /*$query = $this->getQuery();
-
-        if (isset($filters['event_id']) && $filters['event_id']) {
-            $query->where('event_id', '=', $filters['event_id']);
-        }
-
-        return $query;*/
     }
 
     public function getAllPaymentsWith($filters)
