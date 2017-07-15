@@ -29,7 +29,7 @@ class RegistrationPaymentController extends Controller
 
     public function index(Request $request)
     {
-        return $register_payments  = $this->registrationPaymentService->getAllPayments($request->all());
+        $register_payments  = $this->registrationPaymentService->getAllPayments($request->all());
         $registers = $this->registrationPaymentService->getAllRegisters();
         $sumResult = $this->registrationPaymentService->getAllPaymentsSum();
         return View('admin.payment.registration.index', compact('register_payments','registers', 'sumResult', 'request'));
