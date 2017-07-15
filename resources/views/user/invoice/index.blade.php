@@ -118,7 +118,7 @@
                                             @endif
                                         </td>
                                         <td>{{$payment->amount}}</td>
-                                        <td> @if($payment->quantity > 1) {{$payment->quantity - 1}} @else N/A @endif</td>
+                                        <td> @if($payment->guest_count) {{$payment->guest_count }} @else N/A @endif</td>
                                         <td class="center">{{ date('d M, Y', strtotime($payment->created_at)) }}</td>
                                         <td>
                                             @if($payment->approved_admin && $payment->approved_admin->name)
