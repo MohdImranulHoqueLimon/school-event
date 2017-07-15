@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Payments;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentsService extends BaseService
 {
@@ -46,7 +47,7 @@ class PaymentsService extends BaseService
     }
 
     public function getAllPaymentsForAdmin($adminId, $filters) {
-        if(isset($filters['event_id']) && !empty($filters['event_id'])) {
+        /*if(isset($filters['event_id']) && !empty($filters['event_id'])) {
             return $this->model
                 ->where('approved_by', '=', '')
                 ->orWhere('approved_by', '=', NULL)
@@ -58,7 +59,41 @@ class PaymentsService extends BaseService
             ->where('approved_by', '=', '')
             ->orWhere('approved_by', '=', NULL)
             ->orWhere('approved_by', '=', $adminId)
-            ->paginate(UtilityService::$displayRecordPerPage);
+            ->paginate(UtilityService::$displayRecordPerPage);*/
+
+        return $this->getAllPaymentsWithForAdmin($adminId, $filters)->paginate(UtilityService::$displayRecordPerPage);
+    }
+
+    public function getAllPaymentsWithForAdmin($adminId, $filters)
+    {
+        $query = $this->getQuery();
+
+        $query->where(function ($query) {
+            $query->where('approved_by', '=', NULL)
+                ->orWhere('approved_by', '=', Auth::user()->id);
+        });
+
+        if (isset($filters['event_id']) && $filters['event_id']) {
+            $query->where('event_id', '=', "{$filters['event_id']}");
+        }
+
+        if (isset($filters['status'])) {
+            $query->where('status', '=', $filters['status']);
+        }
+
+        if (isset($filters['name']) && $filters['name']) {
+            $query->whereHas('user', function ($q) use ($filters) {
+                $q->where('name', 'like', "%{$filters['name']}%");
+            });
+        }
+
+        if (isset($filters['email']) && $filters['email']) {
+            $query->whereHas('user', function ($q) use ($filters) {
+                $q->where('email', 'like', "%{$filters['email']}%");
+            });
+        }
+
+        return $query;
     }
 
     public function getAllPaymentsWith($filters)

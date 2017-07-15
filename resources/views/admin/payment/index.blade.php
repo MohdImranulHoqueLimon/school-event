@@ -58,6 +58,36 @@
                                                     </select>
                                                 </div>
                                             </div>
+
+                                            <div class="col-lg-2 col-md-4 col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="name" class="control-label">Status</label>
+                                                    <select name="status" class="form-control">
+                                                        <option value="" @if(!isset($request) || $request->status == '') @endif> --- Select --- </option>
+                                                        @for($i = 0; $i < 3; $i++)
+                                                            <option value="{{$i}}" @if(isset($request) && $request->status != '' && $request->status == $i) selected @endif>
+                                                                {{\App\Support\Configs\Constants::$payment_status_names[$i]}}
+                                                            </option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-2 col-md-4 col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="name" class="control-label">Name</label>
+                                                    <input id="name" type="text" class="form-control" name="name"
+                                                           value="{{ $request->get('name') }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="email" class="control-label">Email/Username
+                                                    </label>
+                                                    <input id="email" type="text" class="form-control" name="email" value="{{ $request->get('email') }}">
+                                                </div>
+                                            </div>
+
                                             <div class="col-lg-2 col-md-12 col-sm-12 pull-right">
                                                 <label for="condition" class="control-label">&nbsp;</label><br/>
                                                 <button type="submit" class="btn blue btn-block">
@@ -117,7 +147,13 @@
                                                 N/A
                                             @endif
                                         </td>
-                                        <td>@if($payment->status === 1) Approved @else Pending @endif</td>
+                                        <td>
+                                            @if($payment->status === 1)
+                                                Approved
+                                            @elseif($payment->status === 0)
+                                                Pending
+                                            @else Suspend
+                                            @endif</td>
                                         <td>
                                             <a href="{{ route('admin.invoice', $payment->id) }}" style="float: left"
                                                class="btn btn-icon-only grey-cascade">
