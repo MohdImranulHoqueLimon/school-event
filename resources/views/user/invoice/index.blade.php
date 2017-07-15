@@ -85,9 +85,10 @@
                                 <tr>
                                     <th width="18%"> User</th>
                                     <th width="20"> Event</th>
-                                    <th width="8%"> Quantity</th>
-                                    <th width="7%">T. Amount</th>
+                                    <th width="20">Amount</th>
                                     <th width="7%">G. Amount</th>
+                                    <th width="7%">T. Amount</th>
+                                    <th width="7%">G. Count</th>
                                     <th width="10%"> Created</th>
                                     <th width="12%"> Approved By</th>
                                     <th width="8%">Status</th>
@@ -96,18 +97,28 @@
                                 </thead>
                                 <tbody>
                                 @foreach($payments as $payment)
+
+                                    <?php
+                                    $guestAmount = ($payment->event->guest_amount && $payment->event->guest_amount > 0) ? $payment->event->guest_amount : 0;
+                                    $guestCount = ($payment->guest_count && $payment->guest_count > 0) ? $payment->guest_count : 0;
+
+                                    $totalGuestAmount = $guestAmount * $guestCount;
+                                    $ownTicketAmount = $payment->amount - $totalGuestAmount;
+                                    ?>
+
                                     <tr class="odd gradeX">
                                         <td>{{$payment->user->name}}</td>
                                         <td>{{$payment->event->title}}</td>
-                                        <td>{{$payment->quantity}}</td>
-                                        <td>{{$payment->amount}}</td>
+                                        <td>{{$ownTicketAmount}}</td>
                                         <td>
-                                            @if($payment->guest_amount === null)
+                                            @if($totalGuestAmount === 0)
                                                 N/A
                                             @else
-                                                {{$payment->guest_amount}}
+                                                {{ $totalGuestAmount }}
                                             @endif
                                         </td>
+                                        <td>{{$payment->amount}}</td>
+                                        <td> @if($payment->quantity > 1) {{$payment->quantity - 1}} @else N/A @endif</td>
                                         <td class="center">{{ date('d M, Y', strtotime($payment->created_at)) }}</td>
                                         <td>
                                             @if($payment->approved_admin && $payment->approved_admin->name)
