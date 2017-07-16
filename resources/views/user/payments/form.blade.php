@@ -45,7 +45,7 @@ Dashboard
                             </div>
                             <div class="panel-body">
                                 <div class="form-body" style="margin-left: 20%">
-                                <div class="alert alert-success information-box" role="alert" style="margin-left: -24%">This is payment information, you can update if you want if this is not fixed event.</div>
+                                <div class="alert alert-success information-box" role="alert" style="margin-left: -24%">Select event from drop down which event you want to register then click continue button.</div>
                                     <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-2 control-label">Select Events :
                                             <span class="required" aria-required="true"> * </span></label>

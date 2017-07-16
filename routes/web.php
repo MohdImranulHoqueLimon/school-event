@@ -132,6 +132,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
     Route::post('payments/process_list', ['as' => 'get_process_list', 'uses' => 'User\PaymentsController@getProcessList']);
     Route::post('payments/checkout_payment', ['as' => 'final_payment_list', 'uses' => 'User\PaymentsController@checkoutPayment']);
     Route::post('payments/confirm_payment', ['as' => 'confirm', 'uses' => 'User\PaymentsController@confirm']);
+    Route::resource('how_to_complete', 'User\PaymentsController@how_to_complete');
+    
 
     Route::resource('invoice', 'User\InvoiceController');
 

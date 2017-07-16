@@ -145,10 +145,11 @@
                                                     <tbody>
                                                     <tr>
                                                         <td>
-                                                            Bagerhat Jilla School<br>
-                                                            335 Puraton Road<br>
-                                                            Sunny-villa<br>
-                                                            TX 12345
+                                                           <p>Address: Bagerhat Govt High School,<br>
+                                                             Old Rupsha Road,Bagerhat.<br>
+                                                            Email: info@exstudentsbghs.com<br/>
+                                                            Phonn: +8801717963568 , +8801715442209
+                                                           </p>
                                                         </td>
                                                         <td>
                                                             {{$paymentInfo->user->name}}<br>

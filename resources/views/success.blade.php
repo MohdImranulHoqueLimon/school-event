@@ -64,7 +64,7 @@
     <div class="container">
         <div class="row">
          <div class="col-md-12">
-            <p>sucess message</p>
+             <div class="alert alert-success information-box" role="alert" style="margin-top: 30px;line-height: 25px;">Thank you for your registration. For access your profile section please login. When you login site this then you can register for event but you can not get full acees for this site, when admin conform your registration then you get full access and admin conform your registration when you register any one event. </div>
             </div>
         </div>
     </div>

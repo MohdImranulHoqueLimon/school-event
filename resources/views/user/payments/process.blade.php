@@ -39,7 +39,7 @@ Dashboard
                         <div class="panel-body">
                             <div class="form-body process-form">
 
-                            <div class="alert alert-success information-box" role="alert">This is payment information, you can update if you want if this is not fixed event.</div>
+                            <div class="alert alert-success information-box" role="alert">This is event informtion which you already select. If it is fixed type event then you can not change amount and if not then you can also update amount and if guest allow then insert guest count number and click continue button.</div>
 
                                 <div class="form-group">
                                     <div class="col-md-6">
