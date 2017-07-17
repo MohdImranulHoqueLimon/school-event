@@ -5,23 +5,19 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Services\PaymentsService;
 use App\Services\EventsService;
-use App\Services\CountryService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PaymentsController extends Controller
 {
-    private $paymentsService;
-    private $eventService;
+    protected $paymentsService;
+    protected $eventService;
     
-    public function __construct( PaymentsService $paymentsService, EventsService $eventService , CountryService $countryService)
+    public function __construct(PaymentsService $paymentsService, EventsService $eventService)
     {
-   
-        $this->payementsService = $paymentsService;
+        $this->paymentsService = $paymentsService;
         $this->eventsService = $eventService;
-        $this->countryService = $countryService;
-
-      }
+    }
 
     /**
      * Show the login page.
@@ -32,14 +28,43 @@ class PaymentsController extends Controller
     {
         $user = Auth::user();
         $eventsList = $this->eventsService->getAllActiveEvents();
-        $eventsPayments = $this->payementsService->getAllPaymentsForUser($user['id']);
+        $eventsPayments = $this->paymentsService->getAllPaymentsForUser($user['id']);
+
         return view('user.payments.form', compact('eventsList','eventsPayments'));
     }
 
     public function update(Request $request, $id) {
+
         $input = $request->except('_token', '_method', '_wysihtml5_mode');
 
-        return $input;
+        $paymentId = $input['id'];
+
+        $payment = $this->paymentsService->getPaymentById($paymentId);
+
+        //bank
+        if($input['payment_type'] == 1) {
+
+            $file = $request->file('bank_attachment');
+
+            $destinationPath = 'upload/payment'; // upload path
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $fileName = rand(11111,99999) . time(). '.' . $extension; // renameing image
+            $file->move($destinationPath, $fileName); // uploading file to given path
+
+            $payment->payment_type = 1;
+            $payment->bkash_code = '';
+            $payment->bank_attachment = $fileName;
+            $payment->save();
+
+        } else {
+            $bkashCode = $input['bkash_code'];
+            $payment->payment_type = 2;
+            $payment->bkash_code = $bkashCode;
+            $payment->bank_attachment = '';
+            $payment->save();
+        }
+
+        return redirect()->back();
     }
 
     public function updatePaymentType(Request $request, $id) {
@@ -63,7 +88,7 @@ class PaymentsController extends Controller
     public function confirm(Request $request)
     {
         $input = $request->except('_token', '_wysihtml5_mode');
-        $result = $this->payementsService->store($input);
+        $result = $this->paymentsService->store($input);
 
         if ($result) {
             flash('Payment created successfully!');

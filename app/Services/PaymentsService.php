@@ -127,6 +127,10 @@ class PaymentsService extends BaseService
         return $this->model->create($input);
     }
 
+    public function getPaymentById($id) {
+        return $this->model->find($id);
+    }
+
     public function getInvoiceHtml($id)
     {
         $paymentInfo = $this->model->find($id);

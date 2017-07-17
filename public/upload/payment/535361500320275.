@@ -1,0 +1,31 @@
+modified:   app/Http/Controllers/User/InvoiceController.php
+modified:   app/Http/Controllers/Admin/RegistrationPaymentController.php
+
+modified:   app/Support/Configs/Constants.php
+
+modified:   app/Services/PaymentsService.php
+
+modified:   resources/views/admin/payment/index.blade.php
+modified:   resources/views/user/invoice/index.blade.php
+modified:   resources/views/admin/invoice/index.blade.php
+modified:   resources/views/user/invoice/show.blade.php     
+
+User,Event name, amount, Guest amount, guest  count, total amount , then other gula thake
+user a search ta hobe event and status diye , parle created date diye korte add and admin a ai gula and sathe user, name and email
+
+
+app/Services/PaymentsService.php
+app/Http/Controllers/Admin/PaymentController.php
+modified:   app/Http/Controllers/User/InvoiceController.php
+modified:   app/Http/Controllers/User/PaymentsController.php
+modified:   app/Models/PaymentTypes.php
+modified:   app/Models/Payments.php
+modified:   app/Services/PaymentTypesService.php
+modified:   database/seeds/DatabaseSeeder.php
+modified:   database/seeds/PaymentTypeTableSeeder.php
+modified:   database/seeds/PaymentsTableSeeder.php
+modified:   resources/views/user/invoice/index.blade.php
+modified:   routes/web.php
+
+
+

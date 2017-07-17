@@ -105,6 +105,9 @@
                                     <th width="7%">T. Amount</th>
                                     <th width="7%">G. Count</th>
                                     <th width="10%"> Created</th>
+                                    <th width="8%"> Payment Type</th>
+                                    <th width="8%"> Bkash Code</th>
+                                    <th width="8%">Attachment</th>
                                     <th width="12%"> Approved By</th>
                                     <th width="8%">Status</th>
                                     <th width="17%" style="text-align: center;"> Actions</th>
@@ -135,6 +138,16 @@
                                         <td>{{$payment->amount}}</td>
                                         <td> @if($payment->guest_count) {{$payment->guest_count }} @else N/A @endif</td>
                                         <td class="center">{{ date('d M, Y', strtotime($payment->created_at)) }}</td>
+                                        <td>
+                                            @if($payment->payment_method->title)
+                                                {{$payment->payment_method->title}}
+                                            @else N/A
+                                            @endif
+                                        </td>
+                                        <td>{{ $payment->bkash_code  }}</td>
+                                        <td>
+                                            <a target="_blank" href="../upload/payment/{{ $payment->bank_attachment  }}">{{ $payment->bank_attachment  }}</a>
+                                        </td>
                                         <td>
                                             @if($payment->approved_admin && $payment->approved_admin->name)
                                                 {{$payment->approved_admin->name}}
