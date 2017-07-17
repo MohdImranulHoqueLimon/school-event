@@ -112,7 +112,7 @@
                                     <tr class="odd gradeX">
                                         <td>{{$user->id}}</td>
                                         <td>
-                                            <a href="{{ route('users.show',$user->id) }}">{{$user->name}}</a>
+                                            <a href="{{ route('students.show', $user->id) }}">{{$user->name}}</a>
                                         </td>
                                         <td>{{$user->email}}</td>
                                         <td>

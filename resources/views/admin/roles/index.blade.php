@@ -61,19 +61,19 @@
                                     <tr class="odd gradeX">
                                         <td>{{$role->id}}</td>
                                         <td>
-                                            <a href="{{route('roles.show', $role->id)}}">{{$role->name}}</a>
+                                            <a title="View" href="{{route('roles.show', $role->id)}}">{{$role->name}}</a>
                                         </td>
                                         <td class="center">{{$role->created_at->format(config('app.date_format'))}}</td>
                                         <td>
                                             <form style="float:right;" method="POST" class="form-inline" action="{{route('roles.destroy', $role->id)}}" onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}
-                                                <a href="{{ route('roles.show', $role->id) }}"
+                                                <a title="View" href="{{ route('roles.show', $role->id) }}"
                                                    class="btn btn-icon-only grey-cascade">
                                                     <i class="fa fa-eye"></i></a>
-                                                <a href="{{ route('roles.edit', $role->id) }}"
+                                                <a title="Edit" href="{{ route('roles.edit', $role->id) }}"
                                                    class="btn btn-icon-only btn-primary"><i class="fa fa-edit"></i></a>
-                                                <button type="submit" class="btn btn-icon-only btn-danger"><i class="fa fa-times"></i></button>
+                                                <button type="submit" class="btn btn-icon-only btn-danger" title="Delete"><i class="fa fa-times"></i></button>
                                             </form>
 
                                         </td>

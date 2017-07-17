@@ -43,7 +43,7 @@
                 </a>
             </li>
 
-             <li class="nav-item @if (Route::is('payments.*'))start active open @endif">
+             <li class="nav-item @if(strpos($_SERVER['REQUEST_URI'], "how_to_complete") !== false)start active open @endif">
                 <a href="{{url('/user/how_to_complete')}}" class="nav-link ">
                     <i class="fa fa-graduation-cap"></i>
                     <span class="title">How to complete register event </span>

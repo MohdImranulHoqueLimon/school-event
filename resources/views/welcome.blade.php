@@ -40,7 +40,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#about" class="page-scroll">About</a></li>
-                <li><a href="#testimonials" class="page-scroll">Testimonials</a></li>
                 <li><a href="#contact" class="page-scroll">Contact</a></li>
                 @if (Route::has('login'))
                     @if(!Auth::check())
@@ -142,69 +141,8 @@
         </div>
     </div>
 </div>
-<!-- Services Section -->
-<div id="services">
-    <div class="container">
-        <div class="section-title">
-            <h2>Next Events</h2>
-        </div>
-        <div class="row">
-            @foreach($nextEvents as $event)
-            <div class="col-md-4">
-                <div class="service-media">Pay: <b>{{ $event->amount  }}</b></div>
-                <div class="service-media">Guest pay: <b>{{ $event->guest_amount  }}</b></div>
-                <div class="service-desc">
-                    <h3>{{ $event->title  }}</h3>
-                    <p>{{ $event->description }}</p>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-<!-- Gallery Section -->
-<div id="portfolio">
-    <div class="container">
-        <div class="section-title">
-            <h2>Previous Events</h2>
-        </div>
-        <div class="row">
-            @foreach($prevEvents as $event)
-                <div class="col-md-4">
-                    <div class="service-media">Pay: <b>{{ $event->amount  }}</b></div>
-                    <div class="service-media">Guest pay: <b>{{ $event->guest_amount  }}</b></div>
-                    <div class="service-desc">
-                        <h3>{{ $event->title  }}</h3>
-                        <p>{{ $event->description }}</p>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-<!-- Testimonials Section -->
-<div id="testimonials">
-    <div class="container">
-        <div class="section-title">
-            <h2>Testimonials</h2>
-        </div>
-        <div class="row">
-            @foreach($testimonials as $testimonial)
-            <div class="col-md-4">
-                <div class="testimonial">
-                    {{--<div class="testimonial-image"><img src="img/testimonials/01.jpg" alt=""></div>--}}
-                    <div class="testimonial-content">
-                        <p>{!! $testimonial->testimonial_body !!}</p>
-                        <div class="testimonial-meta">
-                            - {!! $testimonial->testimonial_client . '<br/>&nbsp;&nbsp;' . $testimonial->testimonial_designation !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
+
+
 <!-- Contact Section -->
 <div id="contact">
     <div class="container">
