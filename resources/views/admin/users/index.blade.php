@@ -145,14 +145,14 @@
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}
 
-                                                <a href="{{ route('users.show', $user->id) }}" class="btn btn-icon-only grey-cascade">
+                                                <a href="{{ route('users.show', $user->id) }}" title="View" class="btn btn-icon-only grey-cascade">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                                 @role('Admin')
-                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-icon-only btn-primary">
+                                                <a title="Edit" href="{{ route('users.edit', $user->id) }}" class="btn btn-icon-only btn-primary">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
-                                                <button type="submit" class="btn btn-icon-only btn-danger">
+                                                <button type="submit" title="Delete" class="btn btn-icon-only btn-danger">
                                                     <i class="fa fa-times"></i>
                                                 </button>
                                                 @endrole

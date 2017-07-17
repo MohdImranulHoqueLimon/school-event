@@ -150,23 +150,23 @@
                                             @else Suspend
                                             @endif</td>
                                         <td>
-                                            <a href="{{ route('admin.invoice', $payment->id) }}" style="float: left"
+                                            <a href="{{ route('admin.invoice', $payment->id) }}" title="View Invoice" style="float: left"
                                                class="btn btn-icon-only grey-cascade">
                                                 <i class="fa fa-file-pdf-o"></i>
                                             </a>
                                             @if($payment->status === 1)
-                                            <a href="{{ route('admin.pending_payment', $payment->id) }}" style="float: left"
+                                            <a href="{{ route('admin.pending_payment', $payment->id) }}" title="Pending" style="float: left"
                                                class="btn btn-icon-only grey-cascade">
                                                 <i class="fa fa-pause"></i>
                                             </a>
                                             @elseif($payment->status === 0)
-                                                <a href="{{ route('admin.approve_payment', $payment->id) }}" style="float: left"
+                                                <a href="{{ route('admin.approve_payment', $payment->id) }}" title="Approved" style="float: left"
                                                    class="btn btn-icon-only grey-cascade">
                                                     <i class="fa fa-check"></i>
                                                 </a>
                                             @endif
 
-                                            <a href="{{ route('admin.cancel_payment', $payment->id) }}" style="float: left"
+                                            <a href="{{ route('admin.cancel_payment', $payment->id) }}" title="Cancle" style="float: left"
                                                class="btn btn-icon-only grey-cascade">
                                                 <i class="fa fa-ban"></i>
                                             </a>
@@ -174,7 +174,7 @@
                                             <form method="POST" class="form-inline" action="{{route('admin.payment', $payment->id)}}" onsubmit="return confirm('Are you sure?')">
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}
-                                                <button type="submit" class="btn btn-icon-only btn-danger"><i class="fa fa-times"></i></button>
+                                                <button type="submit" class="btn btn-icon-only btn-danger" title="Delete"><i class="fa fa-times"></i></button>
                                             </form>
                                         </td>
                                     </tr>

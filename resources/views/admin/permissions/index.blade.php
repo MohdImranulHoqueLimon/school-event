@@ -69,8 +69,8 @@
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}
                                                 <a href="{{ route('permissions.edit', $role->id) }}"
-                                                   class="btn btn-icon-only btn-primary"><i class="fa fa-edit"></i></a>
-                                                <button type="submit" class="btn btn-icon-only btn-danger"><i class="fa fa-times"></i></button>
+                                                   class="btn btn-icon-only btn-primary" title="Edit"><i class="fa fa-edit"></i></a>
+                                                <button type="submit" class="btn btn-icon-only btn-danger" title="Delete"><i class="fa fa-times"></i></button>
                                             </form>
 
                                         </td>
