@@ -41,7 +41,7 @@ class PaymentsController extends Controller
         $filters = $request->all();
         $user = Auth::user();
         $eventsList = $this->eventsService->showEventsByID($filters['event_id']);
-        return view('user.payments.process', compact('eventsList'));
+        return view('user.payments.process', compact('eventsList','user'));
     }
 
     public function checkoutPayment(Request $request)

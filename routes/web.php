@@ -91,6 +91,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'r
     Route::get('approve_payment{id}', ['as' => 'admin.approve_payment', 'uses' => 'Admin\PaymentController@approvePayment']);
     Route::get('pending_payment{id}', ['as' => 'admin.pending_payment', 'uses' => 'Admin\PaymentController@pendingPayment']);
     Route::get('cancel_payment{id}', ['as' => 'admin.cancel_payment', 'uses' => 'Admin\PaymentController@cancelPayment']);
+    Route::get('register_event/{id}', ['as' => 'admin.register_event', 'uses' => 'Admin\PaymentController@registerEvent']);
+    Route::post('admin/conform_event', ['as' => 'conform_event', 'uses' => 'Admin\PaymentController@conformEvent']);
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'role:Support-Admin']], function () {

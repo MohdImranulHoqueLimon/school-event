@@ -31,7 +31,7 @@ Dashboard
                         </div>
                         @endif
 
-
+                        
                         <div class="panel panel-primary">
                           <div class="panel-heading">
                           <h3 class="panel-title">Event Information</h3>
@@ -65,14 +65,26 @@ Dashboard
                                     </div>
                                 </div>
 
+                                <?php 
+                                if($eventsList['id'] == 1){
+                                   if( $user['batch'] > 2007){
+                                    $event_amount = 500;
+                                   } else {
+                                    $event_amount = 1000;
+                                   }
+                               } else {
+                                $event_amount = $eventsList['amount'];
+                               }
+                                ?>
+
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label  class="control-label">Event Amount : 
 
                                             </label>
-                                            {!! $eventsList['amount'] !!}
-                                            <input type="hidden" name="amount" value="{!! $eventsList['amount'] !!}">
+                                            {!! $event_amount !!}
+                                            <input type="hidden" name="amount" value="{!! $event_amount !!}">
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +97,7 @@ Dashboard
                                             <label for="batch" class="control-label">Update Event Amount
 
                                             </label>
-                                            <input type="number" class="form-control" min="{!! $eventsList['amount'] !!}" placeholder="Enter Events Amount" name="new_amount" value="{!! $eventsList['amount'] !!}" required autofocus>
+                                            <input type="number" class="form-control" min="{!! $event_amount !!}" placeholder="Enter Events Amount" name="new_amount" value="{!! $event_amount !!}" required autofocus>
 
                                         </div>
                                     </div>

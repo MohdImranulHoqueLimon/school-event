@@ -118,4 +118,35 @@ class PaymentController extends Controller
         $payment->status = $status;
         return $payment->save();
     }
+
+    public function registerEvent($id) {
+        $userObj = $this->userService->findById($id);
+         
+        $eventsList = $this->eventService->getAllActiveEvents();
+        $eventsPayments = $this->paymentService->getAllPaymentsForUser($id);
+        
+        return View('admin.payment.register_event', compact('userObj', 'eventsPayments','eventsList'));
+    }
+
+    public function conformEvent(Request $request)
+    {
+        $filters = $request->all();
+         $input['amount'] = $filters['amount'];
+         $input['guest_count'] = $filters['guest_count'];
+          $input['event_id'] = $filters['event_id'];
+
+        if($filters['guest_amount']){
+            $input['amount'] = $filters['amount'] + $filters['guest_amount'];
+        }
+
+        $result = $this->paymentService->store($input);
+        
+        if ($result) {
+            flash('Payment created successfully!');
+            return redirect('admin/payments');
+        }
+
+        flash('Failed to create Payment!', 'error');
+        return redirect()->back()->withInput($request->all());
+    }
 }
