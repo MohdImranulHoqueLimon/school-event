@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Services\EventsService;
 use App\Services\PaymentsService;
+use App\Services\PaymentTypesService;
 use Elibyy\TCPDF\Facades\TCPDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,11 +14,14 @@ class InvoiceController extends Controller
 {
     protected $paymentService;
     protected $eventService;
+    protected $paymentTypesService;
 
-    public function __construct(PaymentsService $paymentsService, EventsService $eventsService)
-    {
+    public function __construct(
+        PaymentsService $paymentsService, EventsService $eventsService, PaymentTypesService $paymentTypesService
+    ) {
         $this->paymentService = $paymentsService;
         $this->eventService = $eventsService;
+        $this->paymentTypesService = $paymentTypesService;
     }
 
     public function index(Request $request)
@@ -26,8 +30,9 @@ class InvoiceController extends Controller
         $userId = Auth::user()->id;
         $events = $this->eventService->getAllActiveEvents();
         $payments = $this->paymentService->getPaymentsByUser($userId, $filters);
+        $paymentTypes = $this->paymentTypesService->getAllPaymentTypes();
 
-        return View('user.invoice.index', compact('payments', 'events', 'request'));
+        return View('user.invoice.index', compact('payments', 'events', 'request', 'paymentTypes'));
     }
 
     public function show($id)

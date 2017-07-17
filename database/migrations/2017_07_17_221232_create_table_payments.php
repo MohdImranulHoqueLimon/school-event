@@ -24,10 +24,12 @@ class CreateTablePayments extends Migration
             $table->boolean('is_payment')->default(false);
             $table->boolean('status')->default(false);
             $table->integer('approved_by')->unsigned()->nullable();
+            $table->integer('payment_type')->unsigned()->nullable();
             $table->timestamps();
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('approved_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('payment_type')->references('id')->on('payment_types')->onDelete('cascade');
         });
     }
 

@@ -11,7 +11,7 @@ class Payments extends Model
 
     protected $guarded = ['id'];
 
-    protected $with = ['user', 'approved_admin', 'event'];
+    protected $with = ['user', 'approved_admin', 'event', 'payment_method'];
 
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
@@ -23,5 +23,9 @@ class Payments extends Model
 
     public function event() {
         return $this->belongsTo(Events::class, 'event_id');
+    }
+
+    public function payment_method() {
+        return $this->belongsTo(PaymentTypes::class, 'id');
     }
 }

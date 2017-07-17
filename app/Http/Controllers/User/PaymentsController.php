@@ -36,6 +36,16 @@ class PaymentsController extends Controller
         return view('user.payments.form', compact('eventsList','eventsPayments'));
     }
 
+    public function update(Request $request, $id) {
+        $input = $request->except('_token', '_method', '_wysihtml5_mode');
+
+        return $input;
+    }
+
+    public function updatePaymentType(Request $request, $id) {
+        return $request->all();
+    }
+
     public function getProcessList(Request $request)
     {
         $filters = $request->all();

@@ -22,6 +22,7 @@ class PaymentsTableSeeder extends Seeder
             'is_payment' => true,
             'status' => true,
             'approved_by' => 1,
+            'payment_type' => 1
         ]);
 
         Payments::create([
