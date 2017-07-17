@@ -22,7 +22,11 @@
                             <span class="caption-subject bold uppercase">User Details</span>
                         </div>
                         <div class="actions">
+                        <a class=" btn btn-sm yellow btn-outline sbold"
+                                       href="{{route('admin.register_event', $user->id)}}" 
+                                       data-toggle="modal"> Register for Event
 
+                        </a>
                         </div>
                     </div>
 

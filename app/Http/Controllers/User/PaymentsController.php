@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Services\PaymentsService;
 use App\Services\EventsService;
+use App\Services\CountryService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,11 +14,13 @@ class PaymentsController extends Controller
     private $paymentsService;
     private $eventService;
     
-    public function __construct( PaymentsService $paymentsService, EventsService $eventService)
+    public function __construct( PaymentsService $paymentsService, EventsService $eventService , CountryService $countryService)
     {
    
         $this->payementsService = $paymentsService;
         $this->eventsService = $eventService;
+        $this->countryService = $countryService;
+
       }
 
     /**
@@ -48,7 +51,7 @@ class PaymentsController extends Controller
         $filters = $request->all();
         $user = Auth::user();
         $eventsList = $this->eventsService->showEventsByID($filters['event_id']);
-        return view('user.payments.process', compact('eventsList'));
+        return view('user.payments.process', compact('eventsList','user'));
     }
 
     public function checkoutPayment(Request $request)
@@ -71,9 +74,9 @@ class PaymentsController extends Controller
         return redirect()->back()->withInput($request->all());
     }
 
-    public function invoices()
+    public function how_to_complete()
     {
-       echo 'ok';
+        return view('user.payments.how_to_complete__event');
     }
 
     

@@ -38,7 +38,7 @@ Dashboard
                           </div>
                           <div class="panel-body checkout-form">
 
-                           <div class="alert alert-success information-box" role="alert">This is payment information, you can update if you want if this is not fixed event.</div>
+                           <div class="alert alert-success information-box" role="alert">This is conformation page. check your event information and if everything is right then click conform button. </div>
                            <table class="table table-bordered">
                              <tr>
                                  <th>Event Title</th>

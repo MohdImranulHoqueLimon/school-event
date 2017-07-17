@@ -43,6 +43,16 @@
                 </a>
             </li>
 
+             <li class="nav-item @if (Route::is('payments.*'))start active open @endif">
+                <a href="{{url('/user/how_to_complete')}}" class="nav-link ">
+                    <i class="fa fa-graduation-cap"></i>
+                    <span class="title">How to complete register event </span>
+                    @if (Route::is('payments.*'))
+                        <span class="selected"></span>
+                    @endif
+                </a>
+            </li>
+
             <li class="nav-item @if (Route::is('invoice.*'))start active open @endif">
                 <a href="{{url('/user/invoice')}}" class="nav-link ">
                     <i class="fa fa-file-pdf-o"></i>

@@ -118,9 +118,7 @@
                 <div class="about-text">
                     <h2>Bagerhat School</h2>
                     <p>
-                        This website is designed for only Bagerhat school students. Here the current student and also
-                        the ex students will find the upcoming event arrangement information and they will be able to
-                        register for participating to the event.There will be news about school.
+                        Bagerhat Govt High School is a government secondary school located in the heart of Bagerhat town in Bagerhat Sadar Upazila, Bangladesh. It was established as Nurul Amin School in 1947 by getting help from the British Government. In 1967, the school became a government high school. After the liberation war, the previous name was removed and it holds its current name as Bagerhat Govt High School. This school has two shifts and enrollment of approximately 2,000 students.
                     </p>
                     <h3>What we do?</h3>
                     <div class="list-style">
@@ -210,27 +208,28 @@
 <!-- Contact Section -->
 <div id="contact">
     <div class="container">
-        <div class="col-md-7">
+        <div class="col-md-9">
             <div class="row">
                 <div class="section-title"><h2>Contact Info</h2></div>
                 <div class="col-md-4">
                     <div class="contact-item">
-                        <p><span>Address</span>Test Address,<br>
-                            Bagerhat, Bagerhat</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="contact-item">
-                        <p>
-                            <span>Phone</span> +880123456789 <br/> +880123456789
+                        <p><span>Address</span>Bagerhat Govt High School,<br>
+                            Old Rupsha Road,Bagerhat.
                         </p>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="contact-item">
-                        <p><span>Email</span> info@member.exstudentsbghs.com</p>
+                        <p>
+                            <span>Phone</span> +8801717963568 <br/> +8801715442209
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-item">
+                        <p><span>Email</span> info@exstudentsbghs.com</p>
                     </div>
                 </div>
             </div>

@@ -23,18 +23,6 @@
 
         <div class="col-md-6">
             <div class="form-group">
-                <label for="registration_amount" class="control-label">Registration Payment Amount</label>
-                <input id="registration_amount" type="text" class="form-control" name="registration_amount"
-                       value="{{ old('registration_amount', !empty($user->registration_payment->amount) ? $user->registration_payment->amount: null) }}"
-                       autofocus>
-                @if ($errors->has('registration_amount'))
-                    <span class="help-block">
-                        {{ $errors->first('registration_amount') }}
-                    </span>
-                @endif
-            </div>
-
-            <div class="form-group">
                 <label for="role" class="control-label">Assign Role(s)</label>
                 <div class="mt-checkbox-list" data-error-container="#form_2_services_error">
                     @foreach($roles as $role)

@@ -26,12 +26,7 @@
                                 <i class="icon-settings font-dark"></i>
                                 <span class="caption-subject bold uppercase"> Payments </span>
                             </div>
-                            <div class="actions">
-                                <div class="btn-group pull-right">
-                                    <a href="{{route('events.create')}}" class="btn sbold green">Add
-                                        Events <i class="fa fa-plus"></i></a>
-                                </div>
-                            </div>
+                            
                         </div>
                         <div class="portlet-body">
 

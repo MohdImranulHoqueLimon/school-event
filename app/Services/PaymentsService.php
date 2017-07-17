@@ -147,8 +147,7 @@ class PaymentsService extends BaseService
                                         <tbody>
                                         <tr>
                                             <td class="title" colspan="2">
-                                                <img name="invoicelogo" src="images/event.png" style="width:90%; width:50px;"><br/>
-                                                <img name="invoicelogo" src="images/invoice.png" style="width:90%; width:50px;">                                                
+                                                <img name="invoicelogo" src="images/main_logo.png" style="width:90%; width:50px;"><br/>
                                             </td>
                                             <td>
                                                 Invoice #: ' . $paymentInfo->id . '<br>&nbsp;&nbsp;'
@@ -181,19 +180,7 @@ class PaymentsService extends BaseService
                                         </tbody>
                                     </table>';
 
-        $html .= '<table style="margin-left: 40px;">
-                                        <tbody>
-                                        <tr>
-                                            <td colspan="2">Payment Method</td>
-                                            <td>Cash</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">Cash</td>
-                                            <td>' . $paymentInfo->amount . '</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>        
-                <div id="content">
+        $html .= '<div id="content">
                     <div class="invoice-box">
                         <table cellpadding="1" cellspacing="1" border=".1">
                             <tbody>                      

@@ -91,6 +91,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'r
     Route::get('approve_payment{id}', ['as' => 'admin.approve_payment', 'uses' => 'Admin\PaymentController@approvePayment']);
     Route::get('pending_payment{id}', ['as' => 'admin.pending_payment', 'uses' => 'Admin\PaymentController@pendingPayment']);
     Route::get('cancel_payment{id}', ['as' => 'admin.cancel_payment', 'uses' => 'Admin\PaymentController@cancelPayment']);
+    Route::get('register_event/{id}', ['as' => 'admin.register_event', 'uses' => 'Admin\PaymentController@registerEvent']);
+    Route::post('admin/conform_event', ['as' => 'conform_event', 'uses' => 'Admin\PaymentController@conformEvent']);
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'role:Support-Admin']], function () {
@@ -132,10 +134,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
     Route::post('payments/process_list', ['as' => 'get_process_list', 'uses' => 'User\PaymentsController@getProcessList']);
     Route::post('payments/checkout_payment', ['as' => 'final_payment_list', 'uses' => 'User\PaymentsController@checkoutPayment']);
     Route::post('payments/confirm_payment', ['as' => 'confirm', 'uses' => 'User\PaymentsController@confirm']);
+
     Route::post('payments/update', ['as' => 'update_payment_type', 'uses' => 'User\PaymentsController@updatePaymentType']);
-
+    Route::resource('how_to_complete', 'User\PaymentsController@how_to_complete');
     Route::resource('invoice', 'User\InvoiceController');
-
     Route::get('invoice/{id}', ['as' => 'user.invoice', 'uses' => 'User\InvoiceController@showInvoice']);
     Route::get('invoice_download/{id}', ['as' => 'user.invoice_download', 'uses' => 'User\InvoiceController@downloadInvoice']);
 });
