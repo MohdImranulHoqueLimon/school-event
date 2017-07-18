@@ -124,8 +124,13 @@
                                         <td> @if($payment->guest_count) {{$payment->guest_count }} @else N/A @endif</td>
                                         <td class="center">{{ date('d M, Y', strtotime($payment->created_at)) }}</td>
                                         <td>
-                                            @if($payment->payment_type && $payment->payment_method->title)
+                                            {{--@if($payment->payment_type && $payment->payment_method->title)
                                                 {{$payment->payment_method->title}}
+                                            @else N/A
+                                            @endif--}}
+
+                                            @if($payment->payment_type != NULL && $payment->payment_type == 1) Bank
+                                            @elseif($payment->payment_type != NULL && $payment->payment_type == 2) Bkash
                                             @else N/A
                                             @endif
                                         </td>
@@ -134,10 +139,12 @@
                                             <a target="_blank" href="../upload/payment/{{ $payment->bank_attachment  }}">{{ $payment->bank_attachment  }}</a>
                                         </td>
                                         <td>
-                                            @if($payment->approved_admin && $payment->approved_admin->name)
+                                            @if($payment->approved_admin != null || $payment->approved_admin != NULL)
+                                            @if($payment->approved_admin->name)
                                                 {{$payment->approved_admin->name}}
                                             @else
                                                 N/A
+                                                @endif
                                             @endif
                                         </td>
                                         <td>@if($payment->status === 1) Approved @else Pending @endif</td>

@@ -140,8 +140,12 @@
                                             <td> @if($payment->guest_count) {{$payment->guest_count }} @else N/A @endif</td>
                                             <td class="center">{{ date('d M, Y', strtotime($payment->created_at)) }}</td>
                                             <td>
-                                                @if($payment->payment_type && $payment->payment_method->title)
+                                               {{-- @if($payment->payment_type && $payment->payment_method->title)
                                                     {{$payment->payment_method->title}}
+                                                @else N/A
+                                                @endif--}}
+                                                @if($payment->payment_type != NULL && $payment->payment_type == 1) Bank
+                                                @elseif($payment->payment_type != NULL && $payment->payment_type == 2) Bkash
                                                 @else N/A
                                                 @endif
                                             </td>
