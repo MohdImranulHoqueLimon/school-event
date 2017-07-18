@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\PaymentTypes;
 use App\Services\EmailService;
 use App\Services\EventsService;
 use App\Services\PaymentsService;
+use App\Services\PaymentTypesService;
 use App\Services\UserService;
 use App\Support\Configs\Constants;
 use Illuminate\Http\Request;
@@ -18,15 +20,18 @@ class PaymentController extends Controller
     private $eventService;
     private $emailService;
     private $userService;
+    private $paymentTypesService;
 
     public function __construct(
-        PaymentsService $paymentsService, EventsService $eventsService, EmailService $emailService, UserService $userService
+        PaymentsService $paymentsService, EventsService $eventsService, EmailService $emailService, UserService $userService,
+        PaymentTypesService $paymentTypesService
     )
     {
         $this->paymentService = $paymentsService;
         $this->eventService = $eventsService;
         $this->emailService = $emailService;
         $this->userService = $userService;
+        $this->paymentTypesService = $paymentTypesService;
     }
 
     /**
@@ -42,8 +47,9 @@ class PaymentController extends Controller
         //$payments = $this->paymentService->getAllPayments($filters);
         $payments = $this->paymentService->getAllPaymentsForAdmin(Auth::user()->id, $filters);
         $events = $this->eventService->getAllActiveEvents();
+        $paymentTypes = $this->paymentTypesService->getAllPaymentTypes();
 
-        return View('admin.payment.index', compact('payments', 'request', 'events'));
+        return View('admin.payment.index', compact('payments', 'request', 'events', 'paymentTypes'));
     }
 
     public function create()

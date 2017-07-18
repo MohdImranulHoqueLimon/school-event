@@ -111,7 +111,7 @@
                                         <th style="min-width: 120px;">Attachment</th>
                                         <th style="min-width: 120px;">Approved By</th>
                                         <th style="min-width: 80px;">Status</th>
-                                        <th style="min-width: 180px; text-align: center;"> Actions</th>
+                                        <th style="min-width: 225px; text-align: center;"> Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -164,6 +164,12 @@
                                                 @else Suspend
                                                 @endif</td>
                                             <td style="width: 150px !important;">
+
+                                                <a href="#" style="float: left" data-toggle="modal" data-target="#exampleModal"
+                                                   class="btn btn-icon-only grey-cascade" onclick="setPaymentId({{$payment->id}})">
+                                                    <i class="fa fa-dollar"></i>
+                                                </a>
+
                                                 <a href="{{ route('admin.invoice', $payment->id) }}" title="View Invoice" style="float: left"
                                                    class="btn btn-icon-only grey-cascade">
                                                     <i class="fa fa-file-pdf-o"></i>
@@ -207,6 +213,90 @@
         <!-- END CONTENT BODY -->
     </div>
     <!-- END CONTENT -->
+
+    <div class="modal fade" id="exampleModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="horizontal-form" role="form" id="payment_type_form"
+                          action="{{ route('update_payment_type')  }}"
+                          enctype="multipart/form-data" method="POST">
+
+                        {{ csrf_field() }}
+                        {{method_field('PUT')}}
+
+                        <input type="hidden" name="id" id="payment_id" value=""/>
+
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-5">
+                                <div class="form-group">
+                                    <label for="payment_type" class="control-label">Payment Type</label>
+                                    <select name="payment_type" class="form-control" onchange="setPaymentMethod(this)">
+                                        <option value=""> --- Select --- </option>
+                                        @foreach($paymentTypes as $paymentType)
+                                            <option value="{{ $paymentType->id }}">{!! $paymentType->title !!}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-5" id="attachment_section" style="display: none;">
+                                <div class="form-group">
+                                    <label for="name" class="control-label">Bank Attachment</label>
+                                    <input type="file" name="bank_attachment" class="form-control"/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-offset-3 col-md-5" id="bkash_section" style="display: none;">
+                                <div class="form-group">
+                                    <label for="name" class="control-label">Bkash Code</label>
+                                    <input type="text" name="bkash_code" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="submitPaymentTypeForm()">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        function setPaymentMethod(obj) {
+
+            var selectedMethod = $(obj).val();
+
+            $('#attachment_section').hide();
+            $('#bkash_section').hide();
+
+            if(selectedMethod == 1) {
+                $('#attachment_section').show();
+            }
+            if(selectedMethod == 2) {
+                $('#bkash_section').show();
+            }
+        }
+
+        function submitPaymentTypeForm() {
+            $('#payment_type_form').submit();
+        }
+
+        function setPaymentId(id) {
+            $('#payment_id').val(id);
+        }
+    </script>
+
 @endsection
 @section('page_scripts')
     <!-- BEGIN PAGE LEVEL PLUGINS -->

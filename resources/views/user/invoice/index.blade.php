@@ -252,12 +252,6 @@
         function setPaymentId(id) {
             $('#payment_id').val(id);
         }
-
-       /* $('#exampleModal').on('show.bs.modal', function (e) {
-            alert('modal show');
-            $('id').val(paymentId);
-        });*/
-
     </script>
 
 @endsection
