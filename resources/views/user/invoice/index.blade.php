@@ -154,7 +154,7 @@
                                                 <i class="fa fa-dollar"></i>
                                             </a>
 
-                                            <a href="{{ route('user.invoice', $payment->id) }}" style="float: left"
+                                            <a href="{{ route('user.invoice', base64_encode($payment->id)) }}" style="float: left"
                                                class="btn btn-icon-only grey-cascade">
                                                 <i class="fa fa-file-pdf-o"></i>
                                             </a>

@@ -112,7 +112,7 @@
                                     <tr class="odd gradeX">
                                         <td>{{$user->id}}</td>
                                         <td>
-                                            <a href="{{ route('students.show', $user->id) }}">{{$user->name}}</a>
+                                            <a href="{{ route('students.show', base64_encode($user->id)) }}">{{$user->name}}</a>
                                         </td>
                                         <td>{{$user->email}}</td>
                                         <td>
@@ -130,7 +130,7 @@
                                         </td>
                                         <td> {{$user->created_at->format('d M, Y')}}</td>
                                         <td class="text-center">
-                                            <a href="{{ route('students.show', $user->id) }}" class="btn btn-icon-only grey-cascade">
+                                            <a href="{{ route('students.show', base64_encode($user->id)) }}" class="btn btn-icon-only grey-cascade">
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                         </td>

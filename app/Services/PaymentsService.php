@@ -146,36 +146,40 @@ class PaymentsService extends BaseService
         $html = '
         <html> 
             <body>
-                <div class="portlet-body">               
-                                    <table>                                    
+                <div class="portlet-body" style="width:600px;border:1px solid #ccc">               
+                                    <table style="width:600px;">                                    
                                         <tbody>
                                         <tr>
-                                            <td class="title" colspan="2">
-                                                <img name="invoicelogo" src="images/main_logo.png" style="width:90%; width:50px;"><br/>
+                                            <td class="title" style="width:400px;">
+                                                <img name="invoicelogo" src="../images/main_logo.png" style="width:90%; width:50px;"><br/>
                                             </td>
                                             <td>
-                                                Invoice #: ' . $paymentInfo->id . '<br>&nbsp;&nbsp;'
-            . $paymentInfo->event->title . '<br/>&nbsp;
+                                                Invoice #: ' . $paymentInfo->id . '<br>'
+            . $paymentInfo->event->title . '<br/>
                                                Created: ' . date('d F, Y', strtotime($paymentInfo->created_at)) . '<br>                                               
                                             </td>
                                         </tr>
                                         </tbody>
                                     </table> <br/><br/>
                                     
-                                    <table>
+                                    <table style="width:600px;">
                                         <tbody>
                                         <tr>
-                                            <td colspan="2">
-                                                
+                                            <td style="width:400px;">
+                                                 <p>Address: Bagerhat Govt High School,<br>
+                                                             Old Rupsha Road,Bagerhat.<br>
+                                                            Email: info@exstudentsbghs.com<br/>
+                                                            Phonn: +8801717963568 , +8801715442209
+                                                           </p>
                                             </td>
                                             <td>
                                                 ' . $paymentInfo->user->name . '<br/>';
 
         if ($paymentInfo->user->profession != "") {
-            $html .= '&nbsp;&nbsp;' . $paymentInfo->user->profession . '<br/>';
+            $html .=   $paymentInfo->user->profession . '<br/>';
         }
 
-        $html .= '&nbsp;&nbsp;' . $paymentInfo->user->email . '<br/>&nbsp;&nbsp;'
+        $html .=  $paymentInfo->user->email . '<br/>'
             . $paymentInfo->user->phone . '  
                                                 <br>  ' . $paymentInfo->user->batch . '
                                                 <br>
@@ -186,7 +190,7 @@ class PaymentsService extends BaseService
 
         $html .= '<div id="content">
                     <div class="invoice-box">
-                        <table cellpadding="1" cellspacing="1" border=".1">
+                        <table cellpadding="1" cellspacing="1" border="1" style="width:600px;">
                             <tbody>                      
                             <tr class="heading">
                                 <td>Item</td>
