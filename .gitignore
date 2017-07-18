@@ -5,3 +5,4 @@ adminer.php
 /public/images/avatar/thumbnail_images/*
 /vendor
 /.env
+/public/upload/*
