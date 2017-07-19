@@ -174,10 +174,12 @@
                                                     <i class="fa fa-dollar"></i>
                                                 </a>
 
-                                                <a href="{{ route('user.invoice', base64_encode($payment->id)) }}" style="float: left"
-                                                   class="btn btn-icon-only grey-cascade">
-                                                    <i class="fa fa-file-pdf-o"></i>
-                                                </a>
+                                                @if($payment->status === 1)
+                                                    <a href="{{ route('user.invoice', base64_encode($payment->id)) }}" style="float: left"
+                                                       class="btn btn-icon-only grey-cascade">
+                                                        <i class="fa fa-file-pdf-o"></i>
+                                                    </a>
+                                                @endif
 
                                                 <form method="POST" class="form-inline"
                                                       action="{{route('admin.payment', $payment->id)}}"
