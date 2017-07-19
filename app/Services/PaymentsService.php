@@ -15,7 +15,7 @@ class PaymentsService extends BaseService
 
     public function getPaymentsByUser($user_id, $filters)
     {
-        if(!empty($filters) && !empty($filters['event_id']) && $filters['status'] != '') {
+        /*if(!empty($filters) && !empty($filters['event_id']) && $filters['status'] != '') {
             return $this->model
                 ->where('user_id', $user_id)
                 ->where('event_id', $filters['event_id'])
@@ -38,7 +38,26 @@ class PaymentsService extends BaseService
         }
 
 
-        return $this->model->where('user_id', $user_id)->paginate(UtilityService::$displayRecordPerPage);
+        return $this->model->where('user_id', $user_id)->paginate(UtilityService::$displayRecordPerPage);*/
+
+
+        $query = $this->getQuery();
+
+        $query->where('user_id', '=', $user_id);
+
+        if (isset($filters['event_id']) && $filters['event_id']) {
+            $query->where('event_id', '=', "{$filters['event_id']}");
+        }
+
+        if (isset($filters['status']) && $filters['status'] != '') {
+            $query->where('status', '=', $filters['status']);
+        }
+
+        if (isset($filters['payment_type']) && $filters['payment_type'] != '') {
+            $query->where('payment_type', '=', $filters['payment_type']);
+        }
+
+        return $query->paginate(UtilityService::$displayRecordPerPage);
     }
 
     function getAllPayments(array $filters)
@@ -77,8 +96,12 @@ class PaymentsService extends BaseService
             $query->where('event_id', '=', "{$filters['event_id']}");
         }
 
-        if (isset($filters['status'])) {
+        if (isset($filters['status']) && $filters['status'] != '') {
             $query->where('status', '=', $filters['status']);
+        }
+
+        if (isset($filters['payment_type']) && $filters['payment_type'] != '') {
+            $query->where('payment_type', '=', $filters['payment_type']);
         }
 
         if (isset($filters['name']) && $filters['name']) {

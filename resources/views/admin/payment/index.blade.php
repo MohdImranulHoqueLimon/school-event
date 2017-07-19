@@ -39,7 +39,7 @@
                                 <div class="portlet-body">
                                     <form class="horizontal-form" role="form" method="GET" action="/admin/payments">
                                         <div class="row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="event_id" class="control-label">Events</label>
                                                     <select name="event_id" class="form-control">
@@ -54,7 +54,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-2 col-md-4 col-sm-4">
+                                            <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="name" class="control-label">Status</label>
                                                     <select name="status" class="form-control">
@@ -68,14 +68,26 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-2 col-md-4 col-sm-4">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="payment_type" class="control-label">Payment Type</label>
+                                                    <select name="payment_type" class="form-control">
+                                                        <option value=""> --- Select ---</option>
+                                                        <option value="1" @if(isset($request) && $request->payment_type == 1) selected @endif>Bank</option>
+                                                        <option value="2" @if(isset($request) && $request->payment_type == 2) selected @endif>Bkash</option>
+                                                        <option value="3" @if(isset($request) && $request->payment_type == 3) selected @endif>Cash</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="name" class="control-label">Name</label>
                                                     <input id="name" type="text" class="form-control" name="name"
                                                            value="{{ $request->get('name') }}">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                            <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="email" class="control-label">Email/Username
                                                     </label>
