@@ -88,7 +88,7 @@ class PaymentController extends Controller
         $result = $this->changePaymentStatus($id, Constants::$PAYMENT_ACTIVE);
 
         $userObj = $this->userService->findById(Auth::user()->id);
-        $invoiceHtml = $this->paymentService->getInvoiceHtml($id);
+        $invoiceHtml = $this->paymentService->getInvoiceHtmlForEmail($id);
         $this->emailService->mailSendProcess($userObj->email, 'School Event', 'Your payment approved<br/>' . $invoiceHtml);
 
         if($result) {

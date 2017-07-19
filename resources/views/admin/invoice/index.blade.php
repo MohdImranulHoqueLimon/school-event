@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-    Invoice
+Invoice
 @endsection
 @section('page_styles')
 
@@ -87,55 +87,55 @@
 </style>
 
 @section('content')
-    <div class="page-content-wrapper">
-        <!-- BEGIN CONTENT BODY -->
-        <div class="page-content">
-            <h1 class="page-title"></h1>
+<div class="page-content-wrapper">
+    <!-- BEGIN CONTENT BODY -->
+    <div class="page-content">
+        <h1 class="page-title"></h1>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                    <div class="portlet light bordered">
-                        <div class="portlet-title">
-                            <div class="caption font-dark">
-                                <i class="icon-users font-dark"></i>
-                                <span class="caption-subject bold uppercase"> Invoice </span>
-                            </div>
-                            <div class="actions">
-                                <div class="btn-group pull-right">
-                                    {{--<button id="cmd" class="btn sbold green">Download PDF</button>--}}
-                                    <a class="btn sbold green"
-                                       href="{{ route('admin.invoice_download', $paymentInfo->id)  }}">Download PDF</a>
-                                </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="portlet light bordered">
+                    <div class="portlet-title">
+                        <div class="caption font-dark">
+                            <i class="icon-users font-dark"></i>
+                            <span class="caption-subject bold uppercase"> Invoice </span>
+                        </div>
+                        <div class="actions">
+                            <div class="btn-group pull-right">
+                                {{--<button id="cmd" class="btn sbold green">Download PDF</button>--}}
+                                <a class="btn sbold green" target="_blank" 
+                                href="{{ route('admin.invoice_download', base64_encode($paymentInfo->id))  }}">Download PDF</a>
                             </div>
                         </div>
-                        <?php
-                        $guestAmount = ($paymentInfo->event->guest_amount && $paymentInfo->event->guest_amount > 0) ? $paymentInfo->event->guest_amount : 0;
-                        $guestCount = ($paymentInfo->guest_count && $paymentInfo->guest_count > 0) ? $paymentInfo->guest_count : 0;
+                    </div>
+                    <?php
+                    $guestAmount = ($paymentInfo->event->guest_amount && $paymentInfo->event->guest_amount > 0) ? $paymentInfo->event->guest_amount : 0;
+                    $guestCount = ($paymentInfo->guest_count && $paymentInfo->guest_count > 0) ? $paymentInfo->guest_count : 0;
 
-                        $totalGuestAmount = $guestAmount * $guestCount;
-                        $ownTicketAmount = $paymentInfo->amount - $totalGuestAmount;
-                        ?>
-                        <div class="portlet-body">
-                            <div id="content">
-                                <div class="invoice-box">
-                                    <table cellpadding="0" cellspacing="0">
-                                        <tbody>
+                    $totalGuestAmount = $guestAmount * $guestCount;
+                    $ownTicketAmount = $paymentInfo->amount - $totalGuestAmount;
+                    ?>
+                    <div class="portlet-body">
+                        <div id="content">
+                            <div class="invoice-box">
+                                <table cellpadding="0" cellspacing="0">
+                                    <tbody>
                                         <tr class="top">
                                             <td colspan="2">
                                                 <table>
                                                     <tbody>
-                                                    <tr>
-                                                        <td class="title">
-                                                            <img name="invoicelogo" src="{{ url('/images/main_logo.png')}}"
-                                                                 style="width:60%; max-width:120px;">
-                                                               </td>
-                                                        <td>
-                                                            Invoice #: {{$paymentInfo->id}}<br>
-                                                            {{$paymentInfo->event->title}}<br/>
-                                                            Created: {{ date('d F, Y', strtotime($paymentInfo->created_at)) }}
-                                                        </td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td class="title">
+                                                                <img name="invoicelogo" src="{{ url('/images/main_logo.png')}}"
+                                                                style="width:60%; max-width:120px;">
+                                                            </td>
+                                                            <td>
+                                                                Invoice #: {{$paymentInfo->id}}<br>
+                                                                {{$paymentInfo->event->title}}<br/>
+                                                                Created: {{ date('d F, Y', strtotime($paymentInfo->created_at)) }}
+                                                            </td>
+                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </td>
@@ -145,15 +145,15 @@
                                             <td colspan="2">
                                                 <table>
                                                     <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <p>Address: Bagerhat Govt High School,<br>
-                                                             Old Rupsha Road,Bagerhat.<br>
-                                                            Email: info@exstudentsbghs.com<br/>
-                                                            Phonn: +8801717963568 , +8801715442209
-                                                           </p>
-                                                        </td>
-                                                        <td>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Address: Bagerhat Govt High School,<br>
+                                                                   Old Rupsha Road,Bagerhat.<br>
+                                                                   Email: info@exstudentsbghs.com<br/>
+                                                                   Phonn: +8801717963568 , +8801715442209
+                                                               </p>
+                                                           </td>
+                                                           <td>
                                                             {{$paymentInfo->user->name}}<br>
                                                             @if($paymentInfo->user->profession != '') {{$paymentInfo->user->profession}}
                                                             <br> @endif
@@ -165,15 +165,23 @@
                                                             <br>
                                                         </td>
                                                     </tr>
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                        </tr>
-
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                          </tr>
+                                        <?php                                  
+                                        if($paymentInfo->payment_type == 1){
+                                            $payment_method = 'Bank';
+                                        } else if($paymentInfo->payment_type == 2){
+                                            $payment_method = 'Bkash';
+                                        } else {
+                                            $payment_method = 'Cash';
+                                        }
+                                        ?>
                                         
                                         <tr class="heading">
                                             <td>Payment Method</td>
-                                            <td>Cash #</td>
+                                            <td><?=$payment_method?></td>
                                         </tr>
 
                                         <tr class="details">
@@ -192,21 +200,20 @@
                                         </tr>
 
                                         @if($guestCount > 0)
-                                            @for($i = 0; $i < $guestCount; $i++)
-                                                <tr class="item">
-                                                    <td>Guest {{ ($i + 1) }} </td>
-                                                    <td> {{ $paymentInfo->event->guest_amount }} </td>
-                                                </tr>
-                                            @endfor
+                                        @for($i = 0; $i < $guestCount; $i++)
+                                        <tr class="item">
+                                            <td>Guest {{ ($i + 1) }} </td>
+                                            <td> {{ $paymentInfo->event->guest_amount }} </td>
+                                        </tr>
+                                        @endfor
                                         @endif
 
                                         <tr class="total">
                                             <td></td>
                                             <td>Total: {{ $paymentInfo->amount }}</td>
                                         </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -214,27 +221,28 @@
             </div>
         </div>
     </div>
-    <div id="editor"></div>
+</div>
+<div id="editor"></div>
 @endsection
 @section('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
-    <script>
-        var doc = new jsPDF();
-        var specialElementHandlers = {
-            '#editor': function (element, renderer) {
-                return true;
-            }
-        };
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
+<script>
+    var doc = new jsPDF();
+    var specialElementHandlers = {
+        '#editor': function (element, renderer) {
+            return true;
+        }
+    };
 
-        $('#cmd').click(function () {
-            doc.fromHTML($('#content').html(), 5, 0, {
-                'width': 500,
-                'elementHandlers': specialElementHandlers
-            });
-            doc.save('sample-file.pdf');
+    $('#cmd').click(function () {
+        doc.fromHTML($('#content').html(), 5, 0, {
+            'width': 500,
+            'elementHandlers': specialElementHandlers
         });
+        doc.save('sample-file.pdf');
+    });
 
-    </script>
+</script>
 @endsection
 
 

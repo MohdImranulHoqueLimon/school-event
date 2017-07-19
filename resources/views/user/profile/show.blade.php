@@ -36,7 +36,7 @@
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                    Your account is pending. Please wait until admin activate your account or inform the admin
+                                    Your account is pending. Please go to the register for event page  to complete your payment.
                                 </div>
                             @elseif($user->status == 2)
                                 <div class="alert alert-danger">
