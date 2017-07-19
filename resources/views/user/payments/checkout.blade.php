@@ -38,7 +38,7 @@ Dashboard
                           </div>
                           <div class="panel-body checkout-form">
 
-                           <div class="alert alert-success information-box" role="alert">This is conformation page. check your event information and if everything is right then click conform button. </div>
+                           <div class="alert alert-success information-box" role="alert">Please check your information and confirm.</div>
                            <table class="table table-bordered">
                              <tr>
                                  <th>Event Title</th>
@@ -80,7 +80,7 @@ Dashboard
                       <div class="form-actions right">
                         <div class="row">
                             <div class="col-md-12">
-                            <button type="submit" class="btn blue"><i class="fa fa-check"></i> Conform</button>
+                            <button type="submit" class="btn blue"><i class="fa fa-check"></i> confirm</button>
                             </div>
                         </div>
                     </div>

@@ -20,12 +20,14 @@ class InvoiceController extends Controller
 
     public function showInvoice($id)
     {
+        $id = base64_decode($id);
         $paymentInfo = $this->paymentService->find($id);
         return view('admin.invoice.index', compact('paymentInfo'));
     }
 
     public function downloadInvoice($id) {
 
+         $id = base64_decode($id);
         $invoiceHtml = $this->paymentService->getInvoiceHtml($id);
 
         TCPDF::SetTitle('Invoice');
