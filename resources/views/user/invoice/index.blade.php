@@ -148,6 +148,8 @@
                                                 @if($payment->payment_type != NULL && $payment->payment_type == 1) Bank
                                                 @elseif($payment->payment_type != NULL && $payment->payment_type == 2)
                                                     Bkash
+                                                @elseif($payment->payment_type != NULL && $payment->payment_type == 3)
+                                                    Cash
                                                 @else N/A
                                                 @endif
                                             </td>
@@ -208,7 +210,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
+                    <h5 class="modal-title">Payment Type Information</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -224,7 +226,7 @@
                         <input type="hidden" name="id" id="payment_id" value=""/>
 
                         <div class="row">
-                            <div class="col-md-offset-3 col-md-5">
+                            <div class="col-md-offset-2 col-md-7">
                                 <div class="form-group">
                                     <label for="payment_type" class="control-label">Payment Type</label>
                                     <select name="payment_type" class="form-control" onchange="setPaymentMethod(this)">
@@ -237,17 +239,32 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-offset-3 col-md-5" id="attachment_section" style="display: none;">
+                            <div class="col-md-offset-2 col-md-7" id="attachment_section" style="display: none;">
                                 <div class="form-group">
                                     <label for="name" class="control-label">Bank Attachment</label>
                                     <input type="file" name="bank_attachment" class="form-control"/>
                                 </div>
+
+                                <div class="alert alert-info information-box" role="alert">
+                                    Pls upload your deposit  slip pic or scan copy.
+                                </div>
                             </div>
 
-                            <div class="col-md-offset-3 col-md-5" id="bkash_section" style="display: none;">
+                            <div class="col-md-offset-2 col-md-7" id="bkash_section" style="display: none;">
                                 <div class="form-group">
                                     <label for="name" class="control-label">Bkash Code</label>
                                     <input type="text" name="bkash_code" class="form-control"/>
+                                </div>
+
+                                <div class="alert alert-info information-box" role="alert">
+                                    pls give the last 4 digit of sender bkash no.
+                                </div>
+                            </div>
+
+                            <div class="col-md-offset-2 col-md-7" id="cash_section" style="display: none;">
+                                <div class="form-group">
+                                    <label for="note" class="control-label">Note</label>
+                                    <input type="text" name="note" class="form-control"/>
                                 </div>
                             </div>
                         </div>
@@ -268,14 +285,16 @@
 
             var selectedMethod = $(obj).val();
 
-            $('#attachment_section').hide();
-            $('#bkash_section').hide();
+            $('#attachment_section, #bkash_section, #cash_section').hide();
 
             if (selectedMethod == 1) {
                 $('#attachment_section').show();
             }
             if (selectedMethod == 2) {
                 $('#bkash_section').show();
+            }
+            if (selectedMethod == 3) {
+                $('#cash_section').show();
             }
         }
 
