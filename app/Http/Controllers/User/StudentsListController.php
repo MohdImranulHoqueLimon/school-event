@@ -55,6 +55,7 @@ class StudentsListController extends Controller
      */
     public function show($id)
     {
+        $id = base64_decode($id);
         $user = $this->userService->findUser($id);
 
         if (!$user) {

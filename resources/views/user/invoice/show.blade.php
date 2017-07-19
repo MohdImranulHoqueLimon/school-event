@@ -104,7 +104,7 @@
                             <div class="actions">
                                 <div class="btn-group pull-right">
                                     {{--<button id="cmd" class="btn sbold green">Download PDF</button>--}}
-                                    <a target="_blank" class="btn sbold green" href="{{ route('user.invoice_download', $paymentInfo->id)  }}" >Download PDF</a>
+                                    <a target="_blank" class="btn sbold green" href="{{ route('user.invoice_download', base64_encode($paymentInfo->id))  }}" >Download PDF</a>
                                 </div>
                             </div>
                         </div>
