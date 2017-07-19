@@ -363,10 +363,7 @@ class PaymentsService extends BaseService
                 </div>
             </div>
             </body>
-        </html>
-        ';
-
-        echo $html;
-        die();
+        </html>';
+        return $html;
     }
 }
