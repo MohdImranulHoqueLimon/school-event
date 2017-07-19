@@ -122,6 +122,13 @@ class PaymentController extends Controller
     private function changePaymentStatus($id, $status) {
         $payment = $this->paymentService->find($id);
         $payment->status = $status;
+
+        if($status == Constants::$PAYMENT_ACTIVE) {
+            $payment->approved_by = Auth::user()->id;
+        } else{
+            $payment->approved_by = NULL;
+        }
+
         return $payment->save();
     }
 
