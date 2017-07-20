@@ -66,7 +66,7 @@ Dashboard
                                 </div>
 
                                 <?php 
-                                if($eventsList['id'] == 1){
+                                if($eventsList['id'] == 10000){
                                    if( $user['batch'] > 2007){
                                     $event_amount = 500;
                                    } else {
