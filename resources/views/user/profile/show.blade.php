@@ -89,7 +89,7 @@
                                     <td><b>Profile Image</b></td>
                                     <td>
                                         <img src="{{ url('/images/avatar/thumbnail_images/' . $user->user_image)}}"
-                                             class="img-responsive" alt="" style="height: 100px;width: 100px">
+                                             class="img-responsive" alt="" style="width: 300px">
                                     </td>
                                 </tr>
                                 </tbody>

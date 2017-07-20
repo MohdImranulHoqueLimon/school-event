@@ -4,7 +4,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="{{url('/')}}">
-                <h3 class="admin-header-name">School Event</h3>
+                <h3 class="admin-header-name">Bagerhat Govt High School</h3>
             </a>
             <div class="menu-toggler sidebar-toggler">
                 <span></span>
