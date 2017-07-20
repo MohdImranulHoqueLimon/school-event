@@ -48,8 +48,9 @@ class PaymentController extends Controller
         $payments = $this->paymentService->getAllPaymentsForAdmin(Auth::user()->id, $filters);
         $events = $this->eventService->getAllActiveEvents();
         $paymentTypes = $this->paymentTypesService->getAllPaymentTypes();
+        $sumResults = $this->paymentService->getAllSumResultsByFilter($filters);
 
-        return View('admin.payment.index', compact('payments', 'request', 'events', 'paymentTypes'));
+        return View('admin.payment.index', compact('payments', 'request', 'events', 'paymentTypes', 'sumResults'));
     }
 
     public function create()

@@ -157,7 +157,10 @@
                                                 @else N/A
                                                 @endif--}}
                                                 @if($payment->payment_type != NULL && $payment->payment_type == 1) Bank
-                                                @elseif($payment->payment_type != NULL && $payment->payment_type == 2) Bkash
+                                                @elseif($payment->payment_type != NULL && $payment->payment_type == 2)
+                                                    Bkash
+                                                @elseif($payment->payment_type != NULL && $payment->payment_type == 3)
+                                                    Cash
                                                 @else N/A
                                                 @endif
                                             </td>
@@ -215,6 +218,11 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    <tr>
+                                        <td colspan="1"><b>Total Amount: </b> {{ $sumResults['total_amount'] }}</td>
+                                        <td colspan="2"><b>Total Guest Amount: </b> {{ $sumResults['total_guest_amount'] }}</td>
+                                        <td colspan="9"><b>Total Own Amount: </b> {{ $sumResults['total_amount'] - $sumResults['total_guest_amount'] }}</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>

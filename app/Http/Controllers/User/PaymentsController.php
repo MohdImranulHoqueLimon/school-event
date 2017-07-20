@@ -53,16 +53,22 @@ class PaymentsController extends Controller
 
             $payment->payment_type = 1;
             $payment->bkash_code = '';
+            $payment->cash_note = null;
             $payment->bank_attachment = $fileName;
             $payment->save();
 
-        } else if($input['payment_type'] == 2) {
+        }
+        //bkash
+        else if($input['payment_type'] == 2) {
             $bkashCode = $input['bkash_code'];
             $payment->payment_type = 2;
             $payment->bkash_code = $bkashCode;
             $payment->bank_attachment = '';
+            $payment->cash_note = null;
             $payment->save();
-        } else {
+        }
+        //cash
+        else {
             $cashNote = $input['note'];
             $payment->payment_type = 3;
             $payment->cash_note = $cashNote;
