@@ -123,7 +123,7 @@
 <div class="copyright">
     {{date('Y')}} © {{config('app.name')}} |
     Powered By <a class="right" href="{{ env('DOMAIN_NAME') }}" target="_blank">
-        School Event
+        Bagerhat Govt High School
     </a>
 </div>
 

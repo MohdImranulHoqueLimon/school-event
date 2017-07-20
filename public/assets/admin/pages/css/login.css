@@ -217,6 +217,14 @@
     font-size: 13px;
 }
 
+.login .copyright a {
+     color: #7a8ca5;
+    font-size: 13px;
+}
+.login .copyright a:hover {
+    color: #ce2a36;
+}
+
 .form-horizontal .control-label {
     margin-bottom: 0;
     padding-top: 7px;
