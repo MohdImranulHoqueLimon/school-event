@@ -153,4 +153,12 @@ class UserRepository extends Repository
             })->pluck($title,$id);
         return $users;
     }
+
+     public function updateUserStatus( $id, $value)
+    {
+        
+                $allowedData['status'] = $value;
+        
+        return $this->model->where('id', '=', $id)->update($allowedData);
+    }
 }

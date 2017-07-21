@@ -87,9 +87,17 @@ class PaymentController extends Controller
     public function approvePayment($id) {
         $result = $this->changePaymentStatus($id, Constants::$PAYMENT_ACTIVE);
 
-        $userObj = $this->userService->findById(Auth::user()->id);
+
+        $paymentInfo = $this->paymentService->find($id);
         $invoiceHtml = $this->paymentService->getInvoiceHtmlForEmail($id);
-        $this->emailService->mailSendProcess($userObj->email, 'School Event', 'Your payment approved<br/>' . $invoiceHtml);
+        
+        $userObj = $this->userService->findById($paymentInfo['user_id']);
+
+        $input['status'] = Constants::$PAYMENT_ACTIVE;
+       // return $this->userService->where('id', $paymentInfo['user_id'])->update($input);
+        //$this->userService->where('id', $paymentInfo['user_id'])->update(['status' => 1]);
+        $this->userService->changeUserStatus($paymentInfo['user_id'], Constants::$PAYMENT_ACTIVE);
+        $this->emailService->mailSendProcess($userObj->email, 'Bagerhat Govt High School', 'Your payment approved<br/>' . $invoiceHtml);
 
         if($result) {
             flash('Successfully approved payment');

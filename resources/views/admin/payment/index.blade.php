@@ -119,6 +119,7 @@
                                         <th style="min-width: 80px;">G. Count</th>
                                         <th style="min-width: 95px;">Created</th>
                                         <th style="min-width: 90px;">Payment Type</th>
+                                        <th style="min-width: 90px;">Cash</th>
                                         <th style="min-width: 90px;">Bkash Code</th>
                                         <th style="min-width: 120px;">Attachment</th>
                                         <th style="min-width: 120px;">Approved By</th>
@@ -158,9 +159,11 @@
                                                 @endif--}}
                                                 @if($payment->payment_type != NULL && $payment->payment_type == 1) Bank
                                                 @elseif($payment->payment_type != NULL && $payment->payment_type == 2) Bkash
+                                                @elseif($payment->payment_type != NULL && $payment->payment_type == 3) Cash
                                                 @else N/A
                                                 @endif
                                             </td>
+                                            <td>{{ $payment->cash_note  }}</td>
                                             <td>{{ $payment->bkash_code  }}</td>
                                             <td>
                                                 <a target="_blank" href="../upload/payment/{{ $payment->bank_attachment  }}">{{ $payment->bank_attachment  }}</a>

@@ -246,7 +246,7 @@
                                 </div>
 
                                 <div class="alert alert-info information-box" role="alert">
-                                    Pls upload your deposit  slip pic or scan copy.
+                                    pls attach a clear image of Deposit slip.
                                 </div>
                             </div>
 
@@ -257,7 +257,7 @@
                                 </div>
 
                                 <div class="alert alert-info information-box" role="alert">
-                                    pls give the last 4 digit of sender bkash no.
+                                    Pls give your payment TrxID for your payment confirmation.
                                 </div>
                             </div>
 
@@ -266,6 +266,11 @@
                                     <label for="note" class="control-label">Note</label>
                                     <input type="text" name="note" class="form-control"/>
                                 </div>
+
+                                <div class="alert alert-info information-box" role="alert">
+                                    Pls give cash receiver name and phone no.
+                                </div>
+
                             </div>
                         </div>
                     </form>

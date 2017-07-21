@@ -285,51 +285,22 @@ class PaymentsService extends BaseService
         $html = '
         <html> 
             <body>
-                <div class="portlet-body" style="width:600px;background-color:#F9E7E7;border-radius: 7px;border: 1px solid #ccc;">               
-                                    <table style="width:600px;">                                    
-                                        <tbody>
-                                        <tr>
-                                            <td class="title" style="width:400px;">
-                                                <img name="invoicelogo" src="'.$path.'/images/main_logo.png"  style="width:90%; width:50px;"><br/>
-                                            </td>
-                                            <td>
-                                                Invoice #: ' . $paymentInfo->id . '<br>'
-            . $paymentInfo->event->title . '<br/>
-                                               Created: ' . date('d F, Y', strtotime($paymentInfo->created_at)) . '<br>                                               
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table> <br/><br/>
+                <div class="portlet-body" style="width:600px;background-color:#F9E7E7;border-radius: 7px;border: 1px solid #ccc;padding:15px 20px;">               
                                     
-                                    <table style="width:600px;">
+                                    <table style="width:100%;">
                                         <tbody>
                                         <tr>
-                                            <td style="width:400px;">
-                                                 <p>Address: Bagerhat Govt High School,<br>
-                                                             Old Rupsha Road,Bagerhat.<br>
-                                                            Email: info@exstudentsbghs.com<br/>
-                                                            Phonn: +8801717963568 , +8801715442209
-                                                           </p>
+                                            <td style="width:90%;margin-bottom:20px;float:left;">
+                                                You have successfully registered for ' . $paymentInfo->event->title .'Please <a target="_blank" href="'.$path.'/admin/invoice_download/'.base64_encode($paymentInfo->id).'"> download</a> the invoice and print.Preserve for the reunion ceremony.
                                             </td>
-                                            <td>
-                                                ' . $paymentInfo->user->name . '<br/>';
-
-        if ($paymentInfo->user->profession != "") {
-            $html .=   $paymentInfo->user->profession . '<br/>';
-        }
-
-        $html .=  $paymentInfo->user->email . '<br/>'
-            . $paymentInfo->user->phone . '  
-                                                <br>  ' . $paymentInfo->user->batch . '
-                                                <br>
-                                            </td>
+                                            
                                         </tr>
                                         </tbody>
                                     </table>';
 
         $html .= '<div id="content">
                     <div class="invoice-box">
-                        <table cellpadding="2" style="width:600px;border:1px solid #ccc;border-bottom:none;border-left:none;border-right:none;margin-top:10px">
+                        <table cellpadding="2" style="width:100%;border:1px solid #ccc;border-bottom:none;border-left:none;border-right:none;margin-top:10px">
                             <tbody> 
                             <tr class="heading">
                                 <td style="border-bottom:1px solid #ccc;border-left:none;border-right:none">Payment Method</td>
@@ -356,6 +327,11 @@ class PaymentsService extends BaseService
         $html .= '<tr class="total">
                                 <td>Total</td>
                                 <td>' . $paymentInfo->amount . '</td>
+                            </tr>
+                            <tr>
+                                <td style="width:50%;margin-top:30px;float:left;">
+                                                 <p> Bagerhat Govt High School </p>
+                                            </td>
                             </tr>
                             </tbody>
                         </table>

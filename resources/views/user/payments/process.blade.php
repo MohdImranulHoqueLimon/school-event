@@ -66,15 +66,8 @@ Dashboard
                                 </div>
 
                                 <?php 
-                                if($eventsList['id'] == 10000){
-                                   if( $user['batch'] > 2007){
-                                    $event_amount = 500;
-                                   } else {
-                                    $event_amount = 1000;
-                                   }
-                               } else {
+                                
                                 $event_amount = $eventsList['amount'];
-                               }
                                 ?>
 
                                 <div class="form-group">
