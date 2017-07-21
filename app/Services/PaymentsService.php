@@ -119,6 +119,26 @@ class PaymentsService extends BaseService
         return $query;
     }
 
+    public function getAllSumResultsByFilter($filters) {
+
+        $payments = $this->getAllPaymentsWithForAdmin(Auth::user()->id, $filters)->get();
+        $totalAmount = 0;
+        $totalGuestAmount = 0;
+
+        foreach ($payments as $payment) {
+        
+            if(!empty($payment->amount)) $totalAmount += $payment->amount;
+            if(!empty($payment->event->guest_amount)) $totalGuestAmount += $payment->event->guest_amount * $payment->guest_count;
+        }
+
+        $sumResult = array (
+            'total_amount' => $totalAmount,
+            'total_guest_amount' => $totalGuestAmount
+        );
+
+        return $sumResult;
+    }
+
     public function getAllPaymentsWith($filters)
     {
         $query = $this->getQuery();
