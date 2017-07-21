@@ -98,7 +98,7 @@ class PaymentController extends Controller
        // return $this->userService->where('id', $paymentInfo['user_id'])->update($input);
         //$this->userService->where('id', $paymentInfo['user_id'])->update(['status' => 1]);
         $this->userService->changeUserStatus($paymentInfo['user_id'], Constants::$PAYMENT_ACTIVE);
-        $this->emailService->mailSendProcess($userObj->email, 'Bagerhat Govt High School', 'Your payment approved<br/>' . $invoiceHtml);
+        $this->emailService->mailSendProcess($userObj->email, 'Ex-Students reunion-2017', 'Your payment approved<br/><br/>' . $invoiceHtml);
 
         if($result) {
             flash('Successfully approved payment');
