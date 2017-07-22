@@ -106,6 +106,7 @@
                                         <th style="min-width: 80px;">G. Count</th>
                                         <th style="min-width: 95px;">Created</th>
                                         <th style="min-width: 90px;">Payment Type</th>
+                                        <th style="min-width: 90px;">Cash Receiver</th>
                                         <th style="min-width: 90px;">Bkash Code</th>
                                         <th style="min-width: 120px;">Attachment</th>
                                         <th style="min-width: 120px;">Approved By</th>
@@ -153,6 +154,7 @@
                                                 @else N/A
                                                 @endif
                                             </td>
+                                            <td>{{ $payment->cash_note  }}</td>
                                             <td>{{ $payment->bkash_code  }}</td>
                                             <td>
                                                 <a target="_blank"
@@ -246,7 +248,16 @@
                                 </div>
 
                                 <div class="alert alert-info information-box" role="alert">
-                                    pls attach a clear image of Deposit slip.
+ <b>Bank Payment Steps</b> :<br>
+                     01. Go to any branch of <b>Social Islami Bank Ltd</b>.<br>
+                     02. Deposit the total amount for registration.<br>
+                     *AC Name: <b>Ex-Students Reunion,Bagerhat Govt High School</b>.<br>
+                     *Ac No: <b>0881340012987</b><br>
+                     *Branch: <b>Bagerhat Branch</b>.<br>
+                     03. Scan the deposit slip or take a clear pic.<br>
+                     04. Login to the registration page and go to <b>My Invoice</b> page,click on the sign <b>$</b> , select payment type <b>Bank</b> , Attach the pic or scanned deposit slip.<b>Confirm</b> your submission.
+                     Done!You will receive an invoice after verifying your payment.<br>
+                     Please wait for the approval.<br>
                                 </div>
                             </div>
 
@@ -257,7 +268,15 @@
                                 </div>
 
                                 <div class="alert alert-info information-box" role="alert">
-                                    Pls give your payment TrxID for your payment confirmation.
+                                     <b>bKash Payment Steps</b> :<br>
+                     You can make payments from your bKash Account to our <b>Merchant</b> .<br>
+                     01. Go to your bKash Mobile Menu by dialing <b>*247#</b><br>
+                     02. Choose <b>Payment</b> option by pressing <b>3</b><br>
+                     03. Enter the Merchant bKash Account Number <b>01972427432</b><br>
+                     04. Enter the <b>Total Amount</b> with <b>bKash charge</b>.<br>
+                     05. Enter <b>Your Name</b> in <b>Reference section</b>.<br>
+                     06. Enter the Counter Number <b>1</b>
+                     07. Now enter your bKash Mobile Menu <b>PIN</b> to confirm<br>
                                 </div>
                             </div>
 
@@ -268,7 +287,12 @@
                                 </div>
 
                                 <div class="alert alert-info information-box" role="alert">
-                                    Pls give cash receiver name and phone no.
+                                     <b>Cash Payment</b>:<br>
+                     Give the cash receiver <b>Name and Mobile</b> no into reference box.<br>
+
+                     You can find your invoice after getting approval.<b>Download</b> your invoice.<br>
+                     You will get an email with the attached invoice too.<br>
+
                                 </div>
 
                             </div>
