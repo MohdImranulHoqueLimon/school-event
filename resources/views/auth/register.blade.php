@@ -66,7 +66,7 @@
         <p class="hint"> Enter your personal details below: </p>
 
         <div class="form-group">
-            <input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="name"/>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="name" required="" />
             @if ($errors->has('name'))
                 <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
             @endif
@@ -77,7 +77,7 @@
                 <span class="input-group-addon">
                     <i class="fa fa-phone"></i>
                 </span>
-                <input class="form-control" placeholder="Phone Number" type="text" name="phone">
+                <input class="form-control" placeholder="Phone Number" type="text" name="phone" required="">
             </div>
             @if ($errors->has('phone'))
                 <span class="help-block"><strong>{{ $errors->first('phone') }}</strong></span>
@@ -85,7 +85,7 @@
         </div>
 
         <div class="form-group">
-            <input class="form-control" placeholder="Profession" type="text" name="profession">
+            <input class="form-control" placeholder="Profession" type="text" name="profession" required="">
             @if ($errors->has('profession'))
                 <span class="help-block">
                     <strong>{{ $errors->first('profession') }}</strong>
@@ -110,7 +110,7 @@
                 <span class="input-group-addon">
                     <i class="fa fa-envelope"></i>
                 </span>
-                <input class="form-control" placeholder="Email Address" type="text" name="email" onblur="emailErrorPlacement(this)">
+                <input class="form-control" required="" placeholder="Email Address" type="text" name="email" onblur="emailErrorPlacement(this)">
             </div>
             @if ($errors->has('email'))
                 <span class="help-block">
@@ -134,7 +134,7 @@
 
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Address</label>
-            <input class="form-control placeholder-no-fix" type="text" placeholder="Present Address" name="address"/>
+            <input class="form-control placeholder-no-fix" type="text" required="" placeholder="Present Address" name="address"/>
             @if ($errors->has('address'))
                 <span class="help-block">
                     <strong>{{ $errors->first('address') }}</strong>
@@ -144,7 +144,7 @@
 
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Address</label>
-            <input class="form-control placeholder-no-fix" type="text" placeholder="Permanent Address" name="permanent_address"/>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Permanent Address" required="" name="permanent_address"/>
             @if ($errors->has('permanent_address'))
                 <span class="help-block">
                     <strong>{{ $errors->first('permanent_address') }}</strong>
@@ -154,7 +154,7 @@
 
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">Present City/Town</label>
-            <input class="form-control placeholder-no-fix" type="text" placeholder="Present City/Town" name="city"/>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="Present City/Town" required="" name="city"/>
             @if ($errors->has('city'))
                 <span class="help-block">
                     <strong>{{ $errors->first('city') }}</strong>

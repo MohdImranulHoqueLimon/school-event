@@ -31,67 +31,7 @@ rel="stylesheet" type="text/css"/>
                     </div>
                     <div class="portlet-body">
 
-                        <div class="portlet green-sharp box">
-                            <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="fa fa-search"></i>Search Users
-                                </div>
-                            </div>
-                            <div class="portlet-body">
-                                <form class="horizontal-form" role="form" method="GET" action="/user/invoice">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="event_id" class="control-label">Events</label>
-                                                <select name="event_id" class="form-control">
-                                                    <option value=""> --- Select ---</option>
-                                                    @foreach($events as $event)
-                                                    <option value="{{ $event->id }}"
-                                                        @if(isset($request) && $request->event_id == $event->id) selected @endif>
-                                                        {!! $event->title !!}
-                                                    </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-2 col-md-4 col-sm-4">
-                                            <div class="form-group">
-                                                <label for="name" class="control-label">Status</label>
-                                                <select name="status" class="form-control">
-                                                    <option value="" @if(!isset($request) || $request->status == '') @endif> --- Select --- </option>
-                                                    @for($i = 0; $i < 3; $i++)
-                                                    <option value="{{$i}}" @if(isset($request) && $request->status != '' && $request->status == $i) selected @endif>
-                                                        {{\App\Support\Configs\Constants::$payment_status_names[$i]}}
-                                                    </option>
-                                                    @endfor
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="payment_type" class="control-label">Payment Type</label>
-                                                <select name="payment_type" class="form-control">
-                                                    <option value=""> --- Select ---</option>
-                                                    <option value="1" @if(isset($request) && $request->payment_type == 1) selected @endif>Bank</option>
-                                                    <option value="2" @if(isset($request) && $request->payment_type == 2) selected @endif>Bkash</option>
-                                                    <option value="3" @if(isset($request) && $request->payment_type == 3) selected @endif>Cash</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-2 col-md-12 col-sm-12 pull-right">
-                                            <label for="condition" class="control-label">&nbsp;</label><br/>
-                                            <button type="submit" class="btn blue btn-block">
-                                                <i class="fa fa-search"></i> Search
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
+                        
                         <div class="alert alert-success information-box" role="alert">To confirm your payment please click <b>$</b> sing icon then update payment information. If you use mobile then scroll to left then you will see <b>$</b> icon.</div>
                         <div style="overflow-x: scroll;">
                             <table class="table table-striped table-bordered table-hover table-checkable order-column"
