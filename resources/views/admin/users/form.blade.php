@@ -92,7 +92,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="email" class="control-label">Emergency Phone
-                    <span class="required" aria-required="true"> * </span>
+                    
                 </label>
                 <input id="emergency_phone" type="text" class="form-control" name="emergency_phone"
                        value="{{ old('emergency_phone', isset($user) ? $user->emergency_phone:null) }}" autofocus>

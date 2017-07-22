@@ -39,6 +39,7 @@ Dashboard
                           <div class="panel-body checkout-form">
 
                            <div class="alert alert-success information-box" role="alert">Please check your information and confirm.</div>
+                           <div class="table-responsive">
                            <table class="table table-bordered">
                              <tr>
                                  <th>Event Title</th>
@@ -74,6 +75,7 @@ Dashboard
                               </td>
                           </tr>
                       </table>
+                      </div>
                       <input type="hidden" name="event_id" value="{!! $checkout_data['event_id'] !!}">
                       <input type="hidden" name="amount" value="{!! $total_amount !!}">
                       <input type="hidden" name="guest_count" value="{!! $guest_count !!}">

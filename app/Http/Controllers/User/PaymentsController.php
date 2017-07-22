@@ -77,6 +77,8 @@ class PaymentsController extends Controller
             $payment->save();
         }
 
+        flash('Congratulation!you have successfully completed your registration.You will get a confirmation mail with your invoice after admin confirm your payment.Thank you.');
+
         return redirect()->back();
     }
 
@@ -104,7 +106,7 @@ class PaymentsController extends Controller
         $result = $this->paymentsService->store($input);
 
         if ($result) {
-            flash('Payment created successfully!');
+            flash('Congratulation!you have successfully completed your registration.You will get a confirmation mail with your invoice after admin confirm your payment.Thank you.');
             return redirect()->route('invoice.index');
         }
 

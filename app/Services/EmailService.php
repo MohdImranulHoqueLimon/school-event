@@ -45,7 +45,7 @@ class EmailService extends BaseService
 
     public function mailSendProcess($to, $subject , $message ) {
          
-         $header = "From:admin@member.exstudentsbghs.com \r\n";
+         $header = "From:info@exstudentsbghs.com \r\n";
          $header .= "MIME-Version: 1.0\r\n";
          $header .= "Content-type: text/html\r\n";
          

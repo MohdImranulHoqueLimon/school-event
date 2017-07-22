@@ -34,6 +34,11 @@ class LoginController extends Controller
         return view('auth.user.login');
     }
 
+     public function how_to_complete()
+    {
+        return view('auth.how_to_complete_registration');
+    }
+
     /**
      * Perform the login.
      *

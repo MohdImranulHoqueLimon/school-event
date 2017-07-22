@@ -4,8 +4,8 @@
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="{{url('/')}}" style="text-decoration: none !important;">
-                <h3 class="admin-header-name"><img src="/images/main_logo.png" style="height: 40px;margin-top: -7px"></h3>
+            <a href="{{url('/user/profile')}}" style="text-decoration: none !important;">
+                <h3 class="admin-header-name"><img src="{{ url('') }}/images/main_logo.png" style="height: 40px;margin-top: -7px"></h3>
             </a>
 
         </div>

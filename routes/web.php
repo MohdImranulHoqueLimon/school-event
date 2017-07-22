@@ -148,6 +148,7 @@ Route::get('/success-page', ['as' => 'success-page', 'uses' => 'ResultController
 
 Route::get('/sign-in', ['as' => 'student-login', 'uses' => 'User\LoginController@login']);
 Route::post('/sign-in', ['as' => 'student-login', 'uses' => 'User\LoginController@postLogin']);
+Route::get('/how_to_complete', ['as' => 'how_to_complete', 'uses' => 'User\LoginController@how_to_complete']);
 
 Route::get('/news', 'HomeController@news');
 Route::get('/about', 'HomeController@about');

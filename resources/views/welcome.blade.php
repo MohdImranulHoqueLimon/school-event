@@ -35,7 +35,7 @@ $main_path = url('/');
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
             data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span> <span
             class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-            <a class="navbar-brand page-scroll" href="#page-top"> <a class="navbar-brand page-scroll" href="{{ url('') }}"><img src="images/main_logo.png" style="height: 50px;margin-top: -20px"></a>
+            <a class="navbar-brand page-scroll" href="#page-top"> <a class="navbar-brand page-scroll" href="{{ url('') }}"><img src="{{ url('') }}/images/main_logo.png" style="height: 50px;margin-top: -20px"></a>
         </a>
     </div>
 
@@ -44,6 +44,7 @@ $main_path = url('/');
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#about" class="page-scroll">About</a></li>
             <li><a href="#contact" class="page-scroll">Contact</a></li>
+
             @if (Route::has('login'))
             @if(!Auth::check())
             <li><a href="{{ url('/sign-in') }}" class="page-scroll">Login</a></li>
@@ -53,6 +54,7 @@ $main_path = url('/');
             <li><a href="{{ url('/logout') }}" class="page-scroll">Logout</a></li>
             @endif
             @endif
+            <li><a href="{{ url('/how_to_complete') }}" class="page-scroll">How to complete registration</a></li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->

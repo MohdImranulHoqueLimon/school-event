@@ -333,4 +333,10 @@ class UserService
 
         return true;
     }
+
+    public function changeUserStatus(  $id, $value )
+    {
+        //$this->model->where('id', $id)->update(['status' => 1]);
+        return $this->repository->updateUserStatus($id, $value);
+    }
 }
