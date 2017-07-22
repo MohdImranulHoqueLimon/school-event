@@ -44,6 +44,7 @@ $main_path = url('/');
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#about" class="page-scroll">About</a></li>
             <li><a href="#contact" class="page-scroll">Contact</a></li>
+
             @if (Route::has('login'))
             @if(!Auth::check())
             <li><a href="{{ url('/sign-in') }}" class="page-scroll">Login</a></li>
@@ -53,6 +54,7 @@ $main_path = url('/');
             <li><a href="{{ url('/logout') }}" class="page-scroll">Logout</a></li>
             @endif
             @endif
+            <li><a href="{{ url('/how_to_complete') }}" class="page-scroll">How to complete registration</a></li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->

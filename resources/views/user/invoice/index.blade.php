@@ -92,6 +92,7 @@
                                 </div>
                             </div>
 
+                           <div class="alert alert-success information-box" role="alert">To confirm your payment please click <b>$</b> sing icon then update payment information. If you use mobile then scroll to left then you will see <b>$</b> icon.</div>
                             <div style="overflow-x: scroll;">
                                 <table class="table table-striped table-bordered table-hover table-checkable order-column"
                                        id="sample_1"
@@ -171,7 +172,7 @@
                                             </td>
                                             <td>@if($payment->status === 1) Approved @else Pending @endif</td>
                                             <td>
-                                                <a href="#" style="float: left" data-toggle="modal"
+                                                <a href="#" title="click this to confirm payment" style="float: left" data-toggle="modal"
                                                    data-target="#exampleModal"
                                                    class="btn btn-icon-only grey-cascade"
                                                    onclick="setPaymentId({{$payment->id}})">
@@ -334,6 +335,7 @@
         function setPaymentId(id) {
             $('#payment_id').val(id);
         }
+
     </script>
 
 @endsection

@@ -43,6 +43,7 @@
                     @if(!Auth::check())
                         <li><a href="{{ url('/sign-in') }}" class="page-scroll">Login</a></li>
                         <li><a href="{{ url('/register') }}" class="page-scroll">Register</a></li>
+                        <li><a href="{{ url('/how_to_complete') }}" class="page-scroll">How to complete registration</a></li>
                     @else
                         <li><a href="{{ url('user/profile') }}" class="page-scroll">Profile</a></li>
                         <li><a href="{{ url('/logout') }}" class="page-scroll">Logout</a></li>
