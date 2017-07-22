@@ -77,6 +77,8 @@ class PaymentsController extends Controller
             $payment->save();
         }
 
+        flash('Congratulation!you have successfully completed your registration.You will get a confirmation mail with your invoice after admin confirm your payment.Thank you.');
+
         return redirect()->back();
     }
 

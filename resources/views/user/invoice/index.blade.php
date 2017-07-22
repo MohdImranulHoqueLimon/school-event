@@ -108,7 +108,7 @@
                                         <th style="min-width: 95px;">Created</th>
                                         <th style="min-width: 90px;">Payment Type</th>
                                         <th style="min-width: 90px;">Cash Receiver</th>
-                                        <th style="min-width: 90px;">Bkash Code</th>
+                                        <th style="min-width: 90px;">TrxID no</th>
                                         <th style="min-width: 120px;">Attachment</th>
                                         <th style="min-width: 120px;">Approved By</th>
                                         <th style="min-width: 80px;">Status</th>
