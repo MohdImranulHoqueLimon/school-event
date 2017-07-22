@@ -196,7 +196,7 @@ class PaymentsService extends BaseService
         $html = '
         <html> 
             <body>
-                <div class="portlet-body" style="width:600px;font-size:11px;">               
+                <div class="portlet-body" style="width:600px;font-size:11px;overflow-x: scroll;">               
                                     <table style="width:600px;">                                    
                                         <tbody>
                                         <tr>
@@ -305,7 +305,7 @@ class PaymentsService extends BaseService
         $html = '
         <html> 
             <body>
-                <div class="portlet-body" style="width:600px;background-color:#F9E7E7;border-radius: 7px;border: 1px solid #ccc;padding:15px 20px;">               
+                <div class="portlet-body" style="width:600px;background-color:#F9E7E7;border-radius: 7px;border: 1px solid #ccc;padding:15px 20px;overflow-x: scroll;">               
                                     
                                     <table style="width:100%;">
                                         <tbody>

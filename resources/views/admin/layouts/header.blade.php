@@ -5,7 +5,7 @@
                     <!-- BEGIN LOGO -->
                     <div class="page-logo">
                         <a href="{!! url('user/profile') !!}" style="text-decoration: none !important;">
-                            <h3 class="admin-header-name"><a class="navbar-brand page-scroll" href="{{ url('/admin') }}"><img src="../images/main_logo.png" style="height: 40px;margin-top: -20px"></a></h3>
+                            <h3 class="admin-header-name"><a class="navbar-brand page-scroll" href="{{ url('/admin') }}"><img src="{{ url('') }}/images/main_logo.png" style="height: 40px;margin-top: -20px"></a></h3>
                         </a>
                         
                     </div>
