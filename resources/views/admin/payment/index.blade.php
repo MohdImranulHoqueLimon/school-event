@@ -37,12 +37,12 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body">
-                                    <form class="horizontal-form" role="form" method="GET" action="/admin/payments">
+                                    <form class="horizontal-form" role="form" id="search_form" method="GET" action="/admin/payments">
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="event_id" class="control-label">Events</label>
-                                                    <select name="event_id" class="form-control">
+                                                    <select name="event_id" id="event_id" class="form-control">
                                                         <option value=""> --- Select --- </option>
                                                         @foreach($events as $event)
                                                             <option value="{{ $event->id }}"
@@ -57,7 +57,7 @@
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="name" class="control-label">Status</label>
-                                                    <select name="status" class="form-control">
+                                                    <select name="status" id="name" class="form-control">
                                                         <option value="" @if(!isset($request) || $request->status == '') @endif> --- Select --- </option>
                                                         @for($i = 0; $i < 3; $i++)
                                                             <option value="{{$i}}" @if(isset($request) && $request->status != '' && $request->status == $i) selected @endif>
@@ -71,7 +71,7 @@
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="payment_type" class="control-label">Payment Type</label>
-                                                    <select name="payment_type" class="form-control">
+                                                    <select name="payment_type" id="payment_type" class="form-control">
                                                         <option value=""> --- Select ---</option>
                                                         <option value="1" @if(isset($request) && $request->payment_type == 1) selected @endif>Bank</option>
                                                         <option value="2" @if(isset($request) && $request->payment_type == 2) selected @endif>Bkash</option>
@@ -99,6 +99,10 @@
                                                 <label for="condition" class="control-label">&nbsp;</label><br/>
                                                 <button type="submit" class="btn blue btn-block">
                                                     <i class="fa fa-search"></i> Search
+                                                </button>
+
+                                                <button type="button" class="btn blue btn-block" onclick="downloadCsv()">
+                                                    <i class="fa fa-download"></i> CSV
                                                 </button>
                                             </div>
                                         </div>
@@ -319,6 +323,24 @@
         function setPaymentId(id) {
             $('#payment_id').val(id);
         }
+
+
+            function downloadCsv() {
+
+                $('#search_form').append('<input type="hidden" name="csv" value="1"/>');
+                $('#search_form').submit();
+
+                /*$(
+                        '<form action="download_csv_report">' +
+                                '<input type="hidden" name="event_id" value="' + $('#event_id').val() + '"/>'
+                                '<input type="hidden" name="status" value="' + $('#status').val() + '"/>'
+                                '<input type="hidden" name="payment_type" value="' + $('#payment_type').val() + '"/>'
+                                '<input type="hidden" name="name" value="' + $('#name').val() + '"/>'
+                                '<input type="hidden" name="email" value="' + $('#email').val() + '"/>'
+                        '</form>'
+                ).appendTo('body').submit();*/
+            }
+
     </script>
 
 @endsection

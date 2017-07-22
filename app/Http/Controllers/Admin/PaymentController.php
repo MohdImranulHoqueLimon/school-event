@@ -44,13 +44,49 @@ class PaymentController extends Controller
     public function index(Request $request)
     {
         $filters = $request->all();
-        //$payments = $this->paymentService->getAllPayments($filters);
+
+        if(!empty($filters['csv'])) {
+            return $this->downloadCsv($filters);
+        }
+
         $payments = $this->paymentService->getAllPaymentsForAdmin(Auth::user()->id, $filters);
         $events = $this->eventService->getAllActiveEvents();
         $paymentTypes = $this->paymentTypesService->getAllPaymentTypes();
         $sumResults = $this->paymentService->getAllSumResultsByFilter($filters);
 
         return View('admin.payment.index', compact('payments', 'request', 'events', 'paymentTypes', 'sumResults'));
+    }
+
+    public function downloadCsv($filters) {
+
+        $payments = $this->paymentService->getAllPaymentsWithForAdmin(Auth::user()->id, $filters);
+        $payments = $payments->get();
+
+        $csv = "Name, Event Title, Payment Type, Total Amount, Own Ticket Amount, Total Guest Amount\n";
+        foreach ($payments as $payment) {
+
+            $name = $payment->user->name;
+            $event = $payment->event->title;
+            $guestAmount = ($payment->event->guest_amount && $payment->event->guest_amount > 0) ? $payment->event->guest_amount : 0;
+            $guestCount = ($payment->guest_count && $payment->guest_count > 0) ? $payment->guest_count : 0;
+
+            $totalGuestAmount = $guestAmount * $guestCount;
+            $ownTicketAmount = $payment->amount - $totalGuestAmount;
+            $totalAmount = $payment->amount;
+
+            if($payment->payment_type == 1) $paymentType = 'Bank';
+            if($payment->payment_type == 2) $paymentType = 'Bkash';
+            if($payment->payment_type == 3) $paymentType = 'Cash';
+
+            $csv .= $name . ',' . $event . ',' . $paymentType . ',' . $totalAmount . ',' . $ownTicketAmount . ',' . $totalGuestAmount . "\n";
+        }
+
+        header('Content-Type: text/csv; charset=utf-8');
+        header("Content-Disposition: attachment; filename=report.csv");
+
+        echo $csv;
+
+        exit();
     }
 
     public function create()
