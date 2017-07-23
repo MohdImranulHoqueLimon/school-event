@@ -10,10 +10,10 @@ $main_path = url('/');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="images/android-icon-36x36.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/android-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/android-icon-144x144.png">
+    <link rel="shortcut icon" href="{{ url('') }}/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ url('') }}/images/android-icon-36x36.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ url('') }}/images/android-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/{{ url('') }}images/android-icon-144x144.png">
 
     {!! Html::style('assets/admin/global/plugins/bootstrap/css/bootstrap.min.css') !!}
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">

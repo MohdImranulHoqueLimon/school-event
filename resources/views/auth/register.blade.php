@@ -7,10 +7,11 @@
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="Preview page of Metronic Admin Theme #1 for " name="description"/>
     <meta content="" name="author"/>
-     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="images/android-icon-36x36.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/android-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/android-icon-144x144.png">
+    <link rel="shortcut icon" href="{{ url('') }}/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ url('') }}/images/android-icon-36x36.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ url('') }}/images/android-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/{{ url('') }}images/android-icon-144x144.png">
+
 
     {!! Html::style('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all') !!}
     {!! Html::style('assets/admin/global/plugins/font-awesome/css/font-awesome.min.css') !!}

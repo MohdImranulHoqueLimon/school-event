@@ -31,11 +31,11 @@
 
     {!! Html::style('assets/admin/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') !!}
     <!-- END THEME LAYOUT STYLES -->
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="images/android-icon-36x36.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/android-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/android-icon-144x144.png">
+    <link rel="shortcut icon" href="{{ url('') }}/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ url('') }}/images/android-icon-36x36.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ url('') }}/images/android-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/{{ url('') }}images/android-icon-144x144.png">
+
 
     <style>
         .ui-autocomplete-loading {

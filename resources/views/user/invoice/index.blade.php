@@ -172,7 +172,7 @@ rel="stylesheet" type="text/css"/>
                     <div class="col-md-offset-2 col-md-7">
                         <div class="form-group">
                             <label for="payment_type" class="control-label">Payment Type</label>
-                            <select name="payment_type" class="form-control" onchange="setPaymentMethod(this)">
+                            <select name="payment_type" class="form-control" onchange="setPaymentMethod(this)" required="">
                                 <option value=""> --- Select ---</option>
                                 @foreach($paymentTypes as $paymentType)
                                 <option value="{{ $paymentType->id }}">{!! $paymentType->title !!}</option>
@@ -185,7 +185,7 @@ rel="stylesheet" type="text/css"/>
                     <div class="col-md-offset-2 col-md-7" id="attachment_section" style="display: none;">
                         <div class="form-group">
                             <label for="name" class="control-label">Bank Attachment</label>
-                            <input type="file" name="bank_attachment" class="form-control"/>
+                            <input type="file" name="bank_attachment" id="bank_attachment" class="form-control"/>
                         </div>
 
                         <div class="alert alert-info information-box" role="alert">
@@ -205,7 +205,7 @@ rel="stylesheet" type="text/css"/>
                    <div class="col-md-offset-2 col-md-7" id="bkash_section" style="display: none;">
                     <div class="form-group">
                         <label for="name" class="control-label">TrxID No</label>
-                        <input type="text" name="bkash_code" class="form-control"/>
+                        <input type="text" name="bkash_code" id="bkash_code" class="form-control"/>
                     </div>
 
                     <div class="alert alert-info information-box" role="alert">
@@ -224,7 +224,7 @@ rel="stylesheet" type="text/css"/>
                <div class="col-md-offset-2 col-md-7" id="cash_section" style="display: none;">
                 <div class="form-group">
                     <label for="note" class="control-label">Note</label>
-                    <input type="text" name="note" class="form-control"/>
+                    <input type="text" name="note" id="note" class="form-control"/>
                 </div>
 
                 <div class="alert alert-info information-box" role="alert">
@@ -238,13 +238,14 @@ rel="stylesheet" type="text/css"/>
 
            </div>
        </div>
-   </form>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-primary" onclick="submitPaymentTypeForm()">Save changes
+       <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Save changes
     </button>
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 </div>
+   </form>
+</div>
+
 </div>
 </div>
 </div>
@@ -259,12 +260,21 @@ rel="stylesheet" type="text/css"/>
 
         if (selectedMethod == 1) {
             $('#attachment_section').show();
+            $("#bank_attachment").prop('required',true);
+            $("#bkash_code").prop('required',false);
+            $("#note").prop('required',false);
         }
         if (selectedMethod == 2) {
             $('#bkash_section').show();
+            $("#bank_attachment").prop('required',false);
+            $("#bkash_code").prop('required',true);
+            $("#note").prop('required',false);
         }
         if (selectedMethod == 3) {
             $('#cash_section').show();
+             $("#bank_attachment").prop('required',false);
+            $("#bkash_code").prop('required',false);
+            $("#note").prop('required',true);
         }
     }
 

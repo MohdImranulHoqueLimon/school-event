@@ -106,7 +106,7 @@ class PaymentsController extends Controller
         $result = $this->paymentsService->store($input);
 
         if ($result) {
-            flash('Congratulation!you have successfully completed your registration.You will get a confirmation mail with your invoice after admin confirm your payment.Thank you.');
+            flash('Payment created successfully.');
             return redirect()->route('invoice.index');
         }
 
