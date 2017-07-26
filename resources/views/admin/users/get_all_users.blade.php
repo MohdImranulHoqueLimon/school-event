@@ -34,7 +34,7 @@
                                             <td>{{$user->city}}</td>
                                             <td>
                                                  @if(isset($user->user_image) && $user->user_image != null)
-                                                <img alt="" class="" src="{{ url('/images/avatar/normal_images/' . $user->user_image)}}">
+                                                <img alt="Profile Image" style="height: 320px;width: 400px" class="" src="{{ url('/images/avatar/normal_images/' . $user->user_image)}}">
                                                 @endif
                                             </td>
                                             

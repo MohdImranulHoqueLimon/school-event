@@ -62,7 +62,7 @@ class PaymentController extends Controller
         $payments = $this->paymentService->getAllPaymentsWithForAdmin(Auth::user()->id, $filters);
         $payments = $payments->get();
 
-        $csv = "Name, Event Title, Payment Type, Total Amount, Own Ticket Amount, Total Guest Amount\n";
+        $csv = "Name, Event Title, Payment Type, Cash Receiver, Bkash Code, Attachment, Approved By, Total Amount, Own Ticket Amount, Total Guest Amount\n";
         foreach ($payments as $payment) {
 
             $name = $payment->user->name;
@@ -77,8 +77,17 @@ class PaymentController extends Controller
             if($payment->payment_type == 1) $paymentType = 'Bank';
             if($payment->payment_type == 2) $paymentType = 'Bkash';
             if($payment->payment_type == 3) $paymentType = 'Cash';
+            $bkash_code = $payment->bkash_code;
+            $cash_note = $payment->cash_note;
+            $bank_attachment = $payment->bank_attachment;
 
-            $csv .= $name . ',' . $event . ',' . $paymentType . ',' . $totalAmount . ',' . $ownTicketAmount . ',' . $totalGuestAmount . "\n";
+             $approved_by = '';
+             if($payment->approved_admin && $payment->approved_admin->name)
+              {
+                  $approved_by = $payment->approved_admin->name;
+               }
+
+            $csv .= $name . ',' . $event . ',' . $paymentType . ',' . $cash_note . ',' . $bkash_code . ',' . $bank_attachment . ',' . $approved_by . ',' . $totalAmount . ',' . $ownTicketAmount . ',' . $totalGuestAmount . "\n";
         }
 
         header('Content-Type: text/csv; charset=utf-8');
