@@ -204,7 +204,7 @@ rel="stylesheet" type="text/css"/>
 
                    <div class="col-md-offset-2 col-md-7" id="bkash_section" style="display: none;">
                     <div class="form-group">
-                        <label for="name" class="control-label">TrxID No</label>
+                        <label for="name" class="control-label">bKash TrxID No</label>
                         <input type="text" name="bkash_code" id="bkash_code" class="form-control"/>
                     </div>
 

@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth_user_type', 'r
 
     Route::resource('users', 'Admin\UsersController');
     Route::resource('registration_payments', 'Admin\RegistrationPaymentController');
+    Route::resource('all_user_list', 'Admin\UsersController@all_user_list');
 
     Route::group(['prefix' => 'users'], function () {
         Route::get('{id}/roles', ['as' => 'users.roles', 'uses' => 'Admin\UsersController@roles']);

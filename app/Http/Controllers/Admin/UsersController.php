@@ -301,4 +301,11 @@ class UsersController extends Controller
         }
         return json_encode($return);
     }
+
+      public function all_user_list(Request $request)
+    {
+        //$filters = $request->all();
+        $users = $this->userService->getAllUserList();
+        return View('admin.users.get_all_users', compact('users'));
+    }
 }

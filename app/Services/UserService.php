@@ -339,4 +339,10 @@ class UserService
         //$this->model->where('id', $id)->update(['status' => 1]);
         return $this->repository->updateUserStatus($id, $value);
     }
+
+    public function getAllUserList()
+    {
+        return $this->repository->all();
+    }
+
 }

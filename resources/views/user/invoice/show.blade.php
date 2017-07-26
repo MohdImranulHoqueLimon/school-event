@@ -168,10 +168,22 @@
                                             </td>
                                         </tr>
 
+                                        <?php                                  
+                                        if($paymentInfo->payment_type == 1){
+                                            $payment_method = 'Bank';
+                                        } else if($paymentInfo->payment_type == 2){
+                                            $payment_method = 'Bkash';
+                                        } else {
+                                            $payment_method = 'Cash';
+                                        }
+                                        ?>
+
                                         <tr class="heading">
                                             <td>Payment Method</td>
-                                            <td>Cash #</td>
+                                            <td><?=$payment_method?></td>
                                         </tr>
+
+
 
                                         <tr class="details">
                                             <td>Cash</td>

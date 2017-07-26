@@ -26,6 +26,11 @@
                             </div>
                             <div class="actions">
                                 @role('Admin')
+                                <div class="btn-group pull-right" style="margin-left: 20px;">
+                                    <a href="/admin/all_user_list" target="_blank" class="btn sbold green">Export All Users </a>
+                                </div>
+
+
                                 <div class="btn-group pull-right">
                                     <a href="{{ route('users.create') }}" class="btn sbold green">Add
                                         New <i class="fa fa-plus"></i></a>
