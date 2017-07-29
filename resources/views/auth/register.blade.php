@@ -60,6 +60,8 @@
 
     @include('errors')
 
+     @include('shared.flash')
+
     <form class="register-form" action="{{ url('/register') }}" method="post" style="display: block;" enctype="multipart/form-data">
         {{ csrf_field()  }}
 

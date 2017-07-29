@@ -59,7 +59,12 @@ class RegisterController extends Controller
         $data = $request->except(['_token', 'rpassword', 'tnc', 'user_image']);
         $data['password'] = bcrypt($data['password']);
         $data['status'] = 0;
-
+        
+        if ($_FILES['user_image']['size'] > 0.5 * 1024 * 1024) {
+         flash('Please upload 500kb image or lses size image.', 'error');
+         return redirect()->back();
+        }
+       
         $user = User::create($data);
 
         $photo = $request->file('user_image');

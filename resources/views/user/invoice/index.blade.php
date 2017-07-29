@@ -239,7 +239,7 @@ rel="stylesheet" type="text/css"/>
            </div>
        </div>
        <div class="modal-footer">
-    <button type="submit" class="btn btn-primary">Save changes
+    <button type="submit" class="btn btn-primary">Confirm payment
     </button>
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 </div>

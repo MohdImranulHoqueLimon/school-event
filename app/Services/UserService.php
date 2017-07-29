@@ -295,11 +295,11 @@ class UserService
             $photoname = time() . '.' . $photo->getClientOriginalExtension();
             //$destinationPath = public_path('images/avatar/thumbnail_images');
             $destinationPath = env('UPLOAD_USER_AVATAR_THUMBNAIL');
-            $thumb_img = Image::make($photo->getRealPath())->resize(362, 231);
+            $thumb_img = Image::make($photo->getRealPath())->resize(300, 300);
             $thumb_img->save($destinationPath . '/' . $photoname, 80);
             //$destinationPath = public_path('images/avatar/normal_images');
             $destinationPath = env('UPLOAD_USER_AVATAR_NORMAL');
-            $normal_img = Image::make($photo->getRealPath())->resize(848, 335);
+            $normal_img = Image::make($photo->getRealPath())->resize(600, 600);
             $normal_img->save($destinationPath . '/' . $photoname, 80);
             return $photoname;
         }
