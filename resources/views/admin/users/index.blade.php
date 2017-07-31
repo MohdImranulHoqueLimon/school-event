@@ -153,6 +153,9 @@
                                                 <a href="{{ route('users.show', $user->id) }}" title="View" class="btn btn-icon-only grey-cascade">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
+                                                 <a href="{{ route('users.export', $user->id) }}" title="View" class="btn btn-icon-only grey-cascade">
+                                                    <i class="fa fa-download"></i>
+                                                </a>
                                                 @role('Admin')
                                                 <a title="Edit" href="{{ route('users.edit', $user->id) }}" class="btn btn-icon-only btn-primary">
                                                     <i class="fa fa-edit"></i>

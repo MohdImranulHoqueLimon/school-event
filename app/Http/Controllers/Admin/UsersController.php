@@ -316,4 +316,17 @@ class UsersController extends Controller
         TCPDF::WriteHTML($invoiceHtml);
         TCPDF::Output('user_list.pdf');
     }
+
+     public function export($id)
+    {
+        $user = $this->userService->findUser($id);
+        //print_r($user);
+        //die();
+        $invoiceHtml =  View('admin.users.get_users', compact('user'));
+
+        TCPDF::SetTitle('User List');
+        TCPDF::AddPage();
+        TCPDF::WriteHTML($invoiceHtml);
+        TCPDF::Output('user_list.pdf');
+    }
 }
