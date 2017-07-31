@@ -27,7 +27,7 @@ class InvoiceController extends Controller
 
     public function downloadInvoice($id) {
 
-         $id = base64_decode($id);
+        $id = base64_decode($id);
         $invoiceHtml = $this->paymentService->getInvoiceHtml($id);
 
         TCPDF::SetTitle('Invoice');

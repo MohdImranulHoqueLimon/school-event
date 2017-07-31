@@ -342,7 +342,7 @@ class UserService
 
     public function getAllUserList()
     {
-        return $this->repository->all();
+        return $this->repository->all()->where('status', '=', 1);
     }
 
 }

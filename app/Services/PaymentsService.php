@@ -197,11 +197,11 @@ class PaymentsService extends BaseService
         $html = '
         <html> 
             <body>
-                <div class="portlet-body" style="width:600px;font-size:11px;overflow-x: scroll;">               
-                                    <table style="width:600px;">                                    
+                <div class="portlet-body" style="width:100%;font-size:11px;overflow-x: scroll;">               
+                                    <table style="width:100%;">                                    
                                         <tbody>
                                         <tr>
-                                            <td class="title" style="width:400px;">
+                                            <td class="title" style="width:70%;">
                                                 <img name="invoicelogo" src="'.$path.'/images/main_logo.png" style="width:90%; width:50px;"><br/>
                                             </td>
                                             <td>
@@ -213,10 +213,10 @@ class PaymentsService extends BaseService
                                         </tbody>
                                     </table> <br/><br/>
                                     
-                                    <table style="width:600px;">
+                                    <table style="width:100%;">
                                         <tbody>
                                         <tr>
-                                            <td style="width:400px;">
+                                            <td sstyle="width:65%;">
                                                  <p>Address: Bagerhat Govt High School,<br>
                                                             Old Rupsha Road,Bagerhat.<br>
                                                             Email: info@exstudentsbghs.com<br/>
@@ -242,10 +242,10 @@ class PaymentsService extends BaseService
 
         $html .= '<div id="content">
                     <div class="invoice-box">
-                        <table cellpadding="2" style="width:520px;border:1px solid #ccc;border-bottom:none;border-left:none;border-right:none;margin-top:10px;border-top:none">
+                        <table cellpadding="2" style="width:100%;border:1px solid #ccc;border-bottom:none;border-left:none;border-right:none;margin-top:10px;border-top:none">
                             <tbody> 
                             <tr class="heading">
-                                <td style="border-bottom:1px solid #ccc;border-left:none;border-right:none;border-top:none;">Payment Method</td>
+                                <td style="border-bottom:1px solid #ccc;border-left:none;border-right:none;border-top:none;width:70%;">Payment Method</td>
                                 <td style="border-bottom:1px solid #ccc;border-left:none;border-right:none;border-top:none">'.$payment_method.'</td>
                             </tr>                       
                             <tr class="heading">
@@ -278,7 +278,6 @@ class PaymentsService extends BaseService
             </body>
         </html>
         ';
-
         return $html;
         
     }

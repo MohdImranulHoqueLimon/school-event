@@ -11,6 +11,7 @@ use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Elibyy\TCPDF\Facades\TCPDF;
 
 class UsersController extends Controller
 {
@@ -306,6 +307,13 @@ class UsersController extends Controller
     {
         //$filters = $request->all();
         $users = $this->userService->getAllUserList();
-        return View('admin.users.get_all_users', compact('users'));
+        $invoiceHtml =  View('admin.users.get_all_users', compact('users'));
+
+       // $invoiceHtml = $this->paymentService->getInvoiceHtml($id);
+
+        TCPDF::SetTitle('User List');
+        TCPDF::AddPage();
+        TCPDF::WriteHTML($invoiceHtml);
+        TCPDF::Output('user_list.pdf');
     }
 }
