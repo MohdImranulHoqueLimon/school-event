@@ -73,6 +73,7 @@ class PaymentController extends Controller
             $totalGuestAmount = $guestAmount * $guestCount;
             $ownTicketAmount = $payment->amount - $totalGuestAmount;
             $totalAmount = $payment->amount;
+            $paymentType = '';
 
             if($payment->payment_type == 1) $paymentType = 'Bank';
             if($payment->payment_type == 2) $paymentType = 'Bkash';
@@ -91,7 +92,7 @@ class PaymentController extends Controller
         }
 
         $sumResults = $this->paymentService->getAllSumResultsByFilter($filters);
-        
+
         $csv .= "Total Amount, Total Guest Amount, Total Own Amount\n";
         $csv .= $sumResults['total_amount'] . ',' . $sumResults['total_guest_amount'] . ',' . ($sumResults['total_amount'] - $sumResults['total_guest_amount']) . "\n";
         
