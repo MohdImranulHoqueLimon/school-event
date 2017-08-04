@@ -87,8 +87,14 @@ class PaymentController extends Controller
                   $approved_by = $payment->approved_admin->name;
                }
 
-            $csv .= $name . ',' . $event . ',' . $paymentType . ',' . $cash_note . ',' . $bkash_code . ',' . $bank_attachment . ',' . $approved_by . ',' . $totalAmount . ',' . $ownTicketAmount . ',' . $totalGuestAmount . "\n";
+            $csv .= $name . ',' . $event . ',' . $paymentType . ',' . $cash_note . ',' . $bkash_code . ',' . $bank_attachment . ',' . $approved_by . ',' . $totalAmount . ',' . $ownTicketAmount . ',' . $totalGuestAmount . "\n\n";
         }
+
+        $sumResults = $this->paymentService->getAllSumResultsByFilter($filters);
+        
+        $csv .= "Total Amount, Total Guest Amount, Total Own Amount\n";
+        $csv .= $sumResults['total_amount'] . ',' . $sumResults['total_guest_amount'] . ',' . ($sumResults['total_amount'] - $sumResults['total_guest_amount']) . "\n";
+        
 
         header('Content-Type: text/csv; charset=utf-8');
         header("Content-Disposition: attachment; filename=report.csv");

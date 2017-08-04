@@ -188,19 +188,7 @@
             </div>
         </div>
 
-        {{--<div class="col-md-3">
-            <div class="form-group">
-                <label for="permanent_city" class="control-label">Permanent City
-                    <span class="required" aria-required="true"> * </span>
-                </label>
-                <input id="permanent_city" type="text" class="form-control" name="permanent_city"
-                       @if(isset($user)) value="{{$user->permanent_city}}" @endif
-                       required autofocus>
-                @if ($errors->has('permanent_city'))
-                    <span class="help-block">{{ $errors->first('permanent_city') }}</span>
-                @endif
-            </div>
-        </div>--}}
+      
     </div>
 
     <div class="row">
@@ -223,7 +211,7 @@
                     <span class="required" aria-required="true"> * </span>
                 </label>
                 <input id="permanent_address" type="text" class="form-control" name="permanent_address"
-                       @if(isset($user)) value="{{$user->address}}" @endif required autofocus>
+                       @if(isset($user)) value="{{$user->permanent_address}}" @endif required autofocus>
                 @if ($errors->has('permanent_address'))
                     <span class="help-block">{{ $errors->first('permanent_address') }}</span>
                 @endif
